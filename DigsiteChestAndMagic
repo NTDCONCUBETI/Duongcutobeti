@@ -1,3 +1,13 @@
+getgenv().autoDigsiteConfig = {
+    OPTIMIZE_GAME = true, -- Set to true to optimize the game by removing unnecessary parts
+    DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    LOAD_DELAY = 5,
+    CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
+    DIG_DEPTH = 120,
+    UNBROKEN_BLOCK_THRESHOLD = 150
+}
+
+
 local digsiteReset = false
 
 local positions = {
@@ -159,9 +169,13 @@ local function beginCycle()
 end
 
 
+
+
+
+
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
-    task.wait(10)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/cpuReducer.lua"))()
+    task.wait(10)	
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
         pcall(function()
             if v.Name == "Ground" then
