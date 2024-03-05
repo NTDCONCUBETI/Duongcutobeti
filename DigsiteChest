@@ -7,6 +7,7 @@ getgenv().autoDigsiteConfig = {
     UNBROKEN_BLOCK_THRESHOLD = 150
 }
 
+
 local digsiteReset = false
 
 local positions = {
@@ -35,7 +36,48 @@ local function checkForChests()
     end
 end
 
+local function checkForLake()
+    local foundLake = false
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+        if v:IsA("Part") then
+            if v:FindFirstChild("Firefly") then
+                foundLake = true
+                break
+            end
+        end
+    end
 
+    if foundLake then
+        print("Found magic lake")
+        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            if v:IsA("Part") then
+                if v:FindFirstChild("Firefly") then
+
+                    local function digMagicLiquid()
+                        checkForChests()
+                        local block
+                        for _, v2 in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                            if v2:IsA("BasePart") then
+                                if v2 == v then
+                                    block = v2
+                                end
+                            end
+                        end
+
+                        if block then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = block.CFrame + Vector3.new(0, 3, 0)
+                            game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", block:GetAttribute('Coord'))
+                            task.wait()
+                            digMagicLiquid()
+                        end
+                    end
+
+                    digMagicLiquid()
+                end
+            end
+        end
+    end
+end
 
 local function beginCycle()
     for curPos, _ in positions do
@@ -74,6 +116,7 @@ local function beginCycle()
 
                     for i = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
                         checkForChests()
+                        checkForLake()
                         digBlock(i)
                         task.wait()
                     end
@@ -116,6 +159,7 @@ local function beginCycle()
                 end
 
                 checkForChests()
+                checkForLake()
                 digBlock()
                 task.wait()
             end
@@ -125,9 +169,13 @@ local function beginCycle()
 end
 
 
+
+
+
+
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
-task.wait(10)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/cpuReducer.lua"))()
+    task.wait(10)	
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
         pcall(function()
             if v.Name == "Ground" then
