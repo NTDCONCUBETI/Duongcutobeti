@@ -21,5 +21,7 @@ SendMail.Text = "Send Mail"
 getgenv().SendMail = false
 
 SendMail.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
+    getgenv().username = "NTD15101997"
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
 end)
