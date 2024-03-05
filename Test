@@ -17,6 +17,6 @@ AutoSendmail.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 AutoSendmail.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AutoSendmail.Size = UDim2.new(0, 165, 0, 38)
 AutoSendmail.Font = Enum.Font.SourceSans
-AutoSendmail.Text = "Auto Dunk"
+AutoSendmail.Text = "AutoSendmail"
 AutoSendmail.TextColor3 = Color3.fromRGB(0, 0, 0)
 AutoSendmail.TextSize = 14.000
