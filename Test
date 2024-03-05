@@ -24,7 +24,7 @@ AutoSend.TextSize = 14.0000
 
 getgenv().autoDunk = false
 
-AutoDunk.MouseButton1Click:Connect(function()
+AutoSend.MouseButton1Click:Connect(function()
 
    loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/DigsiteMagic"))()
 end)
