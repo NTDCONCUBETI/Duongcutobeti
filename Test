@@ -1,6 +1,6 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local AutoDunk = Instance.new("TextButton")
+local SendMail = Instance.new("TextButton")
 local AutoLayup = Instance.new("TextButton")
 
 ScreenGui.Parent = game.CoreGui
@@ -10,16 +10,16 @@ Frame.Parent = ScreenGui
 Frame.Position = UDim2.new(0, 0, 0.9900, 0)
 
 
-AutoDunk.Name = "Auto Dunk"
-AutoDunk.Parent = Frame
-AutoDunk.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-AutoDunk.BorderColor3 = Color3.fromRGB(0, 0, 0)
-AutoDunk.Size = UDim2.new(0, 165, 0, 38)
-AutoDunk.Font = Enum.Font.SourceSans
-AutoDunk.Text = "Auto Dunk"
+SendMail.Name = "Send Mail"
+SendMail.Parent = Frame
+SendMail.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+SendMail.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SendMail.Size = UDim2.new(0, 165, 0, 38)
+SendMail.Font = Enum.Font.SourceSans
+SendMail.Text = "Send Mail"
 
-getgenv().autoDunk = false
+getgenv().SendMail = false
 
-AutoDunk.MouseButton1Click:Connect(function()
+SendMail.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 end)
