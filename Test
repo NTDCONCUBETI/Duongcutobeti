@@ -23,8 +23,5 @@ AutoDunk.Text = "Auto Dunk"
 getgenv().autoDunk = false
 
 AutoDunk.MouseButton1Click:Connect(function()
-
-    getgenv().autoDunk = not getgenv().autoDunk
-    AutoDunk.BackgroundColor3 = getgenv().autoDunk and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
-    loadstring(game:HttpGet('https://syrexhub.netlify.app/raw/petsimulator99/syrexhub'))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 end)
