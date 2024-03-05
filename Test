@@ -1,6 +1,6 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local AutoDunk = Instance.new("TextButton")
+local AutoSendmail = Instance.new("TextButton")
 local AutoLayup = Instance.new("TextButton")
 
 ScreenGui.Parent = game.CoreGui
@@ -12,23 +12,12 @@ Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 Frame.Position = UDim2.new(0, 0, 0.9154, 0)
 Frame.Size = UDim2.new(0, 165, 0, 80)
 
-AutoDunk.Name = "Auto Dunk"
-AutoDunk.Parent = Frame
-AutoDunk.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-AutoDunk.BorderColor3 = Color3.fromRGB(0, 0, 0)
-AutoDunk.Size = UDim2.new(0, 165, 0, 38)
-AutoDunk.Font = Enum.Font.SourceSans
-AutoDunk.Text = "Auto Dunk"
-AutoDunk.TextColor3 = Color3.fromRGB(0, 0, 0)
-AutoDunk.TextSize = 14.000
-
-AutoLayup.Name = "Auto Layup"
-AutoLayup.Parent = Frame
-AutoLayup.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-AutoLayup.BorderColor3 = Color3.fromRGB(0, 0, 0)
-AutoLayup.Position = UDim2.new(0, 0, 0.537500024, 0)
-AutoLayup.Size = UDim2.new(0, 165, 0, 38)
-AutoLayup.Font = Enum.Font.SourceSans
-AutoLayup.Text = "Auto Layup"
-AutoLayup.TextColor3 = Color3.fromRGB(0, 0, 0)
-AutoLayup.TextSize = 14.000
+AutoSendmail.Name = "AutoSendmail"
+AutoSendmail.Parent = Frame
+AutoSendmail.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AutoSendmail.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoSendmail.Size = UDim2.new(0, 165, 0, 38)
+AutoSendmail.Font = Enum.Font.SourceSans
+AutoSendmail.Text = "Auto Dunk"
+AutoSendmail.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoSendmail.TextSize = 14.000
