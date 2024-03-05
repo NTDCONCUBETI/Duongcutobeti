@@ -23,5 +23,4 @@ AutoSend.TextColor3 = Color3.fromRGB(0, 0, 0)
 AutoSend.TextSize = 14.000
 
 AutoDunk.MouseButton1Click:Connect(function()
-    print("loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test"))()")
-end)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/DigsiteMagic"))()
