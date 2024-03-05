@@ -21,7 +21,7 @@ SendMail.TextSize = 14.000
 
 AutoFarm.Name = "Auto Farm"
 AutoFarm.Parent = Frame
-AutoFarm.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AutoFarm.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
 AutoFarm.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AutoFarm.Position = UDim2.new(0, 0, 0.15000, 0)
 AutoFarm.Size = UDim2.new(0, 165, 0, 38)
