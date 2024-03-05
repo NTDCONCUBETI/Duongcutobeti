@@ -7,7 +7,7 @@ ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
-Frame.Position = UDim2.new(0, 0, 0.9900, 0)
+Frame.Position = UDim2.new(0, 0, 0.9200, 0)
 
 
 SendMail.Name = "Send Mail"
