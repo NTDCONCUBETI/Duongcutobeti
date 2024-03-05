@@ -3,10 +3,10 @@ getgenv().autoDigsiteConfig = {
     DIG_DEPTH = 120, -- How deep to dig in each position
     
     OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
-    DIGSITE_RESET_DELAY = 8, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
-    UNBROKEN_BLOCK_THRESHOLD = 150 -- change if taking too long
+    UNBROKEN_BLOCK_THRESHOLD = 100 -- change if taking too long
 }
 
 
