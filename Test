@@ -19,4 +19,4 @@ SendMail.Size = UDim2.new(0, 200, 0, 50)
 SendMail.Font = Enum.Font.SourceSans
 SendMail.Text = "Send Mail"
 SendMail.TextColor3 = Color3.fromRGB(255, 255, 0)
-SendMail.TextSize = 14.000
+SendMail.TextSize = 14.00000
