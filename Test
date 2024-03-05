@@ -19,7 +19,7 @@ AutoSend.BorderColor3 = Color3.fromRGB(255, 255, 0)
 AutoSend.Size = UDim2.new(0, 165, 0, 38)
 AutoSend.Font = Enum.Font.SourceSans
 AutoSend.Text = "Auto Send"
-AutoSend.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoSend.TextColor3 = Color3.fromRGB(255, 255, 0)
 AutoSend.TextSize = 14.000
 
 
