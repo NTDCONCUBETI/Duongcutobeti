@@ -7,7 +7,6 @@ getgenv().autoDigsiteConfig = {
     UNBROKEN_BLOCK_THRESHOLD = 150
 }
 
-
 local digsiteReset = false
 
 local positions = {
@@ -37,8 +36,6 @@ local function checkForChests()
 end
 
 
-
-   
 
 local function beginCycle()
     for curPos, _ in positions do
@@ -77,7 +74,6 @@ local function beginCycle()
 
                     for i = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
                         checkForChests()
-                        
                         digBlock(i)
                         task.wait()
                     end
@@ -120,7 +116,6 @@ local function beginCycle()
                 end
 
                 checkForChests()
-                
                 digBlock()
                 task.wait()
             end
@@ -131,8 +126,8 @@ end
 
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-    loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/FPSBOOTER"))()
-    task.wait(10)
+	loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/FPSBOOTER"))()
+	task.wait(10)
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
         pcall(function()
             if v.Name == "Ground" then
