@@ -7,7 +7,7 @@ ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
-Frame.Position = UDim2.new(0, 0, 0.8000, 0)
+Frame.Position = UDim2.new(0, 0, 0.10000, 0)
 
 
 AutoDunk.Name = "Auto Dunk"
