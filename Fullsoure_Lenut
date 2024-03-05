@@ -1,0 +1,728 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local AutoDunk = Instance.new("TextButton")
+local AutoLayup = Instance.new("TextButton")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0, 0, 0.9154, 0)
+Frame.Size = UDim2.new(0, 165, 0, 80)
+
+AutoDunk.Name = "Auto Dunk"
+AutoDunk.Parent = Frame
+AutoDunk.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AutoDunk.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoDunk.Size = UDim2.new(0, 165, 0, 38)
+AutoDunk.Font = Enum.Font.SourceSans
+AutoDunk.Text = "Auto Dunk"
+AutoDunk.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoDunk.TextSize = 14.000
+
+AutoLayup.Name = "Auto Layup"
+AutoLayup.Parent = Frame
+AutoLayup.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AutoLayup.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoLayup.Position = UDim2.new(0, 0, 0.537500024, 0)
+AutoLayup.Size = UDim2.new(0, 165, 0, 38)
+AutoLayup.Font = Enum.Font.SourceSans
+AutoLayup.Text = "Auto Layup"
+AutoLayup.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoLayup.TextSize = 14.000
+
+getgenv().autoLayup = false
+getgenv().autoDunk = false
+
+AutoDunk.MouseButton1Click:Connect(function()
+    getgenv().autoDunk = not getgenv().autoDunk
+    AutoDunk.BackgroundColor3 = getgenv().autoDunk and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    while task.wait(0.5) and getgenv().autoDunk do
+        game:GetService("ReplicatedStorage").Remotes.Dunk:FireServer()
+    end
+end)
+
+AutoLayup.MouseButton1Click:Connect(function()
+    getgenv().autoLayup = not getgenv().autoLayup
+    AutoLayup.BackgroundColor3 = getgenv().autoLayup and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    while task.wait() and getgenv().autoLayup do
+        game:GetService("ReplicatedStorage").Remotes.LayupSpin:FireServer()
+    end
+end)
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+
+local w = library:CreateWindow("Hood Life by LenutJR")
+
+local b = w:CreateFolder("Ballin")
+
+b:Label("E = Aimbot",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("Shift = INF Stamina",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("Q = Ball Magnet",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("G = Auto Guard (Buggy)",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("4 = JiggyLegit",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("5 = JiggyBlatant",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("LeftCtrl = Speed",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("T = JumpShot",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("B = OP Platform",{
+    TextSize = 25;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("Y-Toggle = Spin",{
+    TextSize = 20;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("ScrollClickHold = BallCam",{
+    TextSize = 15;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Label("BallCam no work with spin",{
+    TextSize = 15;
+    TextColor = Color3.fromRGB(178, 242, 170);
+    BgColor = Color3.fromRGB(69,69,69);
+    
+}) 
+
+b:Button("Enlarge Hands",function()
+    handModifier()
+end)
+
+b:Button("Bypass OutOfBound",function()
+    bypassBorderandBounds()
+end)
+
+b:DestroyGui()
+
+---------------------------------------------------------------------------
+
+function bypassBorderandBounds()
+    for _, borders in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if borders.Name == "CourtBorders" and borders:isA("Model") then
+            borders:Destroy()
+        elseif borders.Name == "OutOfBounds" and borders:isA("Model") then
+            borders:Destroy()
+        end
+    end
+end
+
+function handModifier()
+game.Players.LocalPlayer.Character.LeftHand.Size = Vector3.new(1, 10.305229187011719, 0.6535588502883911)
+game.Players.LocalPlayer.Character.RightHand.Size = Vector3.new(1, 10.305229187011719, 0.6535588502883911)
+end
+---------------------------------------------------------------------------
+
+_G.Keybind1 = Enum.KeyCode.E
+
+local Player = game:GetService("Players").LocalPlayer
+local UIS = game:GetService("UserInputService")
+local RUN = game:GetService("RunService")
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local Cheat
+
+local ShotBot = function()
+    Character.Meter.SurfaceGui.ImageLabel.Shoot.Size = UDim2.new(1, 0, 1, 0)
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind1 and not proc then
+        Cheat = RUN.Stepped:Connect(ShotBot)
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind1 and not proc then
+        wait(3)
+        Cheat:Disconnect()
+        Character.Meter.SurfaceGui.ImageLabel.Shoot.Size = UDim2.new(1, 0, 0, 0)
+    end
+end)
+
+------------------------------------------------------------------------------
+
+_G.Keybind2 = Enum.KeyCode.LeftShift
+
+local LP = game:GetService("Players").LocalPlayer
+local Character = LP.Character or LP.CharacterAdded:Wait()
+local UIS = game:GetService("UserInputService")
+local RS = game:GetService("RunService")
+local INF
+
+local function INFStamina()
+Character.Meter.SurfaceGui.ImageLabel.Sprint.Size = UDim2.new(0, 0, -0.979, 0)
+end
+
+UIS.InputBegan:Connect(function(input)
+    if input.KeyCode == _G.Keybind2 then
+    INF = RS.Stepped:Connect(INFStamina)
+    end
+end)
+
+UIS.InputEnded:Connect(function(input)
+    if input.KeyCode == _G.Keybind2 then
+    INF:Disconnect()
+    end
+end)
+
+-----------------------------------------------------------------------------
+
+_G.Keybind3 = Enum.KeyCode.Q
+
+local LP = game:GetService("Players").LocalPlayer
+local UIS = game:GetService("UserInputService")
+
+function getClosestBall()
+	local closestDistance = math.huge
+	local closestBall = nil
+	for _, ball in pairs(workspace:GetDescendants()) do
+		if ball.Name == "Basketball" and ball:isA("Part") then
+			local distance = (LP.Character.HumanoidRootPart.Position - ball.Position).Magnitude
+			if distance < closestDistance then
+				closestDistance = distance
+				closestBall = ball
+			end
+		end
+	end
+	if closestBall then
+		closestBall.CFrame = LP.Character.HumanoidRootPart.CFrame
+	end
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+	if input.KeyCode == _G.Keybind3 and not proc then
+		getClosestBall()
+	end
+end)
+
+-----------------------------------------------------------------------------
+
+_G.Keybind4 = Enum.KeyCode.G
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local UIS = game:GetService("UserInputService")
+local Guarding = false
+
+local function guard()
+        while task.wait() and Guarding do
+        for _, ball in pairs(game:GetService("Workspace"):GetDescendants()) do
+            if ball.Name == "Basketball" and ball:IsA("Part") then
+                local playerValue = ball:FindFirstChild("player")
+                if playerValue and playerValue:IsA("StringValue") and playerValue.Value ~= "" and playerValue.Value ~= LocalPlayer.Name then
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = ball.CFrame
+                    game:GetService("ReplicatedStorage").Remotes.Guard:FireServer(true)
+                    game:GetService("ReplicatedStorage").Remotes.Post:FireServer(true)
+                end
+            end
+        end
+    end
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind4 and not proc then
+        Guarding = true
+        guard()
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind4 and not proc then
+        Guarding = false
+    end
+end)
+
+---------------------------------------------------------------------------
+_G.Keybind5 = Enum.KeyCode.Four
+
+local UIS = game:GetService("UserInputService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Moving = false
+
+local function autoMoves()
+    while task.wait() and Moving do
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.X,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+        
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
+	task.wait(1)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,"E",false,game)
+    end
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind5 and not proc then
+        Moving = true
+        autoMoves()
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind5 and not proc then
+        Moving = false
+    end
+end)
+
+-------------------------------------------------------------------------
+
+_G.Keybind6 = Enum.KeyCode.Five
+
+local UIS = game:GetService("UserInputService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Moving = false
+
+local function autoMoves()
+    while task.wait() and Moving do
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.X,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.Z,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C,
+            [2] = Enum.KeyCode.X,
+            [3] = Enum.KeyCode.Z
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.C
+        })
+        task.wait(0.5)
+        
+        game:GetService("ReplicatedStorage").Remotes.Dribble:FireServer({
+            [1] = Enum.KeyCode.X
+        })
+        task.wait(0.5)
+	
+        for _, tp in pairs(game:GetService("Workspace"):GetDescendants()) do
+	if tp.Name == "p3" and tp:isA("Part") then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = tp.CFrame + Vector3.new(5,40,-15)
+	end
+end
+        task.wait(0.3)
+        
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
+	task.wait(1)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,"E",false,game)
+    end
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind6 and not proc then
+        Moving = true
+        autoMoves()
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind6 and not proc then
+        Moving = false
+    end
+end)
+
+-------------------------------------------------------------------
+
+_G.Keybind7 = Enum.KeyCode.LeftControl
+
+local gmt = getrawmetatable(game)
+setreadonly(gmt, false)
+local oldindex = gmt.__index
+local rs = game:GetService("RunService")
+local UIS = game:GetService("UserInputService")
+local Speed
+local Player = game:GetService("Players").LocalPlayer
+
+gmt.__index = newcclosure(function(self,b)
+	if b == "WalkSpeed" then
+		return 16.2
+	end
+	return oldindex(self,b)
+end)
+
+function walkSpeed()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 70
+end
+
+UIS.InputBegan:Connect(function(input)
+	if input.KeyCode == _G.Keybind7 then
+		Speed = rs.Stepped:Connect(walkSpeed)
+	end
+end)
+
+UIS.InputEnded:Connect(function(input)
+	if input.KeyCode == _G.Keybind7 and Speed then
+		Speed:Disconnect()
+		Player.Character.Humanoid.WalkSpeed = 16.2
+	end
+end)
+
+-------------------------------------------------------------------
+
+_G.Keybind8 = Enum.KeyCode.T
+
+local Player = game:GetService("Players")
+local LP = Player.LocalPlayer
+local gmt = getrawmetatable(game)
+setreadonly(gmt, false)
+local oldindex = gmt.__index
+local UIS = game:GetService("UserInputService")
+
+function jumpShot()
+gmt.__index = newcclosure(function(self,b)
+	if b == "JumpPower" then
+		return 50
+	end
+	return oldindex(self,b)
+end)
+
+LP.Character.Humanoid.JumpPower = 30
+for _, jump in pairs(Player:GetPlayers()) do
+		if jump.Character:FindFirstChild("Humanoid") and jump == LP then
+			jump.Character.Humanoid.UseJumpPower = true
+			LP.Character.Humanoid:ChangeState(3)
+			game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
+			task.wait(1)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false,"E",false,game)
+		end
+	end
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+	if input.KeyCode == _G.Keybind8 and not proc then
+		jumpShot()
+	end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+	if input.KeyCode == _G.Keybind8 and not proc then
+	for _, jump in pairs(Player:GetPlayers()) do
+		if jump.Character:FindFirstChild("Humanoid") and jump == LP then
+			jump.Character.Humanoid.UseJumpPower = false
+			LP.Character.Humanoid.JumpPower = 50
+			end
+		end
+	end
+end)
+
+-------------------------------------------------------------------
+
+_G.Keybind9 = Enum.KeyCode.B
+
+local UIS = game:GetService("UserInputService")
+
+function createPart()
+local part = Instance.new("Part")
+part.Name = "ZPart"
+part.Anchored = true
+part.Color = Color3.new(1, 1, 1)
+part.Size = Vector3.new(3,1,3)
+part.Transparency = 0.5
+part.Parent = workspace
+part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0,10,0)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0,20,0)
+task.wait(10)
+part:Destroy()
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+	if input.KeyCode == _G.Keybind9 and not proc then
+	createPart()
+	end
+end)
+
+-------------------------------------------------------------------
+
+_G.Keybind10 = Enum.KeyCode.Y
+
+local UIS = game:GetService("UserInputService")
+local Player = game:GetService("Players").LocalPlayer
+local Camera = game:GetService("Workspace").CurrentCamera
+local spinSpeed = math.rad(100)
+local Spinning = false
+
+local spinPart = Instance.new("Part")
+spinPart.Anchored = true
+spinPart.CanCollide = false
+spinPart.Transparency = 1
+spinPart.Parent = workspace
+
+local oldCameraSubject = Camera.CameraSubject
+
+function spinPlayer()
+    while Spinning do
+        spinPart.CFrame = spinPart.CFrame * CFrame.Angles(0, spinSpeed, 0)
+        local relativeCFrame = Player.Character.HumanoidRootPart.CFrame:ToObjectSpace(spinPart.CFrame)
+        Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.Position, relativeCFrame.LookVector + Player.Character.HumanoidRootPart.Position)
+
+        Camera.CameraSubject = Player.Character.HumanoidRootPart
+        Camera.CFrame = CFrame.new(Camera.CFrame.Position, Player.Character.HumanoidRootPart.Position)
+
+        wait()
+    end
+    spinPart:Destroy()
+    Camera.CameraSubject = oldCameraSubject
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.KeyCode == _G.Keybind10 and not proc then
+        Spinning = not Spinning
+        if Spinning then
+            spinPlayer()
+        end
+    end
+end)
+
+--------------------------------------------------------------------
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local UIS = game:GetService("UserInputService")
+
+_G.Keybind11 = Enum.UserInputType.MouseButton3
+
+local LP = Players.LocalPlayer
+local ballList = {}
+local BallCamera = nil
+local connection, stepConnection
+
+function updateBalls()
+    local newBallList = {}
+    for _, ball in pairs(Workspace:GetDescendants()) do
+        if ball.Name == "Basketball" and ball:IsA("Part") then
+            newBallList[#newBallList + 1] = ball
+        end
+    end
+    ballList = newBallList
+end
+
+function showBall()
+    stepConnection = RunService.RenderStepped:Connect(function()
+        local closestBall = nil
+        local closestDist = math.huge
+        for _, ball in pairs(ballList) do
+            local dist = (ball.Position - LP.Character.HumanoidRootPart.Position).Magnitude
+            if dist < closestDist then
+                closestDist = dist
+                closestBall = ball
+            end
+        end
+
+        if closestBall and BallCamera ~= closestBall then
+            BallCamera = closestBall
+            Workspace.CurrentCamera.CameraSubject = BallCamera
+        end
+    end)
+    
+    connection = RunService.Heartbeat:Connect(function()
+        updateBalls()
+    end)
+end
+
+function resetCamera()
+    if stepConnection then
+        stepConnection:Disconnect()
+        stepConnection = nil
+    end
+
+    if connection then
+        connection:Disconnect()
+        connection = nil
+    end
+
+    Workspace.CurrentCamera.CameraSubject = LP.Character.Humanoid
+    BallCamera = nil
+end
+
+UIS.InputBegan:Connect(function(input, proc)
+    if input.UserInputType == _G.Keybind11 and not proc then
+        showBall()
+    end
+end)
+
+UIS.InputEnded:Connect(function(input, proc)
+    if input.UserInputType == _G.Keybind11 and not proc then
+        resetCamera()
+    end
+end)
