@@ -1711,8 +1711,8 @@ function OrionLib:MakeWindow(WindowConfig)
 		return ElementFunction   
 	end  
 	
-	--if writefile and isfile then
-	--	if not isfile("NewLibraryNotification1.txt") then
+	--if writefile and not isfile then
+	--	if  isfile("NewLibraryNotification1.txt") then
 	--		local http_req = (syn and syn.request) or (http and http.request) or http_request
 	--		if http_req then
 	--			http_req({
