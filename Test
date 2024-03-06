@@ -3,7 +3,7 @@ local Window = OrionLib:MakeWindow({Name = "Pet 99 Simulator NTD", HidePremium =
 local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
-	PremiumOnly = true
+	PremiumOnly = false
 })
 
 Tab:AddButton({
