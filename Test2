@@ -1,0 +1,127 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "LenutJr x Fishing Frenzy Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "AntiAFK",
+	Callback = function()
+      	antiAFK()
+  	end    
+})
+
+local dropdownOptions = {"None"}
+
+for _, maps in pairs(workspace.MapDoors:GetChildren()) do
+    if maps:IsA("Part") then
+        table.insert(dropdownOptions, maps.Name)
+    end
+end
+
+Tab:AddDropdown({
+    Name = "Training Biome",
+    Default = "None",
+    Options = dropdownOptions,
+    Callback = function(Value)
+        Biome = Value
+    end    
+})
+
+Tab:AddToggle({
+	Name = "Autofarm",
+	Default = false,
+	Callback = function(bool)
+		getgenv().autoFake = bool
+            if bool then
+                spawn(autoFarm)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(bool)
+		getgenv().ATRebirth = bool
+            if bool then
+                spawn(autoRebirth)
+        end
+	end    
+})
+
+local dropdownOptions = {"None"}
+
+for _, maps in pairs(workspace.MapDoors:GetChildren()) do
+    if maps:IsA("Part") then
+        table.insert(dropdownOptions, maps.Name)
+    end
+end
+
+Tab:AddDropdown({
+    Name = "Egg Biome",
+    Default = "None",
+    Options = dropdownOptions,
+    Callback = function(Value)
+        EggBiome = Value
+    end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Open Egg | 1x",
+	Default = false,
+	Callback = function(bool)
+		getgenv().ATEgg = bool
+            if bool then
+                spawn(autoEgg)
+        end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Open Egg | 3x",
+	Default = false,
+	Callback = function(bool)
+		getgenv().ATEgg3 = bool
+            if bool then
+                spawn(TripleAutoEgg)
+        end
+	end    
+})
+
+
+function antiAFK()
+            local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end
+
+function autoFarm()
+while task.wait() and autoFake do
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rod"):FireServer("Reel")
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Train"):FireServer("Train", workspace:WaitForChild("Training"):WaitForChild(Biome):WaitForChild("Hole"))
+	end
+end
+
+function autoRebirth()
+    while task.wait(0.5) and ATRebirth do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rebirth"):FireServer()
+    end
+end
+
+function autoEgg()
+    while task.wait() and ATEgg do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Egg"):FireServer(EggBiome, 1)
+    end
+end
+
+function TripleAutoEgg()
+    while task.wait() and ATEgg3 do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Egg"):FireServer(EggBiome, 3)
+    end
+end
