@@ -35,7 +35,7 @@ local Success, Response = pcall(function()
 end)
 
 if not Success then
-	warn("\nLoading Scrip - Failed to load Feather Icons. Error code: " .. Response .. "\n")
+	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
 end	
 
 local function GetIcon(IconName)
@@ -1670,7 +1670,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		for i, v in next, GetElements(Container) do
 			ElementFunction[i] = v 
 		end
------------------------ Tài khoản premeum------------------------
+
 		if TabConfig.PremiumOnly then
 			for i, v in next, ElementFunction do
 				ElementFunction[i] = function() end
@@ -1767,12 +1767,9 @@ return OrionLib
 
 
 
-
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local Window = OrionLib:MakeWindow({Name = "Pet 99 Simulator NTD", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "NTD97 Pet 99 Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
-	Name = "Mục chính",
+	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
