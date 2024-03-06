@@ -1670,7 +1670,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		for i, v in next, GetElements(Container) do
 			ElementFunction[i] = v 
 		end
-
+----------------------- Tài khoản premeum------------------------
 		if TabConfig.PremiumOnly then
 			for i, v in next, ElementFunction do
 				ElementFunction[i] = function() end
