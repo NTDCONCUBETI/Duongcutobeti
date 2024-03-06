@@ -8,7 +8,17 @@ getgenv().autoDigsiteConfig = {
     CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
     UNBROKEN_BLOCK_THRESHOLD = 100 -- change if taking too long
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 
+function antiAFK()
+            local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end
+task.wait(15)
 
 
 local digsiteReset = false
