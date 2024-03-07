@@ -1,9 +1,9 @@
-local OrionLib = loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/Test2"))()
-local Window = OrionLib:MakeWindow({Name = "NTD97 Pet99 Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "NTDDuong97 Pet Simulator 99", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+	PremiumOnly = true
 })
 
 Tab:AddButton({
