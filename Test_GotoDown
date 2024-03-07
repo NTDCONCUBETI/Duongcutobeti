@@ -7,8 +7,6 @@ getgenv().autoDigsiteConfig = {
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-task.wait(3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 task.wait(15)
 local digsiteReset = false
@@ -212,8 +210,7 @@ end
 
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
-	task.wait(5)
+
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
         pcall(function()
             if v.Name == "Ground" then
