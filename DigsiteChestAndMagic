@@ -6,7 +6,10 @@ getgenv().autoDigsiteConfig = {
     DIG_DEPTH = 120,
     UNBROKEN_BLOCK_THRESHOLD = 100
 }
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+task.wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
+task.wait(15)
 
 local digsiteReset = false
 
