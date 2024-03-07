@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-    
+    BREAK_CHESTS = false, -- Break chests
     LOAD_BLOCK_DELAY = 0,
     DIG_DEPTH = 120, -- How deep to dig in each position
     OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
@@ -39,9 +39,11 @@ local function checkForChests()
 end
 
 local function checkForLake()
+    local foundLake = false
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
         if v:IsA("Part") then
             if v:FindFirstChild("Firefly") then
+                foundLake = true
                 break
             end
         end
