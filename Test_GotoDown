@@ -38,6 +38,36 @@ local function checkForChests()
     end
 end
 
+local function checkForLake()
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+        if v:IsA("Part") then
+            if v:FindFirstChild("Firefly") then
+                break
+            end
+        end
+    end
+
+    if foundLake then
+        print("Found magic lake")
+        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            if v:IsA("Part") then
+                if v:FindFirstChild("Firefly") then
+
+                    -- v is the liquid block
+                    -- teleport to liquid
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
+
+                    -- while the liquid is there, collect it
+                    while v:FindFirstChild("Firefly") do
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
+                        task.wait()
+                    end
+                end
+            end
+        end
+    end
+end
+
 
 
 
