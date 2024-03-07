@@ -1,4 +1,4 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2')))()
 local Window = OrionLib:MakeWindow({Name = "NTDDuong97 Pet Simulator 99", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
 	Name = "Main",
