@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-  
+    BREAK_CHESTS = false, -- Break chests
     LOAD_BLOCK_DELAY = 0,
     DIG_DEPTH = 120, -- How deep to dig in each position
     OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
@@ -7,6 +7,7 @@ getgenv().autoDigsiteConfig = {
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
 }
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 task.wait(15)
 local digsiteReset = false
@@ -36,6 +37,9 @@ local function checkForChests()
         end
     end
 end
+
+
+
 
 
 local function dig()
