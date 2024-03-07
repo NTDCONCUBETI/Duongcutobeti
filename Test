@@ -14,15 +14,6 @@ Tab:AddButton({
 })
 
 
-})
-
-Tab:AddButton({
-	Name = "Treo",
-	Callback = function()
-      	Treo()
-  	end    
-})
-
 local dropdownOptions = {"None"}
 
 for _, maps in pairs(workspace.MapDoors:GetChildren()) do
@@ -106,14 +97,6 @@ function antiAFK()
     end)
 end
 
-function Treo()
-            local vu = game:GetService("VirtualUser")
-        game:GetService("Players").LocalPlayer.Idled:connect(function()
-        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-        wait(1)
-        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-    end)
-end
 
 function autoFarm()
 while task.wait() and autoFake do
