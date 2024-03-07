@@ -40,11 +40,11 @@ local function checkForChests()
 end
 
 local function checkForLake()
-    local foundLake = false
+    local foundLake = true
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
         if v:IsA("Part") then
             if v:FindFirstChild("Firefly") then
-                foundLake = true
+                foundLake = flase
                 break
             end
         end
