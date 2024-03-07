@@ -1,0 +1,284 @@
+getgenv().autoDigsiteConfig = {
+    BREAK_CHESTS = false, -- Break chests
+    LOAD_BLOCK_DELAY = 0,
+    DIG_DEPTH = 120, -- How deep to dig in each position
+    OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
+    DIGSITE_RESET_DELAY = 15, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
+    CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+task.wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
+task.wait(15)
+local digsiteReset = false
+
+local positions = {
+    [1] = Vector3.new(14, 1, 3),
+    [2] = Vector3.new(14, 1, 9),
+    [3] = Vector3.new(14, 1, 14),
+    [4] = Vector3.new(8, 1, 3),
+    [5] = Vector3.new(8, 1, 9),
+    [6] = Vector3.new(8, 1, 14),
+    [7] = Vector3.new(3, 1, 3),
+    [8] = Vector3.new(3, 1, 9),
+    [9] = Vector3.new(3, 1, 14)
+}
+
+local function checkForChests()
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
+        if v:IsA("Model") then
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
+                task.wait(getgenv().autoDigsiteConfig.CHEST_BREAK_DELAY)
+                game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigChest", v:GetAttribute('Coord'))
+                task.wait()
+                v:Destroy()
+            end)
+        end
+    end
+end
+
+local function checkForLake()
+    local foundLake = false
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+        if v:IsA("Part") then
+            if v:FindFirstChild("Firefly") then
+                foundLake = true
+                break
+            end
+        end
+    end
+
+    if foundLake then
+        print("Found magic lake")
+        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            if v:IsA("Part") then
+                if v:FindFirstChild("Firefly") then
+
+                    -- v is the liquid block
+                    -- teleport to liquid
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
+
+                    -- while the liquid is there, collect it
+                    while v:FindFirstChild("Firefly") do
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
+                        task.wait()
+                    end
+                end
+            end
+        end
+    end
+end
+
+
+
+
+
+local function dig()
+    print("Starting digging")
+    -- repeat through all positions
+    for curPos, _ in positions do
+
+        -- GETS TOP-MOST BLOCK FROM POSITION
+        local blockDepth = 0
+        local foundBlock = false
+        -- checking 120 blocks deep below point
+        for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
+            for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                if v:IsA("Part") then
+                    -- if block is at the current position
+                    if (v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, a, 0))) then
+                        blockDepth = a
+                        foundBlock = true
+                        break
+                    end
+                end
+            end
+            if foundBlock then
+                break
+            end
+            -- task.wait()
+        end
+
+        -- If found block in position, begin digging down
+        if foundBlock then
+
+            -- FIND BLOCK TO DIG
+            local currentBlock
+            -- check all blocks in current digsite for block deepest at current position
+            for _, block in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                if block:IsA("Part") then
+                    -- if block is correct block
+                    if (block:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, blockDepth, 0))) then
+                        -- set current block to block
+                        currentBlock = block
+                        break
+                    end
+                end
+            end
+
+            for d = blockDepth, getgenv().autoDigsiteConfig.DIG_DEPTH do
+
+                checkForLake()
+                if getgenv().autoDigsiteConfig.BREAK_CHESTS then
+                    checkForChests()
+                end
+
+
+
+
+                -- check if block is unbreakable
+                if tostring(currentBlock.BrickColor) ~= "Really black" then
+                    -- dig up block
+
+                    -- teleport to block
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
+
+                    -- while the block is there, break it
+                    while currentBlock:FindFirstChild("Texture") do
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", currentBlock:GetAttribute('Coord'))
+                        task.wait()
+                    end
+                end
+
+                -- set current block to new block
+                local foundNewBlock = false
+                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                    if v:IsA("BasePart") then
+                        if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 1, 0)) then
+                            currentBlock = v
+                            foundNewBlock = true
+                            break
+                        end
+                    end
+                end
+
+                -- probably chest
+                if not foundNewBlock then
+                    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
+                        if v:IsA("Model") then
+                            if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 1, 0)) then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
+                                task.wait()
+                                game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigChest", v:GetAttribute('Coord'))
+
+                                -- GET NEXT NEXT Block
+                                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                                    if v:IsA("BasePart") then
+                                        if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 2, 0)) then
+                                            d = d + 1
+                                            currentBlock = v
+                                            break
+                                        end
+                                    end
+                                end
+                                break
+                            end
+                        end
+                    end
+                end
+
+                task.wait()
+            end
+        end
+    end
+
+    print("Finished digging in all positions, digging until site reset")
+
+    -- while digsite is not reset
+    while not digsiteReset do
+        -- get random blocks and break them
+        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            -- double checking within block
+            if not digsiteReset then
+                checkForChests()
+                if v:IsA("Part") and tostring(v.BrickColor) ~= "Really black" then
+                    while v:FindFirstChild("Texture") do
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
+                        task.wait()
+                    end
+                end
+            else
+                break
+            end
+        end
+    end
+
+    print("Stopped because digsite reset")
+end
+
+
+
+if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
+	task.wait(5)
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
+        pcall(function()
+            if v.Name == "Ground" then
+                v.Transparency = 1
+            elseif string.find(v.Name, "rock") or string.find(v.Name, "Sign") then
+                v:Destroy()
+            elseif v.Name == "Important" then
+                v:FindFirstChild("Merchant"):Destroy()
+            elseif v.Name == "Map" then
+                for _, v2 in pairs(v:GetChildren()) do
+                    if v2:IsA("Model") or string.find(v2.Name, "Mesh") or string.find(v2.Name, "G7") then
+                        v2:Destroy()
+                    end
+                end
+            end
+        end)
+    end
+    task.wait(getgenv().autoDigsiteConfig.LOAD_BLOCK_DELAY)
+end
+
+
+
+
+require(game:GetService("ReplicatedStorage").Library.Client.WorldFX).AnimateChest = function(...)
+    return
+end
+
+for _, lootbag in pairs(game:GetService("Workspace").__THINGS:FindFirstChild("Lootbags"):GetChildren()) do
+    if lootbag then
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbags_Claim"):FireServer(unpack( { [1] = { [1] = lootbag.Name, }, } ))
+        lootbag:Destroy()
+        task.wait()
+    end
+end
+
+game:GetService("Workspace").__THINGS:FindFirstChild("Lootbags").ChildAdded:Connect(function(lootbag)
+    task.wait()
+    if lootbag then
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbags_Claim"):FireServer(unpack( { [1] = { [1] = lootbag.Name, }, } ))
+        lootbag:Destroy()
+    end
+end)
+
+game:GetService("Workspace").__THINGS:FindFirstChild("Orbs").ChildAdded:Connect(function(orb)
+    task.wait()
+    if orb then
+        game:GetService("ReplicatedStorage").Network:FindFirstChild("Orbs: Collect"):FireServer(unpack( { [1] = { [1] = tonumber(orb.Name), }, } ))
+        orb:Destroy()
+    end
+end)
+
+
+task.spawn(function()
+    while true do
+        -- CHECK IF DIGSITE RESET
+        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren() ~= 256 do -- MAX WILL BE 336
+            task.wait()
+        end
+
+        print("Digsite reset")
+        digsiteReset = true
+        task.wait(getgenv().autoDigsiteConfig.DIGSITE_RESET_DELAY)
+        digsiteReset = false
+        dig()
+    end
+end)
+
+dig()
