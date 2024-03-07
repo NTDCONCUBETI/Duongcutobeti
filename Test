@@ -23,7 +23,6 @@ end
 
 Tab:AddDropdown({
     Name = "Training Biome",
-    Default = "None",
     Options = dropdownOptions,
     Callback = function(Value)
         Biome = Value
@@ -32,7 +31,7 @@ Tab:AddDropdown({
 
 Tab:AddToggle({
 	Name = "Autofarm",
-	Default = false,
+	Default = true,
 	Callback = function(bool)
 		getgenv().autoFake = bool
             if bool then
@@ -43,7 +42,6 @@ Tab:AddToggle({
 
 Tab:AddToggle({
 	Name = "Auto Rebirth",
-	Default = false,
 	Callback = function(bool)
 		getgenv().ATRebirth = bool
             if bool then
@@ -62,7 +60,6 @@ end
 
 Tab:AddDropdown({
     Name = "Egg Biome",
-    Default = "None",
     Options = dropdownOptions,
     Callback = function(Value)
         EggBiome = Value
@@ -71,7 +68,6 @@ Tab:AddDropdown({
 
 Tab:AddToggle({
 	Name = "Auto Open Egg | 1x",
-	Default = false,
 	Callback = function(bool)
 		getgenv().ATEgg = bool
             if bool then
@@ -82,7 +78,6 @@ Tab:AddToggle({
 
 Tab:AddToggle({
 	Name = "Auto Open Egg | 3x",
-	Default = false,
 	Callback = function(bool)
 		getgenv().ATEgg3 = bool
             if bool then
