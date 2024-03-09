@@ -57,9 +57,8 @@ end)
 
 
 AutoFarm.MouseButton1Click:Connect(function()
-    getgenv().username = "NTD15101997"
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoFarm"))()
 end)
 
 TeleToDig79.MouseButton1Click:Connect(function()
