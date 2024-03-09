@@ -8,7 +8,10 @@ getgenv().autoDigsiteConfig = {
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
 task.wait(15)
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+task.wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
+task.wait(5)
 local digsiteReset = false
 
 local positions = {
