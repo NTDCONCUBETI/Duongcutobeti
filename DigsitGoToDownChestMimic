@@ -1,16 +1,15 @@
 getgenv().autoDigsiteConfig = {
-    BREAK_CHESTS = false, -- Break chests
+    BREAK_CHESTS = true, -- Break chests
     LOAD_BLOCK_DELAY = 0,
     DIG_DEPTH = 120, -- How deep to dig in each position
+    ANTI_AFK = false, -- Anti AFK
     OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
-    DIGSITE_RESET_DELAY = 15, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
-    CHEST_BREAK_DELAY = 2, -- Amount of time in seconds to wait before breaking a chest
+    CHEST_BREAK_DELAY = 1, -- Amount of time in seconds to wait before breaking a chest
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-task.wait(3)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
-task.wait(15)
+
+
 local digsiteReset = false
 
 local positions = {
@@ -26,7 +25,7 @@ local positions = {
 }
 
 local function checkForChests()
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveChests:GetChildren()) do
         if v:IsA("Model") then
             pcall(function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
@@ -39,43 +38,12 @@ local function checkForChests()
     end
 end
 
-local function checkForLake()
-    local foundLake = false
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
-        if v:IsA("Part") then
-            if v:FindFirstChild("Firefly") then
-                foundLake = true
-                break
-            end
-        end
-    end
-
-    if foundLake then
-        print("Found magic lake")
-        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
-            if v:IsA("Part") then
-                if v:FindFirstChild("Firefly") then
-
-                    -- v is the liquid block
-                    -- teleport to liquid
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
-
-                    -- while the liquid is there, collect it
-                    while v:FindFirstChild("Firefly") do
-                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
-                        task.wait()
-                    end
-                end
-            end
-        end
-    end
-end
-
 
 
 
 
 local function dig()
+    digsiteReset = false
     print("Starting digging")
     -- repeat through all positions
     for curPos, _ in positions do
@@ -85,7 +53,7 @@ local function dig()
         local foundBlock = false
         -- checking 120 blocks deep below point
         for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
-            for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                 if v:IsA("Part") then
                     -- if block is at the current position
                     if (v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, a, 0))) then
@@ -107,7 +75,7 @@ local function dig()
             -- FIND BLOCK TO DIG
             local currentBlock
             -- check all blocks in current digsite for block deepest at current position
-            for _, block in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+            for _, block in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                 if block:IsA("Part") then
                     -- if block is correct block
                     if (block:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, blockDepth, 0))) then
@@ -120,7 +88,7 @@ local function dig()
 
             for d = blockDepth, getgenv().autoDigsiteConfig.DIG_DEPTH do
 
-                checkForLake()
+               
                 if getgenv().autoDigsiteConfig.BREAK_CHESTS then
                     checkForChests()
                 end
@@ -144,7 +112,7 @@ local function dig()
 
                 -- set current block to new block
                 local foundNewBlock = false
-                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                     if v:IsA("BasePart") then
                         if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 1, 0)) then
                             currentBlock = v
@@ -156,7 +124,7 @@ local function dig()
 
                 -- probably chest
                 if not foundNewBlock then
-                    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
+                    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveChests:GetChildren()) do
                         if v:IsA("Model") then
                             if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 1, 0)) then
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
@@ -164,7 +132,7 @@ local function dig()
                                 game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigChest", v:GetAttribute('Coord'))
 
                                 -- GET NEXT NEXT Block
-                                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                                for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                                     if v:IsA("BasePart") then
                                         if v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, d + 2, 0)) then
                                             d = d + 1
@@ -189,7 +157,7 @@ local function dig()
     -- while digsite is not reset
     while not digsiteReset do
         -- get random blocks and break them
-        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
             -- double checking within block
             if not digsiteReset then
                 checkForChests()
@@ -201,6 +169,7 @@ local function dig()
                     end
                 end
             else
+                print("Digsite reset, broke out of loop")
                 break
             end
         end
@@ -211,10 +180,31 @@ end
 
 
 
+if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
+
+    local loaded = false
+
+    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
+        if child.Name == "AdvancedDigsite" then
+            loaded = true
+        end
+    end)
+
+    repeat
+        task.wait()
+    until loaded
+    detectLoad:Disconnect()
+
+    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+        task.wait()
+    end
+
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
+end
+
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
-	task.wait(5)
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite"):GetChildren()) do
         pcall(function()
             if v.Name == "Ground" then
                 v.Transparency = 1
@@ -236,6 +226,23 @@ end
 
 
 
+-- ANTI AFK --
+if getgenv().autoDigsiteConfig.ANTI_AFK then
+    game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
+
+    if getconnections then
+        for _, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+            v:Disable()
+        end
+    else
+        game.Players.LocalPlayer.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end
+end
+-- ANTI AFK --
 
 require(game:GetService("ReplicatedStorage").Library.Client.WorldFX).AnimateChest = function(...)
     return
@@ -267,16 +274,16 @@ end)
 
 
 task.spawn(function()
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
     while true do
         -- CHECK IF DIGSITE RESET
-        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren() ~= 256 do -- MAX WILL BE 336
+        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() ~= 256 do -- MAX WILL BE 336
             task.wait()
         end
 
         print("Digsite reset")
         digsiteReset = true
         task.wait(getgenv().autoDigsiteConfig.DIGSITE_RESET_DELAY)
-        digsiteReset = false
         dig()
     end
 end)
