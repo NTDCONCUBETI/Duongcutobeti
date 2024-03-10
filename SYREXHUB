@@ -1,4 +1,5 @@
 getgenv().autoDigsiteConfig = {
+    BREAK_CHESTS = true, -- Break chests
     LOAD_BLOCK_DELAY = 0,
     DIG_DEPTH = 120, -- How deep to dig in each position
     ANTI_AFK = false, -- Anti AFK
