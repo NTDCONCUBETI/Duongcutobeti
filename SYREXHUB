@@ -14,6 +14,7 @@ getgenv().autoDigsiteConfig = {
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chesta
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
 task.wait(3)
 local digsiteReset = false
