@@ -9,7 +9,8 @@ getgenv().autoDigsiteConfig = {
     CHEST_BREAK_DELAY = 1, -- Amount of time in seconds to wait before breaking a chest
 }
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+task.wait(2)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
 task.wait(3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
