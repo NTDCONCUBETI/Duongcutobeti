@@ -1,7 +1,7 @@
 getgenv().autoDigsiteConfig = {
     ACCOUNT_POSITIONS = 99,
     RESET_CHECK_DELAY = 1, -- Amount of time in seconds to wait before breaking chests after a reset
-    DIG_DEPTH = 60, -- How deep to dig in each position
+    DIG_DEPTH = 80, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     BREAK_DELAY = 5, -- Amount of time in seconds to wait before breaking out of the loop
 
@@ -16,6 +16,12 @@ getgenv().autoDigsiteConfig = {
 }
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+local digsiteReset = false
+local positions
+
+
+
+
 local digsiteReset = false
 local positions
 
@@ -314,6 +320,28 @@ end
 
 print("starting Script")
 
+if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
+
+    local loaded = false
+
+    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
+        if child.Name == "AdvancedDigsite" then
+            loaded = true
+        end
+    end)
+
+    repeat
+        task.wait(0.5)
+    until loaded
+    detectLoad:Disconnect()
+
+    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+        task.wait(getgenv().autoDigsiteConfig.RESET_CHECK_DELAY)
+    end
+
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
+end
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
     pcall(function()
