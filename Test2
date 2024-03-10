@@ -15,7 +15,7 @@ getgenv().autoDigsiteConfig = {
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chesta
 }
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 
 
 
