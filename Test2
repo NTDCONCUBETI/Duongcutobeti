@@ -1,5 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
-task.wait(15)
+
 
 
 local digsiteReset = false
@@ -30,6 +29,7 @@ local function checkForChests()
     end
 end
 
+--[[ 
 local function checkForLake()
     local foundLake = false
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
@@ -49,19 +49,25 @@ local function checkForLake()
 
                     -- v is the liquid block
                     -- teleport to liquid
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
+                    -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
 
                     -- while the liquid is there, collect it
-                    while v:FindFirstChild("Firefly") do
-                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
-                        task.wait()
-                    end
-                    break
+                    -- local collectingWater = true
+                    -- while collectingWater do
+                        -- if not v:FindFirstChild("Firefly") then
+                            -- collectingWater = false
+                        -- else
+                            -- game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
+                            -- task.wait()
+                        -- end
+                    -- end
                 end
             end
         end
     end
 end
+--]]
+
 
 
 
