@@ -26,39 +26,6 @@ local function checkForChests()
     end
 end
 
-local function checkForLake()
-    local foundLake = false
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
-        if v:IsA("Part") then
-            if v:FindFirstChild("Firefly") then
-                foundLake = true
-                break
-            end
-        end
-    end
-
-    if foundLake then
-        print("Found magic lake")
-        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
-            if v:IsA("Part") then
-                if v:FindFirstChild("Firefly") then
-
-                    -- v is the liquid block
-                    -- teleport to liquid
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
-
-                    -- while the liquid is there, collect it
-                    while v:FindFirstChild("Firefly") do
-                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
-                        task.wait()
-                    end
-                end
-            end
-        end
-    end
-end
-
-
 
 
 
@@ -70,7 +37,7 @@ local function dig()
 
         -- GETS TOP-MOST BLOCK FROM POSITION
         local blockDepth = 0
-        local foundBlock = false
+        
         -- checking 120 blocks deep below point
         for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
             for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
@@ -78,19 +45,15 @@ local function dig()
                     -- if block is at the current position
                     if (v:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, a, 0))) then
                         blockDepth = a
-                        foundBlock = true
+                        
                         break
                     end
                 end
             end
-            if foundBlock then
-                break
-            end
+
             -- task.wait()
         end
 
-        -- If found block in position, begin digging down
-        if foundBlock then
 
             -- FIND BLOCK TO DIG
             local currentBlock
