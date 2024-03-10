@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-    ACCOUNT_POSITIONS = 50,
+    ACCOUNT_POSITIONS = 99,
     RESET_CHECK_DELAY = 1, -- Amount of time in seconds to wait before breaking chests after a reset
     DIG_DEPTH = 60, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
