@@ -3,7 +3,7 @@ getgenv().autoDigsiteConfig = {
     RESET_CHECK_DELAY = 1, -- Amount of time in seconds to wait before breaking chests after a reset
     DIG_DEPTH = 120, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
-    BREAK_DELAY = 10, -- Amount of time in seconds to wait before breaking out of the loop
+    BREAK_DELAY = 5, -- Amount of time in seconds to wait before breaking out of the loop
 
     COLLECT_MAGIC_LAKES = flase, -- Collect magic lakes
     BREAK_CHESTS = true, -- Break chests
