@@ -35,7 +35,7 @@ local function checkForLake()
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
         if v:IsA("Part") then
             if v:FindFirstChild("Firefly") then
-                foundLake = false
+                foundLake = true
                 break
             end
         end
