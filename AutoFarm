@@ -1,92 +1,28 @@
 getgenv().autoDigsiteConfig = {
-    ACCOUNT_POSITIONS = 99,
-    RESET_CHECK_DELAY = 1, -- Amount of time in seconds to wait before breaking chests after a reset
-    DIG_DEPTH = 60, -- How deep to dig in each position
-    BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
-    BREAK_DELAY = 5, -- Amount of time in seconds to wait before breaking out of the loop
-
-    COLLECT_MAGIC_LAKES = flase, -- Collect magic lakes
     BREAK_CHESTS = true, -- Break chests
-    ANTI_AFK = flase, -- Anti AFK
-    DIGSITE_RESET_DELAY = 5, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    LOAD_BLOCK_DELAY = 0,
+    DIG_DEPTH = 120, -- How deep to dig in each position
+    ANTI_AFK = false, -- Anti AFK
+    OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
+    DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
-    CHEST_BREAK_DELAY = 0.5, -- Amount of time in seconds to wait before breaking a chesta
+    CHEST_BREAK_DELAY = 1, -- Amount of time in seconds to wait before breaking a chest
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+
 
 local digsiteReset = false
-local positions
 
-if getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 1 then
-    positions = {
-        [1] = Vector3.new(14, 1, 3),
-        [2] = Vector3.new(1, 1, 1),
-        [3] = Vector3.new(2, 1, 1),
-        [4] = Vector3.new(3, 1, 1),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 2 then
-    positions = {
-        [1] = Vector3.new(14, 1, 9),
-        [2] = Vector3.new(1, 1, 2),
-        [3] = Vector3.new(2, 1, 2),
-        [4] = Vector3.new(3, 1, 2),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 3 then
-    positions = {
-        [1] = Vector3.new(14, 1, 14),
-        [2] = Vector3.new(1, 1, 3),
-        [3] = Vector3.new(2, 1, 3),
-        [4] = Vector3.new(3, 1, 3),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 4 then
-    positions = {
-        [1] = Vector3.new(8, 1, 3),
-        [2] = Vector3.new(1, 1, 4),
-        [3] = Vector3.new(2, 1, 4),
-        [4] = Vector3.new(3, 1, 4),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 5 then
-    positions = {
-        [1] = Vector3.new(8, 1, 9),
-        [2] = Vector3.new(1, 1, 5),
-        [3] = Vector3.new(2, 1, 5),
-        [4] = Vector3.new(3, 1, 5),
-    }
-
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 6 then
-    positions = {
-        [1] = Vector3.new(8, 1, 14),
-        [2] = Vector3.new(4, 1, 1),
-        [3] = Vector3.new(4, 1, 2),
-        [4] = Vector3.new(4, 1, 3),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 7 then
-    positions = {
-        [1] = Vector3.new(3, 1, 9),
-        [2] = Vector3.new(5, 1, 1),
-        [3] = Vector3.new(5, 1, 2),
-        [4] = Vector3.new(5, 1, 3),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 8 then
-    positions = {
-        [1] = Vector3.new(3, 1, 14),
-        [2] = Vector3.new(4, 1, 5),
-        [3] = Vector3.new(4, 1, 4),
-        [4] = Vector3.new(5, 1, 4),
-    }
-elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 99 then
-    positions = {
-        [1] = Vector3.new(14, 1, 3),
-        [2] = Vector3.new(14, 1, 9),
-        [3] = Vector3.new(14, 1, 14),
-        [4] = Vector3.new(8, 1, 3),
-        [5] = Vector3.new(8, 1, 9),
-        [6] = Vector3.new(8, 1, 14),
-        [7] = Vector3.new(3, 1, 3),
-        [8] = Vector3.new(3, 1, 9),
-        [9] = Vector3.new(3, 1, 14)
-    }
-end
+local positions = {
+    [1] = Vector3.new(14, 1, 3),
+    [2] = Vector3.new(14, 1, 9),
+    [3] = Vector3.new(14, 1, 14),
+    [4] = Vector3.new(8, 1, 3),
+    [5] = Vector3.new(8, 1, 9),
+    [6] = Vector3.new(8, 1, 14),
+    [7] = Vector3.new(3, 1, 3),
+    [8] = Vector3.new(3, 1, 9),
+    [9] = Vector3.new(3, 1, 14)
+}
 
 local function checkForChests()
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveChests:GetChildren()) do
@@ -98,46 +34,6 @@ local function checkForChests()
                 task.wait()
                 v:Destroy()
             end)
-        end
-        if digsiteReset then
-            print("Digsite reset while breaking chests, breaking out of loop")
-            return
-        end
-    end
-end
-
-local function checkForLake()
-    local foundLake = false
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
-        if v:IsA("Part") then
-            if v:FindFirstChild("Firefly") then
-                foundLake = true
-                break
-            end
-        end
-    end
-
-    if foundLake then
-        print("Found magic lake")
-        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
-            if v:IsA("Part") then
-                if v:FindFirstChild("Firefly") then
-
-                    -- v is the liquid block
-                    -- teleport to liquid
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
-
-                    -- while the liquid is there, collect it
-                    while v:FindFirstChild("Firefly") do
-                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
-                        task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY)
-                    end
-                end
-            end
-            if digsiteReset then
-                print("Digsite reset while collecting liquid, breaking out of loop")
-                return
-            end
         end
     end
 end
@@ -170,6 +66,7 @@ local function dig()
             if foundBlock then
                 break
             end
+            -- task.wait()
         end
 
         -- If found block in position, begin digging down
@@ -191,46 +88,26 @@ local function dig()
 
             for d = blockDepth, getgenv().autoDigsiteConfig.DIG_DEPTH do
 
-                if getgenv().autoDigsiteConfig.COLLECT_MAGIC_LAKES then
-                    checkForLake()
-                end
+               
                 if getgenv().autoDigsiteConfig.BREAK_CHESTS then
                     checkForChests()
                 end
 
-                -- check if block is breakable, if not, skip
+
+
+
+                -- check if block is unbreakable
                 if tostring(currentBlock.BrickColor) ~= "Really black" then
-                    -- if block is liquid and we want to collect it, do so
-                    if currentBlock:FindFirstChild("Firefly") and getgenv().autoDigsiteConfig.COLLECT_MAGIC_LAKES then
-                        -- teleport to block
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
+                    -- dig up block
 
-                        -- while the block is there, break it
-                        while currentBlock:FindFirstChild("Texture") do
-                            game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", currentBlock:GetAttribute('Coord'))
-                            task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY)
-                        end
-                    -- Otherwise if not liquid, break it
-                    elseif not currentBlock:FindFirstChild("Firefly") then
-                        print("Found block at position " .. tostring(curPos) .. " at depth " .. tostring(d) .. ", breaking block")
-                        -- teleport to block
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
+                    -- teleport to block
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
 
-                        -- while the block is there, break it
-                        while currentBlock:FindFirstChild("Texture") do
-                            game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", currentBlock:GetAttribute('Coord'))
-                            task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY)
-                        end
+                    -- while the block is there, break it
+                    while currentBlock:FindFirstChild("Texture") do
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", currentBlock:GetAttribute('Coord'))
+                        task.wait()
                     end
-                else
-                    print("Block below was unbrekable")
-                    task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY * 3)
-                end
-
-                if digsiteReset then
-                    print("Digsite reset while digging positions, breaking out of loop")
-                    task.wait(getgenv().autoDigsiteConfig.BREAK_DELAY)
-                    return
                 end
 
                 -- set current block to new block
@@ -278,39 +155,76 @@ local function dig()
     print("Finished digging in all positions, digging until site reset")
 
     -- while digsite is not reset
-    while true do
+    while not digsiteReset do
         -- get random blocks and break them
         for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
             -- double checking within block
             if not digsiteReset then
-                -- if below specified depth
-                if tonumber(v:GetAttribute("Coord").Y) > ((getgenv().autoDigsiteConfig.DIG_DEPTH / 3) * 2) then
-                    if getgenv().autoDigsiteConfig.COLLECT_MAGIC_LAKES then
-                        checkForLake()
-                    end
-                    if getgenv().autoDigsiteConfig.BREAK_CHESTS then
-                        checkForChests()
-                    end
-
-                    if v:IsA("Part") and tostring(v.BrickColor) ~= "Really black" then
+                checkForChests()
+                if v:IsA("Part") and tostring(v.BrickColor) ~= "Really black" then
+                    while v:FindFirstChild("Texture") do
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
+                        game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
                         task.wait()
-                        while v:FindFirstChild("Texture") do
-                            game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", v:GetAttribute('Coord'))
-                            task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY)
-                        end
                     end
                 end
             else
-                print("Digsite reset while digging, breaking out of loop")
-                task.wait(getgenv().autoDigsiteConfig.BREAK_DELAY)
-                return
+                print("Digsite reset, broke out of loop")
+                break
             end
         end
     end
+
+    print("Stopped because digsite reset")
 end
 
-print("starting Script")
+
+
+if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
+
+    local loaded = false
+
+    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
+        if child.Name == "AdvancedDigsite" then
+            loaded = true
+        end
+    end)
+
+    repeat
+        task.wait()
+    until loaded
+    detectLoad:Disconnect()
+
+    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+        task.wait()
+    end
+
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
+end
+
+if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
+    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite"):GetChildren()) do
+        pcall(function()
+            if v.Name == "Ground" then
+                v.Transparency = 1
+            elseif string.find(v.Name, "rock") or string.find(v.Name, "Sign") then
+                v:Destroy()
+            elseif v.Name == "Important" then
+                v:FindFirstChild("Merchant"):Destroy()
+            elseif v.Name == "Map" then
+                for _, v2 in pairs(v:GetChildren()) do
+                    if v2:IsA("Model") or string.find(v2.Name, "Mesh") or string.find(v2.Name, "G7") then
+                        v2:Destroy()
+                    end
+                end
+            end
+        end)
+    end
+    task.wait(getgenv().autoDigsiteConfig.LOAD_BLOCK_DELAY)
+end
+
+
 
 -- ANTI AFK --
 if getgenv().autoDigsiteConfig.ANTI_AFK then
@@ -358,38 +272,20 @@ game:GetService("Workspace").__THINGS:FindFirstChild("Orbs").ChildAdded:Connect(
     end
 end)
 
--- reset service
+
 task.spawn(function()
     task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
-
     while true do
         -- CHECK IF DIGSITE RESET
-        local childRemoved = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks.ChildRemoved:Connect(function()
-            if not digsiteReset and #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 then
-                print("Digsite reset")
-                digsiteReset = true
-            end
-        end)
-
-        while not digsiteReset do
+        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() ~= 256 do -- MAX WILL BE 336
             task.wait()
         end
 
-        childRemoved:Disconnect()
-
+        print("Digsite reset")
+        digsiteReset = true
         task.wait(getgenv().autoDigsiteConfig.DIGSITE_RESET_DELAY)
-        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
-            task.wait(getgenv().autoDigsiteConfig.RESET_CHECK_DELAY)
-        end
-
-        task.spawn(dig)
-
-        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 336 do
-            task.wait(getgenv().autoDigsiteConfig.RESET_CHECK_DELAY)
-        end
-        print("Blocks loaded")
+        dig()
     end
 end)
 
-print("Will dig in position configuration: " .. tostring(getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS))
 dig()
