@@ -220,7 +220,6 @@ local function dig()
                         end
                     -- Otherwise if not liquid, break it
                     elseif not currentBlock:FindFirstChild("Firefly") then
-                        print("Found block at position " .. tostring(curPos) .. " at depth " .. tostring(d) .. ", breaking block")
                         -- teleport to block
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
 
@@ -231,7 +230,6 @@ local function dig()
                         end
                     end
                 else
-                    print("Block below was unbrekable")
                     task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY * 3)
                 end
 
