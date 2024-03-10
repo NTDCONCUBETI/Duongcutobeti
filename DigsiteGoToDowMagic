@@ -1,3 +1,18 @@
+getgenv().autoDigsiteConfig = {
+    BREAK_CHESTS = false, -- Break chests
+    LOAD_BLOCK_DELAY = 0,
+    DIG_DEPTH = 120, -- How deep to dig in each position
+    ANTI_AFK = false, -- Anti AFK
+    OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
+    DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
+    CHEST_BREAK_DELAY = 1, -- Amount of time in seconds to wait before breaking a chest
+}
+
+
+
+
+
 local digsiteReset = false
 
 local positions = {
@@ -199,6 +214,29 @@ local function dig()
 end
 
 
+
+if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
+
+    local loaded = false
+
+    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
+        if child.Name == "AdvancedDigsite" then
+            loaded = true
+        end
+    end)
+
+    repeat
+        task.wait()
+    until loaded
+    detectLoad:Disconnect()
+
+    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+        task.wait()
+    end
+
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
+end
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite"):GetChildren()) do
