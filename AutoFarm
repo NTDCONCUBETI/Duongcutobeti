@@ -314,28 +314,6 @@ end
 
 print("starting Script")
 
-if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
-    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
-
-    local loaded = false
-
-    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
-        if child.Name == "AdvancedDigsite" then
-            loaded = true
-        end
-    end)
-
-    repeat
-        task.wait(0.5)
-    until loaded
-    detectLoad:Disconnect()
-
-    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
-        task.wait(getgenv().autoDigsiteConfig.RESET_CHECK_DELAY)
-    end
-
-    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
-end
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
     pcall(function()
