@@ -1,26 +1,18 @@
 getgenv().autoDigsiteConfig = {
     ACCOUNT_POSITIONS = 99,
     RESET_CHECK_DELAY = 1, -- Amount of time in seconds to wait before breaking chests after a reset
-    DIG_DEPTH = 80, -- How deep to dig in each position
+    DIG_DEPTH = 60, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     BREAK_DELAY = 5, -- Amount of time in seconds to wait before breaking out of the loop
 
     COLLECT_MAGIC_LAKES = flase, -- Collect magic lakes
     BREAK_CHESTS = true, -- Break chests
-    OPTIMIZE_GAME_DELAY = 5, -- Amount of time in seconds to wait after optimizing the game
     ANTI_AFK = flase, -- Anti AFK
-    OPTIMIZE_GAME = flase, -- Optimize the game by removing unnecessary parts
     DIGSITE_RESET_DELAY = 5, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 0.5, -- Amount of time in seconds to wait before breaking a chesta
 }
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-local digsiteReset = false
-local positions
-
-
-
 
 local digsiteReset = false
 local positions
@@ -220,6 +212,7 @@ local function dig()
                         end
                     -- Otherwise if not liquid, break it
                     elseif not currentBlock:FindFirstChild("Firefly") then
+                        print("Found block at position " .. tostring(curPos) .. " at depth " .. tostring(d) .. ", breaking block")
                         -- teleport to block
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
 
@@ -230,6 +223,7 @@ local function dig()
                         end
                     end
                 else
+                    print("Block below was unbrekable")
                     task.wait(getgenv().autoDigsiteConfig.BLOCK_BREAK_DELAY * 3)
                 end
 
@@ -317,97 +311,6 @@ local function dig()
 end
 
 print("starting Script")
-
-if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
-    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
-
-    local loaded = false
-
-    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
-        if child.Name == "AdvancedDigsite" then
-            loaded = true
-        end
-    end)
-
-    repeat
-        task.wait(0.5)
-    until loaded
-    detectLoad:Disconnect()
-
-    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
-        task.wait(getgenv().autoDigsiteConfig.RESET_CHECK_DELAY)
-    end
-
-    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
-end
-
-if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-    pcall(function()
-        for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite"):GetChildren()) do
-            pcall(function()
-                if v.Name == "Ground" then
-                    v.Transparency = 1
-                elseif string.find(v.Name, "rock") or string.find(v.Name, "Sign") then
-                    v:Destroy()
-                elseif v.Name == "Important" then
-                    v:FindFirstChild("Merchant"):Destroy()
-                elseif v.Name == "Map" then
-                    for _, v2 in pairs(v:GetChildren()) do
-                        if v2:IsA("Model") or string.find(v2.Name, "Mesh") or string.find(v2.Name, "G7") then
-                            v2:Destroy()
-                        end
-                    end
-                end
-            end)
-        end
-
-        for _, v in pairs(game.Players:GetChildren()) do
-            for _, v2 in pairs(v.Character:GetDescendants()) do
-                if v2:IsA("BasePart") or v2:IsA("Decal") then
-                    v2.Transparency = 1
-                end
-            end
-        end
-
-        game.Players.PlayerAdded:Connect(function(player)
-            player.CharacterAdded:Connect(function(character)
-                for _, v in pairs(character:GetDescendants()) do
-                    if v:IsA("BasePart") or v:IsA("Decal") then
-                        v.Transparency = 1
-                    end
-                end
-            end)
-        end)
-
-        for _, v in pairs(game:GetDescendants()) do
-            if v:IsA("Part") or v:IsA("BasePart") then
-                v.Transparency = 1
-            end
-        end
-
-        for _,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
-            if v:IsA("ScreenGui") then
-                v.Enabled = false
-            end
-        end
-
-        for _, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-            if v:IsA("ScreenGui") then
-                v.Enabled = false
-            end
-        end
-
-        -- for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-        --     if v:IsA("ScreenGui") then
-        --         v.Enabled = false
-        --     end
-        -- end
-    end)
-
-    task.wait(getgenv().autoDigsiteConfig.OPTIMIZE_GAME_DELAY)
-end
-
-
 
 -- ANTI AFK --
 if getgenv().autoDigsiteConfig.ANTI_AFK then
