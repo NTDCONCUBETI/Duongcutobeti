@@ -3,7 +3,6 @@ getgenv().autoDigsiteConfig = {
     LOAD_BLOCK_DELAY = 0.5,
     DIG_DEPTH = 120, -- How deep to dig in each position
     ANTI_AFK = false, -- Anti AFK
-    OPTIMIZE_GAME = true, -- Optimize the game by removing unnecessary parts
     DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
     CHEST_BREAK_DELAY = 0.5, -- Amount of time in seconds to wait before breaking a chest
@@ -202,28 +201,6 @@ if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFir
 
     task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
 end
-
-if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite"):GetChildren()) do
-        pcall(function()
-            if v.Name == "Ground" then
-                v.Transparency = 1
-            elseif string.find(v.Name, "rock") or string.find(v.Name, "Sign") then
-                v:Destroy()
-            elseif v.Name == "Important" then
-                v:FindFirstChild("Merchant"):Destroy()
-            elseif v.Name == "Map" then
-                for _, v2 in pairs(v:GetChildren()) do
-                    if v2:IsA("Model") or string.find(v2.Name, "Mesh") or string.find(v2.Name, "G7") then
-                        v2:Destroy()
-                    end
-                end
-            end
-        end)
-    end
-    task.wait(getgenv().autoDigsiteConfig.LOAD_BLOCK_DELAY)
-end
-
 
 
 -- ANTI AFK --
