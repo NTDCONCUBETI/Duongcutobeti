@@ -5,7 +5,7 @@ getgenv().autoDigsiteConfig = {
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     BREAK_DELAY = 5, -- Amount of time in seconds to wait before breaking out of the loop
 
-    COLLECT_MAGIC_LAKES = flase, -- Collect magic lakes
+    COLLECT_MAGIC_LAKES = true, -- Collect magic lakes
     BREAK_CHESTS = true, -- Break chests
     OPTIMIZE_GAME_DELAY = 5, -- Amount of time in seconds to wait after optimizing the game
     ANTI_AFK = flase, -- Anti AFK
