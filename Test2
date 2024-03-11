@@ -70,6 +70,638 @@ elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 8 then
         [3] = Vector3.new(4, 1, 4),
         [4] = Vector3.new(5, 1, 4),
     }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 9 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 10 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 11 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 12 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 13 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 14 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 15 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 16 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 17 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 18 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 19 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 20 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 21 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 22 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 23 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 24 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 25 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 26 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 27 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 28 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 29 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 30 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 31 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 32 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 33 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 34 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 35 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 36 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 37 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 38 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 39 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 40 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 41 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 42 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 43 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 44 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 45 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 46 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 47 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 48 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 49 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 50 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 51 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 52 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 53 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 54 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 55 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 56 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 57 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 58 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 59 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 60 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 61 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 62 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 63 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 64 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 65 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 66 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 67 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 68 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 69 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 70 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 71 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 72 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 73 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 74 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 75 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 76 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 77 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 78 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 79 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 80 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 81 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 82 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 83 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 84 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 85 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 86 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 87 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 88 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 89 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 90 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 91 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 92 then
+    positions = {
+        [1] = Vector3.new(14, 1, 9),
+        [2] = Vector3.new(1, 1, 2),
+        [3] = Vector3.new(2, 1, 2),
+        [4] = Vector3.new(3, 1, 2),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 93 then
+    positions = {
+        [1] = Vector3.new(14, 1, 14),
+        [2] = Vector3.new(1, 1, 3),
+        [3] = Vector3.new(2, 1, 3),
+        [4] = Vector3.new(3, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 94 then
+    positions = {
+        [1] = Vector3.new(8, 1, 3),
+        [2] = Vector3.new(1, 1, 4),
+        [3] = Vector3.new(2, 1, 4),
+        [4] = Vector3.new(3, 1, 4),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 95 then
+    positions = {
+        [1] = Vector3.new(8, 1, 9),
+        [2] = Vector3.new(1, 1, 5),
+        [3] = Vector3.new(2, 1, 5),
+        [4] = Vector3.new(3, 1, 5),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 96 then
+    positions = {
+        [1] = Vector3.new(8, 1, 14),
+        [2] = Vector3.new(4, 1, 1),
+        [3] = Vector3.new(4, 1, 2),
+        [4] = Vector3.new(4, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 97 then
+    positions = {
+        [1] = Vector3.new(3, 1, 9),
+        [2] = Vector3.new(5, 1, 1),
+        [3] = Vector3.new(5, 1, 2),
+        [4] = Vector3.new(5, 1, 3),
+    }
+elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 98 then
+    positions = {
+        [1] = Vector3.new(3, 1, 14),
+        [2] = Vector3.new(4, 1, 5),
+        [3] = Vector3.new(4, 1, 4),
+        [4] = Vector3.new(5, 1, 4),
+    }
 elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 99 then
     positions = {
         [1] = Vector3.new(14, 1, 3),
