@@ -1,6 +1,6 @@
 getgenv().autoDigsiteConfig = {
     ACCOUNT_POSITIONS = 99,
-    DIG_DEPTH = 120, -- How deep to dig in each position
+    DIG_DEPTH = 60, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chest
 
@@ -744,7 +744,7 @@ local function dig()
         -- GETS TOP-MOST BLOCK FROM POSITION
         local blockDepth = 0
         local foundBlock = false
-        -- checking 120 blocks deep below point
+        -- checking 60 blocks deep below point
         for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
             for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                 if v:IsA("Part") then
