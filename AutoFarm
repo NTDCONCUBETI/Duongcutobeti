@@ -170,7 +170,7 @@ local function dig()
 
                 if digsiteReset then
                     print("Digsite reset while digging positions, breaking out of loop")
-                    task.wait(10)
+                    task.wait(2)
                     return
                 end
 
@@ -221,7 +221,7 @@ local function dig()
                 end
             else
                 print("Digsite reset while digging, breaking out of loop")
-                task.wait(10)
+                task.wait(2)
                 return
             end
         end
@@ -356,7 +356,7 @@ task.spawn(function()
 
         childRemoved:Disconnect()
 
-        task.wait(5)
+        task.wait(2)
         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
             task.wait(1)
         end
