@@ -1,6 +1,7 @@
 
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
 task.wait(3)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
