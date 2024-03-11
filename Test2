@@ -48,7 +48,6 @@ elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 5 then
         [3] = Vector3.new(2, 1, 5),
         [4] = Vector3.new(3, 1, 5),
     }
-
 elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 6 then
     positions = {
         [1] = Vector3.new(8, 1, 14),
@@ -98,7 +97,6 @@ elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 12 then
         [3] = Vector3.new(2, 1, 5),
         [4] = Vector3.new(3, 1, 5),
     }
-
 elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 13 then
     positions = {
         [1] = Vector3.new(8, 1, 14),
@@ -148,7 +146,6 @@ elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 19 then
         [3] = Vector3.new(2, 1, 5),
         [4] = Vector3.new(3, 1, 5),
     }
-
 elseif getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS == 20 then
     positions = {
         [1] = Vector3.new(8, 1, 14),
