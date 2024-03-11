@@ -773,7 +773,7 @@ local function dig()
                     if (block:GetAttribute("Coord") == (positions[curPos] + Vector3.new(0, blockDepth, 0))) then
                         -- set current block to block
                         currentBlock = block
-                        break
+                        
                     end
                 end
             end
