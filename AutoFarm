@@ -6,7 +6,7 @@ getgenv().autoDigsiteConfig = {
 
     ANTI_AFK = flase,
     OPTIMIZE_GAME = false, -- Optimize the game by removing unnecessary parts
-    DIGSITE_RESET_DELAY = 5, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
+    DIGSITE_RESET_DELAY = 15, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5, -- How long to wait afterr loading in before starting the script
 }
 
