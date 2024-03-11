@@ -129,6 +129,7 @@ local function dig()
                         break
                     end
                 end
+                task.wait()
             end
             if foundBlock then
                 break
@@ -170,7 +171,7 @@ local function dig()
 
                 if digsiteReset then
                     print("Digsite reset while digging positions, breaking out of loop")
-                    task.wait(10)
+                    task.wait(5)
                     return
                 end
 
@@ -225,7 +226,7 @@ local function dig()
                 return
             end
         end
-        task.wait()
+        task.wait(0.5)
     end
 end
 
@@ -249,6 +250,10 @@ if getgenv().autoDigsiteConfig.ANTI_AFK then
 end
 -- ANTI AFK --
 
+
+
+    task.wait(5)
+end
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
     pcall(function()
@@ -336,40 +341,6 @@ game:GetService("Workspace").__THINGS:FindFirstChild("Orbs").ChildAdded:Connect(
     end
 end)
 
--- -- reset service
--- task.spawn(function()
---     task.wait(1)
-
---     while true do
---         -- CHECK IF DIGSITE RESET
---         local childRemoved = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks.ChildRemoved:Connect(function()
---             if not digsiteReset and #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 then
---                 print("Digsite reset")
---                 digsiteReset = true
---             end
---         end)
-
---         while not digsiteReset do
---             task.wait(1)
---         end
-
---         childRemoved:Disconnect()
-
---         task.wait(1)
---         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
---             task.wait(1)
---         end
-
---         task.spawn(dig)
-
---         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 336 do
---             task.wait(1)
---         end
---         print("Blocks loaded")
---     end
--- end)
-
-
 
 task.spawn(function()
     task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
@@ -383,9 +354,10 @@ task.spawn(function()
         digsiteReset = true
         task.wait(getgenv().autoDigsiteConfig.DIGSITE_RESET_DELAY)
         task.spawn(dig)
-        task.wait(5)
+        task.wait(10)
     end
 end)
 
 print("Will dig in position configuration: " .. tostring(getgenv().autoDigsiteConfig.ACCOUNT_POSITIONS))
+dig()
 dig()
