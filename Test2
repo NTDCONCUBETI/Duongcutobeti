@@ -816,7 +816,7 @@ local function dig()
                     d = d + 1
                 end
 
-                task.wait()
+                task.wait(0.2)
             end
         end
     end
