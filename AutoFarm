@@ -118,7 +118,7 @@ local function dig()
         -- GETS TOP-MOST BLOCK FROM POSITION
         local blockDepth = 0
         local foundBlock = false
-        -- checking 60 blocks deep below point
+        -- checking 120 blocks deep below point
         for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
             for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                 if v:IsA("Part") then
@@ -156,7 +156,7 @@ local function dig()
                 checkForChests()
 
                 -- check if block is breakable, if not, skip
-                if tostring(currentBlock.BrickColor) ~= "Really black" then
+                if tostring(currentBlock.BrickColor) ~= "Really black" and not currentBlock:FindFirstChild("Firefly") then
 
                     -- teleport to block
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentBlock.CFrame + Vector3.new(0, 3, 0)
@@ -170,7 +170,7 @@ local function dig()
 
                 if digsiteReset then
                     print("Digsite reset while digging positions, breaking out of loop")
-                    task.wait(2)
+                    task.wait(10)
                     return
                 end
 
@@ -208,7 +208,7 @@ local function dig()
                 if tonumber(v:GetAttribute("Coord").Y) > ((getgenv().autoDigsiteConfig.DIG_DEPTH / 3) * 2) then
                     checkForChests()
 
-                    if v:IsA("Part") and tostring(v.BrickColor) ~= "Really black" then
+                    if v:IsA("Part") and tostring(v.BrickColor) ~= "Really black" and not v:FindFirstChild("Firefly") then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
                         task.wait()
                         while v:FindFirstChild("Texture") do
@@ -221,7 +221,7 @@ local function dig()
                 end
             else
                 print("Digsite reset while digging, breaking out of loop")
-                task.wait(2)
+                task.wait(10)
                 return
             end
         end
@@ -248,7 +248,6 @@ if getgenv().autoDigsiteConfig.ANTI_AFK then
     end
 end
 -- ANTI AFK --
-
 
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
@@ -337,36 +336,54 @@ game:GetService("Workspace").__THINGS:FindFirstChild("Orbs").ChildAdded:Connect(
     end
 end)
 
--- reset service
-task.spawn(function()
-    task.wait(1)
+-- -- reset service
+-- task.spawn(function()
+--     task.wait(1)
 
+--     while true do
+--         -- CHECK IF DIGSITE RESET
+--         local childRemoved = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks.ChildRemoved:Connect(function()
+--             if not digsiteReset and #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 then
+--                 print("Digsite reset")
+--                 digsiteReset = true
+--             end
+--         end)
+
+--         while not digsiteReset do
+--             task.wait(1)
+--         end
+
+--         childRemoved:Disconnect()
+
+--         task.wait(1)
+--         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+--             task.wait(1)
+--         end
+
+--         task.spawn(dig)
+
+--         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 336 do
+--             task.wait(1)
+--         end
+--         print("Blocks loaded")
+--     end
+-- end)
+
+
+
+task.spawn(function()
+    task.wait(getgenv().autoDigsiteConfig.LOAD_DELAY)
     while true do
         -- CHECK IF DIGSITE RESET
-        local childRemoved = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks.ChildRemoved:Connect(function()
-            if not digsiteReset and #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 then
-                print("Digsite reset")
-                digsiteReset = true
-            end
-        end)
-
-        while not digsiteReset do
-            task.wait(1)
+        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() ~= 256 do -- MAX WILL BE 336
+            task.wait()
         end
 
-        childRemoved:Disconnect()
-
-        task.wait(1)
-        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
-            task.wait(1)
-        end
-
+        print("Digsite reset")
+        digsiteReset = true
+        task.wait(getgenv().autoDigsiteConfig.DIGSITE_RESET_DELAY)
         task.spawn(dig)
-
-        while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 336 do
-            task.wait(1)
-        end
-        print("Blocks loaded")
+        task.wait(5)
     end
 end)
 
