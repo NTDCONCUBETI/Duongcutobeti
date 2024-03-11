@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-    ACCOUNT_POSITIONS = 1,
+    ACCOUNT_POSITIONS = 99,
     DIG_DEPTH = 60, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chest
@@ -339,7 +339,7 @@ end)
 
 -- reset service
 task.spawn(function()
-    task.wait(5)
+    task.wait(1)
 
     while true do
         -- CHECK IF DIGSITE RESET
@@ -356,7 +356,7 @@ task.spawn(function()
 
         childRemoved:Disconnect()
 
-        task.wait(2)
+        task.wait(1)
         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
             task.wait(1)
         end
