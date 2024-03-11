@@ -118,7 +118,7 @@ local function dig()
         -- GETS TOP-MOST BLOCK FROM POSITION
         local blockDepth = 0
         local foundBlock = false
-        -- checking 120 blocks deep below point
+        -- checking 60 blocks deep below point
         for a = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
             for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren()) do
                 if v:IsA("Part") then
