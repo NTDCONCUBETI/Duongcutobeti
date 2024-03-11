@@ -339,7 +339,7 @@ end)
 
 -- reset service
 task.spawn(function()
-    task.wait(5)
+    task.wait(1)
 
     while true do
         -- CHECK IF DIGSITE RESET
@@ -356,7 +356,7 @@ task.spawn(function()
 
         childRemoved:Disconnect()
 
-        task.wait(2)
+        task.wait(1)
         while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
             task.wait(1)
         end
