@@ -126,7 +126,7 @@ local function dig()
                         break
                     end
                 end
-                task.wait(0.1)
+                task.wait(0.5)
             end
             if foundBlock then
                 break
