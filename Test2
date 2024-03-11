@@ -796,7 +796,7 @@ local function dig()
 
                 if digsiteReset then
                     print("Digsite reset while digging positions, breaking out of loop")
-                    task.wait(10)
+                    task.wait(5)
                     return
                 end
 
