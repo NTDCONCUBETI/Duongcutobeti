@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-    ACCOUNT_POSITIONS = 1,
+    ACCOUNT_POSITIONS = 99,
     DIG_DEPTH = 120, -- How deep to dig in each position
     BLOCK_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a block
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chest
