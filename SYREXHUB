@@ -1,5 +1,5 @@
+loadstring(game:HttpGet('https://syrexhub.netlify.app/raw/petsimulator99/syrexhub'))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 task.wait(2)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
 task.wait(3)
-loadstring(game:HttpGet('https://syrexhub.netlify.app/raw/petsimulator99/syrexhub'))()
