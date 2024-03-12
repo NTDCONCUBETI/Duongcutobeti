@@ -191,28 +191,7 @@ if getgenv().autoDigsiteConfig.ANTI_AFK then
 end
 -- ANTI AFK --
 
-if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
-	game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
 
-	local loaded = false
-
-	local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
-		if child.Name == "AdvancedDigsite" then
-			loaded = true
-		end
-	end)
-
-	repeat
-		task.wait(0.5)
-	until loaded
-	detectLoad:Disconnect()
-
-	while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
-		task.wait(1)
-	end
-
-	task.wait(5)
-end
 
 if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
 	pcall(function()
