@@ -1,4 +1,8 @@
+local digsiteReset = false
 
+local positions = {
+[1] = Vector3.new(10, 1, 10),
+}
 
 local function checkForChests()
     for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
