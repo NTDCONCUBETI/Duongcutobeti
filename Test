@@ -8,11 +8,6 @@ getgenv().autoDigsiteConfig = {
 }
 
 
-local digsiteReset = false
-
-local positions = {
-[1] = Vector3.new(10, 1, 10),
-}
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
 
