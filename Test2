@@ -1,5 +1,5 @@
 getgenv().autoDigsiteConfig = {
-    OPTIMIZE_GAME = flase, -- Set to true to optimize the game by removing unnecessary parts
+
     DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5,
     CHEST_BREAK_DELAY = 0.5, -- Amount of time in seconds to wait before breaking a chest
@@ -178,30 +178,6 @@ local function beginCycle()
     end
     digsiteReset = false
 end
-
-
-if getgenv().autoDigsiteConfig.OPTIMIZE_GAME then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/cpuReducer.lua"))()
-    task.wait(10)
-    for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren()) do
-        pcall(function()
-            if v.Name == "Ground" then
-                v.Transparency = 1
-            elseif string.find(v.Name, "rock") or string.find(v.Name, "Sign") then
-                v:Destroy()
-            elseif v.Name == "Important" then
-                v:FindFirstChild("Merchant"):Destroy()
-            elseif v.Name == "Map" then
-                for _, v2 in pairs(v:GetChildren()) do
-                    if v2:IsA("Model") or string.find(v2.Name, "Mesh") or string.find(v2.Name, "G7") then
-                        v2:Destroy()
-                    end
-                end
-            end
-        end)
-    end
-end
-
 
 
 task.spawn(function()
