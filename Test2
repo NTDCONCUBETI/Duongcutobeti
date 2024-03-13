@@ -65,8 +65,8 @@ local function beginCycle()
 
 
                     for i = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
-                        checkForChests(i)
-                        
+                        checkForChests()
+                        digBlock(i)
                         task.wait()
                     end
                 end
@@ -99,7 +99,7 @@ local function beginCycle()
                             game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", block:GetAttribute('Coord'))
                             task.wait()
                             counter = counter + 1
-                            checkForChests()
+                            digBlock()
                         end
 
                     else
@@ -108,7 +108,7 @@ local function beginCycle()
                 end
 
                 checkForChests()
-                
+                digBlock()
                 task.wait()
             end
         end
