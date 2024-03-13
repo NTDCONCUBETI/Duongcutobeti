@@ -56,6 +56,7 @@ local function beginCycle()
                                 task.wait()
                                 counter = counter + 1
                                 digBlock(depth)
+                                checkForChests()
                             end
 
                         else
@@ -100,6 +101,7 @@ local function beginCycle()
                             task.wait()
                             counter = counter + 1
                             digBlock()
+                            checkForChests()
                         end
 
                     else
