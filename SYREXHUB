@@ -1,8 +1,5 @@
-loadstring(game:HttpGet('https://syrexhub.netlify.app/raw/petsimulator99/syrexhub'))()
-task.wait(15)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
-task.wait(2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-task.wait(2)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/FPSBOOTER"))()
-
+task.wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/SCRbaymap79"))()
+task.wait(60)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test"))()
