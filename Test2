@@ -1,15 +1,16 @@
+
 getgenv().autoDigsiteConfig = {
     DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
     LOAD_DELAY = 5,
     CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chest
-    DIG_DEPTH = 120,
+    DIG_DEPTH = 1,
     UNBROKEN_BLOCK_THRESHOLD = 100
 }
 
 local digsiteReset = false
 
 local positions = {
-    [1] = Vector3.new(9, 1, 13),
+    [1] = Vector3.new(10, 1, 10),
 
 }
 
@@ -117,7 +118,28 @@ local function beginCycle()
     end
     digsiteReset = false
 end
+if not game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite") then
+    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace").__THINGS.Instances:FindFirstChild("AdvancedDigsite").Teleports.Enter.CFrame
 
+    local loaded = false
+
+    local detectLoad = game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(child)
+        if child.Name == "AdvancedDigsite" then
+            loaded = true
+        end
+    end)
+
+    repeat
+        task.wait()
+    until loaded
+    detectLoad:Disconnect()
+
+    while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild("AdvancedDigsite").Important.ActiveBlocks:GetChildren() < 256 do
+        task.wait()
+    end
+
+    task.wait(30)
+end
 
 
 task.spawn(function()
