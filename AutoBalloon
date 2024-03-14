@@ -1,3 +1,4 @@
+
 getgenv().autoBalloon = true
 
 getgenv().autoBalloonConfig = {
@@ -8,7 +9,6 @@ getgenv().autoBalloonConfig = {
     BALLOON_DELAY = 0.5, -- delay before popping next balloon (if there are multiple balloons in the server)
     GET_BALLOON_DELAY = 1, -- delay before getting balloons again if none are detected
 }
-
 
 
 
