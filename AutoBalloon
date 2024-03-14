@@ -124,15 +124,23 @@ while getgenv().autoBalloon do
             LocalPlayer.Character.HumanoidRootPart.Anchored = false
 
             local counter = 0
+
+            local exiting = false
             while not foundBreaks do
                 counter = counter + 1
                 task.wait(1)
                 if counter > 5 then
                     print("Balloon drop not found, continuing")
                     counter = 0
-                    continue
+                    exiting = true
+                    break
                 end
             end
+
+            if exiting then
+                continue
+            end
+
             loadBreaks:Disconnect()
             task.wait(0.1)
 
