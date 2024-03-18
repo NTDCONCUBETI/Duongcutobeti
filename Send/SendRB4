@@ -52,7 +52,7 @@ for i, v in pairs(enchants) do
                 "Tap Power Enchant",
                 "Enchant",
                 i,
-                1
+                2
             }
             game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
 	task.wait(2)
