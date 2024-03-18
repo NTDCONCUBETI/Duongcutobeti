@@ -44,7 +44,7 @@ end
 
 local enchants = result.Inventory.Enchant
 for i, v in pairs(enchants) do
-    if v.id == "Tap Powers" then
+    if v.id == "Tap Power" then
         if v.tn == 5 then
 	for j, username in ipairs(names)do
             local args = {
