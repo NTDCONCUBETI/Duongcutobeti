@@ -42,6 +42,25 @@ for i, v in pairs(enchants) do
     end
 end
 
+local enchants = result.Inventory.Enchant
+for i, v in pairs(enchants) do
+    if v.id == "Tap Powers" then
+        if v.tn == 5 then
+	for j, username in ipairs(names)do
+            local args = {
+                username,
+                "Tap Power Enchant",
+                "Enchant",
+                i,
+                1
+            }
+            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+	task.wait(2)
+	end
+        end
+    end
+end
+
 task.wait(2)
 
 
