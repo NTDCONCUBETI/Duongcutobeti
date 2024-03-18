@@ -4,22 +4,18 @@ getgenv().autoBalloonConfig = {
     START_DELAY = 1, -- delay before starting
     BREAK_GIFT_BOXES = true, -- break gift boxes that drop from the balloons
     SERVER_HOP = true, -- server hop after popping balloons
-    SERVER_HOP_DELAY = 0, -- delay before server hopping
+    SERVER_HOP_AFTER_NOT_FIND = true, -- if the balloon isn't found, instead of checking through the rest of the balloons, it will just server hop
+    SERVER_HOP_DELAY = 1, -- delay before server hopping
     BALLOON_DELAY = 0.5, -- delay before popping next balloon (if there are multiple balloons in the server)
     GET_BALLOON_DELAY = 1, -- delay before getting balloons again if none are detected
+    GIFT_BOX_BREAK_FAILSAFE = 5, -- seconds to wait before skipping gift boxes if they don't function properly
 }
 
 
+print("Made By firedevil (Nguyễn Tuyên Dương | 1092411720045166643 | https://discord.com/channels/1219258477990383658/1219258477990383661)")
 
-
-
-
-
-
-print("Made By firedevil (Ryan | 404678244215029762 | https://discord.gg/ettP4TjbAb)")
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/antiStaff.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/WaiForGameLoad.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AntiStaff.lua"))()
 
 task.wait(getgenv().autoBalloonConfig.START_DELAY)
 
@@ -92,7 +88,7 @@ while getgenv().autoBalloon do
     if allPopped then
         print("No balloons detected, waiting " .. getgenv().autoBalloonConfig.GET_BALLOON_DELAY .. " seconds")
         if getgenv().autoBalloonConfig.SERVER_HOP then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/serverhop.lua"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/severhop.lua"))()
         end
         task.wait(getgenv().autoBalloonConfig.GET_BALLOON_DELAY)
         continue
@@ -147,6 +143,7 @@ while getgenv().autoBalloon do
             task.wait()
             LocalPlayer.Character.HumanoidRootPart.Anchored = false
 
+            print("Waiting for balloon drop")
             local counter = 0
 
             local exiting = false
@@ -154,12 +151,16 @@ while getgenv().autoBalloon do
                 counter = counter + 1
                 task.wait(1)
                 if counter > 5 then
-                    print("Balloon drop not found, continuing")
+                    print("Balloon drop not found")
                     counter = 0
                     exiting = true
+                    if getgenv().autoBalloonConfig.SERVER_HOP_AFTER_NOT_FIND then
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/severhop.lua"))()
+                    end
                     break
                 end
             end
+            print("Done Waiting")
 
             if exiting then
                 continue
@@ -169,9 +170,20 @@ while getgenv().autoBalloon do
             task.wait(0.1)
 
             for _, v in balloonGifts do
-                while breakables:FindFirstChild(v.Name) do
-                    task.wait()
+
+                task.spawn(function()
+                    while breakables:FindFirstChild(v.Name) do
+                        game:GetService("ReplicatedStorage").Network.Breakables_PlayerDealDamage:FireServer(v.Name)
+                        task.wait()
+                    end
+                end)
+
+                local counter = 0
+                while counter < getgenv().autoBalloonConfig.GIFT_BOX_BREAK_FAILSAFE do
+                    counter = counter + 1
+                    task.wait(1)
                 end
+
                 print("Broke balloon box")
             end
             LocalPlayer.Character.HumanoidRootPart.Anchored = true
@@ -182,7 +194,7 @@ while getgenv().autoBalloon do
     end
 
     if getgenv().autoBalloonConfig.SERVER_HOP then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/serverhop.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/severhop.lua"))()
     end
 
     LocalPlayer.Character.HumanoidRootPart.Anchored = false
