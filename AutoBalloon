@@ -10,7 +10,7 @@ getgenv().MoneyPrinter = {
     sendWeb = true,
     webURL = "",
 
-    maybeCPUReducer = flase,
+    maybeCPUReducer = true,
 }
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoBaloonKitTy"))()
