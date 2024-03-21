@@ -1,0 +1,3 @@
+local RepStor = game.ReplicatedStorage
+	local Library = require(RepStor.Library)
+Library.Network.Invoke("Mailbox: Claim All")
