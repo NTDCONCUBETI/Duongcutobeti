@@ -5,7 +5,7 @@ getgenv().MoneyPrinter = {
 
     serverHopper = true,
     avoidCooldown = true,
-    minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
+    minServerTime = 0, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
 
     sendWeb = true,
     webURL = "",
