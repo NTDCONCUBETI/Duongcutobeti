@@ -3,9 +3,9 @@ getgenv().MoneyPrinter = {
     autoBalloons = true,
     autoPresents = true,
 
-    serverHopper = true,
+    serverHopper = flase,
     avoidCooldown = true,
-    minServerTime = 10, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
+    minServerTime = 0, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
 
     sendWeb = true,
     webURL = "",
