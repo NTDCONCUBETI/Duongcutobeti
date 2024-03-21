@@ -1,0 +1,15 @@
+_G.autoOpen = true
+_G.openDelay = 1
+
+local Network = game.ReplicatedStorage.Network
+local Items = {"Gift Bag", "Large Gift Bag", "Charm Stone"}
+
+function autoOpen(name)
+    Network.GiftBag_Open:InvokeServer(name)
+end
+
+while _G.autoOpen do task.wait(_G.openDelay)
+    for i,v in pairs(Items) do
+        autoOpen(v)
+    end
+end
