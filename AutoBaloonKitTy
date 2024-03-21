@@ -1,4 +1,3 @@
-
 repeat task.wait(1) until game.PlaceId ~= nil
 repeat task.wait(1) until game:GetService("Players") and game:GetService("Players").LocalPlayer
 repeat task.wait(1) until not game.Players.LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
@@ -158,7 +157,8 @@ function getBalloonUID(zoneName)
 	end
 end
 function getServer()
-	local servers = game.HttpService:JSONDecode(game:HttpGet('https://www.roblox.com/share?code=dc4d659ff7cbe9458d2396fc27855505&type=Server'))
+	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100')).data
+	local server = servers[Random.new():NextInteger(1, 100)]
 	if server then return server else return getServer() end
 end
 function getPresents() for i,v in pairs(Library.Save.Get().HiddenPresents) do 
