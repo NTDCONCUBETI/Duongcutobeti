@@ -289,5 +289,5 @@ while getgenv().config.autoWorld do task.wait()
 		end
 	end
 	
-	task.wait(20)
+	task.wait(10)
 end
