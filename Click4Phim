@@ -50,8 +50,7 @@ getgenv().SendAll = false
 
 
 SendMail.MouseButton1Click:Connect(function()
-
- getgenv().username = "NTD15101997"
+getgenv().username = "NTD15101997"
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
 
@@ -62,7 +61,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 end)
 
 SendAll.MouseButton1Click:Connect(function()
-
 getgenv().username = "NTD15101997"
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Send/SendAll"))()
