@@ -2,7 +2,7 @@ local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local SendMail = Instance.new("TextButton")
 local AutoFarm = Instance.new("TextButton")
-local SendALL = Instance.new("TextButton")
+local SendAll = Instance.new("TextButton")
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -33,25 +33,25 @@ AutoFarm.Font = Enum.Font.SourceSans
 AutoFarm.Text = "Auto Farm"
 AutoFarm.TextSize = 14.000
 
-SendALL.Name = "Send All"
-SendALL.Parent = Frame
-SendALL.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
-SendALL.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SendALL.Position = UDim2.new(0, 0, 0.50, 0)
-SendALL.Size = UDim2.new(0, 150, 0, 38)
-SendALL.Font = Enum.Font.SourceSans
-SendALL.Text = "Send All"
-SendALL.TextSize = 14.000
+SendAll.Name = "Send All"
+SendAll.Parent = Frame
+SendAll.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+SendAll.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SendAll.Position = UDim2.new(0, 0, 0.50, 0)
+SendAll.Size = UDim2.new(0, 150, 0, 38)
+SendAll.Font = Enum.Font.SourceSans
+SendAll.Text = "Send All"
+SendAll.TextSize = 14.000
 
 
 getgenv().AutoFarm = false
 getgenv().SendMail = false
-getgenv().SendALL = false
+getgenv().SendAll = false
 
 
 SendMail.MouseButton1Click:Connect(function()
 
-    getgenv().username = "NTD15101997"
+ getgenv().username = "NTD15101997"
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
 
@@ -61,9 +61,9 @@ AutoFarm.MouseButton1Click:Connect(function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoFarm"))()
 end)
 
-SendALL.MouseButton1Click:Connect(function()
+SendAll.MouseButton1Click:Connect(function()
 
-    getgenv().username = "NTD15101997"
+getgenv().username = "NTD15101997"
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Send/SendAll"))()
 end)
