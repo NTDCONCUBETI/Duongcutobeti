@@ -65,6 +65,25 @@ for i, v in pairs(potions) do
         end
     end
 end
+task.wait(2)
+local potions = result.Inventory.Potion
+for i, v in pairs(potions) do
+    if v.id == "Damage" then
+        if v.tn == 6 then
+	for j, username in ipairs(names)do
+            local args = {
+                username,
+                "Damage Potion",
+                "Potion",
+                i,
+                5
+            }
+            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+	task.wait(2)
+	end
+        end
+    end
+end
 
 task.wait(2)
 
