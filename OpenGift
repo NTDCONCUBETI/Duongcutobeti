@@ -1,5 +1,5 @@
 _G.autoOpen = true
-_G.openDelay = 0.5
+_G.openDelay = 0.1
 
 local Network = game.ReplicatedStorage.Network
 local Items = {"Gift Bag", "Large Gift Bag", "Charm Stone"}
