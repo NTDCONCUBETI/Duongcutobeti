@@ -7,9 +7,9 @@ getgenv().MoneyPrinter = {
     avoidCooldown = true,
     minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
 
-    sendWeb = flase,
+    sendWeb = false,
     webURL = "",
 
-    maybeCPUReducer = flase,
+    maybeCPUReducer = false,
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoBaloonKitTy"))()
