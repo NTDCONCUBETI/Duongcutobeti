@@ -57,7 +57,20 @@ end)
 
 AutoFarm.MouseButton1Click:Connect(function()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoFarm"))()
+getgenv().MoneyPrinter = {
+    toolName = "Slingshot",
+    autoBalloons = false,
+    autoPresents = false,
+
+    serverHopper = false,
+    avoidCooldown = true,
+    minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
+
+    sendWeb = flase,
+    webURL = "",
+
+    maybeCPUReducer = flase,
+}
 end)
 
 SendAll.MouseButton1Click:Connect(function()
