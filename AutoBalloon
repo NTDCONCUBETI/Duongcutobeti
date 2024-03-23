@@ -12,4 +12,4 @@ getgenv().MoneyPrinter = {
 
     maybeCPUReducer = true,
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xnazov/KITTYWARE_PS99/main/auto%20balloons"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AutoBaloonKitTy"))()
