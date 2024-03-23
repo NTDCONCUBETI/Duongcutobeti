@@ -1,6 +1,3 @@
-loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/Click4Phim"))()
-task.wait(1)
-
 getgenv().MoneyPrinter = {
     toolName = "Slingshot",
     autoBalloons = true,
