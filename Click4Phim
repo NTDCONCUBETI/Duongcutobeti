@@ -79,6 +79,7 @@ getgenv().username = "NTD15101997"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Send/SendAll"))()
 end)
 
+-- Tắt người chơi và khung chát
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
 		if v:IsA("ScreenGui") then
 			v.Enabled = false
