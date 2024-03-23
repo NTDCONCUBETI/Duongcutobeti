@@ -25,10 +25,7 @@ if game:IsLoaded() and getgenv().MoneyPrinter.maybeCPUReducer then
 
 		game:GetService("Workspace"):WaitForChild("ALWAYS_RENDERING"):Destroy()
 	end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
-task.wait(2)
+
 	local Workspace = game:GetService("Workspace")
 	local Terrain = Workspace:WaitForChild("Terrain")
 	Terrain.WaterReflectance = 0
@@ -254,3 +251,9 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 		end
 	end
 end
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+task.wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
+task.wait(2)
