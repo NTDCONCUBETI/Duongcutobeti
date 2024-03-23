@@ -10,6 +10,10 @@ getgenv().MoneyPrinter = {
     sendWeb = false,
     webURL = "",
 
-    maybeCPUReducer = true,
+    maybeCPUReducer = flase,
 }
+loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/Click4Phim"))()
+task.wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xnazov/KITTYWARE_PS99/main/auto%20balloons"))()
