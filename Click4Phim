@@ -2,7 +2,7 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local SendMail = Instance.new("TextButton")
-local AutoFarm = Instance.new("TextButton")
+local StopFarm = Instance.new("TextButton")
 local SendAll = Instance.new("TextButton")
 
 ScreenGui.Parent = game.CoreGui
@@ -24,15 +24,15 @@ SendMail.Font = Enum.Font.SourceSans
 SendMail.Text = "Send Mail"
 SendMail.TextSize = 14.000
 
-AutoFarm.Name = "Auto Farm"
-AutoFarm.Parent = Frame
-AutoFarm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AutoFarm.BorderColor3 = Color3.fromRGB(0, 0, 0)
-AutoFarm.Position = UDim2.new(0, 0, 0.25, 0)
-AutoFarm.Size = UDim2.new(0, 150, 0, 38)
-AutoFarm.Font = Enum.Font.SourceSans
-AutoFarm.Text = "Auto Farm"
-AutoFarm.TextSize = 14.000
+StopFarm.Name = "Stop Farm"
+StopFarm.Parent = Frame
+StopFarm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StopFarm.BorderColor3 = Color3.fromRGB(0, 0, 0)
+StopFarm.Position = UDim2.new(0, 0, 0.25, 0)
+StopFarm.Size = UDim2.new(0, 150, 0, 38)
+StopFarm.Font = Enum.Font.SourceSans
+StopFarm.Text = "Stop Farm"
+StopFarm.TextSize = 14.000
 
 SendAll.Name = "Send All"
 SendAll.Parent = Frame
@@ -45,7 +45,7 @@ SendAll.Text = "Send All"
 SendAll.TextSize = 14.000
 
 
-getgenv().AutoFarm = false
+getgenv().StopFarm = false
 getgenv().SendMail = false
 getgenv().SendAll = false
 
@@ -56,7 +56,7 @@ getgenv().username = "NTD15101997"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
 end)
 
-AutoFarm.MouseButton1Click:Connect(function()
+StopFarm.MouseButton1Click:Connect(function()
 
 getgenv().MoneyPrinter = {
     toolName = "Slingshot",
