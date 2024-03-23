@@ -57,7 +57,7 @@ for i, v in pairs(potions) do
                 "Coins Potion",
                 "Potion",
                 i,
-                5
+                10
             }
             game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
 	task.wait(2)
@@ -76,7 +76,7 @@ for i, v in pairs(potions) do
                 "Damage Potion",
                 "Potion",
                 i,
-                5
+                10
             }
             game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
 	task.wait(2)
