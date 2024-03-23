@@ -1,3 +1,6 @@
+loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/Click4Phim"))()
+task.wait(1)
+
 getgenv().MoneyPrinter = {
     toolName = "Slingshot",
     autoBalloons = true,
@@ -7,13 +10,9 @@ getgenv().MoneyPrinter = {
     avoidCooldown = true,
     minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
 
-    sendWeb = false,
+    sendWeb = flase,
     webURL = "",
 
-    maybeCPUReducer = flase,
+    maybeCPUReducer = true,
 }
-loadstring(game:HttpGet("https://github.com/NTDCONCUBETI/Duongcutobeti/blob/main/Click4Phim"))()
-task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xnazov/KITTYWARE_PS99/main/auto%20balloons"))()
