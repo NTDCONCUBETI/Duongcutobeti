@@ -60,9 +60,9 @@ end)
 StopFarm.MouseButton1Click:Connect(function()
 
 getgenv().config = {
-    autoWorld = fase,
+    autoWorld = false,
     
-    autoRebirth = fase,
+    autoRebirth = false,
     stopAtRebirth = true,
     stopAtRebirthNum = 1,
     
@@ -70,13 +70,13 @@ getgenv().config = {
     stopAtRank = true,
     stopAtRankNum = 1,
     
-    autoPetSlots = fase,
-    autoClaimMail = fase,
+    autoPetSlots = false,
+    autoClaimMail = false,
     
     desiredPetName = "Frostbyte Husky",
-    needPetNotifs = fase,
-    rebirthNotifs = fase,
-    progressNotifs = fase,
+    needPetNotifs = false,
+    rebirthNotifs = false,
+    progressNotifs = false,
     webURL = "",
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
