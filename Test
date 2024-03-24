@@ -1,15 +1,21 @@
-getgenv().MoneyPrinter = {
-    toolName = "Slingshot",
-    autoBalloons = true,
-    autoPresents = true,
-
-    serverHopper = true,
-    avoidCooldown = true,
-    minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
-
-    sendWeb = flase,
+getgenv().config = {
+    autoWorld = true,
+    
+    autoRebirth = true,
+    stopAtRebirth = true,
+    stopAtRebirthNum = 5,
+    
+    autoRanks = true, -- only egg and obby quest cuz im lazy lel
+    stopAtRank = true,
+    stopAtRankNum = 4,
+    
+    autoPetSlots = true,
+    autoClaimMail = true,
+    
+    desiredPetName = "Frostbyte Husky",
+    needPetNotifs = true,
+    rebirthNotifs = true,
+    progressNotifs = true,
     webURL = "",
-
-    maybeCPUReducer = flase,
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
