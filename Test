@@ -10,7 +10,7 @@ getgenv().config = {
     stopAtRankNum = 4,
     
     autoPetSlots = true,
-    autoClaimMail = true,
+    autoClaimMail = false,
     
     desiredPetName = "Frostbyte Husky",
     needPetNotifs = true,
