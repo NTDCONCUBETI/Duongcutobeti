@@ -59,20 +59,29 @@ end)
 
 StopFarm.MouseButton1Click:Connect(function()
 
-getgenv().MoneyPrinter = {
-    toolName = "Slingshot",
-    autoBalloons = false,
-    autoPresents = false,
-
-    serverHopper = false,
-    avoidCooldown = false,
-    minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
-
-    sendWeb = flase,
+getgenv().config = {
+    autoWorld = fase,
+    
+    autoRebirth = fase,
+    stopAtRebirth = true,
+    stopAtRebirthNum = 1,
+    
+    autoRanks = false, -- only egg and obby quest cuz im lazy lel
+    stopAtRank = true,
+    stopAtRankNum = 1,
+    
+    autoPetSlots = fase,
+    autoClaimMail = fase,
+    
+    desiredPetName = "Frostbyte Husky",
+    needPetNotifs = fase,
+    rebirthNotifs = fase,
+    progressNotifs = fase,
     webURL = "",
-
-    maybeCPUReducer = flase,
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+task.wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/AutoNextMap"))()
 end)
 
 SendAll.MouseButton1Click:Connect(function()
