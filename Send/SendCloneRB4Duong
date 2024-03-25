@@ -1,135 +1,149 @@
-
-
 local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 local result = saveModule.Get()
 
 
 
-local enchants = result.Inventory.Enchant
-for i, v in pairs(enchants) do
-    if v.id == "Coins" then
-        if v.tn == 7 then
-	for j, username in ipairs(names)do
-            local args = {
-                username,
-                "Coins Enchant",
-                "Enchant",
-                i,
-                3
-            }
-            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-	task.wait(2)
+-------Sách
+if sentEnchant and #listEnchant > 0 then
+	for _, enchant in pairs(listEnchant) do
+		local enchants = result.Inventory.Enchant
+		for i, v in pairs(enchants) do
+			if v.id == enchant.name and v.tn == enchant.level then
+				for j, username in ipairs(names)do
+					local args = {
+						username,
+						enchant.name,
+						"Enchant",
+						i,
+						enchant.so_luong
+					}
+					game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+					task.wait(2)
+				end
+				break
+			end
+		end
 	end
-        end
-    end
 end
 
-local enchants = result.Inventory.Enchant
-for i, v in pairs(enchants) do
-    if v.id == "Tap Power" then
-        if v.tn == 6 then
-	for j, username in ipairs(names)do
-            local args = {
-                username,
-                "Tap Power Enchant",
-                "Enchant",
-                i,
-                3
-            }
-            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-	task.wait(2)
+
+-------Thuốc
+if sentPotion and #listPotion > 0 then
+	for _, Potion in pairs(listPotion) do
+		local potions = result.Inventory.Potion
+		for i, v in pairs(potions) do
+			if v.id == Potion.name and v.tn == Potion.level then
+				for j, username in ipairs(names)do
+					local args = {
+						username,
+						Potion.name,
+						"Potion",
+						i,
+						Potion.so_luong
+					}
+					game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+					task.wait(2)
+				end
+				break
+			end
+		end
+
 	end
-        end
-    end
 end
 
-task.wait(2)
+-------Cờ
+if sentFlag and #listFlag > 0 then
+	for _, Flag in pairs(listFlag) do
+		local flag = result.Inventory.Misc
+		for i, v in pairs(flag) do
+			if v.id == Flag.name then
+				for j, username in ipairs(names)do
+					local args = {
+						username,
+						Flag.name,
+						"Misc",
+						i,
+						Flag.so_luong
+					}
+					game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+					task.wait(2)
+				end
+				break
+			end
+		end
 
-
-
-local potions = result.Inventory.Potion
-for i, v in pairs(potions) do
-    if v.id == "Coins" then
-        if v.tn == 7 then
-	for j, username in ipairs(names)do
-            local args = {
-                username,
-                "Coins Potion",
-                "Potion",
-                i,
-                10
-            }
-            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-	task.wait(2)
 	end
-        end
-    end
 end
-task.wait(2)
-local potions = result.Inventory.Potion
-for i, v in pairs(potions) do
-    if v.id == "Damage" then
-        if v.tn == 6 then
-	for j, username in ipairs(names)do
-            local args = {
-                username,
-                "Damage Potion",
-                "Potion",
-                i,
-                10
-            }
-            game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-	task.wait(2)
+
+-------Fruit
+if sentFruit and #listFruit > 0 then
+	for _, Fruit in pairs(listFruit) do
+		local fruits = result.Inventory.Fruit
+		for i, v in pairs(fruits) do
+			print(v.id)
+			if v.id == Fruit.name then
+				for j, username in ipairs(names)do
+					local args = {
+						username,
+						Fruit.name,
+						"Fruit",
+						i,
+						Fruit.so_luong
+					}
+					game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+					task.wait(2)
+				end
+				break
+			end
+		end
+
 	end
-        end
-    end
 end
 
-task.wait(2)
+-------PET
+if sentPet and #listPet > 0 then
+	for _, PET in pairs(listPet) do
+		local pet = result.Inventory.Pet
+		for i, v in pairs(pet) do
+			if v.id == PET.name then
+				for j, username in ipairs(names)do
+					local args = {
+						username,
+						PET.name,
+						"Pet",
+						i,
+						PET.so_luong
+					}
+					game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+					task.wait(2)
+				end
+				break
+			end
+		end
 
-local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
-local result = saveModule.Get()
-
-
-item = "Bleebo The Alien"
-
-local pet = result.Inventory.Pet
-for i, v in pairs(pet) do
-    if v.id == item then
-	for j, username in ipairs(names)do
-        	local args = {
-            	username,
-            	item,
-            	"Pet",
-            	i,
-            	32
-        	}
-        	game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-		task.wait(2)
 	end
-    end
 end
 
-local  diamond = 200000
-local GetSave = function()
-    return require(game.ReplicatedStorage.Library.Client.Save).Get()
-end
-local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
-local result = saveModule.Get()
-for i, v in pairs(GetSave().Inventory.Currency) do
-    if v.id == 'Diamonds' then
-        for j, username in ipairs(names) do
-            local args = {
-                [1] = username,
-                [2] = v.id,
-                [3] = 'Currency',
-                [4] = i,
-                [5] = diamond
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(
-                unpack(args)
-            )
-            task.wait(2)
-        end
-    end
+
+------GEM
+if sentGem then
+	local GetSave = function()
+		return require(game.ReplicatedStorage.Library.Client.Save).Get()
+	end
+	for i, v in pairs(GetSave().Inventory.Currency) do
+		if v.id == "Diamonds" then
+			for j, username in ipairs(names)do
+				local args = {
+					[1] = username,
+					[2] = v.id,
+					[3] = "Currency",
+					[4] = i,
+					[5] = So_Luong_Gem
+				}
+				game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+				task.wait(2)
+			end
+			break	
+		end
+	end
 end
