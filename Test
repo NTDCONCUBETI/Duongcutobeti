@@ -17,4 +17,4 @@ getgenv().MoneyPrinter = {
 
     maybeCPUReducer = false,
 }
-loadstring(game:HttpGet(https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
