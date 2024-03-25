@@ -2,8 +2,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 task.wait(1)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
 task.wait(2)
-
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/OpenGift"))()
+task.wait(2)
 getgenv().MoneyPrinter = {
     toolName = "Slingshot",
     autoBalloons = true,
