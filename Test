@@ -4,17 +4,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 task.wait(2)
 
 getgenv().MoneyPrinter = {
-    toolName = "Slingshot",
-    autoBalloons = true,
-    autoPresents = true,
+        toolName = "Slingshot",
+        autoBalloons = true,
+        autoPresents = true,
 
-    serverHopper = true,
-    avoidCooldown = true,
-    minServerTime = 900, -- Avoid 268 if multi-accounting : Force stay in server for x time even if no Balloons
+        serverHopper = true,
+        minServerTime = 2, -- Nếu LIÊN TIẾP không thấy bóng thì HOP_SV, mỗi lần cách nhau 1 phút
 
-    sendWeb = false,
-    webURL = "",
-
-    maybeCPUReducer = false,
+        maybeCPUReducer = true,
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
