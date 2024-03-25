@@ -1,4 +1,3 @@
-
 repeat task.wait(1) until game.PlaceId ~= nil
 repeat task.wait(1) until game:GetService("Players") and game:GetService("Players").LocalPlayer
 repeat task.wait(1) until not game.Players.LocalPlayer.PlayerGui:FindFirstChild("__INTRO")
@@ -244,7 +243,7 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 	end
 	local currentTime = os.time()
 	if getgenv().MoneyPrinter.serverHopper then
-		if getgenv().MoneyPrinter.minServerTime) then
+		if not getgenv().MoneyPrinter.avoidCooldown or (getgenv().MoneyPrinter.avoidCooldown and currentTime - startTime >= getgenv().MoneyPrinter.minServerTime) then
 			local endGifts = 0
 			local endLarge = 0 
 			for i,v in pairs(getInfo("Inventory").Misc) do
