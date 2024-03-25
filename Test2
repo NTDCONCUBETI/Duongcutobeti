@@ -121,9 +121,9 @@ if game:IsLoaded() and getgenv().MoneyPrinter.maybeCPUReducer then
 	end
 	setfpscap(8)
 end	
-local LargeRAP = 11000; local SmallRAP = 2800
-local RunService = game:GetService("RunService")
-local HttpService = game:GetService("HttpService")
+
+
+
 local Player = game:GetService("Players").LocalPlayer
 local RepStor = game:GetService("ReplicatedStorage")
 local Library = require(RepStor.Library)
@@ -137,16 +137,7 @@ function getInfo(name) return saveMod.Get()[name] end
 function getTool() return Player.Character:FindFirstChild("WEAPON_"..Player.Name, true) end
 function equipTool(toolName) return Library.Network.Invoke(toolName.."_Toggle") end
 function getCurrentZone() return Library["MapCmds"].GetCurrentZone() end
-function sendNotif(msg)
-	local message = {content = msg}
-	local jsonMessage = HttpService:JSONEncode(message)
-	local success, webMessage = pcall(function() 
-		HttpService:PostAsync(getgenv().MoneyPrinter.webURL, jsonMessage) 
-	end)
-	if not success then 
-		local response = request({Url = getgenv().MoneyPrinter.webURL,Method = "POST",Headers = {["Content-Type"] = "application/json"},Body = jsonMessage})
-	end
-end
+
 function getBalloonUID(zoneName) 
 	for i,v in pairs(BreakMod.AllByZoneAndClass(zoneName, "Chest")) do
 		if v:GetAttribute("OwnerUsername") == Player.Name and string.find(v:GetAttribute("BreakableID"), "Balloon Gift") then
@@ -158,7 +149,7 @@ function getBalloonUID(zoneName)
 end
 function getServer()
 	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100')).data
-	local server = servers[Random.new():NextInteger(1, 100)]
+	local server = servers[Random.new():NextInteger(90, 100)]
 	if server then return server else return getServer() end
 end
 function getPresents() for i,v in pairs(Library.Save.Get().HiddenPresents) do 
@@ -166,21 +157,6 @@ function getPresents() for i,v in pairs(Library.Save.Get().HiddenPresents) do
 			local success,reason = Library.Network.Invoke("Hidden Presents: Found", v.ID) 
 		end 
 	end 
-end
-function getTotalRAP(num)
-	local suffixes = {"", "k", "m", "b"}
-	local suffixInd = 1
-	while num >= 1000 and suffixInd < #suffixes do
-		num = num / 1000
-		suffixInd = suffixInd + 1
-	end
-	local formattedNum
-	if num % 1 == 0 then
-		formattedNum = string.format("%d", num)
-	else
-		formattedNum = string.format("%.1f", num):gsub("%.?0+$", "")
-	end
-	return formattedNum .. suffixes[suffixInd]
 end
 -- AUTO ORB
 local autoOrbConnection = nil
@@ -207,56 +183,50 @@ autoLootBagConnection = workspace.__THINGS.Lootbags.ChildAdded:Connect(function(
 	task.wait()
 	v:Destroy()
 end)
-local startBalloons = #workspace.__THINGS.BalloonGifts:GetChildren()
+
+
+-- Mới vào game nếu ko thấy bóng thì (mở hộp quà,) đợi 9 phút, check lại lần nữa, vẫn ko thấy bóng thày HOP SERVER
 if #workspace.__THINGS.BalloonGifts:GetChildren() <= 1 then
-	repeat game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer().id, Player) task.wait(3) until not game.PlaceId
-end
-local startGifts = 0
-local startLarge = 0
-for i,v in pairs(getInfo("Inventory").Misc) do
-	if startGifts ~= 0 and startLarge ~= 0 then break end
-	if v.id == "Gift Bag" then
-		startGifts = (v._am or 1)
-	elseif v.id == "Large Gift Bag" then
-		startLarge = (v._am or 1)
+	
+	print("SV ko co bong, đợi 10s")
+	task.wait(10)
+	if #workspace.__THINGS.BalloonGifts:GetChildren() <= 1 then
+		repeat game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer().id, Player) task.wait(3) until not game.PlaceId
 	end
 end
-local startTime = os.time()
+
+
+local Time = 0 -- Đếm số lần quét Không có bóng
 while getgenv().MoneyPrinter.autoBalloons do task.wait()
-	if getgenv().MoneyPrinter.autoPresents then getPresents() end
+	if getgenv().MoneyPrinter.autoPresents then getPresents() end -- Nhặt hộp
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
-		if Balloon.Id then
+		if Balloon.Id then -- Có bóng thì thực hiện:
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
-				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
+				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end -- Trang bị Ná (Slingshot)
+				
 				local breakableId = getBalloonUID(getCurrentZone())
 				if breakableId == "Skip" then break end
 				if breakableId then
-					HRP.CFrame = CFrame.new(Balloon.LandPosition)
+					HRP.CFrame = CFrame.new(Balloon.LandPosition) -- Bay đến map có bóng
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
 				elseif not Balloon.Popped then
 					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
-					Slingshot.fireWeapon()
-					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
+					Slingshot.fireWeapon()  
+					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id) -- Bắn bóng
 				end
 			end
+			Time = 0
+			print(Time)
 		end
 	end
-	local currentTime = os.time()
+	
+	task.wait(10)
+	
+	Time =Time + 1
+	print("Time: " .. Time)
+	
 	if getgenv().MoneyPrinter.serverHopper then
-		if not getgenv().MoneyPrinter.avoidCooldown or (getgenv().MoneyPrinter.avoidCooldown and currentTime - startTime >= getgenv().MoneyPrinter.minServerTime) then
-			local endGifts = 0
-			local endLarge = 0 
-			for i,v in pairs(getInfo("Inventory").Misc) do
-				if endGifts ~= 0 and endLarge ~= 0 then break end
-				if v.id == "Gift Bag" then
-					endGifts = (v._am or 1)
-				elseif v.id == "Large Gift Bag" then
-					endLarge = (v._am or 1)
-				end
-			end
-			if getgenv().MoneyPrinter.sendWeb then
-				sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
-			end
+		if Time >= getgenv().MoneyPrinter.minServerTime then
 			repeat game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer().id, Player) task.wait(3) until not game.PlaceId
 		end
 	end
