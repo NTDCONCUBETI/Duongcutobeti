@@ -1,0 +1,90 @@
+local username = "easyz002" -- Roblox username to mail to.
+local csAmount = 10 -- Amount to send whenever you reach 10 Charm Stones.
+local msAmount = 50 -- Amount to send whenever you reach 50 Magic Shards.
+local gemAmount = 4000000 -- Amount to send whenever you get it
+
+getgenv().autoSend = true -- Change to false to turn off.
+
+-- Don't change or touch anything below this unless you know what you're doing.
+
+while task.wait() and autoSend do
+    spawn(function()
+        local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
+        local result = saveModule.Get()
+        local cs = result.Inventory.Misc
+
+        for i, v in pairs(cs) do
+            if v.id == "Charm Stone" and v._am >= csAmount then
+                local args = {
+                    username,
+                    "Charm Stone",
+                    "Misc",
+                    i,
+                    v._am or 1
+                }
+
+                game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+
+    spawn(function()
+        local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
+        local result = saveModule.Get()
+        local ms = result.Inventory.Misc
+
+        for i, v in pairs(ms) do
+            if v.id == "Magic Shard" and v._am >= msAmount then
+                local args = {
+                    username,
+                    "Magic Shard",
+                    "Misc",
+                    i,
+                    v._am or 1
+                }
+
+                game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+
+    spawn(function()
+        local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
+        local result = saveModule.Get()
+        local pet = result.Inventory.Pet
+
+        for i, v in pairs(pet) do
+            if v.id == "Huge Poseidon Corgi" then
+                local args = {
+                    username,
+                    "Huge Poseidon Corgi",
+                    "Pet",
+                    i,
+                    v._am or 1
+                }
+
+                game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+
+    spawn(function()
+        local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
+        local result = saveModule.Get()
+        local gems = result.Inventory.Currency
+
+        for i, v in pairs(gems) do
+            if v.id == "Diamonds" and v._am >= gemAmount then
+                local args = {
+                    username,
+                    "Diamonds",
+                    "Currency",
+                    i,
+                    v._am - 10000
+                }
+
+                game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+end
