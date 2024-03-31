@@ -1,5 +1,5 @@
 wait(5)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Hiepphamone/lowmap/main/lowmap"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMapTTD"))()
 if game.PlaceId ~= 14082129854 then
     repeat wait() until game.Players
     repeat wait() until game.Players.LocalPlayer
