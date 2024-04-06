@@ -305,38 +305,4 @@ else
             mainpart = v
         end
     end
-
-    function spawntuong(a)
-        if getgenv().savemain == false then
-            for i,v in pairs(getgenv().skibidi) do
-                getgenv().oldremote = v
-                local az = require(mainpart)
-                az.addToQueue(v, {'MinigunCamerawoman', a ,1})
-                wait(1)
-                print(v)
-                if workspace.Troops:FindFirstChild('MinigunCamerawoman') then
-                    getgenv().savemain = v
-                    print(getgenv().oldremote)
-                    break
-                end
-            end
-        else
-            local az = require(mainpart)
-            az.addToQueue(getgenv().oldremote, {'MinigunCamerawoman', a ,1})
-        end
-        wait(1)
-    end
-
-    function autoupdate()
-        local args = {
-            [1] = {
-                [1] = {
-                    [1] = workspace.Troops:FindFirstChild('MinigunCamerawoman')
-                },
-                [2] = "KU"
-            }
-        }
-
-        game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
-    end
 end
