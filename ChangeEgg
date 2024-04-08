@@ -1,6 +1,6 @@
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-wait(15)
+wait(5)
 function clickframe(a)
     game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
     game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
@@ -39,4 +39,4 @@ repeat wait()
         --    clickframe(antitrade())
         --end
     end)
-until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
+until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 1200
