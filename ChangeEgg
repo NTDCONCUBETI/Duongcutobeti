@@ -1,0 +1,41 @@
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+wait(5)
+function clickframe(a)
+    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
+    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
+end
+
+function clickyyes()
+    if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'exchange') then
+            return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.YesButton.Btn
+        end
+    end
+    return false
+end 
+
+local a = getsenv(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4.BoostHandler)
+
+repeat wait()
+    pcall(function()
+        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true --Hiển thị bảng đổi trứng thành gem
+        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false -- Ẩn bớt các mục đổi quà khác
+        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false -- Ẩn bớt các mục đổi quà khác
+        --if antisuccess() ~= false then
+            --clickframe(antisuccess())
+            --return
+        --end
+        --if antitrade() == false then
+            if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
+                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
+            else
+                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
+                wait(1)
+                clickframe(clickyyes())
+            end
+        --else
+        --    clickframe(antitrade())
+        --end
+    end)
+until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
