@@ -39,4 +39,4 @@ repeat wait()
         --    clickframe(antitrade())
         --end
     end)
-until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 1200
+until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 2000
