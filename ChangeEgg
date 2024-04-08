@@ -30,6 +30,7 @@ repeat wait()
             if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
                 clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
             else
+                wait(1)
                 clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
                 wait(1)
                 clickframe(clickyyes())
