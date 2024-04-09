@@ -343,10 +343,7 @@ if true then
         workspace.ALWAYS_RENDERING:Destroy()
         
     end)
------- Thay true = false cho dòng dưới sẽ trắng màn hình
-   game:GetService("RunService"):Set3dRenderingEnabled(true)
-    
-    
+
     function Noclip()
         for i, v in ipairs(plr.Character:GetDescendants()) do
             if v:IsA("BasePart") and v.CanCollide == true then
