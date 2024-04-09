@@ -1,3 +1,4 @@
+
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
     getgenv().Config = {
@@ -329,7 +330,7 @@ if true then
     repeat wait() until workspace:FindFirstChild("__THINGS")
     pcall(function() 
         local Lighting = game.Lighting
-        Lighting.GlobalShadows = true
+        Lighting.GlobalShadows = false
         Lighting.FogEnd = 9e9
         Lighting.ShadowSoftness = 0
         local Lighting = game.Lighting
@@ -338,10 +339,11 @@ if true then
         settings().Rendering.QualityLevel = 1
         settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
         for k,v in game:GetService("MaterialService"):GetChildren() do v:Destroy() end
-        game:GetService("MaterialService").Use2022Materials = true
+        game:GetService("MaterialService").Use2022Materials = false
         workspace.ALWAYS_RENDERING:Destroy()
         
     end)
+------ Thay true = false cho dòng dưới sẽ trắng màn hình
    game:GetService("RunService"):Set3dRenderingEnabled(true)
     
     
