@@ -339,7 +339,8 @@ if true then
         workspace.ALWAYS_RENDERING:Destroy()
         
     end)
-   game:GetService("RunService"):Set3dRenderingEnabled(false)
+------ Thay true = false cho dòng dưới sẽ trắng màn hình
+   game:GetService("RunService"):Set3dRenderingEnabled(true)
     
     
     function Noclip()
