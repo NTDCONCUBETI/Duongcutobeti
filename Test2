@@ -329,7 +329,7 @@ if true then
     repeat wait() until workspace:FindFirstChild("__THINGS")
     pcall(function() 
         local Lighting = game.Lighting
-        Lighting.GlobalShadows = false
+        Lighting.GlobalShadows = true
         Lighting.FogEnd = 9e9
         Lighting.ShadowSoftness = 0
         local Lighting = game.Lighting
@@ -338,7 +338,7 @@ if true then
         settings().Rendering.QualityLevel = 1
         settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
         for k,v in game:GetService("MaterialService"):GetChildren() do v:Destroy() end
-        game:GetService("MaterialService").Use2022Materials = false
+        game:GetService("MaterialService").Use2022Materials = true
         workspace.ALWAYS_RENDERING:Destroy()
         
     end)
