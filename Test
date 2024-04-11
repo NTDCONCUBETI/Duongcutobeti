@@ -1,16 +1,2 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-task.wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Click4Phim"))()
-task.wait(2)
 
-getgenv().MoneyPrinter = {
-        toolName = "Slingshot",
-        autoBalloons = true,
-        autoPresents = true,
-
-        serverHopper = true,
-        minServerTime = 2, -- Nếu LIÊN TIẾP không thấy bóng thì HOP_SV, mỗi lần cách nhau 1 phút
-
-        maybeCPUReducer = true,
-}
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Test2"))()
