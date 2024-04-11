@@ -18,8 +18,6 @@ if not getgenv().Config then
     }
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-wait(5)
 repeat wait() until game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer
 local plr = game.Players.LocalPlayer
