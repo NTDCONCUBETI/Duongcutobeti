@@ -21,7 +21,8 @@ getgenv().autoDayCareConfig = {
     IS_SHINY = false, -- if pets are shiny
     PET_TYPE = 2, -- change to 2 for Rainbow, 1 for Golden, or 0 for Normal
 }
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+task.wait(1)
 -- MADE FIREDEVIL DO NOT SKID
 print("Made By firedevil (Ryan | 404678244215029762 | https://discord.gg/ettP4TjbAb)")
 
