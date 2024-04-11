@@ -1,0 +1,471 @@
+-- MADE FIREDEVIL DO NOT SKID
+print("Made By firedevil (Ryan | 404678244215029762 | https://discord.gg/ettP4TjbAb)")
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/WaiForGameLoad.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AntiStaff.lua"))()
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local breakables = game:GetService("Workspace"):WaitForChild("__THINGS"):WaitForChild("Breakables")
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+
+
+require(ReplicatedStorage.Library).Network.Invoke("Mailbox: Claim All")
+
+pcall(function()
+    LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
+
+    if getconnections then
+        for _, v in pairs(getconnections(LocalPlayer.Idled)) do
+            v:Disable()
+        end
+    else
+        LocalPlayer.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end
+end)
+
+
+
+local startTimestamp = os.time()
+
+
+
+
+
+
+
+
+
+
+
+local Library = game:GetService("ReplicatedStorage"):WaitForChild('Library')
+local pets = require(Library).Save.Get().Inventory.Pet
+
+local usedVoucherAmount = require(Library).Save.Get().DaycareVouchers
+
+if usedVoucherAmount < 20 then
+    for _ = 0, 20 - usedVoucherAmount do
+        pcall(function()
+            game:GetService("ReplicatedStorage").Network.DaycareSlotVoucher_Consume:InvokeServer()
+        end)
+        task.wait()
+    end
+end
+
+local daycareModule = require(Library.Client.DaycareCmds)
+
+if getgenv().autoDayCareConfig.PET_TYPE == 0 then
+    getgenv().autoDayCareConfig.PET_TYPE = nil
+end
+
+local function teleportToDaycare()
+    -- if normal world
+    if game:GetService("Workspace"):FindFirstChild("Map") then
+        local zonePath
+        zonePath = game:GetService("Workspace").Map["20 | Beach"]
+        LocalPlayer.Character.HumanoidRootPart.CFrame = zonePath.PERSISTENT.Teleport.CFrame
+
+        if not zonePath:FindFirstChild("INTERACT") then
+            local loaded = false
+            local detectLoad = zonePath.ChildAdded:Connect(function(child)
+                if child.Name == "INTERACT" then
+                    loaded = true
+                end
+            end)
+
+            repeat
+                task.wait()
+            until loaded
+
+            detectLoad:Disconnect()
+        end
+
+        LocalPlayer.Character.HumanoidRootPart.CFrame = zonePath.INTERACT.Machines.DaycareMachine.PadGlow.CFrame
+    else
+        local zonePath
+        zonePath = game:GetService("Workspace").Map2["100 | Tech Spawn"]
+        LocalPlayer.Character.HumanoidRootPart.CFrame = zonePath.PERSISTENT.Teleport.CFrame
+
+        if not zonePath:FindFirstChild("INTERACT") then
+            local loaded = false
+            local detectLoad = zonePath.ChildAdded:Connect(function(child)
+                if child.Name == "INTERACT" then
+                    loaded = true
+                end
+            end)
+
+            repeat
+                task.wait()
+            until loaded
+
+            detectLoad:Disconnect()
+        end
+
+        LocalPlayer.Character.HumanoidRootPart.CFrame = zonePath.INTERACT.Machines.SuperMachine.PadGlow.CFrame
+    end
+end
+
+
+local petId
+for id, petData in pairs(pets) do
+    if petData["id"] == getgenv().autoDayCareConfig.DAYCARE_PET then
+        if tonumber(petData["pt"]) == getgenv().autoDayCareConfig.PET_TYPE then
+            if getgenv().autoDayCareConfig.IS_SHINY then
+                if petData["sh"] then
+                    petId = id
+                    break
+                end
+            else
+                if not petData["sh"] then
+                    petId = id
+                    break
+                end
+            end
+        end
+    end
+end
+
+if not petId then
+    print("Pet not found")
+else
+    print("Found pet: " .. petId)
+end
+
+
+local function getActivePet()
+    for i, _ in pairs(daycareModule.GetActive()) do
+        return i
+    end
+end
+
+local activePetId = getActivePet()
+
+local daycareAvailable
+if not activePetId then
+    daycareAvailable = true
+else
+    daycareAvailable = false
+end
+
+local needClaim = false
+
+if daycareModule.ComputeRemainingTime(activePetId) <= 0 then
+    needClaim = true
+end
+
+if needClaim or daycareAvailable then
+    print("Daycare is available")
+    teleportToDaycare()
+
+    if needClaim then
+        task.wait()
+        repeat
+            task.wait()
+        until game:GetService("ReplicatedStorage").Network:FindFirstChild("Daycare: Claim"):InvokeServer()
+        print("Claimed pet from daycare")
+    end
+
+    task.wait()
+
+    local args = { [1] = { [petId] = 30 } }
+    if not game:GetService("ReplicatedStorage").Network:FindFirstChild("Daycare: Enroll"):InvokeServer(unpack(args)) then
+        local args = { [1] = { [petId] = daycareModule.GetMaxSlots() } }
+        repeat
+            task.wait()
+        until game:GetService("ReplicatedStorage").Network:FindFirstChild("Daycare: Enroll"):InvokeServer(unpack(args))
+    end
+
+    print("Put pet into daycare")
+end
+
+
+
+
+
+
+
+
+
+
+
+local function getServer(serverType)
+    local response = request({Url = 'https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=' .. serverType .. '&limit=100&excludeFullGames=true', Method = "GET", Headers = { ["Content-Type"] = "application/json" },})
+
+    if response.Success then
+        local test = game.HttpService:JSONDecode(response.Body).data[Random.new():NextInteger(5, 99)]
+        return test
+    else
+        return nil
+    end
+end
+
+local function regularTP(serverType)
+    pcall(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, getServer(serverType).id, game.Players.LocalPlayer)
+    end)
+end
+
+local function serverhop()
+    if getgenv().serverHopType == "High" then
+        print("Hopping to high-player server")
+        regularTP("Dec")
+    elseif getgenv().serverHopType == "Medium" then
+        print("Hopping to medium server")
+        local cursor
+        local r = request({Url = 'https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true', Method = "GET", Headers = { ["Content-Type"] = "application/json" },})
+
+        if r.Success then
+            cursor = game.HttpService:JSONDecode(r.Body).nextPageCursor
+        else
+            print("Not success")
+        end
+
+        for _ = 1, 10 do
+            local response = request({Url = 'https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true&cursor=' .. cursor, Method = "GET", Headers = { ["Content-Type"] = "application/json" },})
+
+            if response.Success then
+                cursor = game.HttpService:JSONDecode(response.Body).nextPageCursor
+            else
+                print("Not success")
+            end
+            task.wait(0.5)
+        end
+
+        local response = request({Url = 'https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true&cursor=' .. cursor, Method = "GET", Headers = { ["Content-Type"] = "application/json" },})
+
+        if response.Success then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.HttpService:JSONDecode(response.Body).data[Random.new():NextInteger(1, 99)].id, game.Players.LocalPlayer)
+        else
+            game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+        end
+
+    elseif getgenv().serverHopType == "Low" then
+        print("Hopping to low-player server")
+        regularTP("Asc")
+    end
+
+    task.wait(5)
+    while true do
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+        task.wait()
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+task.wait(getgenv().autoBalloonConfig.START_DELAY)
+
+
+if getgenv().autoBalloonConfig.AUTO_MAIL then
+    for itemId, itemData in pairs(require(ReplicatedStorage:WaitForChild("Library")).Save.Get().Inventory.Misc) do
+        for _, v in pairs(itemData) do
+            if v == "Large Gift Bag" then
+                if itemData["_am"] >= getgenv().autoBalloonConfig.AMOUNT_TO_MAIL then
+                    print("Mailing Large Gift Bags")
+                    game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(getgenv().autoBalloonConfig.ACCOUNT_TO_MAIL_TO, "Auto Mail", "Misc", itemId, getgenv().autoBalloonConfig.AMOUNT_TO_MAIL)
+                end
+                task.wait(1)
+                break
+            elseif v == "Gift Bag" then
+                if itemData["_am"] >= getgenv().autoBalloonConfig.AMOUNT_TO_MAIL then
+                    print("Mailing Regular Gift Bags")
+                    game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(getgenv().autoBalloonConfig.ACCOUNT_TO_MAIL_TO, "Auto Mail", "Misc", itemId, getgenv().autoBalloonConfig.AMOUNT_TO_MAIL)
+                end
+                task.wait(1)
+                break
+            end
+        end
+    end
+end
+
+local balloonGifts = {}
+
+
+require(Client.PlayerPet).CalculateSpeedMultiplier = function()
+    return 200
+end
+
+for _, lootbag in pairs(game:GetService("Workspace").__THINGS:FindFirstChild("Lootbags"):GetChildren()) do
+    if lootbag then
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbags_Claim"):FireServer(unpack( { [1] = { [1] = lootbag.Name, }, } ))
+        lootbag:Destroy()
+        task.wait()
+    end
+end
+
+game:GetService("Workspace").__THINGS:FindFirstChild("Lootbags").ChildAdded:Connect(function(lootbag)
+    task.wait()
+    if lootbag then
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Lootbags_Claim"):FireServer(unpack( { [1] = { [1] = lootbag.Name, }, } ))
+        lootbag:Destroy()
+    end
+end)
+
+game:GetService("Workspace").__THINGS:FindFirstChild("Orbs").ChildAdded:Connect(function(orb)
+    task.wait()
+    if orb then
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):FindFirstChild("Orbs: Collect"):FireServer(unpack( { [1] = { [1] = tonumber(orb.Name), }, } ))
+        orb:Destroy()
+    end
+end)
+
+breakables.ChildAdded:Connect(function(child)
+    pcall(function()
+        if string.find(child:GetAttribute("BreakableID"), "Balloon Gift") and child:GetAttribute("OwnerUsername") == LocalPlayer.Name then
+            table.insert(balloonGifts, child)
+        end
+    end)
+end)
+
+breakables.ChildRemoved:Connect(function(child)
+    pcall(function()
+        if string.find(child:GetAttribute("BreakableID"), "Balloon Gift") and child:GetAttribute("OwnerUsername") == LocalPlayer.Name then
+            table.remove(balloonGifts, table.find(balloonGifts, child))
+        end
+    end)
+end)
+
+
+while getgenv().autoBalloon do
+    local balloonIds = {}
+
+    local getActiveBalloons = ReplicatedStorage.Network.BalloonGifts_GetActiveBalloons:InvokeServer()
+
+    local allPopped = true
+    for i, v in pairs(getActiveBalloons) do
+        if not v.Popped then
+            allPopped = false
+            balloonIds[i] = v
+        end
+    end
+
+    local notContinuing = true
+    if allPopped then
+        print("No balloons detected, waiting " .. tostring(getgenv().autoBalloonConfig.GET_BALLOON_DELAY) .. " seconds")
+        task.wait(getgenv().autoBalloonConfig.GET_BALLOON_DELAY)
+        notContinuing = false
+    end
+
+    if notContinuing then
+        if not getgenv().autoBalloon then
+            break
+        end
+
+        local originalPosition = LocalPlayer.Character.HumanoidRootPart.CFrame
+
+        LocalPlayer.Character.HumanoidRootPart.Anchored = true
+        for balloonId, balloonData in pairs(balloonIds) do
+            local balloonPosition = balloonData.Position
+            LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(balloonPosition.X, balloonPosition.Y + 30, balloonPosition.Z)
+            ReplicatedStorage.Network.Slingshot_Toggle:InvokeServer()
+            task.wait()
+            ReplicatedStorage.Network.Slingshot_FireProjectile:InvokeServer(Vector3.new(balloonPosition.X, balloonPosition.Y + 25, balloonPosition.Z), 0.5794160315249014, -0.8331117721691044, 200)
+            task.wait()
+            ReplicatedStorage.Network.BalloonGifts_BalloonHit:FireServer(balloonId)
+            task.wait()
+            ReplicatedStorage.Network.Slingshot_Unequip:InvokeServer()
+
+            -- BREAK BREAKABLES
+            print("Breaking balloon boxes")
+
+            local balloonLandPos = balloonData.LandPosition
+
+            local loadBreaks
+            local foundBreaks = false
+
+            loadBreaks = breakables.ChildAdded:Connect(function(child)
+                if string.find(child:GetAttribute("BreakableID"), "Balloon Gift") and child:GetAttribute("OwnerUsername") == LocalPlayer.Name then
+                    foundBreaks = true
+                end
+            end)
+
+            LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(balloonLandPos.X, balloonLandPos.Y+5, balloonLandPos.Z)
+            LocalPlayer.Character.HumanoidRootPart.Anchored = false
+
+            print("Waiting for balloon drop")
+            local counter = 0
+
+            local exiting = false
+            while not foundBreaks do
+                counter = counter + 1
+                if counter > (getgenv().autoBalloonConfig.GIFT_BOX_BREAK_FAILSAFE * 20) then
+                    print("Balloon drop not found")
+                    counter = 0
+                    exiting = true
+                    if getgenv().autoBalloonConfig.SERVER_HOP_AFTER_NOT_FIND then
+                        local timeElapsed = os.time() - startTimestamp
+                        if timeElapsed < getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME then
+                            task.wait(getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME - timeElapsed)
+                        end
+                        serverhop()
+                    end
+                    break
+                end
+                task.wait(0.05)
+            end
+
+            if not exiting then
+                loadBreaks:Disconnect()
+                task.wait()
+
+                for _, v in pairs(balloonGifts) do
+                    local brokeBox = false
+                    task.spawn(function()
+                        while breakables:FindFirstChild(v.Name) do
+                            game:GetService("ReplicatedStorage").Network.Breakables_PlayerDealDamage:FireServer(v.Name)
+                            task.wait()
+                        end
+                        brokeBox = true
+                    end)
+
+                    local counter = 0
+                    while counter < (getgenv().autoBalloonConfig.GIFT_BOX_BREAK_FAILSAFE * 20) do
+                        if brokeBox then
+                            break
+                        end
+                        counter = counter + 1
+                        task.wait(0.05)
+                    end
+
+                    print("Broke balloon box")
+                end
+                LocalPlayer.Character.HumanoidRootPart.Anchored = true
+            end
+            print("After exting")
+
+            print("Popped balloon")
+            task.wait(getgenv().autoBalloonConfig.BALLOON_DELAY)
+        end
+
+        if getgenv().autoBalloonConfig.SERVER_HOP then
+            local timeElapsed = os.time() - startTimestamp
+            if timeElapsed < getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME then
+                task.wait(getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME - timeElapsed)
+            end
+            serverhop()
+        end
+
+        LocalPlayer.Character.HumanoidRootPart.Anchored = false
+        LocalPlayer.Character.HumanoidRootPart.CFrame = originalPosition
+    end
+
+    if (os.time() - startTimestamp) > getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME then
+        serverhop()
+    end
+end
+-- MADE FIREDEVIL DO NOT SKID
