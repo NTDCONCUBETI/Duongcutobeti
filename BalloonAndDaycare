@@ -25,8 +25,8 @@ getgenv().autoDayCareConfig = {
 -- MADE FIREDEVIL DO NOT SKID
 print("Made By firedevil (Ryan | 404678244215029762 | https://discord.gg/ettP4TjbAb)")
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/WaiForGameLoad.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/AntiStaff.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/waitForGameLoad.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/antiStaff.lua"))()
 
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -37,8 +37,22 @@ local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
 
 require(ReplicatedStorage.Library).Network.Invoke("Mailbox: Claim All")
 
+pcall(function()
+    LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
 
--------------Anti AFK nằm dưới
+    if getconnections then
+        for _, v in pairs(getconnections(LocalPlayer.Idled)) do
+            v:Disable()
+        end
+    else
+        LocalPlayer.Idled:Connect(function()
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end
+end)
+
 
 
 local startTimestamp = os.time()
@@ -477,5 +491,7 @@ while getgenv().autoBalloon do
     if (os.time() - startTimestamp) > getgenv().autoBalloonConfig.SERVER_MINIMUM_TIME then
         serverhop()
     end
+end
+-- MADE FIREDEVIL DO NOT SKID
 end
 -- MADE FIREDEVIL DO NOT SKID
