@@ -2,51 +2,374 @@
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 wait(60)
-function clickframe(a)
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
-    game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
-end
-
-function clickyyes()
-    if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
-        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'exchange') then
-            return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.YesButton.Btn
-        end
+if game.PlaceId ~= 14082129854 then
+    repeat wait() until game.Players
+    repeat wait() until game.Players.LocalPlayer
+    repeat wait() until game.ReplicatedStorage
+    local plr = game.Players.LocalPlayer
+    function getstatusbtn()
+        return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Play Again"
     end
-    return false
-end 
- function antisuccess()
-    if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
-        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Successfully') 
-        or string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Exchange Successful') then
-            return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
-        end
+
+    function click(a)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,true,a,1)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,false,a,1)
     end
-    return false
-end 
+    
+    local vcl = 0
+    if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Missions.SwitchButton.AbsolutePosition.Y > 70 then
+        vcl = 43
+    elseif game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Missions.SwitchButton.AbsolutePosition.Y <= 65 then
+        vcl = 53
+    else
+        vcl = 48
+    end
+    function clickframe(a)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
+    end
+    game:GetService("CoreGui").PlayerList:Destroy()
 
-local a = getsenv(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4.BoostHandler)
-
-repeat wait()
-    pcall(function()
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true --Hiển thị bảng đổi trứng thành gem
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false -- Ẩn bớt các mục đổi quà khác
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false -- Ẩn bớt các mục đổi quà khác
-        if antisuccess() ~= false then
-            clickframe(antisuccess())
-            return
-        end
-        --if antitrade() == false then
-            if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
-                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
-            else
-                wait(2)
-                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
-                wait(2)
-                clickframe(clickyyes())
+    for i,v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v:IsA('ScreenGui') then
+            if v.DisplayOrder > 100000 then
+                v:Destroy()
             end
-        --else
-        --    clickframe(antitrade())
-        --end
+        end
+    end
+    local a = getsenv(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4.BoostHandler)
+    getgenv().collectmission = false
+    for i,v in pairs(getupvalues(a.Changed)[1]._data) do
+        if string.find(i , 'Easter') then
+            if type(v) == 'table' then
+                for i1,v1 in pairs(v) do
+                    if type(v1) == 'table' then
+                        for i2,v2 in pairs(v1) do
+                            if i2 == 4 then
+                                if v2 > 0 then
+                                    getgenv().collectmission = true
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    function antitrade()
+        if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+            if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+                return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+            end
+        end
+        return false
+    end
+
+    function antisuccess()
+        if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+            if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Successfully') 
+            or string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Exchange Successful') then
+                return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
+            end
+        end
+        return false
+    end    
+
+    function getbtnmisson()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.MissionsFrame:GetChildren()) do
+            if string.find(v.Name, 'MissionsRow') then
+                for i1,v1 in pairs(v:GetChildren()) do
+                    if v1:IsA("Frame") then
+                        if v1.Reward.Claim.Visible == true then
+                            return v1.Reward.Claim.ClaimButton
+                        end
+                    end
+                end
+            end
+        end
+        return false
+    end
+
+    -- game:GetService("VirtualInputManager"):SendKeyEvent(true, 32, false, game)
+    -- wait(4)
+    -- game:GetService("VirtualInputManager"):SendKeyEvent(false, 32, false, game)
+
+    if getupvalues(a.Changed)[1]._data.Currencies.Gems >= getgenv().gem and getupvalues(a.Changed)[1]._data.Currencies.Coins >= 100 then
+        repeat wait()
+            pcall(function()
+                game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = true
+                if antisuccess() ~= false then
+                    clickframe(antisuccess())
+                    return
+                end
+                if antitrade() == false then
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().username
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = ''
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = getupvalues(a.Changed)[1]._data.Currencies.Gems
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = getupvalues(a.Changed)[1]._data.Currencies.Gems
+                    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
+                    wait(2)
+                    click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
+                    wait(1)
+                    click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
+                else
+                    clickframe(antitrade())
+                end
+            end)
+        until getupvalues(a.Changed)[1]._data.Currencies.Gems < getgenv().gem
+    end
+    game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
+    if getgenv().collectmission then
+        while getgenv().collectmission do wait()
+            pcall(function()
+                game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true
+                if antisuccess() ~= false then
+                    clickframe(antisuccess())
+                    return
+                end
+                if antitrade() == false then
+                    if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.MissionsFrame.Visible == false then
+                        clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Missions.SwitchButton)
+                    else
+                        if getbtnmisson() ~= false then
+                            clickframe(getbtnmisson())
+                        else
+                            getgenv().collectmission = false
+                        end
+                    end
+                else
+                    click(antitrade())
+                end
+            end)
+        end
+    end
+
+    function havepass()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.EventPassFrame.EventPass.EventPassList:GetChildren()) do
+            if v:IsA('Frame') then
+                if v.ClaimButton.Visible == true then
+                    return v.ClaimButton
+                end
+            end
+        end
+        return false
+    end
+
+    function havepassdestroy()
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.EventPassFrame.EventPass.EventPassList:GetChildren()) do
+            if v:IsA('Frame') and v:FindFirstChild('ClaimButton') then
+                if v.ClaimButton.Visible == false and v.Visible == true then
+                    return v
+                end
+            end
+        end
+        return false
+    end
+    
+    repeat wait()
+        pcall(function()
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true
+            if antisuccess() ~= false then
+                clickframe(antisuccess())
+                return
+            end
+            if antitrade() == false then
+                if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.EventPassFrame.Visible == false then
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.EventPass.SwitchButton)
+                else
+                    clickframe(havepass())
+                    if havepassdestroy() ~= false then
+                        havepassdestroy().Visible = false
+                    end
+                end
+            else
+                clickframe(antitrade())
+            end
+        end)
+    until havepass() == false
+
+    function haveboost()
+        for i,v in pairs(getupvalues(a.Changed)[1]._data.BoostInv) do
+            if i == '2xEggsBoost' or i == '2xXPBoost_Easter2024' then
+                if v ~= nil then
+                    if v > 0 then
+                        return true
+                    end
+                end
+            end
+        end
+        return false
+    end
+
+    repeat wait()
+        pcall(function()
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false
+            if antisuccess() ~= false then
+                clickframe(antisuccess())
+                return
+            end
+            if antitrade() == false then
+                if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
+                else
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4['2xEggsBoost'].BoostInfo.UseBoost)
+                    wait(1)
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4['2xXPBoost_Easter2024'].BoostInfo.UseBoost)
+                end
+            else
+                clickframe(antitrade())
+            end
+        end)
+    until haveboost() == false
+
+    function clickyyes()
+        if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+            if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'exchange') then
+                return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.YesButton.Btn
+            end
+        end
+        return false
+    end   
+
+    repeat wait()
+        pcall(function()
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false
+            if antisuccess() ~= false then
+                clickframe(antisuccess())
+                return
+            end
+            if antitrade() == false then
+                if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
+                else
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
+                    wait(1)
+                    if antitrade() ~= false then
+                        clickframe(antitrade())
+                    else
+                        clickframe(clickyyes())
+                    end
+                end
+            else
+                clickframe(antitrade())
+            end
+        end)
+    until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
+    game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame'):Destroy()
+    spawn(function()
+        while true do wait()
+            local a,b = pcall(function()
+                plr.Character.HumanoidRootPart.CFrame = workspace.Lifts.EggIsland.BasePart.CFrame * CFrame.new(0,5,0)
+                wait(2)
+                if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
+                    click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
+                else
+                    plr.Character.HumanoidRootPart.CFrame = workspace.Lifts.EggIsland.BasePart.CFrame * CFrame.new(0,5,20)
+                end
+            end)
+            print(a,b)
+        end
     end)
-until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 == 2000
+else
+    repeat wait() until game.Players
+    repeat wait() until game.Players.LocalPlayer
+    repeat wait() until game.ReplicatedStorage
+    getgenv().skibidi = {}
+    for charCode = string.byte('a'), string.byte('z') do
+        table.insert(getgenv().skibidi, string.char(charCode))
+    end
+    for charCode = string.byte('A'), string.byte('Z') do
+        table.insert(getgenv().skibidi, string.char(charCode))
+    end
+    function getstatusbtn()
+        if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+            return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Play Again"
+        end
+        return false
+    end
+
+    function getcancel()
+        if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+            return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Cancel Play Again"
+        end
+        return false
+    end
+    
+    function click(a)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,true,a,1)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,false,a,1)
+    end
+    game:GetService("CoreGui").TeleportGui:Destroy()
+    game:GetService("CoreGui").RobloxPromptGui:Destroy()
+    spawn(function()
+        while true do wait(.1)
+            pcall(function()
+                if tostring(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3) == '1, 0, 0' then
+                    firesignal(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.Activated)
+                end
+                if getstatusbtn() then
+                    click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+                    wait(.2)
+                    wait(5)
+                else
+                    click(game:GetService("Players").LocalPlayer.PlayerGui.VotingFrame.VoteFrame.VoteMainFrame.MainFrame.Easy.Vote)
+                end
+                if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+                    if getcancel() then
+                        click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+                    end
+                end
+            end)
+        end
+    end)
+
+    getgenv().savemain = false
+    getgenv().oldremote = ''
+
+    local mainpart;
+    for i,v in pairs(game:GetService("ReplicatedStorage").FrameworkDependencies:GetDescendants()) do
+        if v.Name == 'ClientProcess' then
+            mainpart = v
+        end
+    end
+
+    function spawntuong(a)
+        if getgenv().savemain == false then
+            for i,v in pairs(getgenv().skibidi) do
+                getgenv().oldremote = v
+                local az = require(mainpart)
+                az.addToQueue(v, {'MinigunCamerawoman', a ,1})
+                wait(1)
+                print(v)
+                if workspace.Troops:FindFirstChild('MinigunCamerawoman') then
+                    getgenv().savemain = v
+                    print(getgenv().oldremote)
+                    break
+                end
+            end
+        else
+            local az = require(mainpart)
+            az.addToQueue(getgenv().oldremote, {'MinigunCamerawoman', a ,1})
+        end
+        wait(1)
+    end
+
+    function autoupdate()
+        local args = {
+            [1] = {
+                [1] = {
+                    [1] = workspace.Troops:FindFirstChild('MinigunCamerawoman')
+                },
+                [2] = "KU"
+            }
+        }
+
+        game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
+    end
+end
