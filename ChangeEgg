@@ -1,4 +1,5 @@
 
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 wait(60)
 function clickframe(a)
@@ -14,6 +15,15 @@ function clickyyes()
     end
     return false
 end 
+ function antisuccess()
+    if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Successfully') 
+        or string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Exchange Successful') then
+            return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
+        end
+    end
+    return false
+end 
 
 local a = getsenv(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4.BoostHandler)
 
@@ -22,10 +32,10 @@ repeat wait()
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true --Hiển thị bảng đổi trứng thành gem
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false -- Ẩn bớt các mục đổi quà khác
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false -- Ẩn bớt các mục đổi quà khác
-        --if antisuccess() ~= false then
-            --clickframe(antisuccess())
-            --return
-        --end
+        if antisuccess() ~= false then
+            clickframe(antisuccess())
+            return
+        end
         --if antitrade() == false then
             if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
                 clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
