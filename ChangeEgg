@@ -15,6 +15,14 @@ function clickyyes()
     end
     return false
 end 
+function antitrade()
+    if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
+        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+            return game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+        end
+    end
+    return false
+end
  function antisuccess()
     if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame').Visible == true then
         if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Successfully') 
@@ -27,26 +35,29 @@ end
 
 local a = getsenv(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame4.BoostHandler)
 
-repeat wait()
-    pcall(function()
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true --Hiển thị bảng đổi trứng thành gem
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false -- Ẩn bớt các mục đổi quà khác
-        game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false -- Ẩn bớt các mục đổi quà khác
-        if antisuccess() ~= false then
-            clickframe(antisuccess())
-            return
-        end
-        --if antitrade() == false then
-            if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
-                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
-            else
-                wait(2)
-                clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
-                wait(2)
-                clickframe(clickyyes())
+    repeat wait()
+        pcall(function()
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false
+            game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false
+            if antisuccess() ~= false then
+                clickframe(antisuccess())
+                return
             end
-        --else
-        --    clickframe(antitrade())
-        --end
-    end)
-until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
+            if antitrade() == false then
+                if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
+                else
+                    clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
+                    wait(1)
+                    if antitrade() ~= false then
+                        clickframe(antitrade())
+                    else
+                        clickframe(clickyyes())
+                    end
+                end
+            else
+                clickframe(antitrade())
+            end
+        end)
+    until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
