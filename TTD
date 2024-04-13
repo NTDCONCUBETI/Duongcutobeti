@@ -32,10 +32,10 @@ repeat wait()
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.Visible = true --Hiển thị bảng đổi trứng thành gem
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false -- Ẩn bớt các mục đổi quà khác
         game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.ShopList.EventCrate.Visible = false -- Ẩn bớt các mục đổi quà khác
-        --if antisuccess() ~= false then
-            --clickframe(antisuccess())
-            --return
-        --end
+        if antisuccess() ~= false then
+            clickframe(antisuccess())
+            return
+        end
         --if antitrade() == false then
             if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.ShopFrame.Visible == false then
                 clickframe(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.EasterEventPass.TopBar.MenuButtons.Shop.SwitchButton)
