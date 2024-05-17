@@ -15,14 +15,14 @@ Frame.Position = UDim2.new(0.68, 0, 0.7, 0)
 Frame.Size = UDim2.new(0, 150, 0, 160)
 
 
-SendMail.Name = "Send Mail"
-SendMail.Parent = Frame
-SendMail.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
-SendMail.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SendMail.Size = UDim2.new(0, 150, 0, 38)
-SendMail.Font = Enum.Font.SourceSans
-SendMail.Text = "Send Mail"
-SendMail.TextSize = 14.000
+SendHuge.Name = "Send Huge"
+SendHuge.Parent = Frame
+SendHuge.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+SendHuge.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SendHuge.Size = UDim2.new(0, 150, 0, 38)
+SendHuge.Font = Enum.Font.SourceSans
+SendHuge.Text = "Send Huge"
+SendHuge.TextSize = 14.000
 
 StopFarm.Name = "Stop Farm"
 StopFarm.Parent = Frame
@@ -50,10 +50,10 @@ getgenv().SendMail = false
 getgenv().SendAll = false
 
 
-SendMail.MouseButton1Click:Connect(function()
+SendHuge.MouseButton1Click:Connect(function()
 
 getgenv().username = "NTD15101997"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Sendmail"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Send/SendHugeDigsite"))()
 end)
 
 StopFarm.MouseButton1Click:Connect(function()
