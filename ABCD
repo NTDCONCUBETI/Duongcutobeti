@@ -42,7 +42,7 @@ local function beginCycle()
                         if counter < getgenv().autoDigsiteConfig.UNBROKEN_BLOCK_THRESHOLD then
 
                             local block
-                            for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
+                            for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
                                 if v:IsA("BasePart") then
                                     if (v:GetAttribute("Coord") - (positions[curPos] + Vector3.new(0, depth, 0))).Magnitude == 0 then
                                         block = v
