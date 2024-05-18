@@ -26,17 +26,7 @@ repeat wait() until plr.Character
 repeat wait() until plr.Character:FindFirstChild("HumanoidRootPart")
 repeat wait() until plr.Character:FindFirstChild("Humanoid")
 repeat wait() until workspace:FindFirstChild("__THINGS")
-function Rejoin() 
-	if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
-		Hop()
-	elseif getgenv().Config.AutoRejoin.RejoinMode == "Kick" then
-		game.Players.LocalPlayer:Kick()
-	else
-		while wait(1) do 
-			game:GetService("TeleportService"):Teleport(game.PlaceId, plr)
-		end
-	end
-end
+
 if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 60 end
 if not getgenv().Config.AutoRejoin then getgenv().Config.AutoRejoin = {
 	RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
