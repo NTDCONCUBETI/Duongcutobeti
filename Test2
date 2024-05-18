@@ -873,7 +873,7 @@ if true then
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 5 then 
 				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
-					Rejoin()
+					--Rejoin()
 				end
 			end
 		end
