@@ -1,4 +1,3 @@
-
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
     getgenv().Config = {
@@ -11,13 +10,15 @@ if not getgenv().Config then
         AutoRejoin = {
             RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
             RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
-            RejoinWhenThereIsNothingToFarm = false, -- Will rejoin when there is nothing to farm
+            RejoinWhenThereIsNothingToFarm = true, -- Will rejoin when there is nothing to farm
             RejonWhenFarmBreak = true -- Will rejoin when farm break (recommend to enable)
         },
         SendGemWebhook = "" -- put yout webhook link in here, will notify you when the gem is sent, if there is no webhook, just leave it blank
     }
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
+
 repeat wait() until game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer
 local plr = game.Players.LocalPlayer
@@ -341,7 +342,10 @@ if true then
         workspace.ALWAYS_RENDERING:Destroy()
         
     end)
-
+------ Thay true = false cho dòng dưới sẽ trắng màn hình
+   game:GetService("RunService"):Set3dRenderingEnabled(true)
+    
+    
     function Noclip()
         for i, v in ipairs(plr.Character:GetDescendants()) do
             if v:IsA("BasePart") and v.CanCollide == true then
@@ -529,7 +533,7 @@ if true then
         end
         if getgenv().OrbConnections and getgenv().FireCusFromSv and not getgenv().CoordToPosition then 
             for k,v in getgc() do 
-                if type(v) == "function" and debug.getinfo(v).name == "toWorldCoord" and tostring(getfenv(v).script.Parent) == "AdvancedDigsite" then 
+                if type(v) == "function" and debug.getinfo(v).name == "toWorldCoord" and tostring(getfenv(v).script.Parent) == "Digsite" then 
                     getgenv().CoordToPosition = clonefunction(v)
                     break
                 end
@@ -592,7 +596,7 @@ if true then
     end
     local Task = task.spawn(function() 
         while wait() do 
-            local DigsiteZone = "AdvancedDigsite"
+            local DigsiteZone = "Digsite"
             local ZoneSize = 16
             if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
                 if Level > 128 then 
@@ -707,7 +711,7 @@ if true then
                 --         wait(10)
                 --     end
                 -- end
-                Enter("AdvancedDigsite")
+                Enter("Digsite")
                 wait(10)
                 if BlockAddedEvent then 
                     BlockAddedEvent:Disconnect()
@@ -755,14 +759,14 @@ if true then
     end)
     
     pcall(function() 
-        for k,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite:GetChildren() do 
+        for k,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.Digsite:GetChildren() do 
             if v.Name ~= "Important" then 
                 v:Destroy()
             end
         end
     end)
     pcall(function() 
-        for k,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important:GetChildren() do 
+        for k,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important:GetChildren() do 
             v:ClearAllChildren()
         end
     end)
@@ -793,7 +797,7 @@ if true then
     
     spawn(function() 
         while true do 
-            local state = game:GetService("ReplicatedStorage").Network.Instancing_InvokeCustomFromClient:InvokeServer("AdvancedDigsite","GetState")
+            local state = game:GetService("ReplicatedStorage").Network.Instancing_InvokeCustomFromClient:InvokeServer("Digsite","GetState")
             table.clear(ListBlock)
             table.clear(ListChest)
             
@@ -812,7 +816,7 @@ if true then
     end)
     spawn(function() 
         while wait(120) do 
-            game:GetService("ReplicatedStorage").Network.Instancing_PlayerEnterInstance:InvokeServer("AdvancedDigsite")
+            game:GetService("ReplicatedStorage").Network.Instancing_PlayerEnterInstance:InvokeServer("Digsite")
         end
     end)
     local Level = 50
@@ -827,7 +831,7 @@ if true then
             local StartTime = tick()
             repeat wait()         
                 --print("Diging Chest",v)
-                DigChest(v,"AdvancedDigsite") until not ListChest[k] or tick() - StartTime > 7
+                DigChest(v,"Digsite") until not ListChest[k] or tick() - StartTime > 7
         end
         CheckForStuff()
     end
@@ -839,7 +843,7 @@ if true then
             local StartTime = tick()    
             repeat wait() 
                 TPNormal(CFrame.new(getgenv().CoordToPosition(position)))
-                DigBlock(position,"AdvancedDigsite") until not ListBlock[tostring(position)] or tick() - StartTime > 7
+                DigBlock(position,"Digsite") until not ListBlock[tostring(position)] or tick() - StartTime > 7
         end
     end
     
