@@ -856,7 +856,7 @@ if true then
 			if not LastUpdateDiamond then LastUpdateDiamond = tick() end
 			if not LastDiamond then LastDiamond = plr.leaderstats["\240\159\146\142 Diamonds"].Value end
 			if tick() - LastUpdateDiamond > 60 * 5 then 
-				if math.abs(plr.leaderstats["\240\159\146\142 Diamonds"].Value - LastDiamond) < 1000 then 
+				if math.abs(plr.leaderstats["\240\159\146\142 Diamonds"].Value - LastDiamond) < 100 then 
 					while wait() do Rejoin() end
 				end
 				LastUpdateDiamond = tick()
@@ -873,7 +873,7 @@ if true then
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 5 then 
 				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
-					--Rejoin()
+					Rejoin()
 				end
 			end
 		end
