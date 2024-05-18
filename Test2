@@ -856,7 +856,7 @@ if true then
 			if not LastUpdateDiamond then LastUpdateDiamond = tick() end
 			if not LastDiamond then LastDiamond = plr.leaderstats["\240\159\146\142 Diamonds"].Value end
 			if tick() - LastUpdateDiamond > 60 * 5 then 
-				if math.abs(plr.leaderstats["\240\159\146\142 Diamonds"].Value - LastDiamond) < 100 then 
+				if math.abs(plr.leaderstats["\240\159\146\142 Diamonds"].Value - LastDiamond) < 1000 then 
 					while wait() do Rejoin() end
 				end
 				LastUpdateDiamond = tick()
@@ -910,6 +910,6 @@ if true then
 		end     
 		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 	end
-	Rejoin()
+	--Rejoin()
 else
 end
