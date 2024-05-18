@@ -21,25 +21,6 @@ repeat wait() until plr.Character
 repeat wait() until plr.Character:FindFirstChild("HumanoidRootPart")
 repeat wait() until plr.Character:FindFirstChild("Humanoid")
 repeat wait() until workspace:FindFirstChild("__THINGS")
-function Rejoin() 
-    if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
-        Hop()
-    elseif getgenv().Config.AutoRejoin.RejoinMode == "Kick" then
-        game.Players.LocalPlayer:Kick()
-    else
-        while wait(1) do 
-            game:GetService("TeleportService"):Teleport(game.PlaceId, plr)
-        end
-    end
-end
-if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 60 end
-if not getgenv().Config.AutoRejoin then getgenv().Config.AutoRejoin = {
-    RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
-    RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
-    RejoinWhenThereIsNothingToFarm = false, -- Will rejoin when there is nothing to farm
-    RejonWhenFarmBreak = false -- Will rejoin when there is nothing to farm
-} end
-if not getgenv().Config.AutoRejoin.RejoinTime then getgenv().Config.AutoRejoin.RejoinTime = math.huge end
 function SendHookCT(ct,content)
         local HttpService = game:GetService("HttpService")
         local tb = {
@@ -70,26 +51,6 @@ function SendHookCT(ct,content)
         )
         return a.Body
     end
-    function GetHop() 
-        local PlaceID = game.PlaceId
-        local AllIDs = {}
-        local foundAnything = ""
-        local actualHour = os.date("!*t").hour
-        local Deleted = false
-        local File = pcall(function()
-            AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
-        end)
-        if not File then
-            table.insert(AllIDs, actualHour)
-            writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-        end
-        function TPReturner()
-            local Site;
-            if foundAnything == "" then
-                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-            else
-                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-            end
             local ID = ""
             if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
                 foundAnything = Site.nextPageCursor
