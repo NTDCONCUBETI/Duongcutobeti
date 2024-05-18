@@ -705,12 +705,12 @@ if true then
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
-				-- if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
-				--     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
-				--         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
-				--         wait(10)
-				--     end
-				-- end
+				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
+				     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
+				         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
+				         wait(10)
+				     end
+				 end
 				Enter("Digsite")
 				wait(10)
 				if BlockAddedEvent then 
@@ -726,7 +726,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 1800 then 
+		if tick() - StartTime > 600 then 
 			Rejoin()
 		end
 	end
