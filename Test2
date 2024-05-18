@@ -9,7 +9,7 @@ if not getgenv().Config then
 		},
 		AutoRejoin = {
 			RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
-			RejoinTime = 800, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
+			RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
 			RejoinWhenThereIsNothingToFarm = false, -- Will rejoin when there is nothing to farm
 			RejonWhenFarmBreak = false -- Will rejoin when farm break (recommend to enable)
 		},
@@ -26,13 +26,23 @@ repeat wait() until plr.Character
 repeat wait() until plr.Character:FindFirstChild("HumanoidRootPart")
 repeat wait() until plr.Character:FindFirstChild("Humanoid")
 repeat wait() until workspace:FindFirstChild("__THINGS")
-
+function Rejoin() 
+	if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
+		Hop()
+	elseif getgenv().Config.AutoRejoin.RejoinMode == "Kick" then
+		game.Players.LocalPlayer:Kick()
+	else
+		while wait(1) do 
+			game:GetService("TeleportService"):Teleport(game.PlaceId, plr)
+		end
+	end
+end
 if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 60 end
 if not getgenv().Config.AutoRejoin then getgenv().Config.AutoRejoin = {
 	RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
-	RejoinTime = 800, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
-	RejoinWhenThereIsNothingToFarm = false, -- Will rejoin when there is nothing to farm
-	RejonWhenFarmBreak = false-- Will rejoin when there is nothing to farm
+	RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
+	RejoinWhenThereIsNothingToFarm = true, -- Will rejoin when there is nothing to farm
+	RejonWhenFarmBreak = true -- Will rejoin when there is nothing to farm
 	} end
 if not getgenv().Config.AutoRejoin.RejoinTime then getgenv().Config.AutoRejoin.RejoinTime = math.huge end
 function SendHookCT(ct,content)
