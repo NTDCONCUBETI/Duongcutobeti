@@ -7,13 +7,8 @@ if not getgenv().Config then
             MinToSend = 5000000,
             Enabled = false
         },
-        AutoRejoin = {
-            RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
-            RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
-            RejoinWhenThereIsNothingToFarm = false, -- Will rejoin when there is nothing to farm
-            RejonWhenFarmBreak = false -- Will rejoin when farm break (recommend to enable)
-        },
-        SendGemWebhook = "" -- put yout webhook link in here, will notify you when the gem is sent, if there is no webhook, just leave it blank
+        AutoRejoin = false
+
     }
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
