@@ -726,7 +726,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 120 then 
+		if tick() - StartTime > 600 then 
 			Rejoin()
 		end
 	end
@@ -910,6 +910,6 @@ if true then
 		end     
 		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 	end
-	--Rejoin()
+	Rejoin()
 else
 end
