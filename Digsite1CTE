@@ -603,7 +603,7 @@ if true then
 					if not FarmedCoin then 
 					end
 					Level =  Settings.DigsiteLevel or 3
-					FarmedCoin = false
+					--FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
