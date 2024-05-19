@@ -723,7 +723,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 900 then
+		if tick() - StartTime > 1800 then
 			Rejoin()
 		end
 	end
