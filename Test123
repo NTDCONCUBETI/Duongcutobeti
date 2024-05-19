@@ -1,0 +1,109 @@
+	local ScreenGui = Instance.new("ScreenGui")
+	local Frame = Instance.new("Frame")
+	local Frame_2 = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+
+	--Properties:
+
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.Name = "CTE Sech"
+
+	Frame.Parent = ScreenGui
+	Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BorderSizePixel = 0
+	Frame.Position = UDim2.new(0, 0, 0, -70)
+	Frame.Size = UDim2.new(1, 0, 1, 70)
+
+	Frame_2.Parent = Frame
+	Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_2.BackgroundTransparency = 1.000
+	Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame_2.BorderSizePixel = 0
+	Frame_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame_2.Size = UDim2.new(0.75, 0, 0, 750)
+
+	TextLabel.Parent = Frame_2
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel.Font = Enum.Font.GothamBold
+	TextLabel.Text = "a"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 30.000
+	TextLabel.RichText = true
+
+
+	local TotalHuge = 0
+	spawn(function ()
+		if game.ReplicatedStorage.Network:WaitForChild("Items: Update") and game.ReplicatedStorage.Network:WaitForChild("Item Index: Add") then
+			game.ReplicatedStorage.Network["Items: Update"].OnClientEvent:Connect(function(...)
+				local Username, Data = ...
+				if tostring(Username) ~= game.Players.LocalPlayer.Name then 
+					return
+				end
+				local IsUpdate = Data.set
+
+				if IsUpdate  then
+					if IsUpdate.Misc then
+						for k,v in IsUpdate.Misc do
+							if string.find(v.id,"Shard") then 
+								CurrentShard = v._am
+							end
+						end
+					end
+				end
+			end)
+		end
+		game:GetService("ReplicatedStorage").Network["Item Index: Add"].OnClientEvent:Connect(function(v) 
+			--warn(v)
+			for k,v in v do 
+				for k,v in v do
+					if string.match(v,"Huge") then 
+						TotalHuge = TotalHuge + 1
+					end
+				end
+			end
+		end)
+	end)
+	function format_int(number)
+
+		local i, j, minus, int, fraction = tostring(number):find('([-]?)(%d+)([.]?%d*)')
+
+		-- reverse the int-string and append a comma to all blocks of 3 digits
+		int = int:reverse():gsub("(%d%d%d)", "%1,")
+
+		-- reverse the int-string back remove an optional comma and put the 
+		-- optional minus and fractional part back
+		return minus .. int:reverse():gsub("^,", "") .. fraction
+	end
+	local LastRemote = tick()
+	local NeedTap
+	local StartedLegend
+	local Status = ""
+	local OldDiamond = plr.leaderstats["\240\159\146\142 Diamonds"].Value
+	local TotalMin = 0
+	local TotalSec = 0
+	function disp_time(time)
+		local days = math.floor(time/86400)
+		local hours = math.floor(math.fmod(time, 86400)/3600)
+		local minutes = math.floor(math.fmod(time,3600)/60)
+		local seconds = math.floor(math.fmod(time,60))
+		return string.format("%d:%02d:%02d:%02d",days,hours,minutes,seconds)
+	end
+
+	function SetStatus() 
+		--do return end
+		TextLabel.Text = [[<font color="rgb(255,180,180)">CTE</font> HUB AUTO FISHING ULTRA BOOST FPS
+        Status: <font color="rgb(51, 255, 122)"> ]]..Status..[[ </font>
+        Current Diamonds: <font color="rgb(69, 140, 255)">]]..format_int(plr.leaderstats["\240\159\146\142 Diamonds"].Value)..[[</font>
+        Current Shards: <font color="rgb(137, 41, 255)">]]..format_int(CurrentShard)..[[</font>
+        Diamond Per Mins: <font color="rgb(255, 207, 51)">]]..format_int(math.floor((plr.leaderstats["\240\159\146\142 Diamonds"].Value - OldDiamond) / math.floor((math.max(1,TotalSec/60)))))..[[</font>
+        Huge: <font color="rgb(255,180,180)">]]..TotalHuge..[[</font>
+        Total Time: <font color="rgb(137, 41, 255)">]]..disp_time(TotalSec)..[[</font>
+    ]]
+	end
