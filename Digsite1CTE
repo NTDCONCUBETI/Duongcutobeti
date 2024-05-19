@@ -506,7 +506,7 @@ if true then
 			if game.ReplicatedStorage.Network:FindFirstChild("Instancing_FireCustomFromServer") then 
 				getgenv().FireCusFromSv = game.ReplicatedStorage.Network.Instancing_FireCustomFromServer.OnClientEvent:Connect(function(...) 
 					local name,cmd = ...
-					if name == "AdvancedDigsite" then 
+					if name == "Digsite" then 
 						if cmd == "CreateBlock" then 
 							local name,cmd,Blocktype,none,coord,health = ...
 
