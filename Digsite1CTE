@@ -599,7 +599,7 @@ if true then
 			local DigsiteZone = "Digsite"
 			local ZoneSize = 16
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
-				if Level > 220 then 
+				if Level > 219 then 
  				FarmedCoin = false
 				end
 				if not StoppedTp then 
