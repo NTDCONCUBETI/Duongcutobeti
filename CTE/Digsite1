@@ -600,7 +600,7 @@ if true then
 			local ZoneSize = 16
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
 				if Level > 128 then 
- 				FarmedCoin = false
+					FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
@@ -702,12 +702,12 @@ if true then
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
-				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
-				     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
-				         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
-				         wait(10)
-				     end
-				 end
+				if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
+					if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
+						TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
+						wait(10)
+					end
+				end
 				Enter("Digsite")
 				wait(10)
 				if BlockAddedEvent then 
@@ -866,7 +866,7 @@ if true then
 	local StartFarm = tick()
 	local NoFarm = 0
 	while wait() and tick() - StartFarm < getgenv().Config.AutoRejoin.RejoinTime * 60 do 
-		-- CheckForStuff()
+		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 5 then 
 				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
