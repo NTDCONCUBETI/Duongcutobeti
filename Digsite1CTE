@@ -827,7 +827,7 @@ if true then
 			TPNormal(CFrame.new(getgenv().CoordToPosition(v)))
 			local StartTime = tick()
 			repeat wait()         
-				--print("Diging Chest",v)
+				print("Diging Chest",v)
 				DigChest(v,"Digsite") until not ListChest[k] or tick() - StartTime > 7
 		end
 		CheckForStuff()
