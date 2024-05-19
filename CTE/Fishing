@@ -6,7 +6,7 @@ if not getgenv().Config then
             Gem = {
                 Username = "tvkGem01",
                 MinToSend = 2000000,
-                Enabled = true
+                Enabled = false
             },
             Shard = {
                 Username = "",
