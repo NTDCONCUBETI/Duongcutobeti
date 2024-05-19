@@ -600,10 +600,7 @@ if true then
 			local ZoneSize = 16
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
 				if Level > 128 then 
-					if not FarmedCoin then 
-					end
-					Level =  Settings.DigsiteLevel
-					FarmedCoin = false
+ 				FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
@@ -726,7 +723,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 900 then 
+		if tick() - StartTime > 600 then 
 			Rejoin()
 		end
 	end
