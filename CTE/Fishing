@@ -4,7 +4,7 @@ if not getgenv().Config then
         StandInSecretPlace = false, -- Make your character stand in secret place that dev cant find (CTE ON TOP)
         AutoSendMail = {
             Gem = {
-                Username = "tvkGem01",
+                Username = "",
                 MinToSend = 2000000,
                 Enabled = false
             },
