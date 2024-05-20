@@ -869,7 +869,7 @@ if true then
 	while wait() and tick() - StartFarm < getgenv().Config.AutoRejoin.RejoinTime * 60 do 
 		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
-			if NoFarm > 5 then 
+			if NoFarm > 3 then 
 				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
 					Rejoin()
 				end
