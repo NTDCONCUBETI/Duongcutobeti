@@ -725,8 +725,8 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 300 then
-			GetNearestTeleport()
+		if tick() - StartTime > 120 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.__THINGS.Instances.Digsite.Teleports.Leave.Position)
 		end
 	end
 	task.cancel(Task)
