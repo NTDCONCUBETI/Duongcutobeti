@@ -889,13 +889,9 @@ if true then
 		CheckChest()
 		for i = 1,Level do 
 			FarmBlock(Vector3.new(2,i,2))
-		else
 			FarmBlock(Vector3.new(3,i,2))
-		else
 			FarmBlock(Vector3.new(4,i,2))
-		else
 			FarmBlock(Vector3.new(5,i,2))
-		else
 			FarmBlock(Vector3.new(6,i,2))
 		end
 
