@@ -916,7 +916,39 @@ if true then
 			FarmBlock(Vector3.new(3,Level,Ngang2))
 			Ngang2 = Ngang2 + 3
 		end     
-		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
+		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))  
+
+		CheckChest()
+		for i = 1,Level do 
+			FarmBlock(Vector3.new(4,i,4))
+		end
+
+		local Ngang1 = 4
+		while Ngang1 < ZoneSize do 
+			local i = 1
+			local StartBlock = Vector3.new(Ngang1 - 2,Level,2)
+			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
+				FarmBlock(StartBlock)
+				StartBlock = StartBlock + Vector3.new(i,0,i)
+			end
+			FarmBlock(Vector3.new(Ngang1,Level,3))
+			Ngang1 = Ngang1 + 3
+		end
+		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
+
+		local Ngang2 = 4
+		while Ngang2 < 16 do 
+			local i = 1
+			local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
+			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
+				if ForceNextLevel then break end
+				FarmBlock(StartBlock)
+				StartBlock = StartBlock + Vector3.new(i,0,i)
+			end
+			FarmBlock(Vector3.new(3,Level,Ngang2))
+			Ngang2 = Ngang2 + 3
+		end     
+		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))  
 	end
 	Rejoin()
 else
