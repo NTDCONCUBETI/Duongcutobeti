@@ -871,6 +871,7 @@ if true then
 	while wait() and tick() - StartFarm < getgenv().Config.AutoRejoin.RejoinTime * 60 do 
 		
 		local remainder = (tick() - StartFarm) % 600
+		print(remainder)
 		if remainder == 0 then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.__THINGS.Instances.Digsite.Teleports.Leave.Position)
 			task.wait(10)
