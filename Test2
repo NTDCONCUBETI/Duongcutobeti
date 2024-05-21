@@ -724,7 +724,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 600 then
+		if tick() - StartTime > 300 then
 			GetNearestTeleport()
 		end
 	end
