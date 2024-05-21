@@ -1,3 +1,4 @@
+--Digsite 1
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
 	getgenv().Config = {
@@ -506,7 +507,7 @@ if true then
 			if game.ReplicatedStorage.Network:FindFirstChild("Instancing_FireCustomFromServer") then 
 				getgenv().FireCusFromSv = game.ReplicatedStorage.Network.Instancing_FireCustomFromServer.OnClientEvent:Connect(function(...) 
 					local name,cmd = ...
-					if name == "AdvancedDigsite" then 
+					if name == "Digsite" then 
 						if cmd == "CreateBlock" then 
 							local name,cmd,Blocktype,none,coord,health = ...
 
@@ -599,7 +600,7 @@ if true then
 			local DigsiteZone = "Digsite"
 			local ZoneSize = 16
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
-				if Level > 128 then 
+				if Level > 900 then 
  				FarmedCoin = false
 				end
 				if not StoppedTp then 
@@ -723,8 +724,8 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 600 then 
-			Rejoin()
+		if tick() - StartTime > 600 then
+			GetNearestTeleport()
 		end
 	end
 	task.cancel(Task)
@@ -827,7 +828,7 @@ if true then
 			TPNormal(CFrame.new(getgenv().CoordToPosition(v)))
 			local StartTime = tick()
 			repeat wait()         
-				--print("Diging Chest",v)
+				print("Diging Chest",v)
 				DigChest(v,"Digsite") until not ListChest[k] or tick() - StartTime > 7
 		end
 		CheckForStuff()
@@ -866,9 +867,9 @@ if true then
 	local StartFarm = tick()
 	local NoFarm = 0
 	while wait() and tick() - StartFarm < getgenv().Config.AutoRejoin.RejoinTime * 60 do 
-		-- CheckForStuff()
+		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
-			if NoFarm > 5 then 
+			if NoFarm > 3 then 
 				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
 					Rejoin()
 				end
