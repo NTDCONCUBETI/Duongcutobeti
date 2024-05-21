@@ -30,6 +30,7 @@ repeat wait() until plr.Character:FindFirstChild("Humanoid")
 repeat wait() until workspace:FindFirstChild("__THINGS")
 function Rejoin() 
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.__THINGS.Instances.Digsite.Teleports.Leave.Position)
+	task.wait(10)
 end
 if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 60 end
 if not getgenv().Config.AutoRejoin then getgenv().Config.AutoRejoin = {
