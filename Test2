@@ -885,14 +885,10 @@ if true then
 				end
 			end
 		end
-		Level = Level + 3
+		Level = Level + 999
 		CheckChest()
 		for i = 1,Level do 
 			FarmBlock(Vector3.new(2,i,2))
-			FarmBlock(Vector3.new(3,i,2))
-			FarmBlock(Vector3.new(4,i,2))
-			FarmBlock(Vector3.new(5,i,2))
-			FarmBlock(Vector3.new(6,i,2))
 		end
 
 		local Ngang1 = 4
