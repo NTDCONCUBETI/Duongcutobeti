@@ -1,7 +1,8 @@
+
 getgenv().autoDigsiteConfig = {
 	DIGSITE_RESET_DELAY = 10, -- Amount of time in seconds to wait before starting the script back up after the digsite resets
 	LOAD_DELAY = 5,
-	CHEST_BREAK_DELAY = 0.1, -- Amount of time in seconds to wait before breaking a chest
+	CHEST_BREAK_DELAY = 1, -- Amount of time in seconds to wait before breaking a chest
 	DIG_DEPTH = 60,
 	UNBROKEN_BLOCK_THRESHOLD = 100
 }
@@ -9,23 +10,23 @@ getgenv().autoDigsiteConfig = {
 local digsiteReset = false
 
 local positions = {
-	[1] = Vector3.new(1, 1, 2),
-	[1] = Vector3.new(2, 1, 2),
-	[1] = Vector3.new(3, 1, 2),
-	[1] = Vector3.new(4, 1, 2),
-	[1] = Vector3.new(5, 1, 2),
+	[1] = Vector3.new(10, 1, 10),
+	[1] = Vector3.new(11, 1, 10),
+	[1] = Vector3.new(12, 1, 10),
+	[1] = Vector3.new(13, 1, 10),
+	[1] = Vector3.new(14, 1, 10),
 
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/GoToMap/Gotomap79"))()
 
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/GoToMap/Gotomap30"))()
 local function checkForChests()
-	for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveChests:GetChildren()) do
+	for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveChests:GetChildren()) do
 		if v:IsA("Model") then
 			pcall(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
 				task.wait(getgenv().autoDigsiteConfig.CHEST_BREAK_DELAY)
-				game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("Digsite", "DigChest", v:GetAttribute('Coord'))
+				game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigChest", v:GetAttribute('Coord'))
 				v:Destroy()
 				task.wait()
 			end)
@@ -37,7 +38,7 @@ end
 
 local function beginCycle()
 	for curPos, _ in positions do
-		for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
+		for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
 			if v:IsA("Part") then
 				if (v:GetAttribute("Coord") - positions[curPos]).Magnitude == 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
@@ -48,7 +49,7 @@ local function beginCycle()
 						if counter < getgenv().autoDigsiteConfig.UNBROKEN_BLOCK_THRESHOLD then
 
 							local block
-							for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
+							for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
 								if v:IsA("BasePart") then
 									if (v:GetAttribute("Coord") - (positions[curPos] + Vector3.new(0, depth, 0))).Magnitude == 0 then
 										block = v
@@ -71,7 +72,7 @@ local function beginCycle()
 
 
 					for i = 0, getgenv().autoDigsiteConfig.DIG_DEPTH do
-						checkForChests()
+						checkForChests(i)
 						digBlock(i)
 						task.wait()
 					end
@@ -82,7 +83,7 @@ local function beginCycle()
 	print("Finished Cycle... Digging until reset")
 
 	while not digsiteReset do
-		for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
+		for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
 			if v:IsA("Part") then
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 3, 0)
 
@@ -92,7 +93,7 @@ local function beginCycle()
 					if counter < getgenv().autoDigsiteConfig.UNBROKEN_BLOCK_THRESHOLD then
 
 						local block
-						for _, v2 in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
+						for _, v2 in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren()) do
 							if v2:IsA("BasePart") then
 								if v2 == v then
 									block = v2
@@ -102,10 +103,12 @@ local function beginCycle()
 
 						if block then
 							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = block.CFrame + Vector3.new(0, 3, 0)
-							game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("Digsite", "DigBlock", block:GetAttribute('Coord'))
+							game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("AdvancedDigsite", "DigBlock", block:GetAttribute('Coord'))
 							task.wait()
 							counter = counter + 1
 							digBlock()
+							checkForChests()
+							task.wait()
 						end
 
 					else
@@ -125,7 +128,7 @@ end
 
 
 task.spawn(function()
-	while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren() > 220 do -- MAX WILL BE 220
+	while #game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.AdvancedDigsite.Important.ActiveBlocks:GetChildren() > 336 do -- MAX WILL BE 336
 
 		task.wait()
 	end
