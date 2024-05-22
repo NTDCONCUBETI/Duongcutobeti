@@ -291,7 +291,7 @@ if true then
 
 
 	local PatternFarm = {
-		[tostring(Vector3.new(5,1,2))] = true
+		[tostring(Vector3.new(2,1,2))] = true
 	}
 	local ZoneSize = 16
 
