@@ -2,7 +2,7 @@
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
 	getgenv().Config = {
-		DigsiteStartLevel = 60,        
+		DigsiteStartLevel = 10,        
 		AutoSendGem = {
 			AccName = "", -- Put your account u want to sent gem to here
 			MinToSend = 5000000,
@@ -40,7 +40,7 @@ function Rejoin()
 		end
 	end
 end
-if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 60 end
+if not getgenv().DigsiteStartLevel then getgenv().DigsiteStartLevel = 10 end
 if not getgenv().Config.AutoRejoin then getgenv().Config.AutoRejoin = {
 	RejoinMode = "Hop", -- Mode: Rejoin, Hop, Kick (rejon mean same server, hop = new server, Kick = Kick you out the game for the tool auto rejoin (use when u are using private server))
 	RejoinTime = 80, -- Will auto rejoin in 80 min (if you dont want auto rejoin just left it false (ex: AutoRejoin = false) recommended putting 80)
@@ -726,7 +726,7 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 180000 then
+		if tick() - StartTime > 1800 then
 			Rejoin()
 		end
 	end
