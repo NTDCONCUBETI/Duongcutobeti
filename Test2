@@ -12,11 +12,11 @@ task.wait(30)
 local digsiteReset = false
 
 local positions = {
-    [1] = Vector3.new(10, 1, 10),
-    [1] = Vector3.new(11, 1, 10),
-    [1] = Vector3.new(12, 1, 10),
-    [1] = Vector3.new(13, 1, 10),
-    [1] = Vector3.new(14, 1, 10),
+    [1] = Vector3.new(1, 1, 8),
+    [1] = Vector3.new(2, 1, 8),
+    [1] = Vector3.new(3, 1, 8),
+    [1] = Vector3.new(4, 1, 8),
+    [1] = Vector3.new(5, 1, 8),
 
 }
 
