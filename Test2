@@ -6,6 +6,7 @@ getgenv().autoDigsiteConfig = {
     UNBROKEN_BLOCK_THRESHOLD = 100
 }
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/GoToMap/Gotomap79"))()
 local digsiteReset = false
 
 local positions = {
