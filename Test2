@@ -460,7 +460,7 @@ if true then
 	local function GetCoordId(Block) 
 		if Block:GetAttribute("Coord") then 
 			local Coord = Block:GetAttribute("Coord")
-			return Coord.X + Coord.Y * 10 + Coord.Z * 1000
+			return Coord.X + Coord.Y * 50 + Coord.Z * 5000
 		end
 	end
 	local SetupFolder
