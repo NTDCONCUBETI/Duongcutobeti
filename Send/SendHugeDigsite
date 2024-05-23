@@ -15,4 +15,4 @@ for i, v in pairs(pet) do
     end
 end
 
-task.wait(10)
+task.wait(30)
