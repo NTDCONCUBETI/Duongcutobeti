@@ -664,7 +664,7 @@ if true then
 									TPNormal(BlockFolder:FindFirstChild(tostring(position)).CFrame)
 									DigBlock(BlockFolder[tostring(position)]:GetAttribute("Coord"),DigsiteZone)
 								end
-								if tick() - StartTime > 20 then 
+								if tick() - StartTime > 5 then 
 									return
 								end
 							until not BlockFolder:FindFirstChild(tostring(position)) or not BlockFolder.Parent
