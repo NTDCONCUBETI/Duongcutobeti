@@ -872,7 +872,7 @@ if true then
 		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 3 then 
-				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
+				if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
 					Rejoin()
 				end
 			end
