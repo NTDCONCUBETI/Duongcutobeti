@@ -293,11 +293,11 @@ if true then
 	local PatternFarm = {
 		[tostring(Vector3.new(2,1,2))] = true
 	}
-	local ZoneSize = 16
+	local ZoneSize = 8
 
 	local Ngang1 = 4
 
-	while Ngang1 < 16 do 
+	while Ngang1 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(Ngang1 - 2,1,2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -306,20 +306,10 @@ if true then
 		end
 		PatternFarm[tostring(Vector3.new(Ngang1,1,3))] = true
 		Ngang1 = Ngang1 + 3
-		PatternFarm[tostring(Vector3.new(Ngang1,1,4))] = true
-		Ngang1 = Ngang1 + 4
-		PatternFarm[tostring(Vector3.new(Ngang1,1,5))] = true
-		Ngang1 = Ngang1 + 5
-		PatternFarm[tostring(Vector3.new(Ngang1,1,6))] = true
-		Ngang1 = Ngang1 + 6
 	end
 	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,2))] = true
-	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,3))] = true
-	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,4))] = true
-	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,5))] = true
-	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,6))] = true
 	local Ngang2 = 4
-	while Ngang2 < 16 do 
+	while Ngang2 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(2,1,Ngang2 - 2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -328,18 +318,8 @@ if true then
 		end
 		PatternFarm[tostring(Vector3.new(3,1,Ngang2))] = true
 		Ngang2 = Ngang2 + 3
-		PatternFarm[tostring(Vector3.new(4,1,Ngang2))] = true
-		Ngang2 = Ngang2 + 4
-		PatternFarm[tostring(Vector3.new(5,1,Ngang2))] = true
-		Ngang2 = Ngang2 + 5
-		PatternFarm[tostring(Vector3.new(6,1,Ngang2))] = true
-		Ngang2 = Ngang2 + 6
 	end     
 	PatternFarm[tostring(Vector3.new(2,1,ZoneSize - 1))] = true
-	PatternFarm[tostring(Vector3.new(3,1,ZoneSize - 1))] = true
-	PatternFarm[tostring(Vector3.new(4,1,ZoneSize - 1))] = true
-	PatternFarm[tostring(Vector3.new(5,1,ZoneSize - 1))] = true
-	PatternFarm[tostring(Vector3.new(6,1,ZoneSize - 1))] = true
 
 
 
@@ -480,7 +460,7 @@ if true then
 	local function GetCoordId(Block) 
 		if Block:GetAttribute("Coord") then 
 			local Coord = Block:GetAttribute("Coord")
-			return Coord.X + Coord.Y * 50 + Coord.Z * 5000
+			return Coord.X + Coord.Y * 10 + Coord.Z * 1000
 		end
 	end
 	local SetupFolder
@@ -620,7 +600,7 @@ if true then
 	local Task = task.spawn(function() 
 		while wait() do 
 			local DigsiteZone = "Digsite"
-			local ZoneSize = 16
+			local ZoneSize = 8
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
 				if Level > 900 then 
  				FarmedCoin = false
@@ -708,22 +688,11 @@ if true then
 						end
 						FarmBlock(Vector3.new(Ngang1,Level,3))
 						Ngang1 = Ngang1 + 3
-						FarmBlock(Vector3.new(Ngang1,Level,4))
-						Ngang1 = Ngang1 + 4
-						FarmBlock(Vector3.new(Ngang1,Level,5))
-						Ngang1 = Ngang1 + 5
-						FarmBlock(Vector3.new(Ngang1,Level,6))
-						Ngang1 = Ngang1 + 6
-
 					end
 					FarmBlock(Vector3.new(ZoneSize-1,Level,2))
-					FarmBlock(Vector3.new(ZoneSize-1,Level,3))
-					FarmBlock(Vector3.new(ZoneSize-1,Level,4))
-					FarmBlock(Vector3.new(ZoneSize-1,Level,5))
-					FarmBlock(Vector3.new(ZoneSize-1,Level,6))
 
 					local Ngang2 = 4
-					while Ngang2 < 16 do 
+					while Ngang2 < 8 do 
 						local i = 1
 						local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 						while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -733,18 +702,8 @@ if true then
 						end
 						FarmBlock(Vector3.new(3,Level,Ngang2))
 						Ngang2 = Ngang2 + 3
-						FarmBlock(Vector3.new(4,Level,Ngang2))
-						Ngang2 = Ngang2 + 4
-						FarmBlock(Vector3.new(5,Level,Ngang2))
-						Ngang2 = Ngang2 + 5
-						FarmBlock(Vector3.new(6,Level,Ngang2))
-						Ngang2 = Ngang2 + 6
 					end     
-					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))     
-					FarmBlock(Vector3.new(3,Level,ZoneSize - 1)) 
-					FarmBlock(Vector3.new(4,Level,ZoneSize - 1)) 
-					FarmBlock(Vector3.new(5,Level,ZoneSize - 1)) 
-					FarmBlock(Vector3.new(6,Level,ZoneSize - 1)) 
+					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
 				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
@@ -906,7 +865,7 @@ if true then
 			end
 		end)
 	end
-	local ZoneSize = 16
+	local ZoneSize = 8
 	local Level = getgenv().DigsiteStartLevel
 	local StartFarm = tick()
 	local NoFarm = 0
@@ -914,7 +873,7 @@ if true then
 		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
 			if NoFarm > 3 then 
-				if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then
+				if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
 					Rejoin()
 				end
 			end
@@ -935,21 +894,11 @@ if true then
 			end
 			FarmBlock(Vector3.new(Ngang1,Level,3))
 			Ngang1 = Ngang1 + 3
-			FarmBlock(Vector3.new(Ngang1,Level,4))
-			Ngang1 = Ngang1 + 4
-			FarmBlock(Vector3.new(Ngang1,Level,5))
-			Ngang1 = Ngang1 + 5
-			FarmBlock(Vector3.new(Ngang1,Level,6))
-			Ngang1 = Ngang1 + 6
 		end
 		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
-		FarmBlock(Vector3.new(ZoneSize-1,Level,3))
-		FarmBlock(Vector3.new(ZoneSize-1,Level,4))
-		FarmBlock(Vector3.new(ZoneSize-1,Level,5))
-		FarmBlock(Vector3.new(ZoneSize-1,Level,6))
 
 		local Ngang2 = 4
-		while Ngang2 < 16 do 
+		while Ngang2 < 8 do 
 			local i = 1
 			local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -959,18 +908,8 @@ if true then
 			end
 			FarmBlock(Vector3.new(3,Level,Ngang2))
 			Ngang2 = Ngang2 + 3
-			FarmBlock(Vector3.new(4,Level,Ngang2))
-			Ngang2 = Ngang2 + 4
-			FarmBlock(Vector3.new(5,Level,Ngang2))
-			Ngang2 = Ngang2 + 5
-			FarmBlock(Vector3.new(6,Level,Ngang2))
-			Ngang2 = Ngang2 + 6
 		end     
-		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))
-		FarmBlock(Vector3.new(3,Level,ZoneSize - 1)) 
-		FarmBlock(Vector3.new(4,Level,ZoneSize - 1)) 
-		FarmBlock(Vector3.new(5,Level,ZoneSize - 1)) 
-		FarmBlock(Vector3.new(6,Level,ZoneSize - 1)) 
+		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 	end
 	Rejoin()
 else
