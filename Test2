@@ -306,6 +306,12 @@ if true then
 		end
 		PatternFarm[tostring(Vector3.new(Ngang1,1,3))] = true
 		Ngang1 = Ngang1 + 3
+		PatternFarm[tostring(Vector3.new(Ngang1,1,4))] = true
+		Ngang1 = Ngang1 + 4
+		PatternFarm[tostring(Vector3.new(Ngang1,1,5))] = true
+		Ngang1 = Ngang1 + 5
+		PatternFarm[tostring(Vector3.new(Ngang1,1,6))] = true
+		Ngang1 = Ngang1 + 6
 	end
 	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,2))] = true
 	local Ngang2 = 4
@@ -318,6 +324,12 @@ if true then
 		end
 		PatternFarm[tostring(Vector3.new(3,1,Ngang2))] = true
 		Ngang2 = Ngang2 + 3
+		PatternFarm[tostring(Vector3.new(4,1,Ngang2))] = true
+		Ngang2 = Ngang2 + 4
+		PatternFarm[tostring(Vector3.new(5,1,Ngang2))] = true
+		Ngang2 = Ngang2 + 5
+		PatternFarm[tostring(Vector3.new(6,1,Ngang2))] = true
+		Ngang2 = Ngang2 + 6
 	end     
 	PatternFarm[tostring(Vector3.new(2,1,ZoneSize - 1))] = true
 
@@ -688,6 +700,13 @@ if true then
 						end
 						FarmBlock(Vector3.new(Ngang1,Level,3))
 						Ngang1 = Ngang1 + 3
+						FarmBlock(Vector3.new(Ngang1,Level,4))
+						Ngang1 = Ngang1 + 4
+						FarmBlock(Vector3.new(Ngang1,Level,5))
+						Ngang1 = Ngang1 + 5
+						FarmBlock(Vector3.new(Ngang1,Level,6))
+						Ngang1 = Ngang1 + 6
+
 					end
 					FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
@@ -702,6 +721,12 @@ if true then
 						end
 						FarmBlock(Vector3.new(3,Level,Ngang2))
 						Ngang2 = Ngang2 + 3
+						FarmBlock(Vector3.new(4,Level,Ngang2))
+						Ngang2 = Ngang2 + 4
+						FarmBlock(Vector3.new(5,Level,Ngang2))
+						Ngang2 = Ngang2 + 5
+						FarmBlock(Vector3.new(6,Level,Ngang2))
+						Ngang2 = Ngang2 + 6
 					end     
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
@@ -894,6 +919,12 @@ if true then
 			end
 			FarmBlock(Vector3.new(Ngang1,Level,3))
 			Ngang1 = Ngang1 + 3
+			FarmBlock(Vector3.new(Ngang1,Level,4))
+			Ngang1 = Ngang1 + 4
+			FarmBlock(Vector3.new(Ngang1,Level,5))
+			Ngang1 = Ngang1 + 5
+			FarmBlock(Vector3.new(Ngang1,Level,6))
+			Ngang1 = Ngang1 + 6
 		end
 		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
@@ -908,6 +939,12 @@ if true then
 			end
 			FarmBlock(Vector3.new(3,Level,Ngang2))
 			Ngang2 = Ngang2 + 3
+			FarmBlock(Vector3.new(4,Level,Ngang2))
+			Ngang2 = Ngang2 + 4
+			FarmBlock(Vector3.new(5,Level,Ngang2))
+			Ngang2 = Ngang2 + 5
+			FarmBlock(Vector3.new(6,Level,Ngang2))
+			Ngang2 = Ngang2 + 6
 		end     
 		FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 	end
