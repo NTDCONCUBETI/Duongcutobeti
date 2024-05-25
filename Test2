@@ -2,6 +2,7 @@
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
 	getgenv().Config = {
+   		CHEST_BREAK_DELAY = 1,
 		DigsiteStartLevel = 60,        
 		AutoSendGem = {
 			AccName = "", -- Put your account u want to sent gem to here
@@ -634,20 +635,20 @@ if true then
 					else
 
 					end
-					local function CheckChest() 
-						if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests end) then 
-							local ChestFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests
-							for k,v in ChestFolder:GetChildren() do 
-								repeat wait() 
-									getgenv().noclip = true
-									if v.Parent and v.PrimaryPart then 
-										TPNormal(v.PrimaryPart.CFrame)
-										DigChest(v:GetAttribute("Coord"),DigsiteZone)
-									end
-								until not v.Parent or not ChestFolder.Parent or not pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests end)
-							end
-						end
+					local function checkForChests()
+    					for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveChests:GetChildren()) do
+    					    if v:IsA("Model") then
+  					          pcall(function()
+    					            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
+         					       task.wait(getgenv().autoDigsiteConfig.CHEST_BREAK_DELAY)
+         					       game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("Digsite", "DigChest", v:GetAttribute('Coord'))
+     					           v:Destroy()
+      					          task.wait()
+  					          end)
+ 					       end
+ 					   end
 					end
+
 					local ForceNextLevel 
 					local function FarmBlock(position) 
 						getgenv().FarmedABlock = true
