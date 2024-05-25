@@ -1,3 +1,4 @@
+--Digsite 1
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
 	getgenv().Config = {
@@ -16,6 +17,8 @@ if not getgenv().Config then
 		SendGemWebhook = "" -- put yout webhook link in here, will notify you when the gem is sent, if there is no webhook, just leave it blank
 	}
 end
+
+
 
 
 
@@ -290,11 +293,11 @@ if true then
 	local PatternFarm = {
 		[tostring(Vector3.new(2,1,2))] = true
 	}
-	local ZoneSize = 16
+	local ZoneSize = 8
 
 	local Ngang1 = 4
 
-	while Ngang1 < 16 do 
+	while Ngang1 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(Ngang1 - 2,1,2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -306,7 +309,7 @@ if true then
 	end
 	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,2))] = true
 	local Ngang2 = 4
-	while Ngang2 < 16 do 
+	while Ngang2 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(2,1,Ngang2 - 2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -597,10 +600,10 @@ if true then
 	local Task = task.spawn(function() 
 		while wait() do 
 			local DigsiteZone = "Digsite"
-			local ZoneSize = 16
+			local ZoneSize = 8
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
-				if Level > 128 then 
-					FarmedCoin = false
+				if Level > 900 then 
+ 				FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
@@ -649,6 +652,7 @@ if true then
 					local function FarmBlock(position) 
 						getgenv().FarmedABlock = true
 						CheckChest()
+						CheckForStuff()
 						if BlockFolder:FindFirstChild(tostring(position)) then 
 							if BlockFolder[tostring(position)].BrickColor == BrickColor.new("Really black") then ForceNextLevel = true return end
 							getgenv().noclip = true
@@ -660,7 +664,7 @@ if true then
 									TPNormal(BlockFolder:FindFirstChild(tostring(position)).CFrame)
 									DigBlock(BlockFolder[tostring(position)]:GetAttribute("Coord"),DigsiteZone)
 								end
-								if tick() - StartTime > 20 then 
+								if tick() - StartTime > 5 then 
 									return
 								end
 							until not BlockFolder:FindFirstChild(tostring(position)) or not BlockFolder.Parent
@@ -688,7 +692,7 @@ if true then
 					FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
 					local Ngang2 = 4
-					while Ngang2 < 16 do 
+					while Ngang2 < 8 do 
 						local i = 1
 						local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 						while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -702,12 +706,12 @@ if true then
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
-				if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
-					if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
-						TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
-						wait(10)
-					end
-				end
+				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
+				     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
+				         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
+				         wait(10)
+				     end
+				 end
 				Enter("Digsite")
 				wait(10)
 				if BlockAddedEvent then 
@@ -861,15 +865,15 @@ if true then
 			end
 		end)
 	end
-	local ZoneSize = 16
+	local ZoneSize = 8
 	local Level = getgenv().DigsiteStartLevel
 	local StartFarm = tick()
 	local NoFarm = 0
 	while wait() and tick() - StartFarm < getgenv().Config.AutoRejoin.RejoinTime * 60 do 
 		CheckForStuff()
 		if Level >= 220 then Level = getgenv().DigsiteStartLevel NoFarm = NoFarm + 1
-			if NoFarm > 5 then 
-				if getgenv().Config.AutoRejoin.RejoinMode == "RejoinWhenThereIsNothingToFarm" then 
+			if NoFarm > 3 then 
+				if getgenv().Config.AutoRejoin.RejoinMode == "Hop" then 
 					Rejoin()
 				end
 			end
@@ -894,7 +898,7 @@ if true then
 		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
 		local Ngang2 = 4
-		while Ngang2 < 16 do 
+		while Ngang2 < 8 do 
 			local i = 1
 			local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
