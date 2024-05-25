@@ -824,7 +824,7 @@ if true then
 
 	local function GetCoordId(Block) 
 		local Coord = Block
-		return Coord.X + Coord.Y * 10 + Coord.Z * 1000
+		return Coord.X + Coord.Y * 50 + Coord.Z * 5000
 	end
 	function CheckChest() 
 		for k,v in ListChest do 
@@ -832,7 +832,7 @@ if true then
 			local StartTime = tick()
 			repeat wait()         
 				print("Diging Chest",v)
-				DigChest(v,"Digsite") until not ListChest[k] or tick() - StartTime > 7
+				DigChest(v,"Digsite") until not ListChest[k] or tick() - StartTime > 20
 		end
 		CheckForStuff()
 	end
@@ -844,7 +844,7 @@ if true then
 			local StartTime = tick()    
 			repeat wait() 
 				TPNormal(CFrame.new(getgenv().CoordToPosition(position)))
-				DigBlock(position,"Digsite") until not ListBlock[tostring(position)] or tick() - StartTime > 7
+				DigBlock(position,"Digsite") until not ListBlock[tostring(position)] or tick() - StartTime > 20
 		end
 	end
 
