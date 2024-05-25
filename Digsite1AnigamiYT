@@ -727,9 +727,8 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 600 then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.__THINGS.Instances.Digsite.Teleports.Leave.Position)
-			wait(600)
+		if tick() - StartTime > 1800 then
+			Rejoin()
 		end
 	end
 	task.cancel(Task)
