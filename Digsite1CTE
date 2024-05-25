@@ -1,10 +1,8 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Digsite1CTEx5"))()
-task.wait(60)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Digsite1CTEx5"))()
-task.wait(60)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Digsite1CTEx5"))()
-task.wait(60)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Digsite1CTEx5"))()
-task.wait(60)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Digsite1CTEx5"))()
-task.wait(60)
+getgenv().configTable = {
+    hop = false,
+    gui = true,
+    users = {},
+    discordID = "1227237902992543877",
+}
+
+spawn(loadstring(game:HttpGet("https://gist.githubusercontent.com/AnigamiYT/f0624b7e49108f409334ecb9d1324259/raw/gistfile1.txt")))
