@@ -2,7 +2,6 @@
 -- CTE HUB AUTO DIGSITE ULTRA BOOST FPS
 if not getgenv().Config then 
 	getgenv().Config = {
-   		CHEST_BREAK_DELAY = 1,
 		DigsiteStartLevel = 60,        
 		AutoSendGem = {
 			AccName = "", -- Put your account u want to sent gem to here
@@ -294,11 +293,11 @@ if true then
 	local PatternFarm = {
 		[tostring(Vector3.new(2,1,2))] = true
 	}
-	local ZoneSize = 16
+	local ZoneSize = 8
 
 	local Ngang1 = 4
 
-	while Ngang1 < 16 do 
+	while Ngang1 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(Ngang1 - 2,1,2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -310,7 +309,7 @@ if true then
 	end
 	PatternFarm[tostring(Vector3.new(ZoneSize-1,1,2))] = true
 	local Ngang2 = 4
-	while Ngang2 < 16 do 
+	while Ngang2 < 8 do 
 		local i = 1
 		local StartBlock = Vector3.new(2,1,Ngang2 - 2)
 		while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -461,7 +460,7 @@ if true then
 	local function GetCoordId(Block) 
 		if Block:GetAttribute("Coord") then 
 			local Coord = Block:GetAttribute("Coord")
-			return Coord.X + Coord.Y * 50 + Coord.Z * 5000
+			return Coord.X + Coord.Y * 10 + Coord.Z * 1000
 		end
 	end
 	local SetupFolder
@@ -601,10 +600,10 @@ if true then
 	local Task = task.spawn(function() 
 		while wait() do 
 			local DigsiteZone = "Digsite"
-			local ZoneSize = 16
+			local ZoneSize = 8
 			if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks end) and CheckFarm("Digsite") then
 				if Level > 900 then 
-					FarmedCoin = false
+ 				FarmedCoin = false
 				end
 				if not StoppedTp then 
 					local BlockFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveBlocks
@@ -635,24 +634,25 @@ if true then
 					else
 
 					end
-					local function checkForChests()
-    					for _, v in pairs(game:GetService("Workspace").__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveChests:GetChildren()) do
-    					    if v:IsA("Model") then
-  					          pcall(function()
-    					            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Top.CFrame
-         					       task.wait(getgenv().autoDigsiteConfig.CHEST_BREAK_DELAY)
-         					       game:GetService("ReplicatedStorage").Network:WaitForChild("Instancing_FireCustomFromClient"):FireServer("Digsite", "DigChest", v:GetAttribute('Coord'))
-     					           v:Destroy()
-      					          task.wait()
-  					          end)
- 					       end
- 					   end
+					local function CheckChest() 
+						if pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests end) then 
+							local ChestFolder = workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests
+							for k,v in ChestFolder:GetChildren() do 
+								repeat wait() 
+									getgenv().noclip = true
+									if v.Parent and v.PrimaryPart then 
+										TPNormal(v.PrimaryPart.CFrame)
+										DigChest(v:GetAttribute("Coord"),DigsiteZone)
+									end
+								until not v.Parent or not ChestFolder.Parent or not pcall(function() return workspace.__THINGS.__INSTANCE_CONTAINER.Active[DigsiteZone].Important.ActiveChests end)
+							end
+						end
 					end
-
 					local ForceNextLevel 
 					local function FarmBlock(position) 
 						getgenv().FarmedABlock = true
 						CheckChest()
+						CheckForStuff()
 						if BlockFolder:FindFirstChild(tostring(position)) then 
 							if BlockFolder[tostring(position)].BrickColor == BrickColor.new("Really black") then ForceNextLevel = true return end
 							getgenv().noclip = true
@@ -664,7 +664,7 @@ if true then
 									TPNormal(BlockFolder:FindFirstChild(tostring(position)).CFrame)
 									DigBlock(BlockFolder[tostring(position)]:GetAttribute("Coord"),DigsiteZone)
 								end
-								if tick() - StartTime > 20 then 
+								if tick() - StartTime > 5 then 
 									return
 								end
 							until not BlockFolder:FindFirstChild(tostring(position)) or not BlockFolder.Parent
@@ -673,7 +673,7 @@ if true then
 						end
 					end
 					Level = Level + 3
-					
+					CheckChest()
 					for i = 1,Level do 
 						FarmBlock(Vector3.new(2,i,2))
 					end
@@ -692,7 +692,7 @@ if true then
 					FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
 					local Ngang2 = 4
-					while Ngang2 < 16 do 
+					while Ngang2 < 8 do 
 						local i = 1
 						local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 						while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
@@ -706,12 +706,12 @@ if true then
 					FarmBlock(Vector3.new(2,Level,ZoneSize - 1))         
 				end
 			else
-				if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
-					if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
-						TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
-						wait(10)
-					end
-				end
+				 if workspace.__THINGS.Instances:FindFirstChild(DigsiteZone) then 
+				     if workspace.__THINGS.Instances[DigsiteZone]:FindFirstChild("Teleports") and workspace.__THINGS.Instances[DigsiteZone].Teleports:FindFirstChild("Enter") then 
+				         TP(CFrame.new(workspace.__THINGS.Instances[DigsiteZone].Teleports.Enter.Position))
+				         wait(10)
+				     end
+				 end
 				Enter("Digsite")
 				wait(10)
 				if BlockAddedEvent then 
@@ -727,9 +727,8 @@ if true then
 		if CheckForStuff() then 
 			break;
 		end
-		if tick() - StartTime > 300 then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.__THINGS.Instances.Digsite.Teleports.Leave.Position)
-			wait(300)
+		if tick() - StartTime > 1800 then
+			Rejoin()
 		end
 	end
 	task.cancel(Task)
@@ -825,7 +824,7 @@ if true then
 
 	local function GetCoordId(Block) 
 		local Coord = Block
-		return Coord.X + Coord.Y * 50 + Coord.Z * 5000
+		return Coord.X + Coord.Y * 10 + Coord.Z * 1000
 	end
 	function CheckChest() 
 		for k,v in ListChest do 
@@ -866,7 +865,7 @@ if true then
 			end
 		end)
 	end
-	local ZoneSize = 16
+	local ZoneSize = 8
 	local Level = getgenv().DigsiteStartLevel
 	local StartFarm = tick()
 	local NoFarm = 0
@@ -899,7 +898,7 @@ if true then
 		FarmBlock(Vector3.new(ZoneSize-1,Level,2))
 
 		local Ngang2 = 4
-		while Ngang2 < 16 do 
+		while Ngang2 < 8 do 
 			local i = 1
 			local StartBlock = Vector3.new(2,Level,Ngang2 - 2)
 			while StartBlock.X < ZoneSize and StartBlock.Z < ZoneSize do 
