@@ -235,20 +235,9 @@ if game.PlaceId ~= 14082129854 then
 	
 	--cubi: bay den cong vao eggIslan4, co check loi
 	spawn(function()
-		while true do wait()
-			local a,b = pcall(function()
-				--cubi: bay den cong vao eggIslan4
-				plr.Character.HumanoidRootPart.CFrame = workspace.Lifts.TimeFactory.Area.BasePart.CFrame * CFrame.new(0,5,0)
-				wait(2)
-				if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
-					-- Cubi: Click Start, de vao map
-					click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
-				else
-					plr.Character.HumanoidRootPart.CFrame = workspace.TimeFactory.Area.BasePart.CFrame * CFrame.new(0,5,20)
-				end
-			end)
-			print(a,b)
-		end
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
+		wait(3)
+		click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
 	end)
 	
 
