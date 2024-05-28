@@ -1,4 +1,6 @@
-
+wait(5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMapTTD"))()
 if game.PlaceId ~= 14082129854 then 
 	repeat wait() until game.Players
 	repeat wait() until game.Players.LocalPlayer
@@ -232,14 +234,23 @@ if game.PlaceId ~= 14082129854 then
 	until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
 	game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame'):Destroy()
 	]]
-	
+
 	--cubi: bay den cong vao eggIslan4, co check loi
 	spawn(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
-		wait(3)
-		click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
+		while true do wait()
+			local a,b = pcall(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
+				wait(2)
+				if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
+					click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
+				else
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position) * CFrame.new(0,5,20)
+				end
+			end)
+			print(a,b)
+		end
 	end)
-	
+
 
 else
 	repeat wait() until game.Players
@@ -278,7 +289,7 @@ else
 				if tostring(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3) == '1, 0, 0' then
 					firesignal(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.Activated)
 				end
-				
+
 				-- Cubi: Check Play Again
 				if getstatusbtn() then
 					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
@@ -305,5 +316,5 @@ else
 			mainpart = v
 		end
 	end
-	
+
 end
