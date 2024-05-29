@@ -292,7 +292,7 @@ else
 				if getstatusbtn() then
 					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
 					wait(.2)
-					wait(5)
+					wait(25)
 				else
 					click(game:GetService("Players").LocalPlayer.PlayerGui.VotingFrame.VoteFrame.VoteMainFrame.MainFrame.Easy.Vote)
 				end
