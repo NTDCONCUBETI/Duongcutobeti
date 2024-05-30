@@ -232,10 +232,9 @@ if game.PlaceId ~= 14082129854 then
 	until getupvalues(a.Changed)[1]._data.Currencies.Eggs_Easter2024 < 400
 	game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame'):Destroy()
 	]]
-
-	--cubi: bay den cong vao eggIslan4, co check loi
 	game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = true
-	wait(1)
+	--cubi: bay den cong vao eggIslan4, co check loi
+
 	if game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible == true then
 		repeat wait()
 			pcall(function()
