@@ -288,7 +288,7 @@ if game.PlaceId ~= 14082129854 then
 			end
 			wait(1)
 		--end)
-	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false --Thông báo không đủ ĐỒng hồ
+	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == true --Thông báo không đủ ĐỒng hồ
 	
 	if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'enough') then ----- Bấm ok để không đủ đồng hồ
 		local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
