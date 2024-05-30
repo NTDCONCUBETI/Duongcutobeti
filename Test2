@@ -234,8 +234,7 @@ if game.PlaceId ~= 14082129854 then
 	]]
 
 	--cubi: bay den cong vao eggIslan4, co check loi
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	wait(3)
+
 	function clickframe(a)
 		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
 		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
@@ -291,7 +290,7 @@ if game.PlaceId ~= 14082129854 then
 			wait(1)
 		end)
 	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false
-	game:GetService("Players").LocalPlayer.PlayerGui.MainFrames:FindFirstChild('NotificationFrame'):Destroy()
+
 	spawn(function()
 		while true do wait()
 			local a,b = pcall(function()
