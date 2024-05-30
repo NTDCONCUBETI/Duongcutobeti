@@ -252,7 +252,7 @@ if game.PlaceId ~= 14082129854 then
 		return false
 	end 
 	repeat wait()
-		pcall(function()
+		--pcall(function()
 			if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
 
 				local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
@@ -287,7 +287,7 @@ if game.PlaceId ~= 14082129854 then
 				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
 			end
 			wait(1)
-		end)
+		--end)
 	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false --Thông báo không đủ ĐỒng hồ
 	
 	if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'enough') then ----- Bấm ok để không đủ đồng hồ
