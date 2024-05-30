@@ -285,26 +285,33 @@ if game.PlaceId ~= 14082129854 then
 				local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
 				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,true,btnOK,1)
 				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
-
 			end
 			wait(1)
 		end)
-	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false
+	until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false --Thông báo không đủ ĐỒng hồ
+	
+	if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'enough') then ----- Bấm ok để không đủ đồng hồ
+		local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,true,btnOK,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
+	end
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = false -- Đóng bảng shop
+	
+	while true do wait()
+		local a,b = pcall(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
+			wait(2)
+			if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
+				click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
+			else
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position) * CFrame.new(0,5,20)
+			end
+		end)
+		print(a,b)
+	end
+	
 
-	spawn(function()
-		while true do wait()
-			local a,b = pcall(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
-				wait(2)
-				if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
-					click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
-				else
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position) * CFrame.new(0,5,20)
-				end
-			end)
-			print(a,b)
-		end
-	end)
 
 
 else
