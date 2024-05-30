@@ -7,9 +7,9 @@ end
 function clickyyes()
 	if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible == true then
 		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'exchange') then
-			
+
 			local btnYES = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.YesButton.Btn
-			
+
 			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnYES.AbsolutePosition.X+btnYES.AbsoluteSize.X-30,btnYES.AbsolutePosition.Y+60,0,true,btnYES,1)
 			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnYES.AbsolutePosition.X+btnYES.AbsoluteSize.X-30,btnYES.AbsolutePosition.Y+60,0,false,btnYES,1)
 		end
@@ -18,6 +18,14 @@ function clickyyes()
 end 
 repeat wait()
 	pcall(function()
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+
+			local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+		end
+		wait(1)
 		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = true
 		wait(1) -- Để tắt bảng Fluxu
 		clickframe(game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.TopBar.MenuButtons.Shop.SwitchButton)
@@ -25,16 +33,25 @@ repeat wait()
 		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.ShopFrame4.Visible = false
 		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.EventCrate.Visible = false
 		wait(1)
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+
+			local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+		end
+		wait(1)
 		clickframe(game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.ShopFrame5.Gems1)
 		wait(1)
 		clickyyes()
 		wait(2)
+
 		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Success') then
 			local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
 			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,true,btnOK,1)
 			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
-		
+
 		end
 		wait(1)
-		end)
+	end)
 until game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Visible == false
