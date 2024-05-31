@@ -1,15 +1,19 @@
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Chat").Enabled = false
-game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
-game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu codex
+
 for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
 	if v:IsA("ScreenGui") then
 		v.Enabled = false
 	end
 end
 
+
 for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
 	if v:IsA("ScreenGui") then
 		v.Enabled = false
+	end
+	if v.Name == "Codex" then
+		game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
+		game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
 	end
 end
 game.Workspace.DescendantAdded:Connect(function(v)
