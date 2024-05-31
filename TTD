@@ -125,6 +125,7 @@ if game.PlaceId ~= 14082129854 then
 
 
 else
+wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 wait(3)
 	repeat wait() until game.Players
