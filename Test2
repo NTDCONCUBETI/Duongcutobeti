@@ -85,8 +85,11 @@ if game.PlaceId ~= 14082129854 then
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = true
 	wait(2)
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
+	wait(1)
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
+	wait(1)
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
+	wait(1)
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 10000
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 10000
 	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
