@@ -1,0 +1,192 @@
+
+
+if game.PlaceId ~= 14082129854 then 
+	repeat wait() until game.Players
+	repeat wait() until game.Players.LocalPlayer
+	repeat wait() until game.ReplicatedStorage
+	local plr = game.Players.LocalPlayer
+	function getstatusbtn()
+		return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Play Again"
+	end
+
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,false,a,1)
+	end
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(3)
+
+
+	
+
+	function clickframe(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,false,a,1)
+	end
+	function clickyyes()
+		if game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.Visible == true then
+			if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'exchange') then
+
+				local btnYES = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.YesButton.Btn
+
+				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnYES.AbsolutePosition.X+btnYES.AbsoluteSize.X-30,btnYES.AbsolutePosition.Y+60,0,true,btnYES,1)
+				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnYES.AbsolutePosition.X+btnYES.AbsoluteSize.X-30,btnYES.AbsolutePosition.Y+60,0,false,btnYES,1)
+			end
+		end
+		return false
+	end 
+	while true do 
+		--pcall(function()
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+
+			local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+		end
+		wait(1)
+		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = true
+		wait(1) -- Để tắt bảng Fluxu
+		clickframe(game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.TopBar.MenuButtons.Shop.SwitchButton)
+		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.ShopFrame3.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.ShopFrame4.Visible = false
+		game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.EventCrate.Visible = false
+		wait(1)
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+
+			local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+		end
+		wait(1)
+		clickframe(game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.ShopFrame.ShopList.ShopFrame5.Gems2)
+		wait(1)
+		clickyyes()
+		wait(2)
+
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'Success') then
+			local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,true,btnOK,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
+		end
+
+		if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'enough') then ----- Bấm ok để không đủ đồng hồ
+			local btnOK = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.OkButton.Btn
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,true,btnOK,1)
+			game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnOK.AbsolutePosition.X+btnOK.AbsoluteSize.X-30,btnOK.AbsolutePosition.Y+60,0,false,btnOK,1)
+			wait(1)
+			game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = false -- Đóng bảng shop
+			break -- Thoát vong lập không đổi nữa
+		end
+		--end)
+	end 
+	wait(2)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = true
+	--wait(2)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 10000
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 10000
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
+	--wait(1)
+	--if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+
+		--local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+
+		--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+		--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+	--end
+	--wait(1)
+	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
+	--wait(1)
+	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
+
+	while true do wait()
+		local a,b = pcall(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position)
+			wait(2)
+			if game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Visible == true then
+				click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.QueueFrame.Start)
+			else
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Lifts.TimeFactory.Area.Position) * CFrame.new(0,5,20)
+			end
+		end)
+		print(a,b)
+	end
+
+
+
+
+else
+	repeat wait() until game.Players
+	repeat wait() until game.Players.LocalPlayer
+	repeat wait() until game.ReplicatedStorage
+	getgenv().skibidi = {}
+	for charCode = string.byte('a'), string.byte('z') do
+		table.insert(getgenv().skibidi, string.char(charCode))
+	end
+	for charCode = string.byte('A'), string.byte('Z') do
+		table.insert(getgenv().skibidi, string.char(charCode))
+	end
+	function getstatusbtn()
+		if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+			return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Play Again"
+		end
+		return false
+	end
+
+	function getcancel()
+		if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+			return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Cancel Play Again"
+		end
+		return false
+	end
+
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-60,a.AbsolutePosition.Y+60,0,false,a,1)
+	end
+
+	spawn(function()
+		while true do wait(.1)
+			pcall(function()
+				-- Cubi: Check Auto Skip
+				if tostring(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3) == '1, 0, 0' then
+					firesignal(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.Activated)
+				end
+
+				-- Cubi: Check Play Again
+				if getstatusbtn() then
+					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					wait(.2)
+					wait(25)
+				else
+					click(game:GetService("Players").LocalPlayer.PlayerGui.VotingFrame.VoteFrame.VoteMainFrame.MainFrame.Easy.Vote)
+				end
+				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+					if getcancel() then
+						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					end
+				end
+			end)
+		end
+	end)
+
+	getgenv().savemain = false
+	getgenv().oldremote = ''
+
+	local mainpart;
+	for i,v in pairs(game:GetService("ReplicatedStorage").FrameworkDependencies:GetDescendants()) do
+		if v.Name == 'ClientProcess' then
+			mainpart = v
+		end
+	end
+
+end
