@@ -138,7 +138,8 @@ else
 		end
 		return false
 	end
-
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(3)
 	function getcancel()
 		if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
 			return game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton.ContentText == "Cancel Play Again"
