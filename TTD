@@ -170,8 +170,7 @@ wait(3)
 					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
 					wait(.2)
 					wait(25)
-				else
-					click(game:GetService("Players").LocalPlayer.PlayerGui.VotingFrame.VoteFrame.VoteMainFrame.MainFrame.Easy.Vote)
+
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
 					if getcancel() then
