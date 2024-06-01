@@ -125,9 +125,6 @@ if game.PlaceId ~= 14082129854 then
 
 
 else
-wait(5)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-wait(3)
 	repeat wait() until game.Players
 	repeat wait() until game.Players.LocalPlayer
 	repeat wait() until game.ReplicatedStorage
@@ -158,8 +155,8 @@ wait(3)
 	end
 
 	spawn(function()
-		while true do wait(.1)
-			pcall(function()
+		pcall(function()
+			while true do wait(.1)
 				-- Cubi: Check Auto Skip
 				if tostring(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3) == '1, 0, 0' then
 					firesignal(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.Activated)
@@ -170,15 +167,16 @@ wait(3)
 					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
 					wait(.2)
 					wait(25)
-
+				else
+					click(game:GetService("Players").LocalPlayer.PlayerGui.VotingFrame.VoteFrame.VoteMainFrame.MainFrame.Easy.Vote)
 				end
 				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
 					if getcancel() then
 						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
 					end
 				end
-			end)
-		end
+			end
+		end)
 	end)
 
 	getgenv().savemain = false
