@@ -235,15 +235,21 @@ else
 
 	function spawmTroop(troop, x, y)
 
+		tab(x,y)
+		wait(0.2)
 
 		troop = troop + 48
 		presskey(troop)
+		tab(x,y)
+		wait(0.1)
+		tab(x,y)
+
 		wait(0.2)
 		troop = troop + 48
 		presskey(troop)
 		tab(x,y)
-
-
+		wait(0.1)
+		tab(x,y)
 
 	end
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
