@@ -253,6 +253,26 @@ else
 		tab(x,y)
 
 	end
+	
+	wait(3)
+	spawn(function()
+		pcall(function()
+			while true do wait(3)
+
+				if getstatusbtn() then
+					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					wait(.2)
+					wait(25)
+
+				end
+				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+					if getcancel() then
+						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					end
+				end
+			end
+		end)
+	end)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	--Macro dat tuong
 	spawmTroop(3, 264 , 400.400001525878906 )
@@ -302,22 +322,7 @@ else
 	spawmTroop(1, 400.4000244140625 , 280 )
 
 
-	spawn(function()
-		pcall(function()
-			while true do wait(.1)
-				if getstatusbtn() then
-					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
-					wait(.2)
-					wait(25)
-				end
-				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
-					if getcancel() then
-						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
-					end
-				end
-			end
-		end)
-	end)
+
 
 end
 -------------------------------------
