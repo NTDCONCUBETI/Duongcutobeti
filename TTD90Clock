@@ -244,7 +244,7 @@ else
 			presskey(troop)
 			wait(0.5)
 			tab(x,y)
-			wait(0.5)
+			wait(2)
 			if #Workspace.Troops:GetChildren() > TotalTroop then
 				presskey(120)
 				break
@@ -285,7 +285,7 @@ else
 	spawmTroop(3, 260.6000061035156 , 343.20001220703125 )
 	wait( 25 )
 	spawmTroop(2, 721.5999755859375 , 328.79998779296875 )
-	wait( 2 )
+	wait( 10 )
 	spawmTroop(2, 400.4000244140625 , 370.3999938964844 )
 	wait( 11 )
 	spawmTroop(2, 763.2000122070312 , 140 )
