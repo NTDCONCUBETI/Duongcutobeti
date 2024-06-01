@@ -296,26 +296,23 @@ else
 	spawmTroop(1, 400.4000244140625 , 280 )
 	
 	
-	while true do wait(.1)
-		pcall(function()
-			-- Cubi: Check Auto Skip
-			if tostring(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.BackgroundColor3) == '1, 0, 0' then
-				firesignal(game:GetService("Players").LocalPlayer.PlayerGui.Match.WaveInfo.AutoSkip.OnAndOff.Activated)
-			end
-
-			-- Cubi: Check Play Again
-			if getstatusbtn() then
-				click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
-				wait(.2)
-				wait(25)
-			end
-			if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
-				if getcancel() then
+	spawn(function()
+		while true do wait(.1)
+			pcall(function()
+				if getstatusbtn() then
 					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					wait(.2)
+					wait(25)
+
 				end
-			end
-		end)
-	end
+				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+					if getcancel() then
+						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					end
+				end
+			end)
+		end
+	end)
 	
 
 
