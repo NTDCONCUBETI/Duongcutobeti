@@ -238,7 +238,6 @@ else
 
 
 	function spawmTroop(troop, x, y)
-		wait(2)
 		troop = troop + 48
 		local TotalTroop = #Workspace.Troops:GetChildren()
 		while true do
@@ -274,19 +273,33 @@ else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	--Macro dat tuong
 	spawmTroop(3, 264 , 400.400001525878906 )
+	wait( 9 )
 	spawmTroop(3, 259.20001220703125 , 104.80000305175781 ) 
+	wait( 11 )
 	spawmTroop(3, 259.20001220703125 , 165.60000610351562 )
+	wait( 19 )
 	spawmTroop(3, 260.79998779296875 , 223.20001220703125 )
+	wait( 8 )
 	spawmTroop(3, 262.3999938964844 , 282.3999938964844 )
+	wait( 9 )
 	spawmTroop(3, 260.6000061035156 , 343.20001220703125 )
+	wait( 25 )
 	spawmTroop(2, 721.5999755859375 , 328.79998779296875 )
+	wait( 10 )
 	spawmTroop(2, 400.4000244140625 , 370.3999938964844 )
+	wait( 11 )
 	spawmTroop(2, 763.2000122070312 , 140 )
+	wait( 12 )
 	spawmTroop(2, 689.5999755859375 , 72.80000305175781 )
+	wait( 33 )
 	spawmTroop(1, 400.4000244140625 , 100 )
+	wait( 24 )
 	spawmTroop(1, 558.4000244140625 , 106.39999389648438 )
+	wait( 16 )
 	spawmTroop(1, 560 , 167.1999969482422 )
+	wait( 21 )
 	spawmTroop(1, 560 , 224.79998779296875 )
+	wait( 22 )
 	spawmTroop(1, 499.20001220703125 , 108 )
 	deleteTroop(264 , 400.400001525878906)
 	deleteTroop(259.20001220703125 , 104.80000305175781 ) 
@@ -295,11 +308,17 @@ else
 	deleteTroop(262.3999938964844 , 282.3999938964844 )
 	deleteTroop(260.6000061035156 , 343.20001220703125 )
 	spawmTroop(1, 264 , 400.400001525878906 )
+	wait( 11 )
 	spawmTroop(1, 259.20001220703125 , 104.80000305175781 ) 
+	wait( 11 )
 	spawmTroop(1, 259.20001220703125 , 165.60000610351562 )
+	wait( 11 )
 	spawmTroop(1, 260.79998779296875 , 223.20001220703125 )
+	wait( 11 )
 	spawmTroop(1, 262.3999938964844 , 282.3999938964844 )
+	wait( 11 )
 	spawmTroop(1, 260.6000061035156 , 343.20001220703125 )
+------------------------------
 
 end
 -------------------------------------
