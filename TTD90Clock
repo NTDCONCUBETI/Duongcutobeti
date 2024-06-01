@@ -213,25 +213,56 @@ else
 		indexTouch = indexTouch + 1
 	end
 
-	function upGradeTroop(x,y)
-		tab(x,y)
-		tab(x,y)
-		wait(0.5)
-		local btnUpGrade = game:GetService("Players").LocalPlayer.PlayerGui.Match.InspectMenu.Upgrade.UpgradeButton
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnUpGrade.AbsolutePosition.X+btnUpGrade.AbsoluteSize.X-60,btnUpGrade.AbsolutePosition.Y+45,0,true,btnUpGrade,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnUpGrade.AbsolutePosition.X+btnUpGrade.AbsoluteSize.X-60,btnUpGrade.AbsolutePosition.Y+45,0,false,btnUpGrade,1)
+	function upGradeTroop(x, y)
+		local player = game:GetService("Players").LocalPlayer
+		local playerGui = player:WaitForChild("PlayerGui")
+		local inspectMenu = playerGui:WaitForChild("Match"):WaitForChild("InspectMenu")
 
+		-- Nhấp vào vị trí chỉ định để mở menu nâng cấp
+		for i = 1, 15 do
+			tab(x, y)
+			wait(0.5)
+
+			if inspectMenu.Visible then
+				local unitLevelText = inspectMenu:WaitForChild("UnitLevel").Text
+				local level = tonumber(unitLevelText:sub(-1))
+				local newLevel = level
+
+				local upgradeButton = inspectMenu:WaitForChild("Upgrade"):WaitForChild("UpgradeButton")
+
+				while newLevel <= level do
+					local posX = upgradeButton.AbsolutePosition.X + upgradeButton.AbsoluteSize.X - 60
+					local posY = upgradeButton.AbsolutePosition.Y + 45
+
+					game:GetService("VirtualInputManager"):SendMouseButtonEvent(posX, posY, 0, true, upgradeButton, 1)
+					game:GetService("VirtualInputManager"):SendMouseButtonEvent(posX, posY, 0, false, upgradeButton, 1)
+
+					wait(1)
+
+					unitLevelText = inspectMenu.UnitLevel.Text
+					newLevel = tonumber(unitLevelText:sub(-1))
+				end
+
+				inspectMenu.Visible = false
+				break
+			end
+		end
 	end
 
 	function deleteTroop(x,y)
-		tab(x,y)
-		tab(x,y)
-		wait(0.5)
-		local btnDelete = game:GetService("Players").LocalPlayer.PlayerGui.Match.InspectMenu.SellButton
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnDelete.AbsolutePosition.X+btnDelete.AbsoluteSize.X-60,btnDelete.AbsolutePosition.Y+45,0,true,btnDelete,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnDelete.AbsolutePosition.X+btnDelete.AbsoluteSize.X-60,btnDelete.AbsolutePosition.Y+45,0,false,btnDelete,1)
-
+		wait(1)
+		while true do
+			tab(x,y)
+			wait(0.5)
+			if game:GetService("Players").LocalPlayer.PlayerGui.Match.InspectMenu.Visible then
+				local btnDelete = game:GetService("Players").LocalPlayer.PlayerGui.Match.InspectMenu.SellButton
+				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnDelete.AbsolutePosition.X+btnDelete.AbsoluteSize.X-60,btnDelete.AbsolutePosition.Y+45,0,true,btnDelete,1)
+				game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnDelete.AbsolutePosition.X+btnDelete.AbsoluteSize.X-60,btnDelete.AbsolutePosition.Y+45,0,false,btnDelete,1)
+				break
+			end
+		end
 	end
+
 
 
 	function spawmTroop(troop, x, y)
@@ -253,7 +284,7 @@ else
 		tab(x,y)
 
 	end
-	
+
 	wait(3)
 	spawn(function()
 		pcall(function()
@@ -286,7 +317,7 @@ else
 	spawmTroop(3, 262.3999938964844 , 282.3999938964844 )
 	wait( 9 )
 	spawmTroop(3, 260.6000061035156 , 343.20001220703125 )
-	wait( 33 )
+	wait( 32 )
 	spawmTroop(2, 721.5999755859375 , 328.79998779296875 )
 	wait( 10 )
 	spawmTroop(2, 400.4000244140625 , 370.3999938964844 )
@@ -320,7 +351,82 @@ else
 	spawmTroop(1, 400.4000244140625 , 220 )
 	wait( 3 )
 	spawmTroop(1, 400.4000244140625 , 280 )
+	
+	
 
+	
+	
+	deleteTroop(264 , 400.400001525878906)
+	deleteTroop(259.20001220703125 , 104.80000305175781 ) 
+	deleteTroop(259.20001220703125 , 165.60000610351562 )
+	deleteTroop(260.79998779296875 , 223.20001220703125 )
+	deleteTroop(262.3999938964844 , 282.3999938964844 )
+	deleteTroop(260.6000061035156 , 343.20001220703125 )
+	
+	wait(5)
+	spawmTroop(1, 264 , 400.400001525878906 )
+	wait(5)
+	spawmTroop(1, 259.20001220703125 , 104.80000305175781 ) 
+	wait(15)
+	spawmTroop(1, 259.20001220703125 , 165.60000610351562 )
+	wait(10)
+	spawmTroop(1, 260.79998779296875 , 223.20001220703125 )
+	wait(10)
+	spawmTroop(1, 262.3999938964844 , 282.3999938964844 )
+	wait(10)
+	spawmTroop(1, 260.6000061035156 , 343.20001220703125 )
+	
+	
+	upGradeTroop(400.4000244140625 , 100 )
+	upGradeTroop(558.4000244140625 , 106.39999389648438 )
+	upGradeTroop(560 , 167.1999969482422 )
+	upGradeTroop(560 , 224.79998779296875 )
+	upGradeTroop(499.20001220703125 , 108 )
+	upGradeTroop(264 , 400.400001525878906 )
+	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
+	upGradeTroop(259.20001220703125 , 165.60000610351562 )
+	upGradeTroop(260.79998779296875 , 223.20001220703125 )
+	upGradeTroop(262.3999938964844 , 282.3999938964844 )
+	upGradeTroop(260.6000061035156 , 343.20001220703125 )
+	upGradeTroop(400.4000244140625 , 280 )
+	upGradeTroop(400.4000244140625 , 220 )
+	upGradeTroop(400.4000244140625 , 160 )
+	upGradeTroop(499.4000244140625 , 220 )
+	upGradeTroop(499.4000244140625 , 160 )
+
+	upGradeTroop(400.4000244140625 , 100 )
+	upGradeTroop(558.4000244140625 , 106.39999389648438 )
+	upGradeTroop(560 , 167.1999969482422 )
+	upGradeTroop(560 , 224.79998779296875 )
+	upGradeTroop(499.20001220703125 , 108 )
+	upGradeTroop(264 , 400.400001525878906 )
+	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
+	upGradeTroop(259.20001220703125 , 165.60000610351562 )
+	upGradeTroop(260.79998779296875 , 223.20001220703125 )
+	upGradeTroop(262.3999938964844 , 282.3999938964844 )
+	upGradeTroop(260.6000061035156 , 343.20001220703125 )
+	upGradeTroop(400.4000244140625 , 280 )
+	upGradeTroop(400.4000244140625 , 220 )
+	upGradeTroop(400.4000244140625 , 160 )
+	upGradeTroop(499.4000244140625 , 220 )
+	upGradeTroop(499.4000244140625 , 160 )
+
+	upGradeTroop(400.4000244140625 , 100 )
+	upGradeTroop(558.4000244140625 , 106.39999389648438 )
+	upGradeTroop(560 , 167.1999969482422 )
+	upGradeTroop(560 , 224.79998779296875 )
+	upGradeTroop(499.20001220703125 , 108 )
+	upGradeTroop(264 , 400.400001525878906 )
+	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
+	upGradeTroop(259.20001220703125 , 165.60000610351562 )
+	upGradeTroop(260.79998779296875 , 223.20001220703125 )
+	upGradeTroop(262.3999938964844 , 282.3999938964844 )
+	upGradeTroop(260.6000061035156 , 343.20001220703125 )
+	upGradeTroop(400.4000244140625 , 280 )
+	upGradeTroop(400.4000244140625 , 220 )
+	upGradeTroop(400.4000244140625 , 160 )
+	upGradeTroop(499.4000244140625 , 220 )
+	upGradeTroop(499.4000244140625 , 160 )
 
 
 
