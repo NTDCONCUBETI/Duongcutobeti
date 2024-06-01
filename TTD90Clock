@@ -252,19 +252,38 @@ else
 		tab(x,y)
 
 	end
+	
+	spawn(function()
+		pcall(function()
+			while true do wait(3)
+
+				if getstatusbtn() then
+					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					wait(.2)
+					wait(25)
+
+				end
+				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
+					if getcancel() then
+						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
+					end
+				end
+			end
+		end)
+	end)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	--Macro dat tuong
-	spawmTroop(5, 264 , 400.400001525878906 )
+	spawmTroop(3, 264 , 400.400001525878906 )
 	wait( 9 )
-	spawmTroop(5, 259.20001220703125 , 104.80000305175781 ) 
+	spawmTroop(3, 259.20001220703125 , 104.80000305175781 ) 
 	wait( 11 )
-	spawmTroop(5, 259.20001220703125 , 165.60000610351562 )
+	spawmTroop(3, 259.20001220703125 , 165.60000610351562 )
 	wait( 19 )
-	spawmTroop(5, 260.79998779296875 , 223.20001220703125 )
+	spawmTroop(3, 260.79998779296875 , 223.20001220703125 )
 	wait( 8 )
-	spawmTroop(5, 262.3999938964844 , 282.3999938964844 )
+	spawmTroop(3, 262.3999938964844 , 282.3999938964844 )
 	wait( 9 )
-	spawmTroop(5, 260.6000061035156 , 343.20001220703125 )
+	spawmTroop(3, 260.6000061035156 , 343.20001220703125 )
 	wait( 25 )
 	spawmTroop(2, 721.5999755859375 , 328.79998779296875 )
 	wait( 10 )
@@ -299,26 +318,10 @@ else
 	spawmTroop(1, 400.4000244140625 , 220 )
 	wait( 3 )
 	spawmTroop(1, 400.4000244140625 , 280 )
-	
-	
-	spawn(function()
-		while true do wait(.1)
-			pcall(function()
-				if getstatusbtn() then
-					click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
-					wait(.2)
-					wait(25)
 
-				end
-				if game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.Visible == true then
-					if getcancel() then
-						click(game:GetService("Players").LocalPlayer.PlayerGui.Match.MatchFinish.MatchFinishFrame.EndOptions.PlayAgain.ButtonFrame.PlayAgainButton)
-					end
-				end
-			end)
-		end
-	end)
-	
+
+
+
 
 
 	getgenv().savemain = false
