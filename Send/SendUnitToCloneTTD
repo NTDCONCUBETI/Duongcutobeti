@@ -11,9 +11,7 @@ for _,clone in ipairs(getgenv().Config.listClone) do
 
 	wait(2)
 	PostOffice.Menus.SendPackages.SendingFrame.Username.Text = clone
-	wait(1)
 	PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
-	wait(1)
 	local troop2 = PostOffice.Menus.SendPackages.PlayerUnits.PlayerUnits
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(troop2.AbsolutePosition.X+troop2.AbsoluteSize.X-160,troop2.AbsolutePosition.Y+60,0,true,troop2,1)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(troop2.AbsolutePosition.X+troop2.AbsoluteSize.X-160,troop2.AbsolutePosition.Y+60,0,false,troop2,1)
