@@ -284,18 +284,7 @@ else
 		tab(x,y)
 
 	end
-	--- Tesst khắc phục ko đặt tướng
-	local object = game:GetService("Players").LocalPlayer.PlayerGui
-	for i, child in ipairs(object:GetChildren()) do --GetDescendants | GetChildren
-		if string.match(child.ClassName,"Main") then
-			child.Enabled = true
-		else
-			child.Enabled = false
-		end
-		--child.Enabled = true
-		--break
-		--end
-	end
+
 
 	wait(3)
 	spawn(function()
