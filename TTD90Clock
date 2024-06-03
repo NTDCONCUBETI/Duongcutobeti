@@ -1,7 +1,6 @@
 
 
 
-
 if game.PlaceId ~= 14082129854 then 
 	repeat wait() until game.Players
 	repeat wait() until game.Players.LocalPlayer
@@ -219,7 +218,7 @@ else
 		local inspectMenu = playerGui:WaitForChild("Match"):WaitForChild("InspectMenu")
 
 		-- Nhấp vào vị trí chỉ định để mở menu nâng cấp
-		for i = 1, 15 do
+		for i = 1, 10 do
 			tab(x, y)
 			wait(0.5)
 
@@ -266,19 +265,22 @@ else
 
 	function spawmTroop(troop, x, y)
 		wait(2)
-		troop = troop + 48
+		--troop = troop + 48
 		local TotalTroop = #Workspace.Troops:GetChildren()
 		while true do
-			presskey(troop)
+			clickBottomTroop(troop)
+			wait(0.5)
+			tab(x,y)
 			wait(0.5)
 			tab(x,y)
 			wait(0.5)
 			if #Workspace.Troops:GetChildren() > TotalTroop then
-				presskey(120)
 				break
 			end
 		end
 	end
+
+
 
 	spawn(function()
 		pcall(function()
@@ -298,95 +300,110 @@ else
 			end
 		end)
 	end)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
+
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 	--Macro dat tuong
-	tab(255 , 350 ) 
-	wait(2)
-	spawmTroop(3, 255 , 350 ) 
-	tab(255 , 300 )
-	wait(2)
-	spawmTroop(3, 255 , 300 )
-	tab(255 , 250 )
-	wait(2)
-	spawmTroop(3, 255 , 250 ) 
-	tab(255 , 200 )
-	wait(2)
-	spawmTroop(3, 255 , 200 )
-	tab(255 , 150 )
-	wait(2)
-	spawmTroop(3, 255 , 150 )
-	tab(255 , 100 )
-	wait(2)
-	spawmTroop(3, 255 , 100 )
-	tab(185 , 60 )
-	wait(2)
-	spawmTroop(2, 185 , 60 )
-	tab(185 , 140 )
-	wait(2)
-	spawmTroop(2, 185 , 140 )
-	tab(185 , 220 )
-	wait(2)
-	spawmTroop(2, 185 , 220 )
-	tab(185 , 300 )
-	wait(2)
-	spawmTroop(2, 185 , 300 )
-	tab(185 , 380 )
-	wait(2)
-	spawmTroop(2, 185 , 380 )
-	tab(185 , 460 )
-	wait(2)
-	spawmTroop(2, 185 , 460 )
 	
+	function clickBottomTroop(troopIcon)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(troopIcon.AbsolutePosition.X+troopIcon.AbsoluteSize.X/2,troopIcon.AbsolutePosition.Y+60,0,true,troopIcon,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(troopIcon.AbsolutePosition.X+troopIcon.AbsoluteSize.X/2,troopIcon.AbsolutePosition.Y+60,0,false,troopIcon,1)
+	end
+
+	local Troop1 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop1.TroopFrame.TroopIcon
+	local Troop2 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop2.TroopFrame.TroopIcon
+	local Troop3 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop3.TroopFrame.TroopIcon
+	local Troop4 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop4.TroopFrame.TroopIcon
+	local Troop5 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop5.TroopFrame.TroopIcon
+
 	
 
-	deleteTroop(255 , 100 ) 
-	deleteTroop(255 , 150 )
-	deleteTroop(255 , 200 ) 
-	deleteTroop(255 , 250 )
-	deleteTroop(255 , 300 )
-	deleteTroop(255 , 350 )
+	wait( 5 )
+	spawmTroop(Troop3, 255 , 403.80000305175781 ) 
+	spawmTroop(Troop3, 255 , 463.60000610351562 )
+	spawmTroop(Troop3, 305 , 463.80000305175781 ) 
+	spawmTroop(Troop3, 365 , 463.60000610351562 )
+	spawmTroop(Troop3, 255 , 223.20001220703125 )
+	spawmTroop(Troop3, 255 , 282.3999938964844 )
+	spawmTroop(Troop2, 185.5999755859375 , 80.79998779296875 )
+	spawmTroop(Troop2, 185.5999755859375 , 160.60000610351562 )
+	spawmTroop(Troop2, 185.5999755859375 , 240.79998779296875 )
+	spawmTroop(Troop2, 185.5999755859375 , 320.60000610351562 )
+	spawmTroop(Troop2, 185.5999755859375 , 400.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 400.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 480.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 80.79998779296875 )
+	spawmTroop(Troop2, 20.5999755859375 , 160.60000610351562 )
 	
 	
 	
 
-	tab(20 , 60 )
-	wait(2)
-	spawmTroop(2, 20 , 60 )
-	tab(20 , 140 )
-	wait(2)
-	spawmTroop(2, 20 , 140 )
-	tab(20 , 220 )
-	wait(2)
-	spawmTroop(2, 20 , 220 )
-	tab(20 , 300 )
-	wait(2)
-	spawmTroop(2, 20 , 300 )
-	tab(20 , 380 )
-	wait(2)
-	spawmTroop(2, 20 , 380 )
-	tab(20 , 460 )
-	wait(2)
-	spawmTroop(2, 20 , 460 )
+	deleteTroop(255 , 403.80000305175781 ) 
+	deleteTroop(255 , 463.60000610351562 )
+	deleteTroop(305 , 463.80000305175781 ) 
+	deleteTroop(365 , 463.60000610351562 )
+	deleteTroop(255 , 223.20001220703125 )
+	deleteTroop(255 , 282.3999938964844 )
 	
-	
-	
-	
-	tab(255 , 220 )
-	wait(2)
-	spawmTroop(2, 255 , 220 )
-	tab(255 , 300 )
-	wait(2)
-	spawmTroop(2, 255 , 300 )
-	tab(255 , 380 )
-	wait(2)
-	spawmTroop(2, 255 , 380 )
-
-	tab(100 , 500 )
-	
-	
+	spawmTroop(Troop1, 300.5999755859375 , 400.79998779296875 )
+	spawmTroop(Troop1, 300.5999755859375 , 360.60000610351562 )
+	spawmTroop(Troop1, 300.5999755859375 , 300.79998779296875 )
+	spawmTroop(Troop1, 400.5999755859375 , 400.79998779296875 )
+	spawmTroop(Troop1, 400.5999755859375 , 360.60000610351562 )
+	spawmTroop(Troop1, 400.5999755859375 , 300.79998779296875 )
 	
 
+	upGradeTroop(300.5999755859375 , 400.79998779296875 )
+	upGradeTroop(300.5999755859375 , 360.60000610351562 )
+	upGradeTroop(300.5999755859375 , 300.79998779296875 )
+	upGradeTroop(400.5999755859375 , 400.79998779296875 )
+	upGradeTroop(400.5999755859375 , 360.60000610351562 )
+	upGradeTroop(400.5999755859375 , 300.79998779296875 )
+	
+	
+	upGradeTroop(300.5999755859375 , 400.79998779296875 )
+	upGradeTroop(300.5999755859375 , 360.60000610351562 )
+	upGradeTroop(300.5999755859375 , 300.79998779296875 )
+	upGradeTroop(400.5999755859375 , 400.79998779296875 )
+	upGradeTroop(400.5999755859375 , 360.60000610351562 )
+	upGradeTroop(400.5999755859375 , 300.79998779296875 )
+	
+	
+	upGradeTroop(300.5999755859375 , 400.79998779296875 )
+	upGradeTroop(300.5999755859375 , 360.60000610351562 )
+	upGradeTroop(300.5999755859375 , 300.79998779296875 )
+	upGradeTroop(400.5999755859375 , 400.79998779296875 )
+	upGradeTroop(400.5999755859375 , 360.60000610351562 )
+	upGradeTroop(400.5999755859375 , 300.79998779296875 )
+	
+	
+	upGradeTroop(300.5999755859375 , 400.79998779296875 )
+	upGradeTroop(300.5999755859375 , 360.60000610351562 )
+	upGradeTroop(300.5999755859375 , 300.79998779296875 )
+	upGradeTroop(400.5999755859375 , 400.79998779296875 )
+	upGradeTroop(400.5999755859375 , 360.60000610351562 )
+	upGradeTroop(400.5999755859375 , 300.79998779296875 )
+	
+	
+	upGradeTroop(300.5999755859375 , 400.79998779296875 )
+	upGradeTroop(300.5999755859375 , 360.60000610351562 )
+	upGradeTroop(300.5999755859375 , 300.79998779296875 )
+	upGradeTroop(400.5999755859375 , 400.79998779296875 )
+	upGradeTroop(400.5999755859375 , 360.60000610351562 )
+	upGradeTroop(400.5999755859375 , 300.79998779296875 )
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
 	
 
 end
