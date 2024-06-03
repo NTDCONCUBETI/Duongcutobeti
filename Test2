@@ -126,6 +126,128 @@ click(btnPlace)
 wait(1)
 tab(260,444)
 
+----lần 2
+----1
+wait(5)
+tab( 328 , 532 )
+wait(2)
+tab( 531 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----2
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 565 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+----3
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 600 , 352.3999938964844 )
+wait(0.2)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----4
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 635 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----5
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 635 , 392.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----6
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 600 , 392.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+
+----lần 2
+----1
+wait(5)
+tab( 328 , 532 )
+wait(2)
+tab( 531 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----2
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 565 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+----3
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 600 , 352.3999938964844 )
+wait(0.2)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----4
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 635 , 352.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----5
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 635 , 392.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+----6
+wait(2)
+tab( 328 , 532 )
+wait(2)
+tab( 600 , 392.3999938964844 )
+wait(0.1)
+click(btnPlace)
+wait(1)
+tab(260,444)
+
+
 
 
 ------------update
