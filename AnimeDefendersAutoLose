@@ -1,0 +1,69 @@
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local playerGui = player.PlayerGui
+
+local indexTouch = 1
+function tab(x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y)
+	wait(0.1)
+	indexTouch = indexTouch + 1
+end
+
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+end
+
+if game.PlaceId == 17017769292 then
+	wait(5)
+	presskey(9)
+
+	while true do
+		wait(1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-170.3062286376953, 11.203054428100586, -297.6102600097656)
+		wait(1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-244.3065185546875, 11.280635833740234, -260.363037109375)
+		wait(1)
+		if playerGui.PAGES.MatchPage.Visible == true then
+			break
+		end
+	end
+	wait(2)
+	tab(252,184) wait(1)
+	tab(414,370) wait(1)
+	tab(484,432) wait(2)
+	tab(718,317) wait(3)
+
+
+else
+	-- Thiết lập camera thành Scriptable để điều khiển bằng script
+	camera.CameraType = Enum.CameraType.Scriptable
+	-- Đặt vị trí và hướng của camera
+	local cameraPosition = Vector3.new(-1665.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(-1665.7144775390625, 0, -532.6212158203125) -- Vị trí mà camera sẽ nhìn vào
+	camera.CFrame = CFrame.new(cameraPosition, lookAtPosition)
+
+	local frame_MatchResult = playerGui.PAGES.MatchResultPage -- Frame
+	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
+	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
+
+	spawn(pcall(function()
+		while wait(4) do
+			if frame_MatchResult.Visible then
+				tab(353,444)
+			end
+		end
+	end))
+
+
+end
