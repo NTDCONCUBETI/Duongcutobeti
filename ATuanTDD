@@ -79,7 +79,7 @@ if game.PlaceId ~= 14082129854 then
 			game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = false -- Đóng bảng shop
 			break -- Thoát vong lập không đổi nữa
 		end
-		--end)
+		
 	end 
 	wait(2)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Zones.PostOfficeZone.Position)
