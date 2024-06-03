@@ -301,7 +301,7 @@ else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	
 
-	game.Players.LocalPlayer.PlayerGui.MainFrames.Enabled = false
+
 
 	--Macro dat tuong
 	tab(290 , 200 ) 
