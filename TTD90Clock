@@ -1,7 +1,6 @@
 
 
 
-
 if game.PlaceId ~= 14082129854 then 
 	repeat wait() until game.Players
 	repeat wait() until game.Players.LocalPlayer
@@ -84,31 +83,31 @@ if game.PlaceId ~= 14082129854 then
 		--end)
 	end 
 	wait(2)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Zones.PostOfficeZone.Position)
-	wait(3)
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
-	wait(1)
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
-	wait(1)
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
-	wait(1)
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 0
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 0
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
-	wait(1)
-	if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = true
+	--wait(2)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 10000
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 10000
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
+	--wait(1)
+	--if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
 
-		local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+	--local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
 
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
-	end
-	wait(1)
-	click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
-	wait(1)
-	click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
-	wait(1)
-	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
+	--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+	--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+	--end
+	--wait(1)
+	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
+	--wait(1)
+	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
+	--wait(1)
+	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
 
 	while true do wait()
 		local a,b = pcall(function()
@@ -264,38 +263,23 @@ else
 	end
 
 
-
 	function spawmTroop(troop, x, y)
-
-		tab(x,y)
-		wait(0.2)
-
-		troop = troop + 48
-		presskey(troop)
-		tab(x,y)
-		wait(0.1)
-		tab(x,y)
-
-		wait(0.2)
-		troop = troop + 48
-		presskey(troop)
-		tab(x,y)
-		wait(0.1)
-		tab(x,y)
-
+		wait(2)
+		--troop = troop + 48
+		local TotalTroop = #Workspace.Troops:GetChildren()
+		while true do
+			clickBottomTroop(troop)
+			wait(0.5)
+			tab(x,y)
+			wait(0.5)
+			if #Workspace.Troops:GetChildren() > TotalTroop then
+				break
+			end
+		end
 	end
-	-----------------Test unlock đặt tướng
 
 
 
-
-
-
-	-----------------Test unlock đặt tướng
-
-
-
-	wait(3)
 	spawn(function()
 		pcall(function()
 			while true do wait(3)
@@ -314,137 +298,42 @@ else
 			end
 		end)
 	end)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
+
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 	--Macro dat tuong
-	spawmTroop(3, 264 , 400.400001525878906 )
-	wait( 9 )
-	spawmTroop(3, 259.20001220703125 , 104.80000305175781 ) 
-	wait( 11 )
-	spawmTroop(3, 259.20001220703125 , 165.60000610351562 )
-	wait( 19 )
-	spawmTroop(3, 260.79998779296875 , 223.20001220703125 )
-	wait( 8 )
-	spawmTroop(3, 262.3999938964844 , 282.3999938964844 )
-	wait( 9 )
-	spawmTroop(3, 260.6000061035156 , 343.20001220703125 )
-	wait( 32 )
-	spawmTroop(2, 721.5999755859375 , 328.79998779296875 )
-	wait( 2 )
-	spawmTroop(2, 190.5999755859375 , 120.79998779296875 )
-	wait( 2 )
-	spawmTroop(2, 190.5999755859375 , 165.60000610351562 )
-	wait( 2 )
-	spawmTroop(2, 190.5999755859375 , 270.20001220703125 )
-	wait( 10 )
-	spawmTroop(2, 400.4000244140625 , 370.3999938964844 )
-	wait( 1 )
-	spawmTroop(2, 721.4000244140625 , 370.3999938964844 )
-	wait( 11 )
-	spawmTroop(2, 763.2000122070312 , 140 )
-	wait( 1 )
-	spawmTroop(2, 721.4000244140625 , 430.3999938964844 )
-	wait( 12 )
-	spawmTroop(2, 689.5999755859375 , 72.80000305175781 )
-	wait( 33 )
-	spawmTroop(1, 400.4000244140625 , 100 )
-	wait( 24 )
-	spawmTroop(1, 558.4000244140625 , 106.39999389648438 )
-	wait( 16 )
-	spawmTroop(1, 560 , 167.1999969482422 )
-	wait( 21 )
-	spawmTroop(1, 560 , 224.79998779296875 )
-	wait( 22 )
-	spawmTroop(1, 499.20001220703125 , 108 )
-	wait( 3 )
-	spawmTroop(1, 499.4000244140625 , 160 )
-	wait( 3 )
-	spawmTroop(1, 499.4000244140625 , 220 )
-	wait( 3 )
-	spawmTroop(1, 499.4000244140625 , 280 )
-	wait( 3 )
-	spawmTroop(1, 400.4000244140625 , 160 )
-	wait( 3 )
-	spawmTroop(1, 400.4000244140625 , 220 )
-	wait( 3 )
-	spawmTroop(1, 400.4000244140625 , 280 )
+	
+	function clickBottomTroop(troopIcon)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(troopIcon.AbsolutePosition.X+troopIcon.AbsoluteSize.X/2,troopIcon.AbsolutePosition.Y+60,0,true,troopIcon,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(troopIcon.AbsolutePosition.X+troopIcon.AbsoluteSize.X/2,troopIcon.AbsolutePosition.Y+60,0,false,troopIcon,1)
+	end
 
+	local Troop1 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop1.TroopFrame.TroopIcon
+	local Troop2 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop2.TroopFrame.TroopIcon
+	local Troop3 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop3.TroopFrame.TroopIcon
+	local Troop4 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop4.TroopFrame.TroopIcon
+	local Troop5 = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.BottomBar.Troops.Troop5.TroopFrame.TroopIcon
 
+	
 
-
-
-	deleteTroop(264 , 400.400001525878906)
-	deleteTroop(259.20001220703125 , 104.80000305175781 ) 
-	deleteTroop(259.20001220703125 , 165.60000610351562 )
-	deleteTroop(260.79998779296875 , 223.20001220703125 )
-	deleteTroop(262.3999938964844 , 282.3999938964844 )
-	deleteTroop(260.6000061035156 , 343.20001220703125 )
-
-	wait(5)
-	spawmTroop(1, 264 , 400.400001525878906 )
-	wait(5)
-	spawmTroop(1, 259.20001220703125 , 104.80000305175781 ) 
-	wait(15)
-	spawmTroop(1, 259.20001220703125 , 165.60000610351562 )
-	wait(10)
-	spawmTroop(1, 260.79998779296875 , 223.20001220703125 )
-	wait(10)
-	spawmTroop(1, 262.3999938964844 , 282.3999938964844 )
-	wait(10)
-	spawmTroop(1, 260.6000061035156 , 343.20001220703125 )
-
-
-	upGradeTroop(400.4000244140625 , 100 )
-	upGradeTroop(558.4000244140625 , 106.39999389648438 )
-	upGradeTroop(560 , 167.1999969482422 )
-	upGradeTroop(560 , 224.79998779296875 )
-	upGradeTroop(499.20001220703125 , 108 )
-	upGradeTroop(264 , 400.400001525878906 )
-	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
-	upGradeTroop(259.20001220703125 , 165.60000610351562 )
-	upGradeTroop(260.79998779296875 , 223.20001220703125 )
-	upGradeTroop(262.3999938964844 , 282.3999938964844 )
-	upGradeTroop(260.6000061035156 , 343.20001220703125 )
-	upGradeTroop(400.4000244140625 , 280 )
-	upGradeTroop(400.4000244140625 , 220 )
-	upGradeTroop(400.4000244140625 , 160 )
-	upGradeTroop(499.4000244140625 , 220 )
-	upGradeTroop(499.4000244140625 , 160 )
-
-	upGradeTroop(400.4000244140625 , 100 )
-	upGradeTroop(558.4000244140625 , 106.39999389648438 )
-	upGradeTroop(560 , 167.1999969482422 )
-	upGradeTroop(560 , 224.79998779296875 )
-	upGradeTroop(499.20001220703125 , 108 )
-	upGradeTroop(264 , 400.400001525878906 )
-	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
-	upGradeTroop(259.20001220703125 , 165.60000610351562 )
-	upGradeTroop(260.79998779296875 , 223.20001220703125 )
-	upGradeTroop(262.3999938964844 , 282.3999938964844 )
-	upGradeTroop(260.6000061035156 , 343.20001220703125 )
-	upGradeTroop(400.4000244140625 , 280 )
-	upGradeTroop(400.4000244140625 , 220 )
-	upGradeTroop(400.4000244140625 , 160 )
-	upGradeTroop(499.4000244140625 , 220 )
-	upGradeTroop(499.4000244140625 , 160 )
-
-	upGradeTroop(400.4000244140625 , 100 )
-	upGradeTroop(558.4000244140625 , 106.39999389648438 )
-	upGradeTroop(560 , 167.1999969482422 )
-	upGradeTroop(560 , 224.79998779296875 )
-	upGradeTroop(499.20001220703125 , 108 )
-	upGradeTroop(264 , 400.400001525878906 )
-	upGradeTroop(259.20001220703125 , 104.80000305175781 ) 
-	upGradeTroop(259.20001220703125 , 165.60000610351562 )
-	upGradeTroop(260.79998779296875 , 223.20001220703125 )
-	upGradeTroop(262.3999938964844 , 282.3999938964844 )
-	upGradeTroop(260.6000061035156 , 343.20001220703125 )
-	upGradeTroop(400.4000244140625 , 280 )
-	upGradeTroop(400.4000244140625 , 220 )
-	upGradeTroop(400.4000244140625 , 160 )
-	upGradeTroop(499.4000244140625 , 220 )
-	upGradeTroop(499.4000244140625 , 160 )
-
-
+	wait( 5 )
+	spawmTroop(Troop3, 255 , 403.80000305175781 ) 
+	spawmTroop(Troop3, 255 , 463.60000610351562 )
+	spawmTroop(Troop3, 305 , 463.80000305175781 ) 
+	spawmTroop(Troop3, 365 , 463.60000610351562 )
+	spawmTroop(Troop3, 255 , 223.20001220703125 )
+	spawmTroop(Troop3, 255 , 282.3999938964844 )
+	spawmTroop(Troop2, 185.5999755859375 , 80.79998779296875 )
+	spawmTroop(Troop2, 185.5999755859375 , 160.60000610351562 )
+	spawmTroop(Troop2, 185.5999755859375 , 240.79998779296875 )
+	spawmTroop(Troop2, 185.5999755859375 , 320.60000610351562 )
+	spawmTroop(Troop2, 185.5999755859375 , 400.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 400.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 480.60000610351562 )
+	spawmTroop(Troop2, 20.5999755859375 , 80.79998779296875 )
+	spawmTroop(Troop2, 20.5999755859375 , 160.60000610351562 )
 
 end
 -------------------------------------
+
