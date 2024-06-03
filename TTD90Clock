@@ -269,8 +269,6 @@ else
 		troop = troop + 48
 		local TotalTroop = #Workspace.Troops:GetChildren()
 		while true do
-			--------------------anti đặt tướng
-			game.Players.LocalPlayer.PlayerGui.MainFrames.Enabled = false
 			presskey(troop)
 			wait(0.5)
 			tab(x,y)
@@ -301,6 +299,9 @@ else
 		end)
 	end)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	
+
+	game.Players.LocalPlayer.PlayerGui.MainFrames.Enabled = false
 
 	--Macro dat tuong
 	tab(290 , 200 ) 
@@ -424,6 +425,8 @@ else
 	upGradeTroop(360 , 320 )
 	upGradeTroop(360 , 340 )
 	upGradeTroop(360 , 360 )
+
+
 
 
 
