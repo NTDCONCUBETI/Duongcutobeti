@@ -299,9 +299,6 @@ else
 		end)
 	end)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	
-
-	game.Players.LocalPlayer.PlayerGui.MainFrames.Enabled = false
 
 	--Macro dat tuong
 	tab(290 , 200 ) 
@@ -380,57 +377,6 @@ else
 	tab(360 , 360 )
 	wait(2)
 	spawmTroop(1, 360 , 360 )
-
-
-
-
-	---------update
-
-	upGradeTroop(360 , 200 )
-	upGradeTroop(360 , 220 )
-	upGradeTroop(360 , 240 )
-	upGradeTroop(360 , 260 )
-	upGradeTroop(360 , 280 )
-	upGradeTroop(360 , 300 )
-	upGradeTroop(360 , 320 )
-	upGradeTroop(360 , 340 )
-	upGradeTroop(360 , 360 )
-
-	upGradeTroop(360 , 200 )
-	upGradeTroop(360 , 220 )
-	upGradeTroop(360 , 240 )
-	upGradeTroop(360 , 260 )
-	upGradeTroop(360 , 280 )
-	upGradeTroop(360 , 300 )
-	upGradeTroop(360 , 320 )
-	upGradeTroop(360 , 340 )
-	upGradeTroop(360 , 360 )
-
-	upGradeTroop(360 , 200 )
-	upGradeTroop(360 , 220 )
-	upGradeTroop(360 , 240 )
-	upGradeTroop(360 , 260 )
-	upGradeTroop(360 , 280 )
-	upGradeTroop(360 , 300 )
-	upGradeTroop(360 , 320 )
-	upGradeTroop(360 , 340 )
-	upGradeTroop(360 , 360 )
-
-	upGradeTroop(360 , 200 )
-	upGradeTroop(360 , 220 )
-	upGradeTroop(360 , 240 )
-	upGradeTroop(360 , 260 )
-	upGradeTroop(360 , 280 )
-	upGradeTroop(360 , 300 )
-	upGradeTroop(360 , 320 )
-	upGradeTroop(360 , 340 )
-	upGradeTroop(360 , 360 )
-
-
-
-
-
-
 
 
 end
