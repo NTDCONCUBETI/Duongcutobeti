@@ -269,6 +269,8 @@ else
 		troop = troop + 48
 		local TotalTroop = #Workspace.Troops:GetChildren()
 		while true do
+			--------------------anti đặt tướng
+			game.Players.LocalPlayer.PlayerGui.MainFrames.Enabled = false
 			presskey(troop)
 			wait(0.5)
 			tab(x,y)
@@ -422,6 +424,8 @@ else
 	upGradeTroop(360 , 320 )
 	upGradeTroop(360 , 340 )
 	upGradeTroop(360 , 360 )
+
+
 
 
 
