@@ -90,6 +90,7 @@ else
 	local btnUnit2 = tableUnit[2]
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
 	function spawmTroop1(x,y)
+		camera.CFrame = cameraCFrame * rotation
 		wait(1)
 		click( btnUnit1 )
 		wait(1)
@@ -104,6 +105,7 @@ else
 	end
 
 	function spawmTroop2(x,y)
+		camera.CFrame = cameraCFrame * rotation
 		wait(1)
 		click( btnUnit2 )
 		wait(1)
@@ -118,6 +120,7 @@ else
 	end
 
 	function ugradeUnit(x,y)
+		camera.CFrame = cameraCFrame * rotation
 		wait(0.5)
 		tab( x , y, playerGui.HUD )
 		wait(1)
