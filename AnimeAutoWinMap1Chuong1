@@ -192,20 +192,14 @@ else
 		end
 	end
 
-	while true do wait(4)
-		if frame_MatchResult.Visible  then
+	while true do wait(2)
+		if playerGui.PAGES.MatchResultPage.Visible == true  then
 
 
 			wait(2)
 			click(btnReplay)---tab Play Again
-			
-			while true do
-				wait(2)
-				click(btnReplay)---tab Play Again
-				if not frame_MatchResult.Visible  then
-					break
-				end
-			end
+			click(btnReplay)---tab Play Again
+
 
 
 			wait(10)
