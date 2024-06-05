@@ -193,22 +193,20 @@ else
 	end
 
 	while true do wait(4)
-		if frame_MatchResult.Visible then
+		if frame_MatchResult.Visible  then
 
 
 			wait(2)
-			tab(256,405)---tab Play Again
+			click(btnReplay)---tab Play Again
+			
+			while true do
+				wait(2)
+				click(btnReplay)---tab Play Again
+				if not frame_MatchResult.Visible  then
+					break
+				end
+			end
 
-			-- Thiết lập camera thành Scriptable để điều khiển bằng script
-			camera.CameraType = Enum.CameraType.Scriptable
-			-- Đặt vị trí và hướng của camera
-			local cameraPosition = Vector3.new(-1665.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
-			local lookAtPosition = Vector3.new(-1665.7144775390625, 0, -532.6212158203125) -- Vị trí mà camera sẽ nhìn vào
-			-- Tạo CFrame từ vị trí và hướng nhìn
-			local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
-			-- Xoay camera 90 độ quanh trục Y (trục đứng)
-			local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
-			camera.CFrame = cameraCFrame * rotation
 
 			wait(10)
 			spawmTroop1( 396 , 314 )
