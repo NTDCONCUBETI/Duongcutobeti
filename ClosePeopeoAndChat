@@ -1,4 +1,3 @@
-game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Chat").Enabled = false
 
 for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
 	if v:IsA("ScreenGui") then
