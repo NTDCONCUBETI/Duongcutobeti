@@ -176,7 +176,7 @@ else
 	wait(3)
 	spawmTroop2( 628 , 113 )
 
-	for i =1 ,10 do
+	for i =1 ,5 do
 		wait(2)
 		ugradeUnit( 344 , 108 )
 		if btnUpgrade.Text == "Max" then
@@ -184,7 +184,7 @@ else
 		end
 	end
 
-	for i =1 ,10 do
+	for i =1 ,5 do
 		wait(2)
 		ugradeUnit( 628 , 113 )
 		if btnUpgrade.Text == "Max" then
@@ -253,16 +253,16 @@ else
 			wait(3)
 			spawmTroop2( 628 , 113 )
 
-			for i =1 ,10 do
-				wait(2)
+			for i =1 ,5 do
+				wait(1)
 				ugradeUnit( 344 , 108 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
 			end
 
-			for i =1 ,10 do
-				wait(2)
+			for i =1 ,5 do
+				wait(1)
 				ugradeUnit( 628 , 113 )
 				if btnUpgrade.Text == "Max" then
 					break
