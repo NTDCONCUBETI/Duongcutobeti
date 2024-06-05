@@ -197,7 +197,7 @@ else
 
 
 			wait(2)
-			tab(270,378)---tab Play Again
+			tab(256,405)---tab Play Again
 
 			-- Thiết lập camera thành Scriptable để điều khiển bằng script
 			camera.CameraType = Enum.CameraType.Scriptable
