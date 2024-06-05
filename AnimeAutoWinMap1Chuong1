@@ -41,22 +41,24 @@ if game.PlaceId == 17017769292 then
 		wait(1)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-170.3062286376953, 11.203054428100586, -297.6102600097656)
 		wait(1)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-244.3065185546875, 11.280635833740234, -260.363037109375)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-250.67539978027344, 11.306930541992188, -255.1462860107422)
 		wait(5)
 		if playerGui.PAGES.MatchPage.Visible == true then
 			break
 		end
 	end
 	wait(2)
+	tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 	tab(260,133) wait(2)--chọn bản đồ 1
 	tab(418,105) wait(2)--chọn map 1
-	tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 	tab(483,391) wait(2)---tab confim
 	tab(713,261) wait(3)---tab Star
 	tab(713,261) wait(3)---tab Star
 	tab(713,261) wait(3)---tab Star
-
-
+	
+	
+	
+	
 else
 
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
@@ -127,29 +129,37 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
+	
+	
 
 
-	wait(10)
-	spawmTroop2( 332 , 114 )
+
 
 	wait(5)
-	spawmTroop2( 254 , 189 )
+	spawmTroop2( 590 , 184 )
 
 	wait(5)
-	spawmTroop2( 628 , 138 )
+	spawmTroop2( 654 , 188 )
 
 	wait(5)
-	spawmTroop2( 696 , 156 )
+	spawmTroop2( 734 , 191 )
+
+	wait(5)
+	spawmTroop2( 588 , 132 )
 	
 	wait(5)
-	spawmTroop2( 788 , 167 )
+	spawmTroop2( 584 , 61 )
 
 	wait(5)
-	spawmTroop2( 843 , 205 )
+	spawmTroop2( 334 , 130 )
+	
+	
+	
+	
 
 	for i =1 ,10 do
-		wait(10)
-		ugradeUnit( 332 , 114 )
+		wait(5)
+		ugradeUnit( 590 , 184 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -157,7 +167,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 254 , 189 )
+		ugradeUnit( 654 , 188 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -165,7 +175,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 628 , 138 )
+		ugradeUnit( 734 , 191 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -173,7 +183,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 696 , 156 )
+		ugradeUnit( 588 , 132 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -181,7 +191,7 @@ else
 
 	for i =1 ,5 do
 		wait(5)
-		ugradeUnit( 788 , 167 )
+		ugradeUnit( 584 , 61 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -189,42 +199,54 @@ else
 
 	for i =1 ,5 do
 		wait(5)
-		ugradeUnit( 843 , 205 )
+		ugradeUnit( 334 , 130 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
+
 
 	while true do wait(2)
 		if playerGui.PAGES.MatchResultPage.Visible == true  then
-
-
-			wait(2)
+			wait(1)
+			local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
+			if KetQua == "Defeat!"  then
+				wait(2)
+				click(btnLobby)
+				click(btnLobby)
+				
+			end
+			wait(1)
 			click(btnReplay)---tab Play Again
 			click(btnReplay)---tab Play Again
 
 
-			wait(10)
-			spawmTroop2( 332 , 114 )
 
 			wait(5)
-			spawmTroop2( 254 , 189 )
+			spawmTroop2( 590 , 184 )
 
 			wait(5)
-			spawmTroop2( 628 , 138 )
+			spawmTroop2( 654 , 188 )
 
 			wait(5)
-			spawmTroop2( 696 , 156 )
+			spawmTroop2( 734 , 191 )
 
 			wait(5)
-			spawmTroop2( 788 , 167 )
+			spawmTroop2( 588 , 132 )
 
 			wait(5)
-			spawmTroop2( 843 , 205 )
+			spawmTroop2( 584 , 61 )
+
+			wait(5)
+			spawmTroop2( 334 , 130 )
+
+
+
+
 
 			for i =1 ,10 do
-				wait(10)
-				ugradeUnit( 332 , 114 )
+				wait(5)
+				ugradeUnit( 590 , 184 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -232,7 +254,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 254 , 189 )
+				ugradeUnit( 654 , 188 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -240,7 +262,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 628 , 138 )
+				ugradeUnit( 734 , 191 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -248,7 +270,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 696 , 156 )
+				ugradeUnit( 588 , 132 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -256,7 +278,7 @@ else
 
 			for i =1 ,5 do
 				wait(5)
-				ugradeUnit( 788 , 167 )
+				ugradeUnit( 584 , 61 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -264,7 +286,7 @@ else
 
 			for i =1 ,5 do
 				wait(5)
-				ugradeUnit( 843 , 205 )
+				ugradeUnit( 334 , 130 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
