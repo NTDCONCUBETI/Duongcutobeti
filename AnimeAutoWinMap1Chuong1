@@ -35,7 +35,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 
 if game.PlaceId == 17017769292 then
 	wait(5)
-	presskey(9)
+	
 
 	while true do
 		wait(1)
@@ -50,6 +50,7 @@ if game.PlaceId == 17017769292 then
 	wait(2)
 	tab(260,133) wait(2)--chọn bản đồ 1
 	tab(418,105) wait(2)--chọn map 1
+	
 	tab(483,391) wait(2)---tab confim
 	tab(713,261) wait(3)---tab Star
 	tab(713,261) wait(3)---tab Star
@@ -129,21 +130,26 @@ else
 
 
 	wait(10)
-	spawmTroop1( 396 , 314 )
+	spawmTroop2( 332 , 114 )
 
 	wait(5)
-	spawmTroop1( 396 , 400 )
+	spawmTroop2( 254 , 189 )
 
 	wait(5)
-	spawmTroop1( 575 , 314 )
+	spawmTroop2( 628 , 138 )
 
 	wait(5)
-	spawmTroop1( 575 , 400 )
+	spawmTroop2( 696 , 156 )
+	
+	wait(5)
+	spawmTroop2( 788 , 167 )
 
+	wait(5)
+	spawmTroop2( 843 , 205 )
 
 	for i =1 ,10 do
 		wait(10)
-		ugradeUnit( 396 , 314 )
+		ugradeUnit( 332 , 114 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -151,7 +157,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 396 , 400 )
+		ugradeUnit( 254 , 189 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -159,7 +165,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 575 , 314 )
+		ugradeUnit( 628 , 138 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -167,29 +173,23 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 575 , 400 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	wait(3)
-	spawmTroop2( 344 , 108 )
-
-	wait(3)
-	spawmTroop2( 628 , 113 )
-
-	for i =1 ,5 do
-		wait(2)
-		ugradeUnit( 344 , 108 )
+		ugradeUnit( 696 , 156 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
 	for i =1 ,5 do
-		wait(2)
-		ugradeUnit( 628 , 113 )
+		wait(5)
+		ugradeUnit( 788 , 167 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,5 do
+		wait(5)
+		ugradeUnit( 843 , 205 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -204,23 +204,27 @@ else
 			click(btnReplay)---tab Play Again
 
 
-
 			wait(10)
-			spawmTroop1( 396 , 314 )
+			spawmTroop2( 332 , 114 )
 
 			wait(5)
-			spawmTroop1( 396 , 400 )
+			spawmTroop2( 254 , 189 )
 
 			wait(5)
-			spawmTroop1( 575 , 314 )
+			spawmTroop2( 628 , 138 )
 
 			wait(5)
-			spawmTroop1( 575 , 400 )
+			spawmTroop2( 696 , 156 )
 
+			wait(5)
+			spawmTroop2( 788 , 167 )
+
+			wait(5)
+			spawmTroop2( 843 , 205 )
 
 			for i =1 ,10 do
 				wait(10)
-				ugradeUnit( 396 , 314 )
+				ugradeUnit( 332 , 114 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -228,7 +232,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 396 , 400 )
+				ugradeUnit( 254 , 189 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -236,7 +240,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 575 , 314 )
+				ugradeUnit( 628 , 138 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -244,29 +248,23 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 575 , 400 )
-				if btnUpgrade.Text == "Max" then
-					break
-				end
-			end
-
-			wait(3)
-			spawmTroop2( 344 , 108 )
-
-			wait(3)
-			spawmTroop2( 628 , 113 )
-
-			for i =1 ,5 do
-				wait(1)
-				ugradeUnit( 344 , 108 )
+				ugradeUnit( 696 , 156 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
 			end
 
 			for i =1 ,5 do
-				wait(1)
-				ugradeUnit( 628 , 113 )
+				wait(5)
+				ugradeUnit( 788 , 167 )
+				if btnUpgrade.Text == "Max" then
+					break
+				end
+			end
+
+			for i =1 ,5 do
+				wait(5)
+				ugradeUnit( 843 , 205 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
