@@ -1,3 +1,4 @@
+
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
@@ -49,10 +50,10 @@ if game.PlaceId == 17017769292 then
 	wait(2)
 	tab(260,133) wait(2)--chọn bản đồ 1
 	tab(418,105) wait(2)--chọn map 1
-	tab(492,366) wait(2)
-	tab(700,261) wait(3)---tab Star
-	tab(700,261) wait(3)---tab Star
-	tab(700,261) wait(3)---tab Star
+	tab(483,391) wait(2)---tab confim
+	tab(713,261) wait(3)---tab Star
+	tab(713,261) wait(3)---tab Star
+	tab(713,261) wait(3)---tab Star
 
 
 else
@@ -75,7 +76,7 @@ else
 	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
 	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
 	local btnPlace = playerGui.HUD.MobileButtonHolder.PlaceButton
-	
+
 	local tableUnit = {}
 	for i, child in ipairs(playerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()) do --GetDescendants | GetChildren
 		print(child.Name, child.ClassName)
@@ -84,7 +85,7 @@ else
 			--print(child)
 		end
 	end
-	
+
 	local btnUnit1 = tableUnit[1]
 	local btnUnit2 = tableUnit[2]
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
@@ -101,7 +102,7 @@ else
 		wait(1)
 		click(btnPlace) -- presskey(101)
 	end
-	
+
 	function spawmTroop2(x,y)
 		wait(1)
 		click( btnUnit2 )
@@ -125,21 +126,21 @@ else
 
 
 	wait(10)
-	spawmTroop1( 396 , 307 )
+	spawmTroop1( 396 , 314 )
 
 	wait(5)
-	spawmTroop1( 396 , 364 )
+	spawmTroop1( 396 , 400 )
 
 	wait(5)
-	spawmTroop1( 575 , 307 )
+	spawmTroop1( 575 , 314 )
 
 	wait(5)
-	spawmTroop1( 575 , 364 )
+	spawmTroop1( 575 , 400 )
 
 
 	for i =1 ,10 do
 		wait(10)
-		ugradeUnit( 396 , 307 )
+		ugradeUnit( 396 , 314 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -147,7 +148,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 396 , 364 )
+		ugradeUnit( 396 , 400 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -155,7 +156,7 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 575 , 307 )
+		ugradeUnit( 575 , 314 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -163,29 +164,29 @@ else
 
 	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 575 , 364 )
+		ugradeUnit( 575 , 400 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
 	wait(3)
-	spawmTroop2( 350 , 108 )
+	spawmTroop2( 344 , 108 )
 
 	wait(3)
-	spawmTroop2( 678 , 124 )
-	
+	spawmTroop2( 628 , 113 )
+
 	for i =1 ,10 do
 		wait(2)
-		ugradeUnit( 350 , 108 )
+		ugradeUnit( 344 , 108 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
-	
+
 	for i =1 ,10 do
 		wait(2)
-		ugradeUnit( 678 , 124 )
+		ugradeUnit( 628 , 113 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
@@ -193,6 +194,11 @@ else
 
 	while true do wait(4)
 		if frame_MatchResult.Visible then
+
+
+			wait(2)
+			tab(270,378)---tab Play Again
+
 			-- Thiết lập camera thành Scriptable để điều khiển bằng script
 			camera.CameraType = Enum.CameraType.Scriptable
 			-- Đặt vị trí và hướng của camera
@@ -203,26 +209,23 @@ else
 			-- Xoay camera 90 độ quanh trục Y (trục đứng)
 			local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
 			camera.CFrame = cameraCFrame * rotation
-			
-			wait(2)
-			tab(270,378)---tab Play Again
-						
+
 			wait(10)
-			spawmTroop1( 396 , 307 )
+			spawmTroop1( 396 , 314 )
 
 			wait(5)
-			spawmTroop1( 396 , 364 )
+			spawmTroop1( 396 , 400 )
 
 			wait(5)
-			spawmTroop1( 575 , 307 )
+			spawmTroop1( 575 , 314 )
 
 			wait(5)
-			spawmTroop1( 575 , 364 )
+			spawmTroop1( 575 , 400 )
 
 
 			for i =1 ,10 do
 				wait(10)
-				ugradeUnit( 396 , 307 )
+				ugradeUnit( 396 , 314 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -230,7 +233,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 396 , 364 )
+				ugradeUnit( 396 , 400 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -238,7 +241,7 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 575 , 307 )
+				ugradeUnit( 575 , 314 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -246,21 +249,21 @@ else
 
 			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 575 , 364 )
+				ugradeUnit( 575 , 400 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
 			end
 
 			wait(3)
-			spawmTroop2( 350 , 108 )
+			spawmTroop2( 344 , 108 )
 
 			wait(3)
-			spawmTroop2( 678 , 124 )
+			spawmTroop2( 628 , 113 )
 
 			for i =1 ,10 do
 				wait(2)
-				ugradeUnit( 350 , 108 )
+				ugradeUnit( 344 , 108 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
@@ -268,7 +271,7 @@ else
 
 			for i =1 ,10 do
 				wait(2)
-				ugradeUnit( 678 , 124 )
+				ugradeUnit( 628 , 113 )
 				if btnUpgrade.Text == "Max" then
 					break
 				end
