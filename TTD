@@ -17,7 +17,7 @@ if game.PlaceId ~= 14082129854 then
 	wait(3)
 
 
-	
+
 
 	function clickframe(a)
 		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X-30,a.AbsolutePosition.Y+53,0,true,a,1)
@@ -79,34 +79,34 @@ if game.PlaceId ~= 14082129854 then
 			game:GetService("Players").LocalPlayer.PlayerGui.ClockEventGui.ClockEventPass.Visible = false -- Đóng bảng shop
 			break -- Thoát vong lập không đổi nữa
 		end
-		--end)
+		
 	end 
 	wait(2)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = true
-	--wait(2)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
-	--wait(1)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
-	--wait(1)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
-	--wait(1)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 10000
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 10000
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
-	--wait(1)
-	--if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Zones.PostOfficeZone.Position)
+	wait(2)
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Username.Text = getgenv().Config.accNhanMail
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.MessageBox.Text = '12345'
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:CaptureFocus()
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.PlaceholderText = 10000
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount.Text = 10000
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.YourGems.GemAmount.GemAmount:ReleaseFocus()
+	wait(1)
+	if string.find(game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.NotificationMessage.Text, 'trade') then
 
-		--local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
+	local btnNO = game:GetService("Players").LocalPlayer.PlayerGui.MainFrames.NotificationFrame.BigNotification.Buttons.NoButton.Btn
 
-		--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
-		--game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
-	--end
-	--wait(1)
-	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
-	--wait(1)
-	--click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
-	--wait(1)
-	--game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,true,btnNO,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(btnNO.AbsolutePosition.X+btnNO.AbsoluteSize.X-30,btnNO.AbsolutePosition.Y+60,0,false,btnNO,1)
+	end
+	wait(1)
+	click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.SendPackages.SendingFrame.Send.SendButton)
+	wait(1)
+	click(game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Menus.Alerts.ConfirmSend.Options.Confirm)
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.Lobby.PostOffice.Visible = false
 
 	while true do wait()
 		local a,b = pcall(function()
