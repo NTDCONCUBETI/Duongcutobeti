@@ -1,0 +1,84 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local playerGui = player.PlayerGui
+
+local indexTouch = 1000
+function tab(x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+	wait(0.1)
+	indexTouch = indexTouch + 1
+end
+
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
+local function pressE ()
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,101,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,101,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	wait(0.5)
+end
+
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+end
+
+
+local posQuayHang ={
+	{ x = -105.6535415649414,y =  -84.7407455444336,z= -28.01546287536621}, -- QuayPlaza 1
+	{ x= -119.25201416015625,y = -84.74073791503906,z = -37.35292434692383} -- QuayPlaza 2
+}
+
+
+local function teleDenQuayHang(i)
+	player.Character.HumanoidRootPart.CFrame = CFrame.new(posQuayHang[i].x, posQuayHang[i].y, posQuayHang[i].z)
+	wait(1)
+end
+
+-- Nếu đang ở game chính
+if game.PlaceId == 17017769292 then  
+
+	if getgenv().config.Mod == "GoToPlaza" then
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(21.025781631469727, 12.470232009887695, -321.54510498046875)
+		wait(2)
+		presskey(101)---Bấm phím E trên bàn phím
+		wait(2)
+		tab(480,298)--- tab join friend
+		wait(2)
+
+		for i, child in ipairs(playerGui:GetDescendants()) do --GetDescendants | GetChildren
+			if string.match(child.ClassName, "TextBox") and child.Parent.Parent.Name == "Friend"  then
+				--game:GetService("VirtualInputManager"):SendMouseButtonEvent(ojpect.AbsolutePosition.X+ojpect.AbsoluteSize.X-30,ojpect.AbsolutePosition.Y+60,0,true,child,1)
+				--game:GetService("VirtualInputManager"):SendMouseButtonEvent(ojpect.AbsolutePosition.X+ojpect.AbsoluteSize.X-30,ojpect.AbsolutePosition.Y+60,0,false,child,1)
+				child.Text = getgenv().config.AccMain
+			end
+		end
+		wait(2)
+
+		tab(470,298)--- tab Teleport
+	end
+	
+	if getgenv().config.Mod == "Farm" then
+		-- code  bay vaof bai farm
+	end
+	
+	if getgenv().config.Mod == "Build Acc" then
+		-- code  build acc
+	end
+end
+
+-- Nếu đang trong Plaza
+if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
+	teleDenQuayHang(getgenv().config.QuayHangPlaza)
+	pressE()
+
+end
