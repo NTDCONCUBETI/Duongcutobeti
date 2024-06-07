@@ -35,7 +35,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 
 if game.PlaceId == 17017769292 then
 	wait(5)
-	
+
 
 	while true do
 		wait(1)
@@ -44,7 +44,7 @@ if game.PlaceId == 17017769292 then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-250.67539978027344, 11.306930541992188, -255.1462860107422)
 		wait(5)
 		if playerGui.PAGES.MatchPage.Visible == true then
-		break
+			break
 		end
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 		tab(260,133) wait(2)--chọn bản đồ 1
@@ -53,10 +53,9 @@ if game.PlaceId == 17017769292 then
 		tab(713,261) wait(3)---tab Star
 		tab(713,261) wait(3)---tab Star
 		tab(713,261) wait(3)---tab Star
-		wait(15)
+		
 	end
 
-	
 else
 
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
@@ -127,8 +126,8 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
-	
-	
+
+
 
 
 
@@ -144,16 +143,16 @@ else
 
 	wait(2)
 	spawmTroop2( 588 , 132 )
-	
+
 	wait(2)
 	spawmTroop2( 584 , 61 )
 
 	wait(2)
 	spawmTroop2( 334 , 130 )
-	
-	
-	
-	
+
+
+
+
 
 	for i =1 ,10 do
 		wait(5)
@@ -212,7 +211,7 @@ else
 				wait(2)
 				click(btnLobby)
 				click(btnLobby)
-				
+
 			end
 			wait(1)
 			click(btnReplay)---tab Play Again
