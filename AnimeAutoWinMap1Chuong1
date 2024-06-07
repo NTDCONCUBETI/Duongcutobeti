@@ -41,15 +41,15 @@ if game.PlaceId == 17017769292 then
 		wait(5)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-250.67539978027344, 11.306930541992188, -255.1462860107422)
 		wait(5)
-		if playerGui.PAGES.MatchPage.Visible == true then
-			tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
-			tab(260,133) wait(2)--chọn bản đồ 1
-			tab(418,105) wait(2)--chọn map 1
-			tab(483,391) wait(2)---tab confim
-			tab(713,261) wait(3)---tab Star
-			tab(713,261) wait(3)---tab Star
-			tab(713,261) wait(3)---tab Star
-		end
+
+		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
+		tab(260,133) wait(2)--chọn bản đồ 1
+		tab(418,105) wait(2)--chọn map 1
+		tab(483,391) wait(2)---tab confim
+		tab(713,261) wait(3)---tab Star
+		tab(713,261) wait(1)---tab Star
+		tab(713,261) wait(1)---tab Star
+		
 
 		
 	end
