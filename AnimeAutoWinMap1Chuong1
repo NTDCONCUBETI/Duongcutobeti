@@ -133,22 +133,22 @@ else
 
 
 
-	wait(5)
+	wait(2)
 	spawmTroop2( 590 , 184 )
 
-	wait(5)
+	wait(2)
 	spawmTroop2( 654 , 188 )
 
-	wait(5)
+	wait(2)
 	spawmTroop2( 734 , 191 )
 
-	wait(5)
+	wait(2)
 	spawmTroop2( 588 , 132 )
 	
-	wait(5)
+	wait(2)
 	spawmTroop2( 584 , 61 )
 
-	wait(5)
+	wait(2)
 	spawmTroop2( 334 , 130 )
 	
 	
@@ -219,23 +219,22 @@ else
 			click(btnReplay)---tab Play Again
 
 
-
-			wait(5)
+			wait(2)
 			spawmTroop2( 590 , 184 )
 
-			wait(5)
+			wait(2)
 			spawmTroop2( 654 , 188 )
 
-			wait(5)
+			wait(2)
 			spawmTroop2( 734 , 191 )
 
-			wait(5)
+			wait(2)
 			spawmTroop2( 588 , 132 )
 
-			wait(5)
+			wait(2)
 			spawmTroop2( 584 , 61 )
 
-			wait(5)
+			wait(2)
 			spawmTroop2( 334 , 130 )
 
 
