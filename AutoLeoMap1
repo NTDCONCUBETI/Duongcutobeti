@@ -162,48 +162,336 @@ else
 
 
 
-	for i =1 ,10 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 590 , 184 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
-	for i =1 ,10 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 654 , 188 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
-	for i =1 ,10 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 734 , 191 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
-	for i =1 ,10 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 588 , 132 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
-	for i =1 ,5 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 584 , 61 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
 	end
 
-	for i =1 ,5 do
-		wait(5)
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 334 , 130 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+	
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 590 , 184 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 654 , 188 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 734 , 191 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 588 , 132 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
+		ugradeUnit( 584 , 61 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,2 do
+		wait(3)
 		ugradeUnit( 334 , 130 )
 		if btnUpgrade.Text == "Max" then
 			break
