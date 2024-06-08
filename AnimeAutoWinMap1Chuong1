@@ -61,7 +61,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(700,261) wait(1)---tab Star
 		tab(700,259) wait(1)---tab Star
 
-		wait(30)
+		wait(40)
 	end
 
 
