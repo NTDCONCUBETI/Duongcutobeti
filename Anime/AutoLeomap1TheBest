@@ -147,9 +147,9 @@ else
 
 	spawn(function()
 		pcall(function()
-			while true do wait(5)
+			while true do wait(2)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-					wait(1)
+					
 					wait(2)
 					click(btnLobby)
 					click(btnLobby)
