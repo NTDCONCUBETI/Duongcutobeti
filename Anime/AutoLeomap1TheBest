@@ -116,7 +116,7 @@ else
 		wait(1)
 		tab( x , y, playerGui.HUD )
 		wait(1)
-		click(btnPlace) -- presskey(101)
+		presskey(101) --click(btnPlace)
 	end
 
 	function spawmTroop2(x,y)
@@ -131,7 +131,7 @@ else
 		wait(1)
 		tab( x , y, playerGui.HUD )
 		wait(1)
-		click(btnPlace) -- presskey(101)
+		presskey(101) --click(btnPlace)
 	end
 	
 	function spawmTroop3(x,y)
@@ -146,7 +146,7 @@ else
 		wait(1)
 		tab( x , y, playerGui.HUD )
 		wait(1)
-		click(btnPlace) -- presskey(101)
+		presskey(101) --click(btnPlace)
 	end
 
 	function ugradeUnit(x,y)
