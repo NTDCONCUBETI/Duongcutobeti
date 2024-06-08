@@ -30,7 +30,7 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
@@ -63,8 +63,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(700,264) wait(1)---tab Star
 		tab(700,261) wait(1)---tab Star
 		tab(700,259) wait(1)---tab Star
-
-
 
 		wait(30)
 	end
@@ -100,74 +98,51 @@ else
 		end
 	end
 
-	local btnUnit1 = tableUnit[1]
-	local btnUnit2 = tableUnit[2]
-	local btnUnit3 = tableUnit[3]
+	local UnitsInWS = #game.Workspace.Units:GetChildren()
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
-	function spawmTroop1(x,y)
-		camera.CFrame = cameraCFrame * rotation
-		wait(1)
-		click( btnUnit1 )
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(119)
-		presskey(115)
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(101) --click(btnPlace)
-	end
-
-	function spawmTroop2(x,y)
-		camera.CFrame = cameraCFrame * rotation
-		wait(1)
-		click( btnUnit2 )
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(119)
-		presskey(115)
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(101) --click(btnPlace)
+	
+	function SpawmTroop (i,x,y)
+		while true do
+			camera.CFrame = cameraCFrame * rotation
+			wait(1)
+			click( tableUnit[i] )
+			wait(1)
+			tab( x , y )
+			wait(1)
+			presskey(119)
+			presskey(115)
+			wait(1)
+			presskey(101)
+			tab( x , y )
+			wait(1)
+			if #game.Workspace.Units:GetChildren() > UnitsInWS then
+				UnitsInWS = #game.Workspace.Units:GetChildren()
+				break
+			end
+		end
 	end
 	
-	function spawmTroop3(x,y)
-		camera.CFrame = cameraCFrame * rotation
-		wait(1)
-		click( btnUnit3 )
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(119)
-		presskey(115)
-		wait(1)
-		tab( x , y, playerGui.HUD )
-		wait(1)
-		presskey(101) --click(btnPlace)
-	end
+
 
 	function ugradeUnit(x,y)
 		camera.CFrame = cameraCFrame * rotation
 		wait(0.5)
-		tab( x , y, playerGui.HUD )
+		tab( x , y )
 		wait(1)
 		click(btnUpgrade)
 	end
 
- ------Spam Unit
+	------Spam Unit
 	wait(2)
-	spawmTroop3( 390 , 178 )
+	SpawmTroop(3, 390 , 178 )
 	wait(2)
-	spawmTroop3( 390 , 272 )
+	SpawmTroop(3, 390 , 272 )
 	wait(2)
-	spawmTroop3( 390 , 389 )
+	SpawmTroop(3, 390 , 389 )
 	wait(2)
-	spawmTroop3( 660 , 192 )
+	SpawmTroop(3, 660 , 192 )
 	wait(2)
-	spawmTroop3( 660 , 368 )
+	SpawmTroop(3, 660 , 368 )
 
 
 
@@ -211,7 +186,7 @@ else
 			break
 		end
 	end
-	
+
 
 	for i =1 ,1 do
 		wait(5)
@@ -252,7 +227,7 @@ else
 			break
 		end
 	end
-	
+
 
 	for i =1 ,1 do
 		wait(5)
@@ -293,7 +268,7 @@ else
 			break
 		end
 	end
-	
+
 
 	for i =1 ,1 do
 		wait(5)
@@ -334,7 +309,7 @@ else
 			break
 		end
 	end
-	
+
 
 	for i =1 ,1 do
 		wait(5)
@@ -375,7 +350,7 @@ else
 			break
 		end
 	end
-	
+
 
 	for i =1 ,1 do
 		wait(5)
