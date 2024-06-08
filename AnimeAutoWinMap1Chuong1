@@ -33,9 +33,9 @@ end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 
-if game.PlaceId == 17017769292 then
+if game.PlaceId == 17764698696 then
 	wait(5)
-	
+
 	while true do
 		while true do
 			wait(1)
@@ -58,7 +58,7 @@ if game.PlaceId == 17017769292 then
 		tab(713,261) wait(1)---tab Star
 		wait(30)
 	end
-	
+
 
 else
 
