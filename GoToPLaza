@@ -45,7 +45,7 @@ local function teleDenQuayHang(i)
 end
 
 -- Nếu đang ở game chính
-if game.PlaceId == 17017769292 then  
+if game.PlaceId == 17764698696 then  
 
 	if getgenv().config.Mod == "GoToPlaza" then
 		player.Character.HumanoidRootPart.CFrame = CFrame.new(21.025781631469727, 12.470232009887695, -321.54510498046875)
