@@ -33,7 +33,7 @@ end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 
-if game.PlaceId == 17764698696 then
+if game.PlaceId == 17017769292 then
 	wait(5)
 
 	while true do
