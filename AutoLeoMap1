@@ -33,7 +33,7 @@ end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 
-if game.PlaceId == 17017769292 then
+if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
 	
 	while true do
@@ -57,9 +57,10 @@ if game.PlaceId == 17017769292 then
 		end
 		
 		tab(483,391) wait(2)---tab confim
-		tab(713,261) wait(3)---tab Star
-		tab(713,261) wait(1)---tab Star
-		tab(713,261) wait(1)---tab Star
+		tab(737,317) wait(3)---tab Star
+		tab(737,320) wait(1)---tab Star
+		tab(737,323) wait(1)---tab Star
+
 		wait(30)
 	end
 	
@@ -510,4 +511,62 @@ else
 		end
 	end
 
+end
+
+----------
+wait(10)
+spawmTroop2( 414 , 148 )
+
+wait(5)
+spawmTroop2( 414 , 239 )
+
+wait(5)
+spawmTroop2( 560 , 148 )
+
+wait(5)
+spawmTroop2( 560 , 239 )
+
+wait(5)
+spawmTroop2( 531 , 191 )
+
+
+
+for i =1 ,2 do
+	wait(5)
+	ugradeUnit( 414 , 148 )
+	if btnUpgrade.Text == "Max" then
+		break
+	end
+end
+
+for i =1 ,2 do
+	wait(5)
+	ugradeUnit( 414 , 239 )
+	if btnUpgrade.Text == "Max" then
+		break
+	end
+end
+
+for i =1 ,2 do
+	wait(5)
+	ugradeUnit( 560 , 148 )
+	if btnUpgrade.Text == "Max" then
+		break
+	end
+end
+
+for i =1 ,2 do
+	wait(5)
+	ugradeUnit( 560 , 239 )
+	if btnUpgrade.Text == "Max" then
+		break
+	end
+end
+
+for i =1 ,2 do
+	wait(5)
+	ugradeUnit( 531 , 191 )
+	if btnUpgrade.Text == "Max" then
+		break
+	end
 end
