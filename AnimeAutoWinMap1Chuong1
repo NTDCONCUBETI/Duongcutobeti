@@ -33,7 +33,7 @@ end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 
-if game.PlaceId == 17017769292 then
+if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
 
 	while true do
@@ -53,9 +53,10 @@ if game.PlaceId == 17017769292 then
 		tab(246,143) wait(2)--chọn bản đồ 1
 		tab(418,105) wait(2)--chọn map 1
 		tab(483,391) wait(2)---tab confim
-		tab(713,261) wait(3)---tab Star
-		tab(713,261) wait(1)---tab Star
-		tab(713,261) wait(1)---tab Star
+		tab(737,317) wait(3)---tab Star
+		tab(737,320) wait(1)---tab Star
+		tab(737,323) wait(1)---tab Star
+
 		wait(30)
 	end
 
