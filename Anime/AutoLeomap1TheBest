@@ -158,15 +158,15 @@ else
 	end
 
  ------Spam Unit
-	wait(5)
+	wait(2)
 	spawmTroop3( 390 , 178 )
-	wait(5)
+	wait(2)
 	spawmTroop3( 390 , 272 )
-	wait(5)
+	wait(2)
 	spawmTroop3( 390 , 389 )
-	wait(5)
+	wait(2)
 	spawmTroop3( 660 , 192 )
-	wait(5)
+	wait(2)
 	spawmTroop3( 660 , 368 )
 
 
