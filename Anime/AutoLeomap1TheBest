@@ -35,13 +35,18 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
-
+	local tableGateStory = {
+		{-250.67539978027344, 11.306930541992188, -255.1462860107422},
+		{-219.3910675048828, 11.280635833740234, -285.29510498046875},
+		{-189.71109008789062, 11.280635833740234, -314.9823913574219},
+		{-153.50250244140625, 11.280635833740234, -280.38385009765625},
+		{-181.91226196289062, 11.280637741088867, -251.9528045654297},
+		{-210.1454315185547, 11.280624389648438, -223.70509338378906}
+	}
 	while true do
 		while true do
-			wait(1)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-170.3062286376953, 11.203054428100586, -297.6102600097656)
-			wait(2)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-250.67539978027344, 11.306930541992188, -255.1462860107422)
+			local indexGate = math.random(1,6)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
 			wait(2)
 			if playerGui.PAGES.MatchPage.Visible == true then
 				break	
@@ -100,7 +105,7 @@ else
 
 	local UnitsInWS = #game.Workspace.Units:GetChildren()
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
-	
+
 	function SpawmTroop (i,x,y)
 		while true do
 			camera.CFrame = cameraCFrame * rotation
@@ -121,7 +126,7 @@ else
 			end
 		end
 	end
-	
+
 
 
 	function ugradeUnit(x,y)
@@ -135,7 +140,7 @@ else
 		pcall(function()
 			while true do wait(2)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-					
+
 					wait(2)
 					click(btnLobby)
 					click(btnLobby)
@@ -652,9 +657,3 @@ else
 		end
 	end
 end
-
-
-
-
-
-
