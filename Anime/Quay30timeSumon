@@ -1,0 +1,54 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
+wait(5)
+
+local player = game.Players.LocalPlayer
+local playerGui = player.PlayerGui
+local SummonPage = playerGui.PAGES.SummonPage
+local Standard
+local btnBuyTen = SummonPage.Holder.HolderBuySummon.Ten
+
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+end
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
+local indexTouch = 1000
+function tab(x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+	wait(0.1)
+	indexTouch = indexTouch + 1
+end
+
+
+
+for i, child in ipairs(SummonPage.BannerHolder:GetChildren()) do --GetDescendants | GetChildren
+	--print(child.BannerButton.ImageButton.BannerLabel.Text, "--", child.ClassName)
+	if child.Name == "BannerButton"  then
+		if child.ImageButton.BannerLabel.Text == "Standard"  then
+			Standard = child
+		end
+	end
+end
+
+SummonPage.Visible = true
+wait(4)
+for i = 1, 3 do
+	click(Standard)
+	wait(2)
+	click(btnBuyTen)
+	wait(3)
+	for i  =1, 15 do
+		tab(480,265)
+		wait(1)
+	end
+end
