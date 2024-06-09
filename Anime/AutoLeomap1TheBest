@@ -131,20 +131,6 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
-
-	------Spam Unit
-	wait(2)
-	SpawmTroop(3, 390 , 178 )
-	wait(2)
-	SpawmTroop(3, 390 , 272 )
-	wait(2)
-	SpawmTroop(3, 390 , 389 )
-	wait(2)
-	SpawmTroop(3, 660 , 192 )
-	wait(2)
-	SpawmTroop(3, 660 , 368 )
-
-
 	spawn(function()
 		pcall(function()
 			while true do wait(2)
@@ -159,6 +145,21 @@ else
 			end
 		end)
 	end)
+
+	------Spam Unit
+	wait(2)
+	SpawmTroop(3, 390 , 178 )
+	wait(2)
+	SpawmTroop(3, 390 , 272 )
+	wait(2)
+	SpawmTroop(3, 390 , 389 )
+	wait(2)
+	SpawmTroop(3, 660 , 192 )
+	wait(2)
+	SpawmTroop(3, 660 , 368 )
+
+
+
 
 	for i =1 ,1 do
 		wait(5)
