@@ -32,7 +32,7 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
@@ -44,7 +44,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-181.91226196289062, 11.280637741088867, -251.9528045654297},
 		{-210.1454315185547, 11.280624389648438, -223.70509338378906}
 	}
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	while true do
 		while true do
 			local indexGate = math.random(1,6)
@@ -152,7 +151,7 @@ else
 			end
 		end)
 	end)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 
 	------Spam The Beast
 
