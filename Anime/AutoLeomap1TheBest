@@ -86,6 +86,8 @@ else
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
 	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
 	camera.CFrame = cameraCFrame * rotation
+	
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
@@ -137,9 +139,11 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
+	
+	
 	spawn(function()
 		pcall(function()
-			while true do wait(10)
+			while true do wait(2)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
 
 					wait(2)
@@ -147,6 +151,24 @@ else
 					click(btnLobby)
 
 
+				end
+			end
+		end)
+	end)
+
+	
+	local startTime = tick()
+	spawn(function()
+		pcall(function()
+			while true do wait(30)
+				if tick() - startTime  > 60  then
+					if UnitsInWS == 0 then
+						local TeleportService = game:GetService("TeleportService")
+						local placeId = 17017769292
+						TeleportService:Teleport(placeId, player)
+					end
+					
+					break
 				end
 			end
 		end)
