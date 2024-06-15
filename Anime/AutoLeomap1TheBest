@@ -142,7 +142,7 @@ else
 	
 	spawn(function()
 		pcall(function()
-			while true do wait(2)
+			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
 
 					wait(2)
