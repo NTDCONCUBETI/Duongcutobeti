@@ -1,5 +1,6 @@
 
 
+
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
@@ -32,10 +33,11 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	wait(5)
+	wait(3)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(2)
 	local tableGateStory = {
 		{-250.67539978027344, 11.306930541992188, -255.1462860107422},
 		{-219.3910675048828, 11.280635833740234, -285.29510498046875},
@@ -86,7 +88,7 @@ else
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
 	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
 	camera.CFrame = cameraCFrame * rotation
-	
+
 
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
@@ -138,8 +140,8 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
-	
-	
+
+
 	spawn(function()
 		pcall(function()
 			while true do wait(5)
@@ -155,7 +157,7 @@ else
 		end)
 	end)
 
-	
+
 	local startTime = tick()
 	spawn(function()
 		pcall(function()
@@ -166,7 +168,7 @@ else
 						local placeId = 17017769292
 						TeleportService:Teleport(placeId, player)
 					end
-					
+
 					break
 				end
 			end
@@ -185,9 +187,9 @@ else
 	SpawmTroop(3, 358 , 414 )
 	wait(1)
 	SpawmTroop(3, 400 , 414 )
-
-
-
+	wait(2)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(2)
 
 
 	------Update The Beat
