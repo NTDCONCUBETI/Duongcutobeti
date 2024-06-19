@@ -1,3 +1,8 @@
+getgenv().config = {
+	QuayHangPlaza = 2, -- 1 hoặc 2
+	AccMain = "NTD15101997", -- ác đang treo bán đồ
+	Mod = "GoToPlaza" 
+}
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 local player = game.Players.LocalPlayer
