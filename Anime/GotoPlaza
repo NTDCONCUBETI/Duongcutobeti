@@ -1,5 +1,3 @@
-
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 local player = game.Players.LocalPlayer
@@ -50,7 +48,7 @@ end
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	if getgenv().config.Mod == "GoToPlaza" then
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(21.025781631469727, 12.470232009887695, -321.54510498046875)
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(55.14958190917969, 14.326362609863281, -320.133544921875)
 		wait(2)
 		presskey(101)---Bấm phím E trên bàn phím
 		wait(2)
@@ -67,12 +65,34 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		wait(2)
 
 		tab(470,298)--- tab Teleport
+		wait(5)
+		if playerGui.PAGES.CaptchaPage.Visible == true then
+			wait(20)
+			getgenv().Key = "k41e8bd42d0fb1a59650ff4a"
+			loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
+		end
+		wait(5)
+		presskey(101)---Bấm phím E trên bàn phím
+		wait(2)
+		tab(480,298)--- tab join friend
+		wait(2)
+		for i, child in ipairs(playerGui:GetDescendants()) do --GetDescendants | GetChildren
+			if string.match(child.ClassName, "TextBox") and child.Parent.Parent.Name == "Friend"  then
+				--game:GetService("VirtualInputManager"):SendMouseButtonEvent(ojpect.AbsolutePosition.X+ojpect.AbsoluteSize.X-30,ojpect.AbsolutePosition.Y+60,0,true,child,1)
+				--game:GetService("VirtualInputManager"):SendMouseButtonEvent(ojpect.AbsolutePosition.X+ojpect.AbsoluteSize.X-30,ojpect.AbsolutePosition.Y+60,0,false,child,1)
+				child.Text = getgenv().config.AccMain
+			end
+		end
+		wait(2)
+
+		tab(470,298)--- tab Teleport
+
 	end
-	
+
 	if getgenv().config.Mod == "Farm" then
 		-- code  bay vaof bai farm
 	end
-	
+
 	if getgenv().config.Mod == "Build Acc" then
 		-- code  build acc
 	end
@@ -81,6 +101,17 @@ end
 -- Nếu đang trong Plaza
 if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
-	pressE()
+	wait(3)
+	spawn(function()
+		pcall(function()
+			while true do wait(3)
 
+				if playerGui.PAGES.CaptchaPage.Visible == true then
+					wait(5)
+					getgenv().Key = "k41e8bd42d0fb1a59650ff4a"
+					loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
+				end
+			end
+		end)
+	end)
 end
