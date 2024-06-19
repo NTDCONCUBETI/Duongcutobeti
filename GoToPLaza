@@ -48,16 +48,6 @@ end
 
 -- Nếu đang ở game chính
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-		if v:IsA("ScreenGui") then
-			v.Enabled = false
-		end
-		if v.Name == "Codex" then
-			game:GetService("CoreGui").Codex.gui.Enabled = true ------Tắt menu codex
-			game:GetService("CoreGui").Codex.popups.Enabled = true ------Tắt menu code
-		end
-	end
-
 	if getgenv().config.Mod == "GoToPlaza" then
 		player.Character.HumanoidRootPart.CFrame = CFrame.new(55.14958190917969, 14.326362609863281, -320.133544921875)
 		wait(2)
@@ -145,6 +135,8 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 					wait(5)
 					getgenv().Key = "k41e8bd42d0fb1a59650ff4a"
 					loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
+					wait(2)
+					tab(612,280)
 				end
 			end
 		end)
