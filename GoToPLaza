@@ -76,7 +76,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 						getgenv().Key = "k41e8bd42d0fb1a59650ff4a"
 						loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
 						wait(2)
-						tab(612,280)
+						
 					end
 				end
 			end)
@@ -136,7 +136,6 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 					getgenv().Key = "k41e8bd42d0fb1a59650ff4a"
 					loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
 					wait(2)
-					tab(612,280)
 				end
 			end
 		end)
