@@ -32,11 +32,12 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(3)
-
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(3)
 	local tableGateStory = {
 		{-250.67539978027344, 11.306930541992188, -255.1462860107422},
 		{-219.3910675048828, 11.280635833740234, -285.29510498046875},
@@ -190,7 +191,7 @@ else
 	wait(1)
 	SpawmTroop(3, 400 , 414 )
 	wait(2)
-
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	------Update The Beat
 	for i =1 ,20 do
 		for i =1 ,2 do
@@ -284,7 +285,7 @@ else
 	end	
 
 
-	
+
 
 	------Spam 4 Magic
 
@@ -380,7 +381,7 @@ else
 		ugradeUnit( 584 , 61 )
 		wait(5)
 		ugradeUnit( 334 , 130 )
-		
+
 	end
 
 end
