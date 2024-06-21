@@ -32,12 +32,11 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(3)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	wait(2)
+
 	local tableGateStory = {
 		{-250.67539978027344, 11.306930541992188, -255.1462860107422},
 		{-219.3910675048828, 11.280635833740234, -285.29510498046875},
@@ -174,8 +173,11 @@ else
 			end
 		end)
 	end)
-
-
+	------Spam 2 Magic
+	wait(1)
+	SpawmTroop(2, 590 , 184 )
+	wait(1)
+	SpawmTroop(2, 654 , 188 )
 	------Spam The Beast
 
 	SpawmTroop(3, 358 , 303 )
@@ -188,732 +190,46 @@ else
 	wait(1)
 	SpawmTroop(3, 400 , 414 )
 	wait(2)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	wait(2)
-
 
 	------Update The Beat
-
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
+	for i =1 ,20 do
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 358 , 303 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
 		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 358 , 340 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
 		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 358 , 377 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
 		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 358 , 414 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
 		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 400 , 414 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
 		end
 	end
 
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 358 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 414 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
 
 
 	----Spam bộ đội
@@ -929,696 +245,49 @@ else
 	SpawmTroop(4, 400 , 303 )
 
 	------update bộ đội
+	for i =1 ,20 do
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 440 , 303 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
+		end	
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 440 , 340 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
+		end	
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 440 , 377 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
+		end
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 400 , 340 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
+		end
+		for i =1 ,2 do
+			wait(2)
+			ugradeUnit( 400 , 303 )
+			if btnUpgrade.Text == "Max" then
+				break
+			end
+		end
+	end	
 
 
+	
 
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
+	------Spam 4 Magic
 
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end	
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 440 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	for i =1 ,2 do
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-	------Spam Magic
-	wait(1)
-	SpawmTroop(2, 590 , 184 )
-	wait(1)
-	SpawmTroop(2, 654 , 188 )
 	wait(1)
 	SpawmTroop(2, 734 , 191 )
 	wait(1)
@@ -1677,4 +346,41 @@ else
 			break
 		end
 	end
+	-------Spamm chống afk
+	for i =1 ,20 do
+		wait(5)
+		ugradeUnit( 358 , 303 )
+		wait(5)
+		ugradeUnit( 358 , 340 )
+		wait(5)
+		ugradeUnit( 358 , 377 )
+		wait(5)
+		ugradeUnit( 358 , 414 )
+		wait(5)
+		ugradeUnit( 400 , 414 )
+		wait(5)
+		ugradeUnit( 400 , 303 )
+		wait(5)
+		ugradeUnit( 440 , 303 )
+		wait(5)
+		ugradeUnit( 440 , 340 )
+		wait(5)
+		ugradeUnit( 440 , 377 )
+		wait(5)
+		ugradeUnit( 400 , 340 )
+		wait(5)
+		ugradeUnit( 590 , 184 )
+		wait(5)
+		ugradeUnit( 654 , 188 )
+		wait(5)
+		ugradeUnit( 734 , 191 )
+		wait(5)
+		ugradeUnit( 588 , 132 )
+		wait(5)
+		ugradeUnit( 584 , 61 )
+		wait(5)
+		ugradeUnit( 334 , 130 )
+		
+	end
+
 end
