@@ -123,7 +123,6 @@ end
 if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
 
-game:GetService("RunService"):Set3dRenderingEnabled(false)
 	spawn(function()
 		pcall(function()
 			while true do wait(3)
