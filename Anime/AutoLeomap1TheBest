@@ -160,7 +160,7 @@ else
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(
 		pcall(function()
-			local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+			
 			while true do
 				wait(300)
 				if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
