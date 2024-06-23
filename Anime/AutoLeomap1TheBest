@@ -156,6 +156,25 @@ else
 			end
 		end)
 	end)
+	
+	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+	spawn(
+		pcall(function()
+			local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+			while true do
+				wait(300)
+				if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
+					-- về loppy
+					local TeleportService = game:GetService("TeleportService")
+					local placeId = 17017769292
+					TeleportService:Teleport(placeId, player)
+				end
+				wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+			end
+		end
+
+		)
+	)
 
 
 	local startTime = tick()
