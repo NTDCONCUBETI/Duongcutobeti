@@ -1,5 +1,10 @@
 
-
+local render3D = true
+if getgenv().config ~= nil  then
+	if getgenv().config.render3D ~= nil then
+		render3D = getgenv().config.render3D
+	end
+end
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -37,6 +42,7 @@ end
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(3)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
 	wait(3)
 	local tableGateStory = {
 		{-250.67539978027344, 11.306930541992188, -255.1462860107422},
@@ -141,7 +147,7 @@ else
 		click(btnUpgrade)
 	end
 
-
+	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
 	spawn(function()
 		pcall(function()
 			while true do wait(5)
@@ -156,7 +162,7 @@ else
 			end
 		end)
 	end)
-	
+
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
