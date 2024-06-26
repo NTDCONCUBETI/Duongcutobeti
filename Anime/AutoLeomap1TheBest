@@ -203,9 +203,9 @@ if game.PlaceId == 17018663967 then
 	end)
 	------Spam 2 Magic
 	wait(1)
-	SpawmTroop(2, 590 , 184 )
+	SpawmTroop(2, 264 , 200.8 )
 	wait(1)
-	SpawmTroop(2, 654 , 188 )
+	SpawmTroop(2, 334 , 130 )
 	------Spam The Beast
 
 	SpawmTroop(3, 358 , 303 )
@@ -315,15 +315,15 @@ if game.PlaceId == 17018663967 then
 
 
 	------Spam 4 Magic
-
+	wait(1)
+	SpawmTroop(2, 590 , 184 )
+	wait(1)
+	SpawmTroop(2, 654 , 188 )
 	wait(1)
 	SpawmTroop(2, 734 , 191 )
 	wait(1)
 	SpawmTroop(2, 588 , 132 )
-	wait(1)
-	SpawmTroop(2, 584 , 61 )
-	wait(1)
-	SpawmTroop(2, 334 , 130 )
+
 
 	---------Update Magic
 
@@ -361,7 +361,7 @@ if game.PlaceId == 17018663967 then
 
 	for i =1 ,5 do
 		wait(5)
-		ugradeUnit( 584 , 61 )
+		ugradeUnit( 264 , 200.8 )
 		if btnUpgrade.Text == "Max" then
 			break
 		end
