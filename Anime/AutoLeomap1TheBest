@@ -405,7 +405,7 @@ if game.PlaceId == 17018663967 then
 		wait(5)
 		ugradeUnit( 588 , 132 )
 		wait(5)
-		ugradeUnit( 584 , 61 )
+		ugradeUnit( 264 , 200.8 )
 		wait(5)
 		ugradeUnit( 334 , 130 )
 
