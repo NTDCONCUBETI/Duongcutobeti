@@ -1,7 +1,7 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 wait(5)
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
+wait(5)
 local player = game.Players.LocalPlayer
 local playerGui = player.PlayerGui
 local SummonPage = playerGui.PAGES.SummonPage
@@ -39,7 +39,8 @@ for i, child in ipairs(SummonPage.BannerHolder:GetChildren()) do --GetDescendant
 		end
 	end
 end
-
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-193.6164093017578, 14.895275115966797, -465.6069641113281)
+wait(4)
 SummonPage.Visible = true
 wait(4)
 for i = 1, 3 do
@@ -52,3 +53,8 @@ for i = 1, 3 do
 		wait(1)
 	end
 end
+
+wait(3)
+tab(48,125)----tap mở túi unit
+
+
