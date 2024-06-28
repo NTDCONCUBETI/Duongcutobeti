@@ -27,9 +27,9 @@ function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
 end
 
-function click(a) --update code
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2 + 39,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2 + 39,0,false,a,1)
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
 end
 
 function clickToaDo(x,y, object)
