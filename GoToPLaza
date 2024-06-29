@@ -30,8 +30,8 @@ local function pressE ()
 end
 
 function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
 end
 
 
@@ -113,7 +113,15 @@ end
 -- Nếu đang trong Plaza
 if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
-
-
+	wait(2)
+	local setting = playerGui.PAGES.SettingsUI
+	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+	setting.Visible = true
+	wait(5)
+	if autoskip.Text == "Off" then 
+		click(autoskip)
+	end
+	wait(5)
+	setting.Visible = false
 
 end
