@@ -71,7 +71,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(470,298)--- tab Teleport
 
 		wait(20)
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 		for i=1,3 do wait(3)
 
 
