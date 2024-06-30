@@ -1,6 +1,6 @@
 
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -36,7 +36,7 @@ end
 
 
 local posQuayHang ={
-	{ x = -105.6535415649414,y =  -84.7407455444336,z= -28.01546287536621}, -- QuayPlaza 1
+	{ x = -96.16732025146484,y =  -84.74073791503906,z= -26.246244430541992}, -- QuayPlaza 1
 	{ x= -119.25201416015625,y = -84.74073791503906,z = -37.35292434692383} -- QuayPlaza 2
 }
 
@@ -52,7 +52,7 @@ loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
 -- Nếu đang ở game chính
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	if getgenv().config.Mod == "GoToPlaza" then
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(55.14958190917969, 14.326362609863281, -320.133544921875)
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(85.0793685913086, 12.372770309448242, -321.2008361816406)
 		wait(2)
 		presskey(101)---Bấm phím E trên bàn phím
 		wait(2)
@@ -71,7 +71,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(470,298)--- tab Teleport
 
 		wait(20)
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 		for i=1,3 do wait(3)
 
 
@@ -113,8 +113,7 @@ end
 -- Nếu đang trong Plaza
 if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
-	wait(10)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+	wait(2)
 	local setting = playerGui.PAGES.SettingsUI
 	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 	setting.Visible = true
@@ -124,9 +123,7 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	end
 	wait(5)
 	setting.Visible = false
-	wait(5)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	wait(2)
 	tab(48,364)--- tab trade
-	
+
 end
