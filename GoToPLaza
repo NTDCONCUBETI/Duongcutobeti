@@ -1,6 +1,6 @@
 
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -125,5 +125,5 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	setting.Visible = false
 	wait(2)
 	tab(48,364)--- tab trade
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 end
