@@ -1,6 +1,6 @@
 
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
+
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -71,6 +71,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(470,298)--- tab Teleport
 
 		wait(20)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 
 		for i=1,3 do wait(3)
 
@@ -113,7 +114,8 @@ end
 -- Nếu đang trong Plaza
 if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
-	wait(2)
+	wait(15)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	local setting = playerGui.PAGES.SettingsUI
 	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 	setting.Visible = true
