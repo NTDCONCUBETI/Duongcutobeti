@@ -131,5 +131,10 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 		local TeleportService = game:GetService("TeleportService")
 		local placeId = 17017769292
 		TeleportService:Teleport(placeId, player)
+	else
+		TradeMenuUI.Visible = false
+		wait(2)
+		presskey(101)
 	end
+	
 end
