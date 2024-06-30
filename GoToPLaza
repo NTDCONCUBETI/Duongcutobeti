@@ -125,5 +125,11 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	setting.Visible = false
 	wait(2)
 	tab(48,364)--- tab trade
-
+	wait(2)
+	local TradeMenuUI = playerGui.UI.TradeMenuUI
+	if not TradeMenuUI.Visible then
+		local TeleportService = game:GetService("TeleportService")
+		local placeId = 17017769292
+		TeleportService:Teleport(placeId, player)
+	end
 end
