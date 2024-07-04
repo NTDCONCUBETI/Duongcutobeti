@@ -68,10 +68,20 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(246,143) wait(2)--chọn bản đồ 1
 		tab(246,143) wait(2)--chọn bản đồ 1
 
-		for i = 0,6 do
-			tab(418,105 +i * 37 ) wait(1)--chọn map Cao nhat
-		end
+		tab( 416 , 116 ) wait(2)--Chương 1
+	
+		tab( 416 , 151 ) wait(2)--Chương 2
 
+		tab( 416 , 186 ) wait(2)--Chương 3
+	
+		tab( 416 , 221 ) wait(2)--Chương 4
+	
+		tab( 416 , 256 ) wait(2)--Chương 5
+		
+		tab( 416 , 291 ) wait(2)--Chương 6
+		
+		tab( 416 , 326 ) wait(2)--Chương Infinite
+		
 		tab(483,391) wait(2)---tab confim
 		tab(737,317) wait(3)---tab Star
 		tab(737,320) wait(1)---tab Star
