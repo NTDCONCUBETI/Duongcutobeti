@@ -39,7 +39,7 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-
+playerGui.TopBar.HolderFrame.Visible = false
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(3)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
