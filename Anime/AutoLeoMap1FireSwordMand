@@ -66,7 +66,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		wait(2)
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 		tab(246,143) wait(2)--chọn bản đồ 1
-		tab(246,143) wait(2)--chọn bản đồ 1
 
 		tab( 416 , 116 ) wait(2)--Chương 1
 	
