@@ -9,8 +9,8 @@ local Standard
 local btnBuyTen = SummonPage.Holder.HolderBuySummon.Ten
 
 function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
 end
 function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
@@ -39,7 +39,7 @@ for i, child in ipairs(SummonPage.BannerHolder:GetChildren()) do --GetDescendant
 		end
 	end
 end
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-193.6164093017578, 14.895275115966797, -465.6069641113281)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.80377197265625, 16.160789489746094, -467.3519592285156)
 wait(4)
 SummonPage.Visible = true
 wait(4)
