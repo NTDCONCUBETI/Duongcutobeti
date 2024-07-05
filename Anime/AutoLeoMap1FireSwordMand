@@ -67,19 +67,19 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 		tab(246,143) wait(2)--chọn bản đồ 1
 
-		tab( 416 , 116 ) wait(1)--Chương 1
+		tab( 416 , 116 ) wait(0.5)--Chương 1
 
-		tab( 416 , 151 ) wait(1)--Chương 2
+		tab( 416 , 151 ) wait(0.5)--Chương 2
 
-		tab( 416 , 186 ) wait(1)--Chương 3
+		tab( 416 , 186 ) wait(0.5)--Chương 3
 
-		tab( 416 , 221 ) wait(1)--Chương 4
+		tab( 416 , 221 ) wait(0.5)--Chương 4
 
-		tab( 416 , 256 ) wait(1)--Chương 5
+		tab( 416 , 256 ) wait(0.5)--Chương 5
 
-		tab( 416 , 291 ) wait(1)--Chương 6
+		tab( 416 , 291 ) wait(0.5)--Chương 6
 
-		tab( 416 , 326 ) wait(1)--Chương Infinite
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 
 		tab(483,391) wait(2)---tab confim
 		tab(737,317) wait(3)---tab Star
