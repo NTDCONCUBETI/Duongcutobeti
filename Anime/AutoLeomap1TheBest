@@ -45,6 +45,13 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
 	wait(3)
+	spawn(function()
+		pcall(function()
+			_G.Config =  { UserID = "8395772a-b387-466e-891a-9e02abeffa9d", discord_id = 694477819069333574 , Note = "Pc", } 
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/main/animedefender"))()
+		end)
+	end)
+	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
