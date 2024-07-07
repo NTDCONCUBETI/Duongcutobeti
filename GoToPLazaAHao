@@ -46,7 +46,7 @@ local function teleDenQuayHang(i)
 	wait(1)
 end
 wait(2)
-
+getgenv().Key = "kaef46a9c2e3287f89417dab"
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
 
 -- Nếu đang ở game chính
