@@ -30,7 +30,7 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-oadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
