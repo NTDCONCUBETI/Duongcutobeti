@@ -244,6 +244,7 @@ if game.PlaceId == 17018663967 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
 	wait(1)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
+	wait(5)
 	------Update The Beat
 	for i =1 ,20 do
 		for i =1 ,2 do
