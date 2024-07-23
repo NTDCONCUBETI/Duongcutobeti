@@ -29,11 +29,14 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 
+oadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+	
 	wait(5)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -164,7 +167,7 @@ else
 	spawmTroop2( 334 , 130 )
 
 
-
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 
 
 	for i =1 ,10 do
