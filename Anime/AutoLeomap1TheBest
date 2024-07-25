@@ -42,18 +42,228 @@ playerGui.TopBar.HolderFrame.Visible = false
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-	wait(3)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
-	wait(3)
-	spawn(function()
+	------------------ FPSBOOTER
+	repeat
+		task.wait()
+	until game:IsLoaded()
+
+	local Workspace = game:GetService("Workspace")
+	local Terrain = Workspace:WaitForChild("Terrain")
+	Terrain.WaterReflectance = 0
+	Terrain.WaterTransparency = 1
+	Terrain.WaterWaveSize = 0
+	Terrain.WaterWaveSpeed = 0
+
+	local Lighting = game:GetService("Lighting")
+	Lighting.Brightness = 0
+	Lighting.GlobalShadows = false
+	Lighting.FogEnd = 9e100
+	Lighting.FogStart = 0
+
+	sethiddenproperty(Lighting, "Technology", 2)
+	sethiddenproperty(Terrain, "Decoration", false)
+
+	local function clearTextures(v)
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif (v:IsA("Decal") or v:IsA("Texture")) then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 10385902758728957
+		elseif v:IsA("SpecialMesh")  then
+			v.TextureId = 0
+		elseif v:IsA("ShirtGraphic") then
+			v.Graphic = 1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) then
+			v[v.ClassName .. "Template"] = 1
+		elseif v.Name == "Foilage" and v:IsA("Folder") then
+			v:Destroy()
+		elseif string.find(v.Name, "Tree") or string.find(v.Name, "Water") or string.find(v.Name, "Bush") or string.find(v.Name, "grass") then
+			task.wait()
+			v:Destroy()
+		end
+	end
+
+	game:GetService("Lighting"):ClearAllChildren()
+
+	for _, v in pairs(Workspace:GetDescendants()) do
+		clearTextures(v)
+	end
+
+	Workspace.DescendantAdded:Connect(function(v)
+		clearTextures(v)
+	end)
+	-------------LowMap
+	local UserInputService = game:GetService("UserInputService")
+	local RunService = game:GetService("RunService")
+
+	local WindowFocusReleasedFunction = function()
+		RunService:Set3dRenderingEnabled(false)
+		setfpscap(15)
+		return
+	end
+
+	local WindowFocusedFunction = function()
+		RunService:Set3dRenderingEnabled(true)
+		setfpscap(15)
+		return
+	end
+
+	local Initialize = function()
+		UserInputService.WindowFocusReleased:Connect(WindowFocusReleasedFunction)
+		UserInputService.WindowFocused:Connect(WindowFocusedFunction)
+		return
+	end
+	Initialize()
+	UserSettings():GetService("UserGameSettings").MasterVolume = 0
+	local decalsyeeted = true
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	sethiddenproperty(l,"Technology",2)
+	sethiddenproperty(t,"Decoration",false)
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 1
+	l.GlobalShadows = 0
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i, v in pairs(w:GetDescendants()) do
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Transparency = 1
+			v.Reflectance = 0
+		elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") and decalsyeeted then
+			v.Material = "Plastic"
+			v.Transparency = 1
+			v.Reflectance = 0
+			v.TextureID = 0
+		elseif v:IsA("SpecialMesh") and decalsyeeted  then
+			v.TextureId=0
+		elseif v:IsA("ShirtGraphic") and decalsyeeted then
+			v.Graphic=1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+			v[v.ClassName.."Template"]=1
+		end
+	end
+	for i = 1,#l:GetChildren() do
+		e=l:GetChildren()[i]
+		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+			e.Enabled = false
+		end
+	end
+	w.DescendantAdded:Connect(function(v)
 		pcall(function()
-			_G.Config =  { UserID = "8395772a-b387-466e-891a-9e02abeffa9d", discord_id = 694477819069333574 , Note = "Pc", } 
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/main/animedefender"))()
+			if v:IsA("BasePart") and not v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.Transparency = 1
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") and decalsyeeted then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 0
+				v.Transparency = 1
+			elseif v:IsA("SpecialMesh") and decalsyeeted then
+				v.TextureId=0
+			elseif v:IsA("ShirtGraphic") and decalsyeeted then
+				v.ShirtGraphic=1
+			elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+				v[v.ClassName.."Template"]=1
+			end
 		end)
 	end)
+	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+	wait(3)
+	------- ClosePeopeoAndChat
+
+	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+		if v.Name == "Codex" then
+			game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
+			game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
+		end
+	end
+	game.Workspace.DescendantAdded:Connect(function(v)
+		pcall(function()
+			if v:IsA("BasePart") and not v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.Transparency = 1
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") and decalsyeeted then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 0
+				v.Transparency = 1
+			elseif v:IsA("SpecialMesh") and decalsyeeted then
+				v.TextureId=0
+			elseif v:IsA("ShirtGraphic") and decalsyeeted then
+				v.ShirtGraphic=1
+			elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+				v[v.ClassName.."Template"]=1
+			end
+		end)
+	end)
+	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
+
 	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
@@ -112,8 +322,8 @@ if game.PlaceId == 17018663967 then
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-1680.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
-	local lookAtPosition = Vector3.new(-1680.7144775390625, 0, -532.6212158203125) -- Vị trí mà camera sẽ nhìn vào
+	local cameraPosition = Vector3.new(-1730.7144775390625, 60, -582.6212158203125) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(-1730.7144775390625, 0, -582.6212158203125) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
@@ -222,65 +432,289 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	------Spam 2 Magic
-	wait(1)
-	SpawmTroop(2, 339 , 372 )
-	wait(1)
-	SpawmTroop(2, 323 , 436 )
 	
+	
+	------Spam 6 Magic
+	wait(1)
+	SpawmTroop(2, 766 , 122 )
+	wait(1)
+	SpawmTroop(2, 798 , 45 )
+	wait(1)
+	SpawmTroop(2, 393 , 108 )
+	wait(1)
+	SpawmTroop(2, 587 , 154 )
+	wait(1)
+	SpawmTroop(2, 636 , 261 )
+	wait(1)
+	SpawmTroop(2, 673 , 351 )
+	wait(1)
+	------- ClosePeopeoAndChat
+
+	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+		if v.Name == "Codex" then
+			game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
+			game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
+		end
+	end
+	game.Workspace.DescendantAdded:Connect(function(v)
+		pcall(function()
+			if v:IsA("BasePart") and not v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.Transparency = 1
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") and decalsyeeted then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 0
+				v.Transparency = 1
+			elseif v:IsA("SpecialMesh") and decalsyeeted then
+				v.TextureId=0
+			elseif v:IsA("ShirtGraphic") and decalsyeeted then
+				v.ShirtGraphic=1
+			elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+				v[v.ClassName.."Template"]=1
+			end
+		end)
+	end)
+	------------------ FPSBOOTER
+	repeat
+		task.wait()
+	until game:IsLoaded()
+
+	local Workspace = game:GetService("Workspace")
+	local Terrain = Workspace:WaitForChild("Terrain")
+	Terrain.WaterReflectance = 0
+	Terrain.WaterTransparency = 1
+	Terrain.WaterWaveSize = 0
+	Terrain.WaterWaveSpeed = 0
+
+	local Lighting = game:GetService("Lighting")
+	Lighting.Brightness = 0
+	Lighting.GlobalShadows = false
+	Lighting.FogEnd = 9e100
+	Lighting.FogStart = 0
+
+	sethiddenproperty(Lighting, "Technology", 2)
+	sethiddenproperty(Terrain, "Decoration", false)
+
+	local function clearTextures(v)
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+		elseif (v:IsA("Decal") or v:IsA("Texture")) then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 10385902758728957
+		elseif v:IsA("SpecialMesh")  then
+			v.TextureId = 0
+		elseif v:IsA("ShirtGraphic") then
+			v.Graphic = 1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) then
+			v[v.ClassName .. "Template"] = 1
+		elseif v.Name == "Foilage" and v:IsA("Folder") then
+			v:Destroy()
+		elseif string.find(v.Name, "Tree") or string.find(v.Name, "Water") or string.find(v.Name, "Bush") or string.find(v.Name, "grass") then
+			task.wait()
+			v:Destroy()
+		end
+	end
+
+	game:GetService("Lighting"):ClearAllChildren()
+
+	for _, v in pairs(Workspace:GetDescendants()) do
+		clearTextures(v)
+	end
+
+	Workspace.DescendantAdded:Connect(function(v)
+		clearTextures(v)
+	end)
+	-------------LowMap
+	local UserInputService = game:GetService("UserInputService")
+	local RunService = game:GetService("RunService")
+
+	local WindowFocusReleasedFunction = function()
+		RunService:Set3dRenderingEnabled(false)
+		setfpscap(15)
+		return
+	end
+
+	local WindowFocusedFunction = function()
+		RunService:Set3dRenderingEnabled(true)
+		setfpscap(15)
+		return
+	end
+
+	local Initialize = function()
+		UserInputService.WindowFocusReleased:Connect(WindowFocusReleasedFunction)
+		UserInputService.WindowFocused:Connect(WindowFocusedFunction)
+		return
+	end
+	Initialize()
+	UserSettings():GetService("UserGameSettings").MasterVolume = 0
+	local decalsyeeted = true
+	local g = game
+	local w = g.Workspace
+	local l = g.Lighting
+	local t = w.Terrain
+	sethiddenproperty(l,"Technology",2)
+	sethiddenproperty(t,"Decoration",false)
+	t.WaterWaveSize = 0
+	t.WaterWaveSpeed = 0
+	t.WaterReflectance = 0
+	t.WaterTransparency = 1
+	l.GlobalShadows = 0
+	l.FogEnd = 9e9
+	l.Brightness = 0
+	settings().Rendering.QualityLevel = "Level01"
+	for i, v in pairs(w:GetDescendants()) do
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Transparency = 1
+			v.Reflectance = 0
+		elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") and decalsyeeted then
+			v.Material = "Plastic"
+			v.Transparency = 1
+			v.Reflectance = 0
+			v.TextureID = 0
+		elseif v:IsA("SpecialMesh") and decalsyeeted  then
+			v.TextureId=0
+		elseif v:IsA("ShirtGraphic") and decalsyeeted then
+			v.Graphic=1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+			v[v.ClassName.."Template"]=1
+		end
+	end
+	for i = 1,#l:GetChildren() do
+		e=l:GetChildren()[i]
+		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+			e.Enabled = false
+		end
+	end
+	w.DescendantAdded:Connect(function(v)
+		pcall(function()
+			if v:IsA("BasePart") and not v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.Transparency = 1
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") and decalsyeeted then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 0
+				v.Transparency = 1
+			elseif v:IsA("SpecialMesh") and decalsyeeted then
+				v.TextureId=0
+			elseif v:IsA("ShirtGraphic") and decalsyeeted then
+				v.ShirtGraphic=1
+			elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+				v[v.ClassName.."Template"]=1
+			end
+		end)
+	end)
+	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+	wait(5)
 	------Spam The Beast
 
-	SpawmTroop(3, 358 , 303 )
+	SpawmTroop(3, 650 , 199 )
 	wait(1)
-	SpawmTroop(3, 358 , 266 )
+	SpawmTroop(3, 690 , 199 )
 	wait(1)
-	SpawmTroop(3, 358 , 229 )
+	SpawmTroop(3, 730 , 199 )
 	wait(1)
-	SpawmTroop(3, 358 , 192 )
+	SpawmTroop(3, 770 , 199 )
 	wait(1)
-	SpawmTroop(3, 400 , 192 )
-	
+	SpawmTroop(3, 810 , 199 )
 
-	wait(2)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	wait(1)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
-	wait(1)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
-	wait(5)
+
+
 	------Update The Beat
 	for i =1 ,20 do
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 358 , 303 )
+			ugradeUnit( 650 , 199 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 358 , 266 )
+			ugradeUnit( 690 , 199 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 358 , 229 )
+			ugradeUnit( 730 , 199 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 358 , 192 )
+			ugradeUnit( 770 , 199 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 400 , 192 )
+			ugradeUnit( 810 , 199 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
@@ -288,53 +722,52 @@ if game.PlaceId == 17018663967 then
 	end
 
 
-
 	----Spam bộ đội
 	wait(1)
-	SpawmTroop(4, 440 , 303 )
+	SpawmTroop(4, 520 , 276 )
 	wait(1)
-	SpawmTroop(4, 440 , 266 )
+	SpawmTroop(4, 520 , 313 )
 	wait(1)
-	SpawmTroop(4, 440 , 229 )
+	SpawmTroop(4, 520 , 350 )
 	wait(1)
-	SpawmTroop(4, 400 , 266 )
+	SpawmTroop(4, 520 , 387 )
 	wait(1)
-	SpawmTroop(4, 400 , 303 )
+	SpawmTroop(4, 520 , 424 )
 
 
 	------update bộ đội
 	for i =1 ,20 do
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 440 , 303 )
+			ugradeUnit( 520 , 276 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end	
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 440 , 266 )
+			ugradeUnit( 520 , 313 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end	
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 440 , 229 )
+			ugradeUnit( 520 , 350 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 400 , 266 )
+			ugradeUnit( 520 , 387 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 400 , 303 )
+			ugradeUnit( 520 , 424 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
@@ -344,28 +777,38 @@ if game.PlaceId == 17018663967 then
 
 	-------Spamm chống afk
 	for i =1 ,20 do
-		wait(5)
-		ugradeUnit( 358 , 303 )
-		wait(5)
-		ugradeUnit( 358 , 266 )
-		wait(5)
-		ugradeUnit( 358 , 229 )
-		wait(5)
-		ugradeUnit( 358 , 192 )
-		wait(5)
-		ugradeUnit( 400 , 192 )
-		wait(5)
-		ugradeUnit( 400 , 303 )
-		wait(5)
-		ugradeUnit( 440 , 303 )
-		wait(5)
-		ugradeUnit( 440 , 266 )
-		wait(5)
-		ugradeUnit( 440 , 229 )
-		wait(5)
-		ugradeUnit( 400 , 266 )
-		wait(5)
-
+		wait(2)
+		ugradeUnit( 650 , 199 )
+		wait(2)
+		ugradeUnit( 690 , 199 )
+		wait(2)
+		ugradeUnit( 730 , 199 )
+		wait(2)
+		ugradeUnit( 770 , 199 )
+		wait(2)
+		ugradeUnit( 810 , 199 )
+		wait(2)
+		ugradeUnit( 520 , 276 )
+		wait(2)
+		ugradeUnit( 520 , 313 )
+		wait(2)
+		ugradeUnit( 520 , 350 )
+		wait(2)
+		ugradeUnit( 520 , 387 )
+		wait(2)
+		ugradeUnit( 520 , 424 )
+		wait(2)
+		ugradeUnit( 766 , 122 )
+		wait(2)
+		ugradeUnit( 798 , 45 )
+		wait(2)
+		ugradeUnit( 393 , 108 )
+		wait(2)
+		ugradeUnit( 587 , 154 )
+		wait(2)
+		ugradeUnit( 636 , 261 )
+		wait(2)
+		ugradeUnit( 673 , 351 )
 
 	end
 
