@@ -1,6 +1,10 @@
 
 wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/FPSBOOTER"))()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 wait(5)
 local player = game.Players.LocalPlayer
 local playerGui = player.PlayerGui
@@ -39,9 +43,16 @@ for i, child in ipairs(SummonPage.BannerHolder:GetChildren()) do --GetDescendant
 		end
 	end
 end
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.80377197265625, 16.160789489746094, -467.3519592285156)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
+wait(4)
+---- tắt bảng update
+local update = playerGui.PAGES.UpdatesUI
+wait(2)
+update.Visible = false
 wait(4)
 SummonPage.Visible = true
+wait(4)
+tab( 236 , 338 )-- tab auto sell Rare
 wait(4)
 for i = 1, 3 do
 	click(Standard)
@@ -53,7 +64,6 @@ for i = 1, 3 do
 		wait(1)
 	end
 end
-
 wait(3)
 tab(48,125)----tap mở túi unit
 
