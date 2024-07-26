@@ -12,6 +12,8 @@ local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 
 local indexTouch = 1000
+local setting = playerGui.PAGES.SettingsUI
+local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -42,90 +44,25 @@ playerGui.TopBar.HolderFrame.Visible = false
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	------------------ FPSBOOTER
-	repeat
-		task.wait()
-	until game:IsLoaded()
-
-	local Workspace = game:GetService("Workspace")
-	local Terrain = Workspace:WaitForChild("Terrain")
-	Terrain.WaterReflectance = 0
-	Terrain.WaterTransparency = 1
-	Terrain.WaterWaveSize = 0
-	Terrain.WaterWaveSpeed = 0
-
-	local Lighting = game:GetService("Lighting")
-	Lighting.Brightness = 0
-	Lighting.GlobalShadows = false
-	Lighting.FogEnd = 9e100
-	Lighting.FogStart = 0
-
-	sethiddenproperty(Lighting, "Technology", 2)
-	sethiddenproperty(Terrain, "Decoration", false)
-
-	local function clearTextures(v)
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-		elseif (v:IsA("Decal") or v:IsA("Texture")) then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 10385902758728957
-		elseif v:IsA("SpecialMesh")  then
-			v.TextureId = 0
-		elseif v:IsA("ShirtGraphic") then
-			v.Graphic = 1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) then
-			v[v.ClassName .. "Template"] = 1
-		elseif v.Name == "Foilage" and v:IsA("Folder") then
-			v:Destroy()
-		elseif string.find(v.Name, "Tree") or string.find(v.Name, "Water") or string.find(v.Name, "Bush") or string.find(v.Name, "grass") then
-			task.wait()
-			v:Destroy()
-		end
+	wait(5)
+	---- tắt bảng update
+	local update = playerGui.PAGES.UpdatesUI
+	wait(2)
+	update.Visible = false
+	------------ Tắt auto skip
+	setting.Visible = true
+	wait(5)
+	if autoskip.Text == "On" then 
+		click(autoskip)
 	end
-
+	wait(2)
+	setting.Visible = false
+	wait(2)
+	------- FPSBOOTER and LowMap
+	setfpscap(15)
+	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	game:GetService("Lighting"):ClearAllChildren()
 
-	for _, v in pairs(Workspace:GetDescendants()) do
-		clearTextures(v)
-	end
-
-	Workspace.DescendantAdded:Connect(function(v)
-		clearTextures(v)
-	end)
-	-------------LowMap
-	local UserInputService = game:GetService("UserInputService")
-	local RunService = game:GetService("RunService")
-
-	local WindowFocusReleasedFunction = function()
-		RunService:Set3dRenderingEnabled(false)
-		setfpscap(15)
-		return
-	end
-
-	local WindowFocusedFunction = function()
-		RunService:Set3dRenderingEnabled(true)
-		setfpscap(15)
-		return
-	end
-
-	local Initialize = function()
-		UserInputService.WindowFocusReleased:Connect(WindowFocusReleasedFunction)
-		UserInputService.WindowFocused:Connect(WindowFocusedFunction)
-		return
-	end
-	Initialize()
-	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	local decalsyeeted = true
 	local g = game
 	local w = g.Workspace
@@ -185,7 +122,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
 				v.Lifetime = NumberRange.new(0)
 			elseif v:IsA("Explosion") then
-				v.BlastPressure = 1
+				v.BlastPressure = 1 
 				v.BlastRadius = 1
 			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
 				v.Enabled = false
@@ -214,6 +151,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 			v.Enabled = false
 		end
 	end
+
 	wait(3)
 	------- ClosePeopeoAndChat
 
@@ -351,6 +289,17 @@ if game.PlaceId == 17018663967 then
 	local UnitsInWS = #game.Workspace.Units:GetChildren()
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
 
+
+	------------Mở auto skip
+	setting.Visible = true
+	wait(5)
+	if autoskip.Text == "Off" then 
+		click(autoskip)
+	end
+	wait(2)
+	setting.Visible = false
+	wait(2)
+
 	function SpawmTroop (i,x,y)
 		while true do
 			camera.CFrame = cameraCFrame * rotation
@@ -432,8 +381,8 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	
-	
+
+
 	------Spam 6 Magic
 	wait(1)
 	SpawmTroop(2, 766 , 122 )
@@ -495,90 +444,12 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	------------------ FPSBOOTER
-	repeat
-		task.wait()
-	until game:IsLoaded()
-
-	local Workspace = game:GetService("Workspace")
-	local Terrain = Workspace:WaitForChild("Terrain")
-	Terrain.WaterReflectance = 0
-	Terrain.WaterTransparency = 1
-	Terrain.WaterWaveSize = 0
-	Terrain.WaterWaveSpeed = 0
-
-	local Lighting = game:GetService("Lighting")
-	Lighting.Brightness = 0
-	Lighting.GlobalShadows = false
-	Lighting.FogEnd = 9e100
-	Lighting.FogStart = 0
-
-	sethiddenproperty(Lighting, "Technology", 2)
-	sethiddenproperty(Terrain, "Decoration", false)
-
-	local function clearTextures(v)
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-		elseif (v:IsA("Decal") or v:IsA("Texture")) then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 10385902758728957
-		elseif v:IsA("SpecialMesh")  then
-			v.TextureId = 0
-		elseif v:IsA("ShirtGraphic") then
-			v.Graphic = 1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) then
-			v[v.ClassName .. "Template"] = 1
-		elseif v.Name == "Foilage" and v:IsA("Folder") then
-			v:Destroy()
-		elseif string.find(v.Name, "Tree") or string.find(v.Name, "Water") or string.find(v.Name, "Bush") or string.find(v.Name, "grass") then
-			task.wait()
-			v:Destroy()
-		end
-	end
-
+	wait(1)
+	------- FPSBOOTER and LowMap
+	setfpscap(15)
+	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	game:GetService("Lighting"):ClearAllChildren()
 
-	for _, v in pairs(Workspace:GetDescendants()) do
-		clearTextures(v)
-	end
-
-	Workspace.DescendantAdded:Connect(function(v)
-		clearTextures(v)
-	end)
-	-------------LowMap
-	local UserInputService = game:GetService("UserInputService")
-	local RunService = game:GetService("RunService")
-
-	local WindowFocusReleasedFunction = function()
-		RunService:Set3dRenderingEnabled(false)
-		setfpscap(15)
-		return
-	end
-
-	local WindowFocusedFunction = function()
-		RunService:Set3dRenderingEnabled(true)
-		setfpscap(15)
-		return
-	end
-
-	local Initialize = function()
-		UserInputService.WindowFocusReleased:Connect(WindowFocusReleasedFunction)
-		UserInputService.WindowFocused:Connect(WindowFocusedFunction)
-		return
-	end
-	Initialize()
-	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	local decalsyeeted = true
 	local g = game
 	local w = g.Workspace
@@ -638,7 +509,7 @@ if game.PlaceId == 17018663967 then
 			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
 				v.Lifetime = NumberRange.new(0)
 			elseif v:IsA("Explosion") then
-				v.BlastPressure = 1
+				v.BlastPressure = 1 
 				v.BlastRadius = 1
 			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
 				v.Enabled = false
@@ -667,54 +538,58 @@ if game.PlaceId == 17018663967 then
 			v.Enabled = false
 		end
 	end
-	wait(5)
-	------Spam The Beast
-
-	SpawmTroop(3, 650 , 199 )
 	wait(1)
-	SpawmTroop(3, 690 , 199 )
-	wait(1)
-	SpawmTroop(3, 730 , 199 )
-	wait(1)
-	SpawmTroop(3, 770 , 199 )
-	wait(1)
-	SpawmTroop(3, 810 , 199 )
 
+	cameraPosition = Vector3.new(-1680.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
+	lookAtPosition = Vector3.new(-1680.7144775390625, 0, -532.6212158203125) -- Vị trí mà camera sẽ nhìn vào
+	-- Tạo CFrame từ vị trí và hướng nhìn
+	cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
+	------Spam 5 The Best
 
+	SpawmTroop(3, 358 , 303 )
+	wait(1)
+	SpawmTroop(3, 358 , 266 )
+	wait(1)
+	SpawmTroop(3, 358 , 229 )
+	wait(1)
+	SpawmTroop(3, 358 , 192 )
+	wait(1)
+	SpawmTroop(3, 400 , 192 )
 
+	wait(3)
 	------Update The Beat
 	for i =1 ,20 do
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 650 , 199 )
+			ugradeUnit( 358 , 303 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 690 , 199 )
+			ugradeUnit( 358 , 266 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 730 , 199 )
+			ugradeUnit( 358 , 229 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 770 , 199 )
+			ugradeUnit( 358 , 192 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 810 , 199 )
+			ugradeUnit( 400 , 192 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
@@ -722,52 +597,53 @@ if game.PlaceId == 17018663967 then
 	end
 
 
+
 	----Spam bộ đội
 	wait(1)
-	SpawmTroop(4, 520 , 276 )
+	SpawmTroop(4, 440 , 303 )
 	wait(1)
-	SpawmTroop(4, 520 , 313 )
+	SpawmTroop(4, 440 , 266 )
 	wait(1)
-	SpawmTroop(4, 520 , 350 )
+	SpawmTroop(4, 440 , 229 )
 	wait(1)
-	SpawmTroop(4, 520 , 387 )
+	SpawmTroop(4, 400 , 266 )
 	wait(1)
-	SpawmTroop(4, 520 , 424 )
+	SpawmTroop(4, 400 , 303 )
 
 
 	------update bộ đội
 	for i =1 ,20 do
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 520 , 276 )
+			ugradeUnit( 440 , 303 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end	
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 520 , 313 )
+			ugradeUnit( 440 , 266 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end	
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 520 , 350 )
+			ugradeUnit( 440 , 229 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 520 , 387 )
+			ugradeUnit( 400 , 266 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
 		end
 		for i =1 ,2 do
 			wait(2)
-			ugradeUnit( 520 , 424 )
+			ugradeUnit( 400 , 303 )
 			if btnUpgrade.Text == "Max" then
 				break
 			end
@@ -777,38 +653,28 @@ if game.PlaceId == 17018663967 then
 
 	-------Spamm chống afk
 	for i =1 ,20 do
-		wait(2)
-		ugradeUnit( 650 , 199 )
-		wait(2)
-		ugradeUnit( 690 , 199 )
-		wait(2)
-		ugradeUnit( 730 , 199 )
-		wait(2)
-		ugradeUnit( 770 , 199 )
-		wait(2)
-		ugradeUnit( 810 , 199 )
-		wait(2)
-		ugradeUnit( 520 , 276 )
-		wait(2)
-		ugradeUnit( 520 , 313 )
-		wait(2)
-		ugradeUnit( 520 , 350 )
-		wait(2)
-		ugradeUnit( 520 , 387 )
-		wait(2)
-		ugradeUnit( 520 , 424 )
-		wait(2)
-		ugradeUnit( 766 , 122 )
-		wait(2)
-		ugradeUnit( 798 , 45 )
-		wait(2)
-		ugradeUnit( 393 , 108 )
-		wait(2)
-		ugradeUnit( 587 , 154 )
-		wait(2)
-		ugradeUnit( 636 , 261 )
-		wait(2)
-		ugradeUnit( 673 , 351 )
+		wait(5)
+		ugradeUnit( 358 , 303 )
+		wait(5)
+		ugradeUnit( 358 , 266 )
+		wait(5)
+		ugradeUnit( 358 , 229 )
+		wait(5)
+		ugradeUnit( 358 , 192 )
+		wait(5)
+		ugradeUnit( 400 , 192 )
+		wait(5)
+		ugradeUnit( 400 , 303 )
+		wait(5)
+		ugradeUnit( 440 , 303 )
+		wait(5)
+		ugradeUnit( 440 , 266 )
+		wait(5)
+		ugradeUnit( 440 , 229 )
+		wait(5)
+		ugradeUnit( 400 , 266 )
+		wait(5)
+
 
 	end
 
