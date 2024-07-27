@@ -151,7 +151,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(2)
 	setting.Visible = false
 	wait(2)
-	
+
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -339,6 +339,8 @@ if game.PlaceId == 17018663967 then
 	end)
 
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+
+	
 	spawn(function()
 		pcall(function()
 			while true do
@@ -353,8 +355,20 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-
-
+	local wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(10)
+				if wavenumber == "Wave 47 Started" then
+					---- Hiện bảng phần thưởng
+					local Match = playerGui.PAGES.MatchResultPage
+					Match.Visible = true
+				end
+				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
+			end
+		end)
+	end)
 
 	local startTime = tick()
 	spawn(function()
@@ -441,7 +455,7 @@ if game.PlaceId == 17018663967 then
 	SpawmTroop(2, 587 , 154 )
 	wait(1)
 
-	
+
 
 
 	cameraPosition = Vector3.new(-1680.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
