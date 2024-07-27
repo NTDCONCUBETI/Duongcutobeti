@@ -381,22 +381,6 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-
-
-	------Spam 6 Magic
-	wait(1)
-	SpawmTroop(2, 766 , 122 )
-	wait(1)
-	SpawmTroop(2, 798 , 45 )
-	wait(1)
-	SpawmTroop(2, 393 , 108 )
-	wait(1)
-	SpawmTroop(2, 587 , 154 )
-	wait(1)
-	SpawmTroop(2, 636 , 261 )
-	wait(1)
-	SpawmTroop(2, 673 , 351 )
-	wait(1)
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -445,6 +429,22 @@ if game.PlaceId == 17018663967 then
 		end)
 	end)
 	wait(1)
+
+	------Spam 6 Magic
+	wait(1)
+	SpawmTroop(2, 766 , 122 )
+	wait(1)
+	SpawmTroop(2, 798 , 45 )
+	wait(1)
+	SpawmTroop(2, 393 , 108 )
+	wait(1)
+	SpawmTroop(2, 587 , 154 )
+	wait(1)
+	SpawmTroop(2, 636 , 261 )
+	wait(1)
+	SpawmTroop(2, 673 , 351 )
+	wait(1)
+	
 	------- FPSBOOTER and LowMap
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
