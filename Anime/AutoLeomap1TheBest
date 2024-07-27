@@ -421,7 +421,7 @@ if game.PlaceId == 17018663967 then
 	end)
 	wait(1)
 
-	------Spam 6 Magic
+	------Spam 4 Magic
 	wait(1)
 	SpawmTroop(2, 766 , 122 )
 	wait(1)
@@ -440,10 +440,7 @@ if game.PlaceId == 17018663967 then
 	wait(1)
 	SpawmTroop(2, 587 , 154 )
 	wait(1)
-	SpawmTroop(2, 636 , 261 )
-	wait(1)
-	SpawmTroop(2, 673 , 351 )
-	wait(1)
+
 	
 
 
