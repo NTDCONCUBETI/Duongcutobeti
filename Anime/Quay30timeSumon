@@ -49,7 +49,19 @@ wait(4)
 local update = playerGui.PAGES.UpdatesUI
 wait(2)
 update.Visible = false
-wait(4)
+wait(2)
+playerGui.PAGES.SummonPage.Holder.HolderStore.Visible = false
+playerGui.PAGES.SummonPage.Holder.HolderPity.Visible = false
+playerGui.PAGES.SummonPage.Holder.HolderBannerScene.Visible = false
+playerGui.PAGES.SummonPage.Holder.ExpiresFrame.Visible = false
+playerGui.PAGES.SummonPage.Holder.PriceDisplay.Visible = false
+playerGui.PAGES.SummonPage.Holder.ItemConvertButton.Visible = false
+playerGui.PAGES.SummonPage.Holder.HolderMiscButtons.Visible = false
+playerGui.PAGES.SummonPage.ChancesFrame.Visible = false
+playerGui.PAGES.SummonPage.BannerHolder.Visible = true
+playerGui.PAGES.SummonPage.InputSinker.Visible = false
+playerGui.PAGES.SummonPage.ChancesSinker.Visible = false
+wait(2)
 SummonPage.Visible = true
 wait(4)
 tab( 236 , 338 )-- tab auto sell Rare
