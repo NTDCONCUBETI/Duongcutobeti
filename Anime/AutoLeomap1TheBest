@@ -230,7 +230,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(483,391) wait(2)---tab confim
 		------------ Tắt auto skip
 		setting.Visible = true
-		wait(2)
+		wait(5)
 		if autoskip.Text == "On" then 
 			click(autoskip)
 		end
