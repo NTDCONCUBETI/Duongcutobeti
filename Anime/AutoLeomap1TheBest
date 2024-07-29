@@ -42,6 +42,7 @@ function clickToaDo(x,y, object)
 end
 playerGui.TopBar.HolderFrame.Visible = false
 
+
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
 	---- tắt bảng update
