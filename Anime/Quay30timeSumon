@@ -75,6 +75,7 @@ for i = 1, 3 do
 		tab(480,265)
 		wait(1)
 	end
+	SummonPage.Visible = true
 end
 wait(3)
 tab(48,125)----tap mở túi unit
