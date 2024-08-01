@@ -435,6 +435,12 @@ if game.PlaceId == 17018663967 then
 	wait(1)
 	SpawmTroop(2, 766 , 122 )
 	wait(1)
+	SpawmTroop(2, 798 , 45 )
+	wait(1)
+	SpawmTroop(2, 393 , 108 )
+	wait(1)
+	SpawmTroop(2, 587 , 154 )
+	wait(1)
 	------------Mở auto skip
 	setting.Visible = true
 	wait(5)
@@ -444,12 +450,6 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	setting.Visible = false
 	wait(2)
-	SpawmTroop(2, 798 , 45 )
-	wait(1)
-	SpawmTroop(2, 393 , 108 )
-	wait(1)
-	SpawmTroop(2, 587 , 154 )
-	wait(1)
 
 
 
