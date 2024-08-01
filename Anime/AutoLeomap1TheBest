@@ -105,8 +105,7 @@ local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 
 local indexTouch = 1000
-local setting = playerGui.PAGES.SettingsUI
-local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -227,6 +226,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 
 		tab(483,391) wait(2)---tab confim
+		local setting = playerGui.PAGES.SettingsUI
+		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 		------------ Tắt auto skip
 		setting.Visible = true
 		wait(5)
@@ -441,6 +442,8 @@ if game.PlaceId == 17018663967 then
 	wait(1)
 	SpawmTroop(2, 587 , 154 )
 	wait(1)
+	local setting = playerGui.PAGES.SettingsUI
+	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 	------------Mở auto skip
 	setting.Visible = true
 	wait(5)
