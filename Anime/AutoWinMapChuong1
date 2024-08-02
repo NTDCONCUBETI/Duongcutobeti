@@ -1,3 +1,4 @@
+
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
@@ -34,7 +35,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	
+
 	wait(5)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 	local tableGateStory = {
@@ -143,7 +144,19 @@ else
 		click(btnUpgrade)
 	end
 
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(5)
+				local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
+				if KetQua == "Defeat!"  then
+					wait(2)
+					click(btnLobby)
 
+				end
+			end
+		end)
+	end)
 
 
 
@@ -221,14 +234,7 @@ else
 
 	while true do wait(2)
 		if playerGui.PAGES.MatchResultPage.Visible == true  then
-			wait(1)
-			local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
-			if KetQua == "Defeat!"  then
-				wait(2)
-				click(btnLobby)
-				click(btnLobby)
 
-			end
 			wait(1)
 			click(btnReplay)---tab Play Again
 			click(btnReplay)---tab Play Again
