@@ -132,7 +132,7 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-playerGui.TopBar.HolderFrame.Visible = false
+
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
@@ -149,7 +149,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
-
+	playerGui.TopBar.HolderFrame.Visible = false
 	for i = 1,3 do
 		while true do
 			local indexGate = math.random(1,6)
@@ -430,6 +430,7 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
+	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
 
 	------Spam 4 Magic
