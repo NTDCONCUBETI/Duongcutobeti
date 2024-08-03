@@ -46,11 +46,8 @@ local function teleDenQuayHang(i)
 	wait(1)
 end
 wait(2)
-script_key = "lGEDtlLqaAJvyBNqgpNHBByWiMaOMdWd"
-if getgenv().Loaded  then
-	return 
-end
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/57d5eebd9b111f1639a5970102487168.lua"))()
+getgenv().Key = "k1db0e28a5ae2b96349c419b"
+loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
 
 -- Nếu đang ở game chính
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
