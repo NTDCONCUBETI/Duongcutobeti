@@ -46,8 +46,11 @@ local function teleDenQuayHang(i)
 	wait(1)
 end
 wait(2)
-getgenv().Key = "kaef46a9c2e3287f89417dab"
-loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
+script_key = "FIQortKUCGbTeRctgAvtrmymWfYdschQ"
+if getgenv().Loaded  then
+	return 
+end
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/57d5eebd9b111f1639a5970102487168.lua"))()
 
 -- Nếu đang ở game chính
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
@@ -116,15 +119,6 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 	teleDenQuayHang(getgenv().config.QuayHangPlaza)
 	wait(15)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	local setting = playerGui.PAGES.SettingsUI
-	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-	setting.Visible = true
-	wait(5)
-	if autoskip.Text == "Off" then 
-		click(autoskip)
-	end
-	wait(5)
-	setting.Visible = false
 	wait(2)
 	tab(48,364)--- tab trade
 	wait(2)
@@ -138,5 +132,5 @@ if	game.PlaceId == 17490500437 then --Plaza Anime = 17490500437
 		wait(2)
 		presskey(101)
 	end
-	
+
 end
