@@ -1,6 +1,8 @@
 
 
-
+repeat
+	task.wait()
+until game:IsLoaded()
 local render3D = true
 if getgenv().config ~= nil  then
 	if getgenv().config.render3D ~= nil then
@@ -254,7 +256,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 end
 
 if game.PlaceId == 17018663967 then
-	
+
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
 	local playerGui = player.PlayerGui
