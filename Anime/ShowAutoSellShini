@@ -1,0 +1,20 @@
+local player = game.Players.LocalPlayer
+local playerGui = player.PlayerGui
+
+local SettingsLowQuality = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Low Quality")
+SettingsLowQuality.Visible = false
+
+local SettingsMuteMusic = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Mute Music")
+SettingsMuteMusic.Visible = false
+
+local SettingsMuteMusic = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Mute Music")
+SettingsMuteMusic.Visible = false
+
+local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
+SettingsCameraShake.Visible = false
+
+local SettingsAutoSkipWave = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Auto Skip Wave")
+SettingsAutoSkipWave.Visible = false
+
+local SettingsVibrations = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Vibrations")
+SettingsVibrations.Visible = false
