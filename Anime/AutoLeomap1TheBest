@@ -4,6 +4,9 @@ repeat
 	task.wait()
 until game:IsLoaded()
 
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local playerGui = player.PlayerGui
 
 local indexTouch = 1000
 
@@ -38,12 +41,9 @@ end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(15)
-	local player = game.Players.LocalPlayer
-	local camera = workspace.CurrentCamera
-	local playerGui = player.PlayerGui
-	
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
+	wait(2)
 
-	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -156,6 +156,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 end
 
 if game.PlaceId == 17018663967 then
+
 	------- FPSBOOTER and LowMap
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -250,10 +251,6 @@ if game.PlaceId == 17018663967 then
 		end
 	end
 	wait(1)
-	local player = game.Players.LocalPlayer
-	local camera = workspace.CurrentCamera
-	local playerGui = player.PlayerGui
-
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
@@ -264,6 +261,7 @@ if game.PlaceId == 17018663967 then
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
 	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
 	camera.CFrame = cameraCFrame * rotation
+
 
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
