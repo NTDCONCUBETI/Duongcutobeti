@@ -155,6 +155,39 @@ end
 
 if game.PlaceId == 17018663967 then
 
+
+	-- Thiết lập camera thành Scriptable để điều khiển bằng script
+	camera.CameraType = Enum.CameraType.Scriptable
+	-- Đặt vị trí và hướng của camera
+	local cameraPosition = Vector3.new(-1730.7144775390625, 60, -582.6212158203125) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(-1730.7144775390625, 0, -582.6212158203125) -- Vị trí mà camera sẽ nhìn vào
+	-- Tạo CFrame từ vị trí và hướng nhìn
+	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
+	-- Xoay camera 90 độ quanh trục Y (trục đứng)
+	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
+	camera.CFrame = cameraCFrame * rotation
+
+
+	local player = game.Players.LocalPlayer
+	local camera = workspace.CurrentCamera
+	local playerGui = player.PlayerGui
+	local frame_MatchResult = playerGui.PAGES.MatchResultPage -- Frame
+	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
+	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
+	local btnPlace = playerGui.HUD.MobileButtonHolder.PlaceButton
+
+	local tableUnit = {}
+	for i, child in ipairs(playerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()) do --GetDescendants | GetChildren
+		print(child.Name, child.ClassName)
+		if child.Name == "UnitGridPrefab"  then
+			table.insert(tableUnit,child.Button)
+			--print(child)
+		end
+	end
+
+	local UnitsInWS = #game.Workspace.Units:GetChildren()
+	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
+
 	------- FPSBOOTER and LowMap
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -249,39 +282,6 @@ if game.PlaceId == 17018663967 then
 		end
 	end
 	wait(1)
-	-- Thiết lập camera thành Scriptable để điều khiển bằng script
-	camera.CameraType = Enum.CameraType.Scriptable
-	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-1730.7144775390625, 60, -582.6212158203125) -- Vị trí của camera ở trên cao
-	local lookAtPosition = Vector3.new(-1730.7144775390625, 0, -582.6212158203125) -- Vị trí mà camera sẽ nhìn vào
-	-- Tạo CFrame từ vị trí và hướng nhìn
-	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
-	-- Xoay camera 90 độ quanh trục Y (trục đứng)
-	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
-	camera.CFrame = cameraCFrame * rotation
-
-
-	local player = game.Players.LocalPlayer
-	local camera = workspace.CurrentCamera
-	local playerGui = player.PlayerGui
-	local frame_MatchResult = playerGui.PAGES.MatchResultPage -- Frame
-	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
-	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
-	local btnPlace = playerGui.HUD.MobileButtonHolder.PlaceButton
-
-	local tableUnit = {}
-	for i, child in ipairs(playerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()) do --GetDescendants | GetChildren
-		print(child.Name, child.ClassName)
-		if child.Name == "UnitGridPrefab"  then
-			table.insert(tableUnit,child.Button)
-			--print(child)
-		end
-	end
-
-	local UnitsInWS = #game.Workspace.Units:GetChildren()
-	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
-
-
 
 
 	function SpawmTroop (i,x,y)
@@ -315,7 +315,6 @@ if game.PlaceId == 17018663967 then
 		click(btnUpgrade)
 	end
 
-	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
 	spawn(function()
 		pcall(function()
 			while true do wait(5)
