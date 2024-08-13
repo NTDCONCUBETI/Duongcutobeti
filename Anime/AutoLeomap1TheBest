@@ -2,12 +2,6 @@ repeat
 	task.wait()
 until game:IsLoaded()
 
-local render3D = true
-if getgenv().config ~= nil  then
-	if getgenv().config.render3D ~= nil then
-		render3D = getgenv().config.render3D
-	end
-end
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -46,9 +40,7 @@ end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(15)
-
-	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
-
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
