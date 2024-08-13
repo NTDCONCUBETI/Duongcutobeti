@@ -42,6 +42,26 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(15)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
+	------- ClosePeopeoAndChat
+
+	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+	end
+
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") then
+			v.Enabled = false
+		end
+		if v.Name == "Codex" then
+			game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
+			game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
+		end
+	end
+
+	wait(1)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -64,53 +84,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		playerGui.TopBar.HolderFrame.Visible = false
 		wait(2)
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
-		------- ClosePeopeoAndChat
 
-		for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-			if v:IsA("ScreenGui") then
-				v.Enabled = false
-			end
-		end
-
-
-		for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-			if v:IsA("ScreenGui") then
-				v.Enabled = false
-			end
-			if v.Name == "Codex" then
-				game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
-				game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
-			end
-		end
-		game.Workspace.DescendantAdded:Connect(function(v)
-			pcall(function()
-				if v:IsA("BasePart") and not v:IsA("MeshPart") then
-					v.Material = "Plastic"
-					v.Reflectance = 0
-					v.Transparency = 1
-				elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-					v.Transparency = 1
-				elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-					v.Lifetime = NumberRange.new(0)
-				elseif v:IsA("Explosion") then
-					v.BlastPressure = 1
-					v.BlastRadius = 1
-				elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-					v.Enabled = false
-				elseif v:IsA("MeshPart") and decalsyeeted then
-					v.Material = "Plastic"
-					v.Reflectance = 0
-					v.TextureID = 0
-					v.Transparency = 1
-				elseif v:IsA("SpecialMesh") and decalsyeeted then
-					v.TextureId=0
-				elseif v:IsA("ShirtGraphic") and decalsyeeted then
-					v.ShirtGraphic=1
-				elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-					v[v.ClassName.."Template"]=1
-				end
-			end)
-		end)
 		tab(246,143) wait(2)--chọn bản đồ 1
 		tab(246,143) wait(2)--chọn bản đồ 1
 
