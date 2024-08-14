@@ -8,7 +8,7 @@ local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 
 local indexTouch = 1000
---repeat wait() until playerGui.PAGES --- đợi load Page
+repeat wait() until playerGui.PAGES --- đợi load Page
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
