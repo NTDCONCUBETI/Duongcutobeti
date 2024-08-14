@@ -8,7 +8,7 @@ local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 
 local indexTouch = 1000
-
+--repeat wait() until playerGui.PAGES --- đợi load Page
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -40,7 +40,7 @@ end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(15)
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
 	------- ClosePeopeoAndChat
 
@@ -62,6 +62,12 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	wait(1)
+	-------The end ClosePeopeoAndChat
+	--Bay đến Sumon 
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
+	wait(4)
+	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
+	wait(2)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -255,7 +261,7 @@ if game.PlaceId == 17018663967 then
 	local UnitsInWS = #game.Workspace.Units:GetChildren()
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
 
-	
+
 
 
 	function SpawmTroop (i,x,y)
