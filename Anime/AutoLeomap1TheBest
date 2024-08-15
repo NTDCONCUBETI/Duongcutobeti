@@ -8,7 +8,7 @@ local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 
 local indexTouch = 1000
-repeat wait() until playerGui.PAGES --- đợi load Page
+
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -39,6 +39,7 @@ end
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+	repeat wait() until playerGui.PAGES --- đợi load Page
 	wait(15)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
