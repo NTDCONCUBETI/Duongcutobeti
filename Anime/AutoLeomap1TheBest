@@ -40,7 +40,7 @@ end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	repeat wait() until playerGui.PAGES --- đợi load Page
-	wait(15)
+	wait(1)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
 	------- ClosePeopeoAndChat
