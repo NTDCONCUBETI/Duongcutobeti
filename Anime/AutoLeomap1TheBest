@@ -109,13 +109,26 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 
 		tab(483,391) wait(2)---tab confim
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
+		wait(2)
+		----------
+
+		wait(2)
+		-----
 		local setting = playerGui.PAGES.SettingsUI
 		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 		------------ Tắt auto skip
 		setting.Visible = true
-		wait(5)
+		wait(2)
 		if autoskip.Text == "On" then 
 			click(autoskip)
+		end
+		wait(2)
+		local SettingsUnitVisibility = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Unit Visibility").Frame.MultiButton.StatusLabel
+		------------chuyển hiển thị unit chỉ  1 mình
+		wait(2)
+		if SettingsUnitVisibility.Text == "All Units" then 
+			click(SettingsUnitVisibility)
 		end
 		wait(2)
 		setting.Visible = false
