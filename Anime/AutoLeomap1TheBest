@@ -6,7 +6,7 @@ until game:IsLoaded()
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
-
+repeat wait() until playerGui.PAGES
 local indexTouch = 1000
 
 function tab(x,y)
