@@ -38,7 +38,7 @@ end
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	
+
 	wait(5)
 	-------The end ClosePeopeoAndChat
 	--Bay đến Sumon 
@@ -124,13 +124,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		wait(2)
 		if autoskip.Text == "On" then 
 			click(autoskip)
-		end
-		wait(2)
-		local SettingsUnitVisibility = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Unit Visibility").Frame.MultiButton.StatusLabel
-		------------chuyển hiển thị unit chỉ  1 mình
-		wait(2)
-		if SettingsUnitVisibility.Text == "All Units" then 
-			click(SettingsUnitVisibility)
 		end
 		wait(2)
 		setting.Visible = false
