@@ -47,8 +47,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(4)
 	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
 	wait(2)
-	game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(3)
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
