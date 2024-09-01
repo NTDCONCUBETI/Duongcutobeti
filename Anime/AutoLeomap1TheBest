@@ -461,6 +461,36 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
+
+	playerGui.TopBar.HolderFrame.Visible = false
+	wait(1)
+
+	------Spam 4 Magic
+	wait(1)
+	SpawmTroop(2, 766 , 122 )
+	wait(1)
+	SpawmTroop(2, 798 , 45 )
+	wait(1)
+	SpawmTroop(2, 393 , 108 )
+	wait(1)
+	SpawmTroop(2, 587 , 154 )
+	wait(1)
+	local setting = playerGui.PAGES.SettingsUI
+	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+	------------Mở auto skip
+	setting.Visible = true
+	wait(5)
+	if autoskip.Text == "Off" then 
+		click(autoskip)
+	end
+	wait(2)
+	setting.Visible = false
+	wait(2)
+	playerGui.TopBar.HolderFrame.Visible = true
+	wait(2)
+	tab(822.4 , -18.4)-- tab x2 speed
+	wait(2)
+
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -508,39 +538,8 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	playerGui.TopBar.HolderFrame.Visible = false
+	-------  The end ClosePeopeoAndChat
 	wait(1)
-
-	------Spam 4 Magic
-	wait(1)
-	SpawmTroop(2, 766 , 122 )
-	wait(1)
-	SpawmTroop(2, 798 , 45 )
-	wait(1)
-	SpawmTroop(2, 393 , 108 )
-	wait(1)
-	SpawmTroop(2, 587 , 154 )
-	wait(1)
-	local setting = playerGui.PAGES.SettingsUI
-	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-	------------Mở auto skip
-	setting.Visible = true
-	wait(5)
-	if autoskip.Text == "Off" then 
-		click(autoskip)
-	end
-	wait(2)
-	setting.Visible = false
-	wait(2)
-	playerGui.TopBar.HolderFrame.Visible = true
-	wait(2)
-	tab(822.4 , -18.4)-- tab x2 speed
-	wait(2)
-	
-
-
-
-
 	cameraPosition = Vector3.new(-1680.7144775390625, 60, -532.6212158203125) -- Vị trí của camera ở trên cao
 	lookAtPosition = Vector3.new(-1680.7144775390625, 0, -532.6212158203125) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
