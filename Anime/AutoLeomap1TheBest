@@ -515,6 +515,12 @@ if game.PlaceId == 17018663967 then
 	wait(1)
 	SpawmTroop(2, 766 , 122 )
 	wait(1)
+	SpawmTroop(2, 798 , 45 )
+	wait(1)
+	SpawmTroop(2, 393 , 108 )
+	wait(1)
+	SpawmTroop(2, 587 , 154 )
+	wait(1)
 	local setting = playerGui.PAGES.SettingsUI
 	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
 	------------Mở auto skip
@@ -526,12 +532,6 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	setting.Visible = false
 	wait(2)
-	SpawmTroop(2, 798 , 45 )
-	wait(1)
-	SpawmTroop(2, 393 , 108 )
-	wait(1)
-	SpawmTroop(2, 587 , 154 )
-	wait(1)
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
