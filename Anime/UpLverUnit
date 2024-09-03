@@ -363,7 +363,7 @@ else
 
 
 
-			for i =1 ,5 do
+			for i =1 ,4 do
 				wait(5)
 				ugradeUnit( 410 , 155 )
 				wait(5)
