@@ -253,7 +253,6 @@ end
 
 if game.PlaceId == 17018663967 then
 	------- FPSBOOTER and LowMap
-
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	game:GetService("Lighting"):ClearAllChildren()
@@ -348,8 +347,8 @@ if game.PlaceId == 17018663967 then
 	end
 	wait(1)
 
-
 	------- The end FPSBOOTER and LowMap
+	
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
@@ -485,7 +484,7 @@ if game.PlaceId == 17018663967 then
 
 
 	------Spam 1 Jadefire Knight
-	SpawmTroop(6, 369 , 155 )
+	SpawmTroop(6, 635 , 375 )
 	wait(2)
 
 
@@ -543,22 +542,22 @@ if game.PlaceId == 17018663967 then
 	end)
 	-------  The end ClosePeopeoAndChat
 	------Spam 3 Jadefire Knight
-	SpawmTroop(6, 369 , 210 )
+	SpawmTroop(6, 635 , 210 )
 	wait(2)
-	SpawmTroop(6, 369 , 265 )
+	SpawmTroop(6, 635 , 265 )
 	wait(2)
-	SpawmTroop(6, 369 , 320 )
+	SpawmTroop(6, 635 , 320 )
 	wait(2)
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
-		ugradeUnit( 369 , 155 )
+		ugradeUnit( 635 , 375 )
 		wait(5)
-		ugradeUnit( 369 , 210 )
+		ugradeUnit( 635 , 210 )
 		wait(5)
-		ugradeUnit( 369 , 265 )
+		ugradeUnit( 635 , 265 )
 		wait(5)
-		ugradeUnit( 369 , 320 )
+		ugradeUnit( 635 , 320 )
 	end
 
 
