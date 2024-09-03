@@ -56,10 +56,10 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	-------The end ClosePeopeoAndChat
 	--Bay đến Sumon 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-	wait(2)
-	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	wait(2)
+	--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
+	--wait(2)
+	--presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
+	--wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
 	------- FPSBOOTER and LowMap
@@ -253,7 +253,6 @@ end
 
 if game.PlaceId == 17018663967 then
 	------- FPSBOOTER and LowMap
-
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
 	game:GetService("Lighting"):ClearAllChildren()
@@ -347,6 +346,7 @@ if game.PlaceId == 17018663967 then
 		end
 	end
 	wait(1)
+
 
 
 	------- The end FPSBOOTER and LowMap
@@ -485,7 +485,7 @@ if game.PlaceId == 17018663967 then
 
 
 	------Spam 1 Jadefire Knight
-	SpawmTroop(6, 369 , 155 )
+	SpawmTroop(6, 410 , 155 )
 	wait(2)
 
 
@@ -543,30 +543,23 @@ if game.PlaceId == 17018663967 then
 	end)
 	-------  The end ClosePeopeoAndChat
 	------Spam 3 Jadefire Knight
-	SpawmTroop(6, 369 , 210 )
+	SpawmTroop(6, 410 , 210 )
 	wait(2)
-	SpawmTroop(6, 369 , 265 )
+	SpawmTroop(6, 410 , 265 )
 	wait(2)
-	SpawmTroop(6, 369 , 320 )
+	SpawmTroop(6, 410 , 320 )
 	wait(2)
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
-		ugradeUnit( 369 , 155 )
+		ugradeUnit( 410 , 155 )
 		wait(5)
-		ugradeUnit( 369 , 210 )
+		ugradeUnit( 410 , 210 )
 		wait(5)
-		ugradeUnit( 369 , 265 )
+		ugradeUnit( 410 , 265 )
 		wait(5)
-		ugradeUnit( 369 , 320 )
+		ugradeUnit( 410 , 320 )
 	end
-
-
-
-
-
-
-
 
 
 
