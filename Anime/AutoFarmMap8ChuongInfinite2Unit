@@ -158,6 +158,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(1)
 
 	-------The end ClosePeopeoAndChat
+	wait(60)
 	wait(2)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
@@ -168,102 +169,85 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
 
-	
 
+	function Hide4World ()
+		local MatchPage = playerGui.PAGES.MatchPage
+		local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 8 cái _WorldHolder
 
-
-
-	local player = game.Players.LocalPlayer
-	local playerGuia = player:WaitForChild("PlayerGui")
-
-	-- Chờ đến khi PAGES xuất hiện
-	local pages = playerGuia:WaitForChild("PAGES")
-
-	if pages then
-		-- Khi PAGES đã xuất hiện, thực hiện các hành động tiếp theo trong mã "ABD"
-		-- Ví dụ: Thực hiện hành động của bạn tại đây
-		print("PAGES đã xuất hiện, thực hiện hành động tiếp theo...")
-		function Hide4World ()
-			local MatchPage = playerGui.PAGES.MatchPage
-			local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 8 cái _WorldHolder
-
-			local tableWorld = {
-			}
-			for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
-				print(child.Name, "--", child.ClassName)
-				if child.ClassName == "Frame"  then
-					table.insert(tableWorld,child)
-					child.Visible = false
-				end
+		local tableWorld = {
+		}
+		for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			print(child.Name, "--", child.ClassName)
+			if child.ClassName == "Frame"  then
+				table.insert(tableWorld,child)
+				child.Visible = false
 			end
-			tableWorld[8].Visible = true
 		end
-		for i = 1,5 do
-
-			while true do
-				local indexGate = math.random(1,6)
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
-				wait(5)
-				if playerGui.PAGES.MatchPage.Visible == true then
-					Hide4World()
-					break	
-				end
-			end
-			wait(2)
-			playerGui.TopBar.HolderFrame.Visible = false
-			wait(2)
-
-			tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
-
-			tab(246,143) wait(2)--chọn bản đồ 1
-			tab(246,143) wait(2)--chọn bản đồ 1
-
-			--tab( 416 , 116 ) wait(0.5)--Chương 1
-
-			--tab( 416 , 151 ) wait(0.5)--Chương 2
-
-			--tab( 416 , 186 ) wait(0.5)--Chương 3
-
-			--tab( 416 , 221 ) wait(0.5)--Chương 4
-
-			--tab( 416 , 256 ) wait(0.5)--Chương 5
-
-			--tab( 416 , 291 ) wait(0.5)--Chương 6
-
-			tab( 416 , 326 ) wait(0.5)--Chương Infinite
-			tab( 416 , 326 ) wait(0.5)--Chương Infinite
-			tab(483,391) wait(2)---tab confim
-			tab(483,391) wait(2)---tab confim
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
-			wait(1)
-			local setting = playerGui.PAGES.SettingsUI
-			local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-			------------ Tắt auto skip
-			setting.Visible = true
-			wait(2)
-			if autoskip.Text == "Off" then 
-				click(autoskip)
-			end
-			wait(2)
-			setting.Visible = false
-			tab(737,317) wait(3)---tab Star
-			tab(737,320) wait(1)---tab Star
-			tab(737,323) wait(1)---tab Star
-			tab(700,264) wait(1)---tab Star
-			tab(700,261) wait(1)---tab Star
-			tab(700,259) wait(1)---tab Star
-
-			wait(10)
-		end
-		local TeleportService = game:GetService("TeleportService")
-		local placeId = 17017769292
-		TeleportService:Teleport(placeId, player)
-	else
-		warn("PAGES không tồn tại trong PlayerGui")
+		tableWorld[8].Visible = true
 	end
+	for i = 1,5 do
+
+		while true do
+			local indexGate = math.random(1,6)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
+			wait(5)
+			if playerGui.PAGES.MatchPage.Visible == true then
+				Hide4World()
+				break	
+			end
+		end
+		wait(2)
+		playerGui.TopBar.HolderFrame.Visible = false
+		wait(2)
+
+		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
+
+		tab(246,143) wait(2)--chọn bản đồ 1
+		tab(246,143) wait(2)--chọn bản đồ 1
+
+		--tab( 416 , 116 ) wait(0.5)--Chương 1
+
+		--tab( 416 , 151 ) wait(0.5)--Chương 2
+
+		--tab( 416 , 186 ) wait(0.5)--Chương 3
+
+		--tab( 416 , 221 ) wait(0.5)--Chương 4
+
+		--tab( 416 , 256 ) wait(0.5)--Chương 5
+
+		--tab( 416 , 291 ) wait(0.5)--Chương 6
+
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
+		tab(483,391) wait(2)---tab confim
+		tab(483,391) wait(2)---tab confim
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
+		wait(1)
+		local setting = playerGui.PAGES.SettingsUI
+		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+		------------ Tắt auto skip
+		setting.Visible = true
+		wait(2)
+		if autoskip.Text == "Off" then 
+			click(autoskip)
+		end
+		wait(2)
+		setting.Visible = false
+		tab(737,317) wait(3)---tab Star
+		tab(737,320) wait(1)---tab Star
+		tab(737,323) wait(1)---tab Star
+		tab(700,264) wait(1)---tab Star
+		tab(700,261) wait(1)---tab Star
+		tab(700,259) wait(1)---tab Star
+
+		wait(10)
+	end
+	local TeleportService = game:GetService("TeleportService")
+	local placeId = 17017769292
+	TeleportService:Teleport(placeId, player)
+
 
 end
-
 
 if game.PlaceId == 17018663967 then
 
