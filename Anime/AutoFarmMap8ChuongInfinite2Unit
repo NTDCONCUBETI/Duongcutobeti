@@ -219,7 +219,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
 
 		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
+		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
 		wait(2)
@@ -253,7 +254,6 @@ end
 
 if game.PlaceId == 17018663967 then
 	------- FPSBOOTER and LowMap
-
 
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -490,7 +490,10 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 
 
-
+	playerGui.TopBar.HolderFrame.Visible = true
+	wait(2)
+	tab(822.4 , -18.4)-- tab x2 speed
+	wait(2)
 
 	------- ClosePeopeoAndChat
 
@@ -547,11 +550,7 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(6, 410 , 320 )
 	wait(2)
-	playerGui.TopBar.HolderFrame.Visible = true
-	wait(2)
-	tab(822.4 , -18.4)-- tab x2 speed
-	wait(2)
-	------Spam  Aether Knight
+	------Spam 5 Aether Knight
 	wait(2)
 	SpawmTroop(5, 720 , 155 )
 	wait(2)
@@ -563,8 +562,225 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(5, 635 , 375 )
 	wait(2)
-	------- Update Unit
-	for i =1 ,100 do
+	
+	------- Update Aether Knight
+	tab(720 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "3,000" then
+			break
+		else
+			ugradeUnit( 720 , 155 )
+		end
+	end
+	tab(635 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "3,000" then
+			break
+		else
+			ugradeUnit( 635 , 210 )
+		end
+	end
+	tab(635 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "3,000" then
+			break
+		else
+			ugradeUnit( 635 , 265 )
+		end
+	end
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "3,000" then
+			break
+		else
+			ugradeUnit( 635 , 320 )
+		end
+	end
+	tab(635 , 375)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "3,000" then
+			break
+		else
+			ugradeUnit( 635 , 375 )
+		end
+	end
+	
+	------- Update Jadefire Knight
+	for i =1 ,4 do
+		wait(7)
+		ugradeUnit( 410 , 155 )
+		wait(7)
+		ugradeUnit( 410 , 210 )
+		wait(7)
+		ugradeUnit( 410 , 265 )
+		wait(7)
+		ugradeUnit( 410 , 320 )
+	end
+	wait(1)
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 155 )
+		end
+	end
+	tab(410 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 210 )
+		end
+	end
+	tab(410 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 265 )
+		end
+	end
+	tab(410 , 320)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 320 )
+		end
+	end
+
+	tab(410 , 320)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 320 )
+		end
+	end
+	tab(410 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 265 )
+		end
+	end
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 155 )
+		end
+	end
+	tab(410 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 210 )
+		end
+	end
+	------- Update Aether Knight
+	tab(720 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,25 do
+		wait(4)
+
+		if btnUpgrade.Text == "6,000" then
+			break
+		else
+			ugradeUnit( 720 , 155 )
+		end
+	end
+	tab(635 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,25 do
+		wait(4)
+
+		if btnUpgrade.Text == "6,000" then
+			break
+		else
+			ugradeUnit( 635 , 210 )
+		end
+	end
+	tab(635 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,25 do
+		wait(4)
+
+		if btnUpgrade.Text == "6,000" then
+			break
+		else
+			ugradeUnit( 635 , 265 )
+		end
+	end
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,25 do
+		wait(4)
+
+		if btnUpgrade.Text == "6,000" then
+			break
+		else
+			ugradeUnit( 635 , 320 )
+		end
+	end
+	tab(635 , 375)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,25 do
+		wait(4)
+
+		if btnUpgrade.Text == "6,000" then
+			break
+		else
+			ugradeUnit( 635 , 375 )
+		end
+	end
+
+
+
+	for i =1 ,50 do
 		wait(5)
 		ugradeUnit( 410 , 155 )
 		wait(5)
@@ -573,6 +789,7 @@ if game.PlaceId == 17018663967 then
 		ugradeUnit( 410 , 265 )
 		wait(5)
 		ugradeUnit( 410 , 320 )
+		
 		wait(5)
 		ugradeUnit( 720 , 155 )
 		wait(5)
@@ -584,6 +801,5 @@ if game.PlaceId == 17018663967 then
 		wait(5)
 		ugradeUnit( 635 , 375 )
 	end
-
 
 end
