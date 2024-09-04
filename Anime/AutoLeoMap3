@@ -179,9 +179,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(483,391) wait(2)---tab confim
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
 		wait(2)
-		----------
-
-		wait(2)
 		-----
 		local setting = playerGui.PAGES.SettingsUI
 		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
