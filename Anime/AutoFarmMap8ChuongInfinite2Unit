@@ -35,33 +35,19 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-function Hide4World ()
-	local MatchPage = playerGui.PAGES.MatchPage
-	local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 8 cái _WorldHolder
 
-	local tableWorld = {
-	}
-	for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
-		print(child.Name, "--", child.ClassName)
-		if child.ClassName == "Frame"  then
-			table.insert(tableWorld,child)
-			child.Visible = false
-		end
-	end
-	tableWorld[8].Visible = true
-end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
 
 	-------The end ClosePeopeoAndChat
 	--Bay đến Sumon 
-	--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-	--wait(2)
-	--presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	--wait(2)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
+	wait(1)
+	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
+	wait(1)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(3)
+	wait(1)
 	------- FPSBOOTER and LowMap
 	setfpscap(15)
 	UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -187,7 +173,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
+	function Hide4World ()
+		local MatchPage = playerGui.PAGES.MatchPage
+		local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 8 cái _WorldHolder
 
+		local tableWorld = {
+		}
+		for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			print(child.Name, "--", child.ClassName)
+			if child.ClassName == "Frame"  then
+				table.insert(tableWorld,child)
+				child.Visible = false
+			end
+		end
+		tableWorld[8].Visible = true
+	end
 	for i = 1,5 do
 		while true do
 			local indexGate = math.random(1,6)
@@ -246,7 +246,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	local TeleportService = game:GetService("TeleportService")
 	local placeId = 17017769292
 	TeleportService:Teleport(placeId, player)
-	
+
 
 end
 
