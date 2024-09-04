@@ -164,7 +164,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(2)
+	wait(5)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
