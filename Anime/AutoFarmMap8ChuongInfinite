@@ -217,7 +217,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
-
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 
 		tab(483,391) wait(2)---tab confim
