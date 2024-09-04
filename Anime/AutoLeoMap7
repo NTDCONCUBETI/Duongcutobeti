@@ -156,52 +156,58 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
-	while true do
+	for i = 1,3 do
 		while true do
-			local indexGate = math.random(1,6)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
-			wait(2)
-			if playerGui.PAGES.MatchPage.Visible == true then
-				Hide4World()
-				break	
+			while true do
+				local indexGate = math.random(1,6)
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
+				wait(2)
+				if playerGui.PAGES.MatchPage.Visible == true then
+					Hide4World()
+					break	
+				end
 			end
+			wait(2)
+			tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
+			tab(246,143) wait(2)--chọn bản đồ 1
+			tab(246,143) wait(2)--chọn bản đồ 1
+			tab( 416 , 116 ) wait(0.5)--Chương 1
+			tab( 416 , 151 ) wait(0.5)--Chương 2
+			tab( 416 , 186 ) wait(0.5)--Chương 3
+			tab( 416 , 221 ) wait(0.5)--Chương 4
+			tab( 416 , 256 ) wait(0.5)--Chương 5
+			tab( 416 , 291 ) wait(0.5)--Chương 6
+			tab(483,391) wait(2)---tab confim
+			tab(483,391) wait(2)---tab confim
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
+
+
+			wait(2)
+			-----
+			local setting = playerGui.PAGES.SettingsUI
+			local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+			------------ Tắt auto skip
+			setting.Visible = true
+			wait(2)
+			if autoskip.Text == "Off" then 
+				click(autoskip)
+			end
+			wait(2)
+			setting.Visible = false
+			tab(737,317) wait(3)---tab Star
+			tab(737,320) wait(1)---tab Star
+			tab(737,323) wait(1)---tab Star
+			tab(700,264) wait(1)---tab Star
+			tab(700,261) wait(1)---tab Star
+			tab(700,259) wait(1)---tab Star
+
+			wait(40)
 		end
-		wait(2)
-		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
-		tab(246,143) wait(2)--chọn bản đồ 1
-		tab(246,143) wait(2)--chọn bản đồ 1
-		tab( 416 , 116 ) wait(0.5)--Chương 1
-		tab( 416 , 151 ) wait(0.5)--Chương 2
-		tab( 416 , 186 ) wait(0.5)--Chương 3
-		tab( 416 , 221 ) wait(0.5)--Chương 4
-		tab( 416 , 256 ) wait(0.5)--Chương 5
-		tab( 416 , 291 ) wait(0.5)--Chương 6
-		tab(483,391) wait(2)---tab confim
-		tab(483,391) wait(2)---tab confim
-
-
-		wait(2)
-		-----
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		------------ Tắt auto skip
-		setting.Visible = true
-		wait(2)
-		if autoskip.Text == "Off" then 
-			click(autoskip)
-		end
-		wait(2)
-		setting.Visible = false
-		tab(737,317) wait(3)---tab Star
-		tab(737,320) wait(1)---tab Star
-		tab(737,323) wait(1)---tab Star
-		tab(700,264) wait(1)---tab Star
-		tab(700,261) wait(1)---tab Star
-		tab(700,259) wait(1)---tab Star
-
-		wait(40)
 	end
 
+	local TeleportService = game:GetService("TeleportService")
+	local placeId = 17017769292
+	TeleportService:Teleport(placeId, player)
 
 else
 
