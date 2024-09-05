@@ -31,21 +31,7 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-function Hide4World ()
-	local MatchPage = playerGui.PAGES.MatchPage
-	local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 5 cái _WorldHolder
 
-	local tableWorld = {
-	}
-	for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
-		print(child.Name, "--", child.ClassName)
-		if child.ClassName == "Frame"  then
-			table.insert(tableWorld,child)
-			child.Visible = false
-		end
-	end
-	tableWorld[2].Visible = true
-end
 ------- FPSBOOTER and LowMap
 setfpscap(15)
 UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -148,6 +134,13 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	wait(5)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
+	--Bay đến Sumon 
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
+	wait(2)
+	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
+	wait(2)
+	--game:GetService("RunService"):Set3dRenderingEnabled(false)
+	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -156,6 +149,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
+	function Hide4World ()
+		local MatchPage = playerGui.PAGES.MatchPage
+		local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 5 cái _WorldHolder
+
+		local tableWorld = {
+		}
+		for i, child in ipairs(ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			print(child.Name, "--", child.ClassName)
+			if child.ClassName == "Frame"  then
+				table.insert(tableWorld,child)
+				child.Visible = false
+			end
+		end
+		tableWorld[2].Visible = true
+	end
 	for i = 1,3 do
 		while true do
 			while true do
@@ -274,7 +282,25 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
+	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(120)
+				if playerGui.PAGES.MatchResultPage.Visible == false  then
 
+					if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
+						-- về loppy
+						local TeleportService = game:GetService("TeleportService")
+						local placeId = 17017769292
+						TeleportService:Teleport(placeId, player)
+					end
+					wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
+				end
+
+			end
+		end)
+	end)
 	spawn(function()
 		pcall(function()
 			while true do
