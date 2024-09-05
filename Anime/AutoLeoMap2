@@ -134,6 +134,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
 	
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
+	wait(2)
 	--Bay đến Sumon 
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
 	wait(2)
