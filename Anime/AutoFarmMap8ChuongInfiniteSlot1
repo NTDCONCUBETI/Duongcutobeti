@@ -404,7 +404,7 @@ if game.PlaceId == 17018663967 then
 
 
 	------Spam 1 Jadefire Knight
-	SpawmTroop(6, 410 , 155 )
+	SpawmTroop(1, 410 , 155 )
 	wait(2)
 
 
