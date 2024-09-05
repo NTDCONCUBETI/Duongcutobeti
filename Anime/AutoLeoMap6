@@ -14,7 +14,7 @@ local player = game:GetService("Players").LocalPlayer
 -- Sử dụng WaitForChild để chờ PlayerGui, PAGES và MatchPage
 local playerGui = player:WaitForChild("PlayerGui")
 local pages = playerGui:WaitForChild("PAGES")
-local matchPage = pages:WaitForChild("MatchPage")
+
 
 -- Khi tất cả các thành phần đã được tải, thực hiện hành động tiếp theo
 print("[CLIENT] MatchPage đã được tải")
