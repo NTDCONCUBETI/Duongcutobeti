@@ -286,7 +286,7 @@ else
 	spawn(function()
 		pcall(function()
 			while true do
-				wait(180)
+				wait(300)
 				if playerGui.PAGES.MatchResultPage.Visible == false  then
 
 					if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
