@@ -1,8 +1,23 @@
+-- Chờ cho đến khi trò chơi được tải hoàn toàn
 repeat
 	task.wait()
 until game:IsLoaded()
 
+-- Chờ cho đến khi PlaceId đã được gán
+repeat
+	task.wait()
+until game.PlaceId ~= nil
 
+-- Đảm bảo LocalPlayer tồn tại
+local player = game:GetService("Players").LocalPlayer
+
+-- Sử dụng WaitForChild để chờ PlayerGui, PAGES 
+local playerGui = player:WaitForChild("PlayerGui")
+local pages = playerGui:WaitForChild("PAGES")
+
+-- Khi tất cả các thành phần đã được tải, thực hiện hành động tiếp theo
+print("[CLIENT] MatchPage đã được tải")
+-- Thực hiện các hành động tiếp theo tại đây
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
