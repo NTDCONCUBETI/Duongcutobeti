@@ -363,7 +363,7 @@ else
 
 			wait(1)
 			click(btnNext)---tab Play Next
-			wait(5)
+			wait(15)
 			click(btnReplay)---tab Play Again
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
