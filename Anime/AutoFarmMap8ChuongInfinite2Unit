@@ -234,8 +234,23 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
-		tab( 416 , 326 ) wait(1)--Chương Infinite
-		tab( 416 , 326 ) wait(1)--Chương Infinite
+		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			--print(child.Name,"--", child.ClassName, child.parent)
+			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
+				if child.ChapterButton.TextLabel.Text == "Infinite Mode" then
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+				end
+			end
+		end
+		wait(2)
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
