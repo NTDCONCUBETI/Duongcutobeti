@@ -316,7 +316,7 @@ if game.PlaceId == 17018663967 then
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
 
 
-	game:GetService("RunService"):Set3dRenderingEnabled(false)
+	--game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 	function SpawmTroop (i,x,y)
 		while true do
