@@ -468,6 +468,108 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(1, 410 , 320 )
 	wait(2)
+	
+	------- Update Jadefire Knight
+	for i =1 ,4 do
+		wait(7)
+		ugradeUnit( 410 , 155 )
+		wait(7)
+		ugradeUnit( 410 , 210 )
+		wait(7)
+		ugradeUnit( 410 , 265 )
+		wait(7)
+		ugradeUnit( 410 , 320 )
+	end
+	wait(1)
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 155 )
+		end
+	end
+	tab(410 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 210 )
+		end
+	end
+	tab(410 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 265 )
+		end
+	end
+	tab(410 , 320)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "5,500" then
+			break
+		else
+			ugradeUnit( 410 , 320 )
+		end
+	end
+
+	tab(410 , 320)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 320 )
+		end
+	end
+	tab(410 , 265)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 265 )
+		end
+	end
+	tab(410 , 155)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 155 )
+		end
+	end
+	tab(410 , 210)------Tab hiện bảng update
+	wait(1)
+	for i =1 ,15 do
+		wait(4)
+
+		if btnUpgrade.Text == "9,500" then
+			break
+		else
+			ugradeUnit( 410 , 210 )
+		end
+	end
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
