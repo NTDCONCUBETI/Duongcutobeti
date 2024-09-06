@@ -353,7 +353,7 @@ if game.PlaceId == 17018663967 then
 		pcall(function()
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-
+					tab(504 , 300) --- tab Back bảng Oops
 					wait(2)
 					click(btnLobby)
 					click(btnLobby)
