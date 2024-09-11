@@ -43,9 +43,6 @@ end
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(5)
-	local update = playerGui.PAGES.UpdatesUI
-	wait(2)
-	update.Visible = true
 	------- The end  ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
