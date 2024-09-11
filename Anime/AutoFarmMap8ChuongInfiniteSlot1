@@ -14,9 +14,9 @@ local player = game:GetService("Players").LocalPlayer
 -- Sử dụng WaitForChild với giới hạn thời gian
 local playerGui = player:WaitForChild("PlayerGui")
 
--- Kiểm tra PAGES trong vòng 30 giây
+-- Kiểm tra PAGES trong vòng 60 giây
 local pages
-local timeout = 30 -- thời gian tối đa là 30 giây
+local timeout = 60 -- thời gian tối đa là 60 giây
 local startTime = tick() -- thời điểm bắt đầu đếm thời gian
 
 while not pages and tick() - startTime < timeout do
@@ -29,7 +29,7 @@ end
 if pages then
 	print("[CLIENT] MatchPage đã được tải")
 else
-	print("[CLIENT] Không tìm thấy MatchPage trong 30 giây, bỏ qua...")
+	print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
 	wait(1)
 	local TeleportService = game:GetService("TeleportService")
 	local placeId = 17017769292
