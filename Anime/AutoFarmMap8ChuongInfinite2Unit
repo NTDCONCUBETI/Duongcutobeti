@@ -30,13 +30,15 @@ if pages then
 	print("[CLIENT] MatchPage đã được tải")
 else
 	print("[CLIENT] Không tìm thấy MatchPage trong 30 giây, bỏ qua...")
+	wait(1)
+	local TeleportService = game:GetService("TeleportService")
+	local placeId = 17017769292
+	TeleportService:Teleport(placeId, player)
 end
 
 -- Thực hiện các hành động tiếp theo tại đây
 
-local TeleportService = game:GetService("TeleportService")
-local placeId = 17017769292
-TeleportService:Teleport(placeId, player)
+
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
