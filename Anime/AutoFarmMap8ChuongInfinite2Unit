@@ -1,11 +1,15 @@
-
+repeat
+	task.wait()
+until game:IsLoaded()
 
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 local indexTouch = 1000
-
+local update = playerGui.PAGES.UpdatesUI
+wait(2)
+update.Visible = true
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -36,7 +40,99 @@ end
 
 ------- FPSBOOTER and LowMap
 
+setfpscap(15)
+UserSettings():GetService("UserGameSettings").MasterVolume = 0
+game:GetService("Lighting"):ClearAllChildren()
 
+local decalsyeeted = true
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+sethiddenproperty(l,"Technology",2)
+sethiddenproperty(t,"Decoration",false)
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 1
+l.GlobalShadows = 0
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(w:GetDescendants()) do
+	if v:IsA("BasePart") and not v:IsA("MeshPart") then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+		v.Transparency = 1
+	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+		v.Lifetime = NumberRange.new(0)
+	elseif v:IsA("Explosion") then
+		v.BlastPressure = 1
+		v.BlastRadius = 1
+	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+		v.Enabled = false
+	elseif v:IsA("MeshPart") and decalsyeeted then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+		v.TextureID = 0
+	elseif v:IsA("SpecialMesh") and decalsyeeted  then
+		v.TextureId=0
+	elseif v:IsA("ShirtGraphic") and decalsyeeted then
+		v.Graphic=1
+	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+		v[v.ClassName.."Template"]=1
+	end
+end
+for i = 1,#l:GetChildren() do
+	e=l:GetChildren()[i]
+	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+		e.Enabled = false
+	end
+end
+w.DescendantAdded:Connect(function(v)
+	pcall(function()
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.Transparency = 1
+		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1 
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") and decalsyeeted then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 0
+			v.Transparency = 1
+		elseif v:IsA("SpecialMesh") and decalsyeeted then
+			v.TextureId=0
+		elseif v:IsA("ShirtGraphic") and decalsyeeted then
+			v.ShirtGraphic=1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+			v[v.ClassName.."Template"]=1
+		end
+	end)
+end)
+for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+wait(1)
 
 
 ------- The end FPSBOOTER and LowMap
@@ -70,7 +166,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(5)
+	wait(2)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -98,7 +194,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 	for i = 1,5 do
 
-		for i = 1,10 do
+		while true do
 			local indexGate = math.random(1,6)
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
 			wait(5)
@@ -127,23 +223,9 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
-		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
-			--print(child.Name,"--", child.ClassName, child.parent)
-			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
-				if child.ChapterButton.TextLabel.Text == "Infinite Mode" then
-					click(child.ChapterButton.TextLabel)
-					wait(1)
-					click(child.ChapterButton)
-					click(child.ChapterButton.TextLabel)
-					wait(1)
-					click(child.ChapterButton)
-					click(child.ChapterButton.TextLabel)
-					wait(1)
-					click(child.ChapterButton)
-				end
-			end
-		end
-		wait(2)
+
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
+		tab( 416 , 326 ) wait(0.5)--Chương Infinite
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
@@ -209,7 +291,7 @@ if game.PlaceId == 17018663967 then
 	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
 
 
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 
 	function SpawmTroop (i,x,y)
 		while true do
@@ -246,7 +328,7 @@ if game.PlaceId == 17018663967 then
 		pcall(function()
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-					tab(504 , 300) --- tab Back bảng Oops
+
 					wait(2)
 					click(btnLobby)
 					click(btnLobby)
