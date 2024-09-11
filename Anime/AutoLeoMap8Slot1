@@ -11,12 +11,31 @@ until game.PlaceId ~= nil
 -- Đảm bảo LocalPlayer tồn tại
 local player = game:GetService("Players").LocalPlayer
 
--- Sử dụng WaitForChild để chờ PlayerGui, PAGES 
+-- Sử dụng WaitForChild với giới hạn thời gian
 local playerGui = player:WaitForChild("PlayerGui")
-local pages = playerGui:WaitForChild("PAGES")
 
--- Khi tất cả các thành phần đã được tải, thực hiện hành động tiếp theo
-print("[CLIENT] MatchPage đã được tải")
+-- Kiểm tra PAGES trong vòng 60 giây
+local pages
+local timeout = 60 -- thời gian tối đa là 60 giây
+local startTime = tick() -- thời điểm bắt đầu đếm thời gian
+
+while not pages and tick() - startTime < timeout do
+	pages = playerGui:FindFirstChild("PAGES") -- Thử tìm PAGES
+	if not pages then
+		task.wait(0.5) -- đợi 0.5 giây trước khi kiểm tra lại
+	end
+end
+
+if pages then
+	print("[CLIENT] MatchPage đã được tải")
+else
+	print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
+	wait(1)
+	local TeleportService = game:GetService("TeleportService")
+	local placeId = 17017769292
+	TeleportService:Teleport(placeId, player)
+end
+
 -- Thực hiện các hành động tiếp theo tại đây
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
