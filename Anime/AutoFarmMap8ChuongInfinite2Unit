@@ -1,7 +1,42 @@
+-- Chờ cho đến khi trò chơi được tải hoàn toàn
 repeat
 	task.wait()
 until game:IsLoaded()
 
+-- Chờ cho đến khi PlaceId đã được gán
+repeat
+	task.wait()
+until game.PlaceId ~= nil
+
+-- Đảm bảo LocalPlayer tồn tại
+local player = game:GetService("Players").LocalPlayer
+
+-- Sử dụng WaitForChild với giới hạn thời gian
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Kiểm tra PAGES trong vòng 30 giây
+local pages
+local timeout = 30 -- thời gian tối đa là 30 giây
+local startTime = tick() -- thời điểm bắt đầu đếm thời gian
+
+while not pages and tick() - startTime < timeout do
+	pages = playerGui:FindFirstChild("PAGES") -- Thử tìm PAGES
+	if not pages then
+		task.wait(0.5) -- đợi 0.5 giây trước khi kiểm tra lại
+	end
+end
+
+if pages then
+	print("[CLIENT] MatchPage đã được tải")
+else
+	print("[CLIENT] Không tìm thấy MatchPage trong 30 giây, bỏ qua...")
+end
+
+-- Thực hiện các hành động tiếp theo tại đây
+
+local TeleportService = game:GetService("TeleportService")
+local placeId = 17017769292
+TeleportService:Teleport(placeId, player)
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
@@ -36,7 +71,99 @@ end
 
 
 ------- FPSBOOTER and LowMap
+setfpscap(15)
+UserSettings():GetService("UserGameSettings").MasterVolume = 0
+game:GetService("Lighting"):ClearAllChildren()
 
+local decalsyeeted = true
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+sethiddenproperty(l,"Technology",2)
+sethiddenproperty(t,"Decoration",false)
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 1
+l.GlobalShadows = 0
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(w:GetDescendants()) do
+	if v:IsA("BasePart") and not v:IsA("MeshPart") then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+		v.Transparency = 1
+	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+		v.Lifetime = NumberRange.new(0)
+	elseif v:IsA("Explosion") then
+		v.BlastPressure = 1
+		v.BlastRadius = 1
+	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+		v.Enabled = false
+	elseif v:IsA("MeshPart") and decalsyeeted then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+		v.TextureID = 0
+	elseif v:IsA("SpecialMesh") and decalsyeeted  then
+		v.TextureId=0
+	elseif v:IsA("ShirtGraphic") and decalsyeeted then
+		v.Graphic=1
+	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+		v[v.ClassName.."Template"]=1
+	end
+end
+for i = 1,#l:GetChildren() do
+	e=l:GetChildren()[i]
+	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+		e.Enabled = false
+	end
+end
+w.DescendantAdded:Connect(function(v)
+	pcall(function()
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.Transparency = 1
+		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1 
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") and decalsyeeted then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 0
+			v.Transparency = 1
+		elseif v:IsA("SpecialMesh") and decalsyeeted then
+			v.TextureId=0
+		elseif v:IsA("ShirtGraphic") and decalsyeeted then
+			v.ShirtGraphic=1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+			v[v.ClassName.."Template"]=1
+		end
+	end)
+end)
+for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+wait(1)
 
 
 
@@ -164,99 +291,7 @@ end
 if game.PlaceId == 17018663967 then
 	------- FPSBOOTER and LowMap
 
-	setfpscap(15)
-	UserSettings():GetService("UserGameSettings").MasterVolume = 0
-	game:GetService("Lighting"):ClearAllChildren()
 
-	local decalsyeeted = true
-	local g = game
-	local w = g.Workspace
-	local l = g.Lighting
-	local t = w.Terrain
-	sethiddenproperty(l,"Technology",2)
-	sethiddenproperty(t,"Decoration",false)
-	t.WaterWaveSize = 0
-	t.WaterWaveSpeed = 0
-	t.WaterReflectance = 0
-	t.WaterTransparency = 1
-	l.GlobalShadows = 0
-	l.FogEnd = 9e9
-	l.Brightness = 0
-	settings().Rendering.QualityLevel = "Level01"
-	for i, v in pairs(w:GetDescendants()) do
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Transparency = 1
-			v.Reflectance = 0
-		elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") and decalsyeeted then
-			v.Material = "Plastic"
-			v.Transparency = 1
-			v.Reflectance = 0
-			v.TextureID = 0
-		elseif v:IsA("SpecialMesh") and decalsyeeted  then
-			v.TextureId=0
-		elseif v:IsA("ShirtGraphic") and decalsyeeted then
-			v.Graphic=1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-			v[v.ClassName.."Template"]=1
-		end
-	end
-	for i = 1,#l:GetChildren() do
-		e=l:GetChildren()[i]
-		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-			e.Enabled = false
-		end
-	end
-	w.DescendantAdded:Connect(function(v)
-		pcall(function()
-			if v:IsA("BasePart") and not v:IsA("MeshPart") then
-				v.Material = "Plastic"
-				v.Reflectance = 0
-				v.Transparency = 1
-			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-				v.Transparency = 1
-			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-				v.Lifetime = NumberRange.new(0)
-			elseif v:IsA("Explosion") then
-				v.BlastPressure = 1 
-				v.BlastRadius = 1
-			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-				v.Enabled = false
-			elseif v:IsA("MeshPart") and decalsyeeted then
-				v.Material = "Plastic"
-				v.Reflectance = 0
-				v.TextureID = 0
-				v.Transparency = 1
-			elseif v:IsA("SpecialMesh") and decalsyeeted then
-				v.TextureId=0
-			elseif v:IsA("ShirtGraphic") and decalsyeeted then
-				v.ShirtGraphic=1
-			elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-				v[v.ClassName.."Template"]=1
-			end
-		end)
-	end)
-	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-		if v:IsA("ScreenGui") then
-			v.Enabled = false
-		end
-	end
-
-	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-		if v:IsA("ScreenGui") then
-			v.Enabled = false
-		end
-	end
-	wait(1)
 
 
 	------- The end FPSBOOTER and LowMap
