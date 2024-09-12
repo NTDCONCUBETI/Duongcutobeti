@@ -268,11 +268,11 @@ else
 
 	SpawmTroop(1, 660 , 192 )
 	wait(2)
-	SpawmTroop(1, 730 , 192 )
+	SpawmTroop(1, 710 , 192 )
 	wait(2)
-	SpawmTroop(1, 800 , 192 )
+	SpawmTroop(1, 780 , 192 )
 	wait(2)
-	SpawmTroop(1, 870 , 192 )
+	SpawmTroop(1, 850 , 192 )
 
 	wait(2)
 	playerGui.TopBar.HolderFrame.Visible = true
@@ -289,11 +289,11 @@ else
 		wait(5)
 		ugradeUnit( 660 , 192 )
 		wait(5)
-		ugradeUnit( 730 , 192 )
+		ugradeUnit( 710 , 192 )
 		wait(5)
-		ugradeUnit( 800 , 192 )
+		ugradeUnit( 780 , 192 )
 		wait(5)
-		ugradeUnit( 870 , 192 )
+		ugradeUnit( 850 , 192 )
 	end
 
 
@@ -308,21 +308,21 @@ else
 			wait(2)
 			SpawmTroop(1, 660 , 192 )
 			wait(2)
-			SpawmTroop(1, 730 , 192 )
+			SpawmTroop(1, 710 , 192 )
 			wait(2)
-			SpawmTroop(1, 800 , 192 )
+			SpawmTroop(1, 780 , 192 )
 			wait(2)
-			SpawmTroop(1, 870 , 192 )
+			SpawmTroop(1, 850 , 192 )
 
 			for i =1 ,4 do
 				wait(5)
 				ugradeUnit( 660 , 192 )
 				wait(5)
-				ugradeUnit( 730 , 192 )
+				ugradeUnit( 710 , 192 )
 				wait(5)
-				ugradeUnit( 800 , 192 )
+				ugradeUnit( 780 , 192 )
 				wait(5)
-				ugradeUnit( 870 , 192 )
+				ugradeUnit( 850 , 192 )
 			end
 		end
 	end
