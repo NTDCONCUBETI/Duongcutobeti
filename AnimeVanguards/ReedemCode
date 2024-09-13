@@ -1,0 +1,244 @@
+local player = game.Players.LocalPlayer
+local playerGui = player.PlayerGui
+local indexTouch = 1000
+function tab(x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+	wait(0.1)
+	indexTouch = indexTouch + 1
+end
+
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+end
+
+function clickToaDo(x,y, object)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
+	print("click",x,y)
+end
+wait(10)
+------- FPSBOOTER and LowMap
+
+setfpscap(15)
+UserSettings():GetService("UserGameSettings").MasterVolume = 0
+game:GetService("Lighting"):ClearAllChildren()
+
+local decalsyeeted = true
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+sethiddenproperty(l,"Technology",2)
+sethiddenproperty(t,"Decoration",false)
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 1
+l.GlobalShadows = 0
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(w:GetDescendants()) do
+	if v:IsA("BasePart") and not v:IsA("MeshPart") then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+		v.Transparency = 1
+	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+		v.Lifetime = NumberRange.new(0)
+	elseif v:IsA("Explosion") then
+		v.BlastPressure = 1
+		v.BlastRadius = 1
+	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+		v.Enabled = false
+	elseif v:IsA("MeshPart") and decalsyeeted then
+		v.Material = "Plastic"
+		v.Transparency = 1
+		v.Reflectance = 0
+		v.TextureID = 0
+	elseif v:IsA("SpecialMesh") and decalsyeeted  then
+		v.TextureId=0
+	elseif v:IsA("ShirtGraphic") and decalsyeeted then
+		v.Graphic=1
+	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+		v[v.ClassName.."Template"]=1
+	end
+end
+for i = 1,#l:GetChildren() do
+	e=l:GetChildren()[i]
+	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+		e.Enabled = false
+	end
+end
+w.DescendantAdded:Connect(function(v)
+	pcall(function()
+		if v:IsA("BasePart") and not v:IsA("MeshPart") then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.Transparency = 1
+		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+			v.Transparency = 1
+		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+			v.Lifetime = NumberRange.new(0)
+		elseif v:IsA("Explosion") then
+			v.BlastPressure = 1 
+			v.BlastRadius = 1
+		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+			v.Enabled = false
+		elseif v:IsA("MeshPart") and decalsyeeted then
+			v.Material = "Plastic"
+			v.Reflectance = 0
+			v.TextureID = 0
+			v.Transparency = 1
+		elseif v:IsA("SpecialMesh") and decalsyeeted then
+			v.TextureId=0
+		elseif v:IsA("ShirtGraphic") and decalsyeeted then
+			v.ShirtGraphic=1
+		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+			v[v.ClassName.."Template"]=1
+		end
+	end)
+end)
+for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+wait(1)
+
+
+------- The end FPSBOOTER and LowMap
+-------  ClosePeopeoAndChat
+
+
+for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+end
+
+
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	if v:IsA("ScreenGui") then
+		v.Enabled = false
+	end
+	if v.Name == "Codex" then
+		game:GetService("CoreGui").Codex.gui.Enabled = false ------Tắt menu codex
+		game:GetService("CoreGui").Codex.popups.Enabled = false ------Tắt menu code
+	end
+end
+
+wait(1)
+-------The end ClosePeopeoAndChat
+-----Nhận Unit Tân thủ
+tab( 392 , 416.79998779296875 )
+wait(1)
+tab( 392 , 416.79998779296875 )
+wait(1)
+tab( 392 , 416.79998779296875 )
+wait(1)
+tab( 392 , 416.79998779296875 )
+wait(1)
+tab( 392 , 416.79998779296875 )
+wait(1)
+tab( 392 , 416.79998779296875 )
+wait(1)
+clickToaDo( 443.20001220703125 , 256.79998779296875 )
+wait(1)
+clickToaDo( 443.20001220703125 , 256.79998779296875 )
+wait(1)
+clickToaDo( 443.20001220703125 , 256.79998779296875 )
+wait(1)
+clickToaDo( 443.20001220703125 , 256.79998779296875 )
+wait(1)
+tab( 416 , 266.3999938964844 )
+wait(1)
+tab( 416 , 266.3999938964844 )
+wait(1)
+tab( 444.79998779296875 , 264.79998779296875 )
+wait(1)
+tab( 444.79998779296875 , 264.79998779296875 )
+wait(1)
+-----Nhập Code và Reedem
+tab( 913.5999755859375 , 221.60000610351562 )--- tab mở bảng nhập code
+wait(5)
+local textBoxCode = playerGui.Windows.Codes.Holder.CodesMain.Main.Input
+textBoxCode.Text = "DELAY"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "RELEASE"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "10KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "10MVISITS"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "100KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "200KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "300KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "25MVISITS"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "400KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+textBoxCode.Text = "AV500KLIKES"
+wait(2)
+tab( 481.6000061035156 , 287.20001220703125 )--- tab Reedem code
+wait(2)
+tab( 483.20001220703125 , 263.20001220703125 )--- tab Cancel
+wait(2)
+tab( 683.2000122070312 , 156 )---- Tab X tắt bảng nhập code
