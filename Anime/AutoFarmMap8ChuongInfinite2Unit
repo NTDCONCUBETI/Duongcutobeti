@@ -133,7 +133,7 @@ wait(1)
 
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	
+
 	-- Chờ cho đến khi trò chơi được tải hoàn toàn
 	repeat
 		task.wait()
@@ -278,18 +278,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		wait(2)
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
-		wait(1)
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		------------ Tắt auto skip
-		setting.Visible = true
-		wait(2)
-		if autoskip.Text == "Off" then 
-			click(autoskip)
-		end
-		wait(2)
-		setting.Visible = false
 		tab(737,317) wait(3)---tab Star
 		tab(737,320) wait(1)---tab Star
 		tab(737,323) wait(1)---tab Star
@@ -384,8 +372,6 @@ if game.PlaceId == 17018663967 then
 		pcall(function()
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
-					wait(2)
 					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
 					wait(2)
 					click(btnLobby)
