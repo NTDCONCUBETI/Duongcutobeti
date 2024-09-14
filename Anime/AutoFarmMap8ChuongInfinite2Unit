@@ -1,7 +1,4 @@
 
-
-
-
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
