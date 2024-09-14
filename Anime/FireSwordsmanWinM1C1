@@ -323,11 +323,11 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	
-	
+
+
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
-	SpawmTroop(2, 358 , 303 )
+	SpawmTroop(1, 358 , 303 )
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
@@ -335,19 +335,19 @@ if game.PlaceId == 17018663967 then
 	tab(822.4 , -18.4)-- tab x2 speed
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(2)
-	SpawmTroop(2, 358 , 340 )
+	SpawmTroop(1, 358 , 340 )
 
 	wait(2)
-	SpawmTroop(2, 358 , 377 )
+	SpawmTroop(1, 358 , 377 )
 
 	wait(2)
-	SpawmTroop(2, 358 , 414 )
+	SpawmTroop(1, 358 , 414 )
 
 	wait(2)
-	SpawmTroop(2, 400 , 303 )
+	SpawmTroop(1, 400 , 303 )
 
 	wait(2)
-	SpawmTroop(2, 400 , 340 )
+	SpawmTroop(1, 400 , 340 )
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	wait(5)
@@ -379,22 +379,22 @@ if game.PlaceId == 17018663967 then
 
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
-			SpawmTroop(2, 358 , 303 )
+			SpawmTroop(1, 358 , 303 )
 
 			wait(2)
-			SpawmTroop(2, 358 , 340 )
+			SpawmTroop(1, 358 , 340 )
 
 			wait(2)
-			SpawmTroop(2, 358 , 377 )
+			SpawmTroop(1, 358 , 377 )
 
 			wait(2)
-			SpawmTroop(2, 358 , 414 )
+			SpawmTroop(1, 358 , 414 )
 
 			wait(2)
-			SpawmTroop(2, 400 , 303 )
+			SpawmTroop(1, 400 , 303 )
 
 			wait(2)
-			SpawmTroop(2, 400 , 340 )
+			SpawmTroop(1, 400 , 340 )
 
 
 			for i =1 ,10 do
