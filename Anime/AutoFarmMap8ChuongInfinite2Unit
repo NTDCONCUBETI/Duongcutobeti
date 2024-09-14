@@ -212,7 +212,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
 
-
+	wait(2)
 	function Hide4World ()
 		local MatchPage = playerGui.PAGES.MatchPage
 		local ScrollingFrame = MatchPage.WorldSelectFrame.ScrollingFrame -- có 8 cái _WorldHolder
@@ -228,6 +228,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		end
 		tableWorld[8].Visible = true
 	end
+	wait(2)
 	for i = 1,5 do
 
 		for i = 1,15 do
