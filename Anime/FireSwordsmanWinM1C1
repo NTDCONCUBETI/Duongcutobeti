@@ -278,20 +278,6 @@ if game.PlaceId == 17018663967 then
 
 
 
-	spawn(function()
-		pcall(function()
-			while true do wait(5)
-				if playerGui.PAGES.MatchResultPage.Visible == true  then
-					wait(3)
-					local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
-					if KetQua == "Defeat!"  then
-						wait(2)
-						click(btnLobby)
-					end
-				end
-			end
-		end)
-	end)
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
