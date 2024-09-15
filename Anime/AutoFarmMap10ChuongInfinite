@@ -248,17 +248,20 @@ if game.PlaceId == 17018663967 then
 	function SpawmTroop (i,x,y)
 		while true do
 			camera.CFrame = cameraCFrame * rotation
-			wait(1)
-			click( tableUnit[i] )
-			wait(1)
+			wait(0.5)
 			tab( x , y )
-			wait(1)
+			wait(0.5)
+			click( tableUnit[i] )
+			wait(0.5)
+			tab( x , y )
+			wait(0.5)
 			presskey(119)
+			wait(0.5)
 			presskey(115)
-			wait(1)
+			wait(0.5)
 			presskey(101)
 			tab( x , y )
-			wait(1)
+			wait(0.5)
 			if #game.Workspace.Units:GetChildren() > UnitsInWS then
 				UnitsInWS = #game.Workspace.Units:GetChildren()
 				break
@@ -324,7 +327,7 @@ if game.PlaceId == 17018663967 then
 	spawn(function()
 		pcall(function()
 			while true do wait(30)
-				if tick() - startTime  > 120  then
+				if tick() - startTime  > 60  then
 					if UnitsInWS == 0 then
 						local TeleportService = game:GetService("TeleportService")
 						local placeId = 17017769292
