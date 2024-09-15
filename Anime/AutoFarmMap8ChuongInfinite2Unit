@@ -223,7 +223,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				child.Visible = false
 			end
 		end
-		tableWorld[8].Visible = true
+		tableWorld[10].Visible = true
 	end
 	wait(2)
 	for i = 1,5 do
