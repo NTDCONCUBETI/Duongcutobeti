@@ -64,7 +64,7 @@ function Hide4World ()
 			child.Visible = false
 		end
 	end
-	tableWorld[8].Visible = true
+	tableWorld[10].Visible = true
 end
 
 ------- FPSBOOTER and LowMap
