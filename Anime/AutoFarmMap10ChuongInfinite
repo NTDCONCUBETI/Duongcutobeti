@@ -227,6 +227,8 @@ if game.PlaceId == 17018663967 then
 	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
 	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
 	local btnPlace = playerGui.HUD.MobileButtonHolder.PlaceButton
+	local setting = playerGui.PAGES.SettingsUI
+	local autospeed = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Max Speed").Frame.BooleanButton.StatusLabel
 
 	local tableUnit = {}
 	for i, child in ipairs(playerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()) do --GetDescendants | GetChildren
@@ -339,18 +341,8 @@ if game.PlaceId == 17018663967 then
 	wait(1)
 
 
-	------Spam 1 Aether Knight
-	SpawmTroop(2, 369 , 303 )
-	wait(2)
 
 
-	playerGui.TopBar.HolderFrame.Visible = true
-	wait(2)
-	tab(822.4 , -18.4)-- tab x2 speed
-	wait(4)
-	tab(822.4 , -18.4)-- tab x2 speed
-	playerGui.TopBar.HolderFrame.Visible = false
-	wait(1)
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -404,9 +396,11 @@ if game.PlaceId == 17018663967 then
 
 	-------  The end ClosePeopeoAndChat
 
+	
 
-	------Spam 4 Aether Knight
-
+	------Spam 5 Aether Knight
+	wait(2)
+	SpawmTroop(2, 369 , 303 )
 	wait(2)
 	SpawmTroop(2, 409 , 319 )
 	wait(2)
@@ -415,6 +409,18 @@ if game.PlaceId == 17018663967 then
 	SpawmTroop(2, 435 , 376 )
 	wait(2)
 	SpawmTroop(2, 443 , 408 )
+	wait(2)
+	------------Mở auto speed
+	wait(2)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
+	wait(2)
+	setting.Visible = true
+	wait(5)
+	if autospeed.Text == "Off" then 
+		click(autospeed)
+	end
+	wait(2)
+	setting.Visible = false
 	wait(2)
 
 	------Spam 4 Jadefire Knight
