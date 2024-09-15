@@ -251,11 +251,7 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(1, 358 , 414 )
 
-	wait(2)
-	SpawmTroop(1, 400 , 303 )
 
-	wait(2)
-	SpawmTroop(1, 400 , 340 )
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
 	wait(5)
@@ -268,10 +264,6 @@ if game.PlaceId == 17018663967 then
 		ugradeUnit( 358 , 377 )
 		wait(2)
 		ugradeUnit( 358 , 414 )
-		wait(2)
-		ugradeUnit( 400 , 303 )
-		wait(2)
-		ugradeUnit( 400 , 340 )
 		wait(2)
 	end
 
@@ -298,11 +290,6 @@ if game.PlaceId == 17018663967 then
 			wait(2)
 			SpawmTroop(1, 358 , 414 )
 
-			wait(2)
-			SpawmTroop(1, 400 , 303 )
-
-			wait(2)
-			SpawmTroop(1, 400 , 340 )
 
 
 			for i =1 ,10 do
@@ -314,10 +301,6 @@ if game.PlaceId == 17018663967 then
 				ugradeUnit( 358 , 377 )
 				wait(2)
 				ugradeUnit( 358 , 414 )
-				wait(2)
-				ugradeUnit( 400 , 303 )
-				wait(2)
-				ugradeUnit( 400 , 340 )
 				wait(2)
 			end
 		end
