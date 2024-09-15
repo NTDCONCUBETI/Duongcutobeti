@@ -246,17 +246,17 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(246,143) wait(2)--chọn bản đồ 1
 		tab(246,143) wait(2)--chọn bản đồ 1
 
-		--tab( 416 , 116 ) wait(0.5)--Chương 1
+		tab( 416 , 116 ) wait(0.5)--Chương 1
 
-		--tab( 416 , 151 ) wait(0.5)--Chương 2
+		tab( 416 , 151 ) wait(0.5)--Chương 2
 
-		--tab( 416 , 186 ) wait(0.5)--Chương 3
+		tab( 416 , 186 ) wait(0.5)--Chương 3
 
-		--tab( 416 , 221 ) wait(0.5)--Chương 4
+		tab( 416 , 221 ) wait(0.5)--Chương 4
 
-		--tab( 416 , 256 ) wait(0.5)--Chương 5
+		tab( 416 , 256 ) wait(0.5)--Chương 5
 
-		--tab( 416 , 291 ) wait(0.5)--Chương 6
+		tab( 416 , 291 ) wait(0.5)--Chương 6
 		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
 			--print(child.Name,"--", child.ClassName, child.parent)
 			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
@@ -428,7 +428,7 @@ if game.PlaceId == 17018663967 then
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
-	wait(4)
+	wait(5)
 	tab(822.4 , -18.4)-- tab x2 speed
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
@@ -513,7 +513,7 @@ if game.PlaceId == 17018663967 then
 	tab(297 , 232)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
-		wait(4)
+		wait(2)
 
 		if btnUpgrade.Text == "3,000" then
 			break
@@ -524,7 +524,7 @@ if game.PlaceId == 17018663967 then
 	tab(345 , 247)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
-		wait(4)
+		wait(2)
 
 		if btnUpgrade.Text == "3,000" then
 			break
@@ -535,7 +535,7 @@ if game.PlaceId == 17018663967 then
 	tab(398 , 263)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
-		wait(4)
+		wait(2)
 
 		if btnUpgrade.Text == "3,000" then
 			break
@@ -546,7 +546,7 @@ if game.PlaceId == 17018663967 then
 	tab(460 , 276)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
-		wait(4)
+		wait(2)
 
 		if btnUpgrade.Text == "3,000" then
 			break
@@ -557,7 +557,7 @@ if game.PlaceId == 17018663967 then
 	tab(524 , 272)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
-		wait(4)
+		wait(2)
 
 		if btnUpgrade.Text == "3,000" then
 			break
@@ -566,52 +566,7 @@ if game.PlaceId == 17018663967 then
 		end
 	end
 
-	------- Update Jadefire Knight
-	wait(1)
-	tab(632 , 261)------Tab hiện bảng update
-	wait(1)
-	for i =1 ,15 do
-		wait(4)
 
-		if btnUpgrade.Text == "2,200" then
-			break
-		else
-			ugradeUnit( 632 , 261 )
-		end
-	end
-	tab(676 , 264)------Tab hiện bảng update
-	wait(1)
-	for i =1 ,15 do
-		wait(4)
-
-		if btnUpgrade.Text == "2,200" then
-			break
-		else
-			ugradeUnit( 676 , 264 )
-		end
-	end
-	tab(728 , 274)------Tab hiện bảng update
-	wait(1)
-	for i =1 ,15 do
-		wait(4)
-
-		if btnUpgrade.Text == "2,200" then
-			break
-		else
-			ugradeUnit( 728 , 274 )
-		end
-	end
-	tab(769 , 293)------Tab hiện bảng update
-	wait(1)
-	for i =1 ,10 do
-		wait(4)
-
-		if btnUpgrade.Text == "2,200" then
-			break
-		else
-			ugradeUnit( 769 , 293 )
-		end
-	end
 
 	while true do wait(2)
 		if playerGui.PAGES.MatchResultPage.Visible == true  then
@@ -649,7 +604,7 @@ if game.PlaceId == 17018663967 then
 			tab(297 , 232)------Tab hiện bảng update
 			wait(1)
 			for i =1 ,15 do
-				wait(4)
+				wait(2)
 
 				if btnUpgrade.Text == "3,000" then
 					break
@@ -660,7 +615,7 @@ if game.PlaceId == 17018663967 then
 			tab(345 , 247)------Tab hiện bảng update
 			wait(1)
 			for i =1 ,15 do
-				wait(4)
+				wait(2)
 
 				if btnUpgrade.Text == "3,000" then
 					break
@@ -671,7 +626,7 @@ if game.PlaceId == 17018663967 then
 			tab(398 , 263)------Tab hiện bảng update
 			wait(1)
 			for i =1 ,15 do
-				wait(4)
+				wait(2)
 
 				if btnUpgrade.Text == "3,000" then
 					break
@@ -682,7 +637,7 @@ if game.PlaceId == 17018663967 then
 			tab(460 , 276)------Tab hiện bảng update
 			wait(1)
 			for i =1 ,15 do
-				wait(4)
+				wait(2)
 
 				if btnUpgrade.Text == "3,000" then
 					break
@@ -693,7 +648,7 @@ if game.PlaceId == 17018663967 then
 			tab(524 , 272)------Tab hiện bảng update
 			wait(1)
 			for i =1 ,15 do
-				wait(4)
+				wait(2)
 
 				if btnUpgrade.Text == "3,000" then
 					break
@@ -702,52 +657,7 @@ if game.PlaceId == 17018663967 then
 				end
 			end
 
-			------- Update Jadefire Knight
-			wait(1)
-			tab(632 , 261)------Tab hiện bảng update
-			wait(1)
-			for i =1 ,15 do
-				wait(4)
 
-				if btnUpgrade.Text == "2,200" then
-					break
-				else
-					ugradeUnit( 632 , 261 )
-				end
-			end
-			tab(676 , 264)------Tab hiện bảng update
-			wait(1)
-			for i =1 ,15 do
-				wait(4)
-
-				if btnUpgrade.Text == "2,200" then
-					break
-				else
-					ugradeUnit( 676 , 264 )
-				end
-			end
-			tab(728 , 274)------Tab hiện bảng update
-			wait(1)
-			for i =1 ,15 do
-				wait(4)
-
-				if btnUpgrade.Text == "2,200" then
-					break
-				else
-					ugradeUnit( 728 , 274 )
-				end
-			end
-			tab(769 , 293)------Tab hiện bảng update
-			wait(1)
-			for i =1 ,10 do
-				wait(4)
-
-				if btnUpgrade.Text == "2,200" then
-					break
-				else
-					ugradeUnit( 769 , 293 )
-				end
-			end
 		end
 	end
 
