@@ -510,7 +510,7 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(5, 635 , 375 )
 	wait(2)
-	game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
+	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
 	wait(2)
 	------- Update Aether Knight
 	tab(720 , 155)------Tab hiện bảng update
