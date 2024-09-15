@@ -324,7 +324,7 @@ if game.PlaceId == 17018663967 then
 	spawn(function()
 		pcall(function()
 			while true do wait(30)
-				if tick() - startTime  > 60  then
+				if tick() - startTime  > 120  then
 					if UnitsInWS == 0 then
 						local TeleportService = game:GetService("TeleportService")
 						local placeId = 17017769292
