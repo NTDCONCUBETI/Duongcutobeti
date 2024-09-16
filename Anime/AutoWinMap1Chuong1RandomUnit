@@ -356,7 +356,7 @@ else
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 
 
-	for i =1 ,7 do
+	for i =1 ,10 do
 		wait(2)
 		ugradeUnit( 443 , 303 )
 		wait(2)
@@ -388,7 +388,7 @@ else
 			SpawmTroop(1, 443 , 414 )
 
 
-			for i =1 ,7 do
+			for i =1 ,10 do
 				wait(2)
 				ugradeUnit( 443 , 303 )
 				wait(2)
