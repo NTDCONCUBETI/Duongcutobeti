@@ -319,7 +319,7 @@ else
 			end
 		end)
 	end)
- --]]
+ 
 
 
 	spawn(function()
@@ -335,7 +335,7 @@ else
 			end
 		end)
 	end)
-
+ --]]
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
