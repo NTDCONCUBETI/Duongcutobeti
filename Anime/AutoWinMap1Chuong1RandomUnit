@@ -377,8 +377,6 @@ else
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
 			wait(2)
-			playerGui.TopBar.HolderFrame.Visible = false
-			wait(1)
 			SpawmTroop(1, 443 , 303 )
 			wait(2)
 			SpawmTroop(1, 443 , 340 )
