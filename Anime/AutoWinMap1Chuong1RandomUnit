@@ -299,7 +299,7 @@ else
 	end
 
 
-
+ --[[
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
@@ -319,6 +319,7 @@ else
 			end
 		end)
 	end)
+ --]]
 
 
 	spawn(function()
