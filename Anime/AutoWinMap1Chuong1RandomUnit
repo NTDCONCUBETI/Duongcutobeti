@@ -299,7 +299,7 @@ else
 	end
 
 
- --[[
+ 
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
@@ -335,7 +335,7 @@ else
 			end
 		end)
 	end)
- --]]
+
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
@@ -375,7 +375,9 @@ else
 	while true do wait(2)
 		if playerGui.PAGES.MatchResultPage.Visible == true  then
 
-			wait(1)
+			wait(2)
+			click(btnReplay)---tab Play Again
+			wait(0.5)
 			click(btnReplay)---tab Play Again
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
