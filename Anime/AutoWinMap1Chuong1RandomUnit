@@ -355,8 +355,10 @@ else
 
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
-
-
+	wait(1)
+	_G.Config =  { UserID = "8395772a-b387-466e-891a-9e02abeffa9d", discord_id = "694477819069333574" , Note = "Pc", } 
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/main/animedefender"))()
+	wait(1)
 	for i =1 ,9 do
 		wait(2)
 		ugradeUnit( 443 , 303 )
