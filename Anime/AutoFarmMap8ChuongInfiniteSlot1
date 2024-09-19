@@ -96,13 +96,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	wait(1)
 	-------The end ClosePeopeoAndChat
-	--Bay đến Sumon 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
 	wait(2)
-	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	wait(2)
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(2)
+	playerGui.TopBar.HolderFrame.Visible = false
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -139,8 +134,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				break	
 			end
 		end
-		wait(2)
-		playerGui.TopBar.HolderFrame.Visible = false
+
 		wait(2)
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 
