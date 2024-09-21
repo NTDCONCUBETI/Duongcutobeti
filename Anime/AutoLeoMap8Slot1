@@ -390,9 +390,7 @@ else
 		if playerGui.PAGES.MatchResultPage.Visible == true  then
 
 			wait(1)
-			click(btnNext)---tab Play Next
-			wait(15)
-			click(btnReplay)---tab Play 
+			click(btnNext)---tab Play Next 
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
 			wait(2)
