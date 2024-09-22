@@ -271,6 +271,15 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 					click(child.ChapterButton.TextLabel)
 					wait(1)
 					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
 				end
 			end
 		end
