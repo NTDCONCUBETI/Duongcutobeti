@@ -188,13 +188,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	wait(1)
 	-------The end ClosePeopeoAndChat
-	--Bay đến Sumon 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-	wait(2)
-	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	wait(2)
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
-	wait(2)
+
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -250,32 +244,39 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
-		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-
-		tab(483,391) wait(2)---tab confim
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
-		wait(2)
-		----------
-
-		wait(2)
-		-----
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		------------ Tắt auto skip
-		setting.Visible = true
-		wait(2)
-		if autoskip.Text == "Off" then 
-			click(autoskip)
+		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			--print(child.Name,"--", child.ClassName, child.parent)
+			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
+				if child.ChapterButton.TextLabel.Text == "Infinite Mode" then
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+				end
+			end
 		end
-		wait(2)
-		setting.Visible = false
-		tab(737,317) wait(3)---tab Star
-		tab(737,320) wait(1)---tab Star
-		tab(737,323) wait(1)---tab Star
-		tab(700,264) wait(1)---tab Star
-		tab(700,261) wait(1)---tab Star
-		tab(700,259) wait(1)---tab Star
+		wait(3)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 
 		wait(30)
 	end
@@ -487,7 +488,7 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(6, 410 , 320 )
 	wait(2)
-	
+
 	------- Update Jadefire Knight
 	for i =1 ,4 do
 		wait(7)
