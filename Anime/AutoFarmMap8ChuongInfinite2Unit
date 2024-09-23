@@ -283,15 +283,14 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				end
 			end
 		end
-		wait(2)
-		tab(483,391) wait(2)---tab confim
-		tab(483,391) wait(2)---tab confim
-		tab(737,317) wait(3)---tab Star
-		tab(737,320) wait(1)---tab Star
-		tab(737,323) wait(1)---tab Star
-		tab(700,264) wait(1)---tab Star
-		tab(700,261) wait(1)---tab Star
-		tab(700,259) wait(1)---tab Star
+		wait(3)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 
 		wait(30)
 	end
