@@ -188,8 +188,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	wait(1)
 	-------The end ClosePeopeoAndChat
-	wait(2)
-	playerGui.TopBar.HolderFrame.Visible = false
+
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -226,7 +225,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				break	
 			end
 		end
-
+		wait(2)
+		playerGui.TopBar.HolderFrame.Visible = false
 		wait(2)
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 
@@ -244,17 +244,39 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
-		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-
-		tab(483,391) wait(2)---tab confim
-
-		tab(737,317) wait(3)---tab Star
-		tab(737,320) wait(1)---tab Star
-		tab(737,323) wait(1)---tab Star
-		tab(700,264) wait(1)---tab Star
-		tab(700,261) wait(1)---tab Star
-		tab(700,259) wait(1)---tab Star
+		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
+			--print(child.Name,"--", child.ClassName, child.parent)
+			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
+				if child.ChapterButton.TextLabel.Text == "Infinite Mode" then
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+					click(child.ChapterButton.TextLabel)
+					wait(1)
+					click(child.ChapterButton)
+				end
+			end
+		end
+		wait(3)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
+		wait(1)
+		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 
 		wait(30)
 	end
