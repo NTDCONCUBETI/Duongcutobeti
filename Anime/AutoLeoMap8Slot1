@@ -347,6 +347,10 @@ else
 				local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
 				if KetQua == "Defeat!"  then
 					wait(2)
+					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
+					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
 					click(btnLobby)
 
 				end
