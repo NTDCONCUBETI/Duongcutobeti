@@ -1,0 +1,283 @@
+-- Tạo GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Tạo khung menu
+local menuFrame = Instance.new("Frame")
+menuFrame.Size = UDim2.new(0.6, 0, 0.8, 0)  -- Kích thước 60% chiều rộng và 80% chiều cao của màn hình
+menuFrame.Position = UDim2.new(0.2, 0, 0.1, 0)  -- Đặt khung vào giữa màn hình
+menuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+menuFrame.Parent = screenGui
+menuFrame.Visible = false  -- Mặc định là ẩn menu
+
+-- Tạo nút để mở lại menu khi nó bị ẩn
+local openButton = Instance.new("TextButton")
+openButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+openButton.Position = UDim2.new(0.9, -10, 0.95, 0)  -- Góc dưới cùng bên phải màn hình
+openButton.Text = "Open Menu"
+openButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)  -- Màu xanh lá
+openButton.Visible = true  -- Mặc định là hiện
+openButton.Parent = screenGui
+
+-- Chức năng của nút Close: Ẩn menu và hiện nút mở lại
+local function createCloseButton(parent)
+	local closeButton = Instance.new("TextButton")
+	closeButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+	closeButton.Position = UDim2.new(1, -100, 0, 10)  -- Đặt nút Close ở góc trên cùng bên phải, sát mép
+	closeButton.Text = "Close"
+	closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	closeButton.Parent = parent
+
+	closeButton.MouseButton1Click:Connect(function()
+		menuFrame.Visible = false  -- Ẩn menu
+		openButton.Visible = true  -- Hiện nút mở lại
+	end)
+end
+
+-- Hàm tạo trang và các nút
+local function createPage(parent, pageName, buttonNames)
+	local page = Instance.new("Frame")
+	page.Size = UDim2.new(1, 0, 1, 0)
+	page.Position = UDim2.new(0, 0, 0, 0)
+	page.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	page.Parent = parent
+	createCloseButton(page)  -- Thêm nút Close vào trang
+
+	-- Tạo 15 nút trong trang
+	for i = 1, 15 do
+		local button = Instance.new("TextButton")
+		button.Size = UDim2.new(0.25, 0, 0.1, 0)  -- Kích thước nút
+		-- Tính toán vị trí để sắp xếp thành 3 cột
+		local column = (i - 1) % 3  -- Cột (0, 1, 2)
+		local row = math.floor((i - 1) / 3)  -- Hàng (0, 1, 2,...)
+		button.Position = UDim2.new(column * 0.33 + 0.05, 0, row * 0.15 + 0.1, 0)  -- Đặt vị trí các nút với khoảng cách
+		button.Text = buttonNames[i]  -- Sử dụng tên nút từ bảng
+		button.BackgroundColor3 = Color3.fromRGB(100, 100 + (i * 10), 255)
+		button.Parent = page
+
+		-- Thêm thao tác cho nút
+		button.MouseButton1Click:Connect(function()
+			-- Thao tác cho từng nút theo yêu cầu
+			if pageName == "Công việc" then
+				if i == 1 then
+					-- Chạy đoạn mã A cho Nút 1 Công việc
+				elseif i == 2 then
+					-- Chạy đoạn mã A cho Nút 2 Công việc
+				elseif i == 3 then
+					-- Chạy đoạn mã A cho Nút 3 Công việc
+				elseif i == 4 then
+					-- Chạy đoạn mã A cho Nút 4 Công việc
+				elseif i == 5 then
+					-- Chạy đoạn mã A cho Nút 5 Công việc
+				elseif i == 6 then
+					-- Chạy đoạn mã A cho Nút 6 Công việc
+				elseif i == 7 then
+					-- Chạy đoạn mã A cho Nút 7 Công việc
+				elseif i == 8 then
+					-- Chạy đoạn mã A cho Nút 8 Công việc
+				elseif i == 9 then
+					-- Chạy đoạn mã A cho Nút 9 Công việc
+				elseif i == 10 then
+					-- Chạy đoạn mã A cho Nút 10 Công việc
+				elseif i == 11 then
+					-- Chạy đoạn mã A cho Nút 11 Công việc
+				elseif i == 12 then
+					-- Chạy đoạn mã A cho Nút 12 Công việc
+				elseif i == 13 then
+					-- Chạy đoạn mã A cho Nút 13 Công việc
+				elseif i == 14 then
+					-- Chạy đoạn mã A cho Nút 14 Công việc	
+				elseif i == 15 then
+					-- Chạy đoạn mã A cho Nút 15 Công việc
+				end
+			elseif pageName == "Gia đình" then
+				if i == 1 then
+					-- Chạy đoạn mã A cho Nút 1 Gia đình
+				elseif i == 2 then
+					-- Chạy đoạn mã A cho Nút 2 Gia đình
+				elseif i == 3 then
+					-- Chạy đoạn mã A cho Nút 3 Gia đình
+				elseif i == 4 then
+					-- Chạy đoạn mã A cho Nút 4 Gia đình
+				elseif i == 5 then
+					-- Chạy đoạn mã A cho Nút 5 Gia đình
+				elseif i == 6 then
+					-- Chạy đoạn mã A cho Nút 6 Gia đình
+				elseif i == 7 then
+					-- Chạy đoạn mã A cho Nút 7 Gia đình
+				elseif i == 8 then
+					-- Chạy đoạn mã A cho Nút 8 Gia đình
+				elseif i == 9 then
+					-- Chạy đoạn mã A cho Nút 9 Gia đình
+				elseif i == 10 then
+					-- Chạy đoạn mã A cho Nút 10 Gia đình
+				elseif i == 11 then
+					-- Chạy đoạn mã A cho Nút 11 Gia đình
+				elseif i == 12 then
+					-- Chạy đoạn mã A cho Nút 12 Gia đình
+				elseif i == 13 then
+					-- Chạy đoạn mã A cho Nút 13 Gia đình
+				elseif i == 14 then
+					-- Chạy đoạn mã A cho Nút 14 Gia đình	
+				elseif i == 15 then
+					-- Chạy đoạn mã A cho Nút 15 Gia đình
+				end
+			elseif pageName == "Du lịch" then
+				if i == 1 then
+					-- Chạy đoạn mã A cho Nút 1 Du lịch
+				elseif i == 2 then
+					-- Chạy đoạn mã A cho Nút 2 Du lịch
+				elseif i == 3 then
+					-- Chạy đoạn mã A cho Nút 3 Du lịch
+				elseif i == 4 then
+					-- Chạy đoạn mã A cho Nút 4 Du lịch
+				elseif i == 5 then
+					-- Chạy đoạn mã A cho Nút 5 Du lịch
+				elseif i == 6 then
+					-- Chạy đoạn mã A cho Nút 6 Du lịch
+				elseif i == 7 then
+					-- Chạy đoạn mã A cho Nút 7 Du lịch
+				elseif i == 8 then
+					-- Chạy đoạn mã A cho Nút 8 Du lịch
+				elseif i == 9 then
+					-- Chạy đoạn mã A cho Nút 9 Du lịch
+				elseif i == 10 then
+					-- Chạy đoạn mã A cho Nút 10 Du lịch
+				elseif i == 11 then
+					-- Chạy đoạn mã A cho Nút 11 Du lịch
+				elseif i == 12 then
+					-- Chạy đoạn mã A cho Nút 12 Du lịch
+				elseif i == 13 then
+					-- Chạy đoạn mã A cho Nút 13 Du lịch
+				elseif i == 14 then
+					-- Chạy đoạn mã A cho Nút 14 Du lịch	
+				elseif i == 15 then
+					-- Chạy đoạn mã A cho Nút 15 Du lịch
+				end
+			elseif pageName == "Bạn bè" then
+				if i == 1 then
+					-- Chạy đoạn mã A cho Nút 1 Bạn bè
+				elseif i == 2 then
+					-- Chạy đoạn mã A cho Nút 2 Bạn bè
+				elseif i == 3 then
+					-- Chạy đoạn mã A cho Nút 3 Bạn bè
+				elseif i == 4 then
+					-- Chạy đoạn mã A cho Nút 4 Bạn bè
+				elseif i == 5 then
+					-- Chạy đoạn mã A cho Nút 5 Bạn bè
+				elseif i == 6 then
+					-- Chạy đoạn mã A cho Nút 6 Bạn bè
+				elseif i == 7 then
+					-- Chạy đoạn mã A cho Nút 7 Bạn bè
+				elseif i == 8 then
+					-- Chạy đoạn mã A cho Nút 8 Bạn bè
+				elseif i == 9 then
+					-- Chạy đoạn mã A cho Nút 9 Bạn bè
+				elseif i == 10 then
+					-- Chạy đoạn mã A cho Nút 10 Bạn bè
+				elseif i == 11 then
+					-- Chạy đoạn mã A cho Nút 11 Bạn bè
+				elseif i == 12 then
+					-- Chạy đoạn mã A cho Nút 12 Bạn bè
+				elseif i == 13 then
+					-- Chạy đoạn mã A cho Nút 13 Bạn bè
+				elseif i == 14 then
+					-- Chạy đoạn mã A cho Nút 14 Bạn bè	
+				elseif i == 15 then
+					-- Chạy đoạn mã A cho Nút 15 Bạn bè
+				end
+			elseif pageName == "Xã hội" then
+				if i == 1 then
+					-- Chạy đoạn mã A cho Nút 1 Xã hội
+				elseif i == 2 then
+					-- Chạy đoạn mã A cho Nút 2 Xã hội
+				elseif i == 3 then
+					-- Chạy đoạn mã A cho Nút 3 Xã hội
+				elseif i == 4 then
+					-- Chạy đoạn mã A cho Nút 4 Xã hội
+				elseif i == 5 then
+					-- Chạy đoạn mã A cho Nút 5 Xã hội
+				elseif i == 6 then
+					-- Chạy đoạn mã A cho Nút 6 Xã hội
+				elseif i == 7 then
+					-- Chạy đoạn mã A cho Nút 7 Xã hội
+				elseif i == 8 then
+					-- Chạy đoạn mã A cho Nút 8 Xã hội
+				elseif i == 9 then
+					-- Chạy đoạn mã A cho Nút 9 Xã hội
+				elseif i == 10 then
+					-- Chạy đoạn mã A cho Nút 10 Xã hội
+				elseif i == 11 then
+					-- Chạy đoạn mã A cho Nút 11 Xã hội
+				elseif i == 12 then
+					-- Chạy đoạn mã A cho Nút 12 Xã hội
+				elseif i == 13 then
+					-- Chạy đoạn mã A cho Nút 13 Xã hội
+				elseif i == 14 then
+					-- Chạy đoạn mã A cho Nút 14 Xã hội	
+				elseif i == 15 then
+					-- Chạy đoạn mã A cho Nút 15 Xã hội
+				end
+			end
+		end)
+	end
+
+	return page
+end
+
+-- Tạo danh sách tên nút cho mỗi trang
+local buttonNames = {
+	{"Nút 1 Công việc", "Nút 2 Công việc", "Nút 3 Công việc", "Nút 4 Công việc", "Nút 5 Công việc", "Nút 6 Công việc", "Nút 7 Công việc", "Nút 8 Công việc", "Nút 9 Công việc", "Nút 10 Công việc", "Nút 11 Công việc", "Nút 12 Công việc", "Nút 13 Công việc", "Nút 14 Công việc", "Nút 15 Công việc"}, -- Trang 1
+	{"Nút 1 Gia đình", "Nút 2 Gia đình", "Nút 3 Gia đình", "Nút 4 Gia đình", "Nút 5 Gia đình", "Nút 6 Gia đình", "Nút 7 Gia đình", "Nút 8 Gia đình", "Nút 9 Gia đình", "Nút 10 Gia đình", "Nút 11 Gia đình", "Nút 12 Gia đình", "Nút 13 Gia đình", "Nút 14 Gia đình", "Nút 15 Gia đình"}, -- Trang 2
+	{"Nút 1 Du lịch", "Nút 2 Du lịch", "Nút 3 Du lịch", "Nút 4 Du lịch", "Nút 5 Du lịch", "Nút 6 Du lịch", "Nút 7 Du lịch", "Nút 8 Du lịch", "Nút 9 Du lịch", "Nút 10 Du lịch", "Nút 11 Du lịch", "Nút 12 Du lịch", "Nút 13 Du lịch", "Nút 14 Du lịch", "Nút 15 Du lịch"}, -- Trang 3
+	{"Nút 1 Bạn bè", "Nút 2 Bạn bè", "Nút 3 Bạn bè", "Nút 4 Bạn bè", "Nút 5 Bạn bè", "Nút 6 Bạn bè", "Nút 7 Bạn bè", "Nút 8 Bạn bè", "Nút 9 Bạn bè", "Nút 10 Bạn bè", "Nút 11 Bạn bè", "Nút 12 Bạn bè", "Nút 13 Bạn bè", "Nút 14 Bạn bè", "Nút 15 Bạn bè"}, -- Trang 4
+	{"Nút 1 Xã hội", "Nút 2 Xã hội", "Nút 3 Xã hội", "Nút 4 Xã hội", "Nút 5 Xã hội", "Nút 6 Xã hội", "Nút 7 Xã hội", "Nút 8 Xã hội", "Nút 9 Xã hội", "Nút 10 Xã hội", "Nút 11 Xã hội", "Nút 12 Xã hội", "Nút 13 Xã hội", "Nút 14 Xã hội", "Nút 15 Xã hội"}  -- Trang 5
+}
+
+-- Tạo các trang
+local page1 = createPage(menuFrame, "Công việc", buttonNames[1])
+local page2 = createPage(menuFrame, "Gia đình", buttonNames[2])
+local page3 = createPage(menuFrame, "Du lịch", buttonNames[3])
+local page4 = createPage(menuFrame, "Bạn bè", buttonNames[4])
+local page5 = createPage(menuFrame, "Xã hội", buttonNames[5])
+
+-- Ẩn tất cả các trang trừ trang 1
+page2.Visible = false
+page3.Visible = false
+page4.Visible = false
+page5.Visible = false
+
+-- Tạo nút chuyển trang
+local function createPageSwitchButton(text, positionX, targetPage)
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(0.15, 0, 0.05, 0)
+	button.Position = positionX
+	button.Text = text
+	button.Parent = menuFrame
+
+	button.MouseButton1Click:Connect(function()
+		page1.Visible = false
+		page2.Visible = false
+		page3.Visible = false
+		page4.Visible = false
+		page5.Visible = false
+		targetPage.Visible = true
+	end)
+end
+
+-- Tạo nút chuyển trang
+createPageSwitchButton("Công việc", UDim2.new(0.05, 0, 0.95, 0), page1)
+createPageSwitchButton("Gia đình", UDim2.new(0.25, 0, 0.95, 0), page2)
+createPageSwitchButton("Du lịch", UDim2.new(0.45, 0, 0.95, 0), page3)
+createPageSwitchButton("Bạn bè", UDim2.new(0.65, 0, 0.95, 0), page4)
+createPageSwitchButton("Xã hội", UDim2.new(0.85, 0, 0.95, 0), page5)
+
+-- Chức năng để hiển thị menu
+openButton.MouseButton1Click:Connect(function()
+	menuFrame.Visible = true  -- Hiện menu
+	openButton.Visible = false  -- Ẩn nút mở lại
+end)
+
+-- Ẩn menu khi bắt đầu
+menuFrame.Visible = false
+openButton.Visible = true  -- Ẩn nút mở lại
