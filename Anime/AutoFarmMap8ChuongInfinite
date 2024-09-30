@@ -1,42 +1,4 @@
--- Chờ cho đến khi trò chơi được tải hoàn toàn
-repeat
-	task.wait()
-until game:IsLoaded()
 
--- Chờ cho đến khi PlaceId đã được gán
-repeat
-	task.wait()
-until game.PlaceId ~= nil
-
--- Đảm bảo LocalPlayer tồn tại
-local player = game:GetService("Players").LocalPlayer
-
--- Sử dụng WaitForChild với giới hạn thời gian
-local playerGui = player:WaitForChild("PlayerGui")
-
--- Kiểm tra PAGES trong vòng 60 giây
-local pages
-local timeout = 60 -- thời gian tối đa là 60 giây
-local startTime = tick() -- thời điểm bắt đầu đếm thời gian
-
-while not pages and tick() - startTime < timeout do
-	pages = playerGui:FindFirstChild("PAGES") -- Thử tìm PAGES
-	if not pages then
-		task.wait(0.5) -- đợi 0.5 giây trước khi kiểm tra lại
-	end
-end
-
-if pages then
-	print("[CLIENT] MatchPage đã được tải")
-else
-	print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
-	wait(1)
-	local TeleportService = game:GetService("TeleportService")
-	local placeId = 17017769292
-	TeleportService:Teleport(placeId, player)
-end
-
--- Thực hiện các hành động tiếp theo tại đây
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
@@ -166,6 +128,45 @@ end
 wait(1)
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+	-- Chờ cho đến khi trò chơi được tải hoàn toàn
+	repeat
+		task.wait()
+	until game:IsLoaded()
+
+	-- Chờ cho đến khi PlaceId đã được gán
+	repeat
+		task.wait()
+	until game.PlaceId ~= nil
+
+	-- Đảm bảo LocalPlayer tồn tại
+	local player = game:GetService("Players").LocalPlayer
+
+	-- Sử dụng WaitForChild với giới hạn thời gian
+	local playerGui = player:WaitForChild("PlayerGui")
+
+	-- Kiểm tra PAGES trong vòng 60 giây
+	local pages
+	local timeout = 60 -- thời gian tối đa là 60 giây
+	local startTime = tick() -- thời điểm bắt đầu đếm thời gian
+
+	while not pages and tick() - startTime < timeout do
+		pages = playerGui:FindFirstChild("PAGES") -- Thử tìm PAGES
+		if not pages then
+			task.wait(0.5) -- đợi 0.5 giây trước khi kiểm tra lại
+		end
+	end
+
+	if pages then
+		print("[CLIENT] MatchPage đã được tải")
+	else
+		print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
+		wait(1)
+		local TeleportService = game:GetService("TeleportService")
+		local placeId = 17017769292
+		TeleportService:Teleport(placeId, player)
+	end
+
+	-- Thực hiện các hành động tiếp theo tại đây
 	wait(5)
 	------- ClosePeopeoAndChat
 
@@ -360,11 +361,10 @@ if game.PlaceId == 17018663967 then
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
 
-					wait(2)
-					click(btnLobby)
-					click(btnLobby)
-
-
+					for _, player in pairs(game.Players:GetPlayers()) do
+						player:Kick("Game is shutting down.")
+					end
+					game:Shutdown()
 				end
 			end
 		end)
@@ -393,9 +393,10 @@ if game.PlaceId == 17018663967 then
 			while true do
 				wait(10)
 				if wavenumber == "Wave 47 Started" then
-					---- Hiện bảng phần thưởng
-					local Match = playerGui.PAGES.MatchResultPage
-					Match.Visible = true
+					for _, player in pairs(game.Players:GetPlayers()) do
+						player:Kick("Game is shutting down.")
+					end
+					game:Shutdown()
 				end
 				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
@@ -431,6 +432,9 @@ if game.PlaceId == 17018663967 then
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
+	wait(4)
+	tab(822.4 , -18.4)-- tab x2 speed
+	playerGui.TopBar.HolderFrame.Visible = false
 	wait(2)
 
 	------- ClosePeopeoAndChat
