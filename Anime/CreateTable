@@ -58,37 +58,285 @@ local function createPage(parent, pageName, buttonNames)
 		-- Thêm thao tác cho nút
 		button.MouseButton1Click:Connect(function()
 			-- Thao tác cho từng nút theo yêu cầu
-			if pageName == "Công việc" then
+			if pageName == "Di chuyển" then
 				if i == 1 then
-					-- Chạy đoạn mã A cho Nút 1 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-201.91998291015625, 14.902862548828125, -510.2130432128906)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 2 then
-					-- Chạy đoạn mã A cho Nút 2 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-227.92721557617188, 14.891340255737305, -419.5260009765625)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 3 then
-					-- Chạy đoạn mã A cho Nút 3 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.8907241821289, 13.733388900756836, -316.96527099609375)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 4 then
-					-- Chạy đoạn mã A cho Nút 4 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.0990753173828, 14.139923095703125, -463.98529052734375)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 5 then
-					-- Chạy đoạn mã A cho Nút 5 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-263.0823669433594, 14.891332626342773, -448.15179443359375)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 6 then
-					-- Chạy đoạn mã A cho Nút 6 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-161.07290649414062, 14.909564971923828, -465.87738037109375)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 7 then
-					-- Chạy đoạn mã A cho Nút 7 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-159.0536346435547, 11.447759628295898, -368.96337890625)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 8 then
-					-- Chạy đoạn mã A cho Nút 8 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52.16261291503906, 10.98061752319336, -315.3424072265625)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 9 then
-					-- Chạy đoạn mã A cho Nút 9 Công việc
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-228.59048461914062, 11.203054428100586, -269.32598876953125)
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
 				elseif i == 10 then
-					-- Chạy đoạn mã A cho Nút 10 Công việc
+					-- Ẩn menu khi bắt đầu
+					menuFrame.Visible = false
+					openButton.Visible = true  -- Ẩn nút mở lại
+					local player = game.Players.LocalPlayer
+					local playerGui = player.PlayerGui
+
+					local indexTouch = 1000
+					function tab(x,y)
+						wait(0.1)
+						game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+						--wait(0.1)
+						game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+						--wait(0.1)
+						game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+						wait(0.1)
+						indexTouch = indexTouch + 1
+					end
+
+					function presskey(keycode)
+						game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+						game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+					end
+
+					function click(a)
+						game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+						game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+					end
+
+					function clickToaDo(x,y, object)
+						game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
+						game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
+						print("click",x,y)
+					end
+					local setting = playerGui.PAGES.SettingsUI
+					local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+					local vibrations = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Vibrations").Frame.BooleanButton.StatusLabel
+					local music = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Mute Music").Frame.BooleanButton.StatusLabel
+					local CameraShake = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Camera Shake").Frame.BooleanButton.StatusLabel
+					local SkillsEnabled = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Skills Enabled").Frame.BooleanButton.StatusLabel
+					local LowQuality = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Low Quality").Frame.BooleanButton.StatusLabel
+
+					------------ Setting
+					setting.Visible = true
+					wait(5)
+					if autoskip.Text == "Off" then 
+						click(autoskip)
+					end
+					wait(2)
+					if vibrations.Text == "On" then 
+						click(vibrations)
+					end
+					wait(2)
+					if music.Text == "Off" then 
+						click(music)
+					end
+					wait(2)
+					if CameraShake.Text == "On" then 
+						click(CameraShake)
+					end
+					wait(2)
+					tab( 640 , 332 )
+					wait(2)
+					tab( 640 , 332 )
+					wait(2)
+
+					local SettingsMuteMusic = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Mute Music")
+					SettingsMuteMusic.Visible = false
+
+					local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
+					SettingsCameraShake.Visible = false
+
+					local SettingsUnitInfoPosition = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Unit Info Position")
+					SettingsUnitInfoPosition.Visible = false
+
+					local SettingsVibrations = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Vibrations")
+					SettingsVibrations.Visible = false
+
+					local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
+					SettingsCameraShake.Visible = false
+					local Settingsskip = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Auto Skip Wave")
+					Settingsskip.Visible = false
+					wait(2)
+					if SkillsEnabled.Text == "On" then 
+						click(SkillsEnabled)
+					end
+					wait(2)
+					if LowQuality.Text == "Off" then 
+						click(LowQuality)
+					end
+					wait(2)
+					setting.Visible = false
 				elseif i == 11 then
-					-- Chạy đoạn mã A cho Nút 11 Công việc
+					------- FPSBOOTER and LowMap
+
+					setfpscap(15)
+					UserSettings():GetService("UserGameSettings").MasterVolume = 0
+					game:GetService("Lighting"):ClearAllChildren()
+
+					local decalsyeeted = true
+					local g = game
+					local w = g.Workspace
+					local l = g.Lighting
+					local t = w.Terrain
+					sethiddenproperty(l,"Technology",2)
+					sethiddenproperty(t,"Decoration",false)
+					t.WaterWaveSize = 0
+					t.WaterWaveSpeed = 0
+					t.WaterReflectance = 0
+					t.WaterTransparency = 1
+					l.GlobalShadows = 0
+					l.FogEnd = 9e9
+					l.Brightness = 0
+					settings().Rendering.QualityLevel = "Level01"
+					for i, v in pairs(w:GetDescendants()) do
+						if v:IsA("BasePart") and not v:IsA("MeshPart") then
+							v.Material = "Plastic"
+							v.Transparency = 1
+							v.Reflectance = 0
+						elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+							v.Transparency = 1
+						elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+							v.Lifetime = NumberRange.new(0)
+						elseif v:IsA("Explosion") then
+							v.BlastPressure = 1
+							v.BlastRadius = 1
+						elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+							v.Enabled = false
+						elseif v:IsA("MeshPart") and decalsyeeted then
+							v.Material = "Plastic"
+							v.Transparency = 1
+							v.Reflectance = 0
+							v.TextureID = 0
+						elseif v:IsA("SpecialMesh") and decalsyeeted  then
+							v.TextureId=0
+						elseif v:IsA("ShirtGraphic") and decalsyeeted then
+							v.Graphic=1
+						elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+							v[v.ClassName.."Template"]=1
+						end
+					end
+					for i = 1,#l:GetChildren() do
+						e=l:GetChildren()[i]
+						if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+							e.Enabled = false
+						end
+					end
+					w.DescendantAdded:Connect(function(v)
+						pcall(function()
+							if v:IsA("BasePart") and not v:IsA("MeshPart") then
+								v.Material = "Plastic"
+								v.Reflectance = 0
+								v.Transparency = 1
+							elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+								v.Transparency = 1
+							elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+								v.Lifetime = NumberRange.new(0)
+							elseif v:IsA("Explosion") then
+								v.BlastPressure = 1 
+								v.BlastRadius = 1
+							elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+								v.Enabled = false
+							elseif v:IsA("MeshPart") and decalsyeeted then
+								v.Material = "Plastic"
+								v.Reflectance = 0
+								v.TextureID = 0
+								v.Transparency = 1
+							elseif v:IsA("SpecialMesh") and decalsyeeted then
+								v.TextureId=0
+							elseif v:IsA("ShirtGraphic") and decalsyeeted then
+								v.ShirtGraphic=1
+							elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+								v[v.ClassName.."Template"]=1
+							end
+						end)
+					end)
+					for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+						if v:IsA("ScreenGui") then
+							v.Enabled = false
+						end
+					end
+
+					for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+						if v:IsA("ScreenGui") then
+							v.Enabled = false
+						end
+					end
+					wait(1)
+
+
+					------- The end FPSBOOTER and LowMap
 				elseif i == 12 then
-					-- Chạy đoạn mã A cho Nút 12 Công việc
+					-- Chạy đoạn mã A cho Nút 12 Di chuyển
 				elseif i == 13 then
-					-- Chạy đoạn mã A cho Nút 13 Công việc
+					-- Chạy đoạn mã A cho Nút 13 Di chuyển
 				elseif i == 14 then
-					-- Chạy đoạn mã A cho Nút 14 Công việc	
+					-- Chạy đoạn mã A cho Nút 14 Di chuyển	
 				elseif i == 15 then
-					-- Chạy đoạn mã A cho Nút 15 Công việc
+					function getServer()
+						local placeId = 17017769292
+						local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+
+						local success, response = pcall(function()
+							return game.HttpService:JSONDecode(game:HttpGet(url)).data
+						end)
+
+						if not success or #response == 0 then
+							warn("Không có máy chủ nào hoạt động!")
+							return nil
+						end
+
+						local bestServer = nil
+						local lowestPing = math.huge  -- Khởi tạo với giá trị vô cực
+
+						-- Lặp qua tất cả các máy chủ để tìm máy chủ có ping thấp nhất
+						for _, server in ipairs(response) do
+							local ping = server.ping or 9999 -- Giả định ping là 9999 nếu không có thông tin
+
+							-- Chọn máy chủ có ping thấp nhất
+							if ping < lowestPing then
+								bestServer = server
+								lowestPing = ping
+							end
+						end
+
+						return bestServer
+					end
+
+					local server = getServer()
+					if server then
+						print("Máy chủ đã chọn: ", server)
+						local success, errorMessage = pcall(function()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
+						end)
+
+						if not success then
+							warn("Không thể teleport đến máy chủ: ", errorMessage)
+						end
+					else
+						print("Không thể lấy máy chủ!")
+					end
+
 				end
 			elseif pageName == "Gia đình" then
 				if i == 1 then
@@ -227,7 +475,7 @@ end
 
 -- Tạo danh sách tên nút cho mỗi trang
 local buttonNames = {
-	{"Nút 1 Công việc", "Nút 2 Công việc", "Nút 3 Công việc", "Nút 4 Công việc", "Nút 5 Công việc", "Nút 6 Công việc", "Nút 7 Công việc", "Nút 8 Công việc", "Nút 9 Công việc", "Nút 10 Công việc", "Nút 11 Công việc", "Nút 12 Công việc", "Nút 13 Công việc", "Nút 14 Công việc", "Nút 15 Công việc"}, -- Trang 1
+	{"Dice", "Traits roll", "Trading", "Sumon", "Spirits", "Evol", "Exclusive Wish", "AFK", "Story", "Setupsetting", "FPS And Lowmap", "Nút 12 Di chuyển", "Nút 13 Di chuyển", "Nút 14 Di chuyển", "Rejoin"}, -- Trang 1
 	{"Nút 1 Gia đình", "Nút 2 Gia đình", "Nút 3 Gia đình", "Nút 4 Gia đình", "Nút 5 Gia đình", "Nút 6 Gia đình", "Nút 7 Gia đình", "Nút 8 Gia đình", "Nút 9 Gia đình", "Nút 10 Gia đình", "Nút 11 Gia đình", "Nút 12 Gia đình", "Nút 13 Gia đình", "Nút 14 Gia đình", "Nút 15 Gia đình"}, -- Trang 2
 	{"Nút 1 Du lịch", "Nút 2 Du lịch", "Nút 3 Du lịch", "Nút 4 Du lịch", "Nút 5 Du lịch", "Nút 6 Du lịch", "Nút 7 Du lịch", "Nút 8 Du lịch", "Nút 9 Du lịch", "Nút 10 Du lịch", "Nút 11 Du lịch", "Nút 12 Du lịch", "Nút 13 Du lịch", "Nút 14 Du lịch", "Nút 15 Du lịch"}, -- Trang 3
 	{"Nút 1 Bạn bè", "Nút 2 Bạn bè", "Nút 3 Bạn bè", "Nút 4 Bạn bè", "Nút 5 Bạn bè", "Nút 6 Bạn bè", "Nút 7 Bạn bè", "Nút 8 Bạn bè", "Nút 9 Bạn bè", "Nút 10 Bạn bè", "Nút 11 Bạn bè", "Nút 12 Bạn bè", "Nút 13 Bạn bè", "Nút 14 Bạn bè", "Nút 15 Bạn bè"}, -- Trang 4
@@ -235,7 +483,7 @@ local buttonNames = {
 }
 
 -- Tạo các trang
-local page1 = createPage(menuFrame, "Công việc", buttonNames[1])
+local page1 = createPage(menuFrame, "Di chuyển", buttonNames[1])
 local page2 = createPage(menuFrame, "Gia đình", buttonNames[2])
 local page3 = createPage(menuFrame, "Du lịch", buttonNames[3])
 local page4 = createPage(menuFrame, "Bạn bè", buttonNames[4])
@@ -266,7 +514,7 @@ local function createPageSwitchButton(text, positionX, targetPage)
 end
 
 -- Tạo nút chuyển trang
-createPageSwitchButton("Công việc", UDim2.new(0.05, 0, 0.95, 0), page1)
+createPageSwitchButton("Di chuyển", UDim2.new(0.05, 0, 0.95, 0), page1)
 createPageSwitchButton("Gia đình", UDim2.new(0.25, 0, 0.95, 0), page2)
 createPageSwitchButton("Du lịch", UDim2.new(0.45, 0, 0.95, 0), page3)
 createPageSwitchButton("Bạn bè", UDim2.new(0.65, 0, 0.95, 0), page4)
