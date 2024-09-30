@@ -161,9 +161,50 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	else
 		print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
 		wait(1)
-		local TeleportService = game:GetService("TeleportService")
-		local placeId = 17017769292
-		TeleportService:Teleport(placeId, player)
+		function getServer()
+			local placeId = 17017769292
+			local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+
+			local success, response = pcall(function()
+				return game.HttpService:JSONDecode(game:HttpGet(url)).data
+			end)
+
+			if not success or #response == 0 then
+				warn("Không có máy chủ nào hoạt động!")
+				return nil
+			end
+
+			local bestServer = nil
+			local lowestPing = math.huge  -- Khởi tạo với giá trị vô cực
+
+			-- Lặp qua tất cả các máy chủ để tìm máy chủ có ping thấp nhất
+			for _, server in ipairs(response) do
+				local ping = server.ping or 9999 -- Giả định ping là 9999 nếu không có thông tin
+
+				-- Chọn máy chủ có ping thấp nhất
+				if ping < lowestPing then
+					bestServer = server
+					lowestPing = ping
+				end
+			end
+
+			return bestServer
+		end
+
+		local server = getServer()
+		if server then
+			print("Máy chủ đã chọn: ", server)
+			local success, errorMessage = pcall(function()
+				game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
+			end)
+
+			if not success then
+				warn("Không thể teleport đến máy chủ: ", errorMessage)
+			end
+		else
+			print("Không thể lấy máy chủ!")
+		end
+
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
@@ -361,10 +402,50 @@ if game.PlaceId == 17018663967 then
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
 
-					for _, player in pairs(game.Players:GetPlayers()) do
-						player:Kick("Game is shutting down.")
+					function getServer()
+						local placeId = 17017769292
+						local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+
+						local success, response = pcall(function()
+							return game.HttpService:JSONDecode(game:HttpGet(url)).data
+						end)
+
+						if not success or #response == 0 then
+							warn("Không có máy chủ nào hoạt động!")
+							return nil
+						end
+
+						local bestServer = nil
+						local lowestPing = math.huge  -- Khởi tạo với giá trị vô cực
+
+						-- Lặp qua tất cả các máy chủ để tìm máy chủ có ping thấp nhất
+						for _, server in ipairs(response) do
+							local ping = server.ping or 9999 -- Giả định ping là 9999 nếu không có thông tin
+
+							-- Chọn máy chủ có ping thấp nhất
+							if ping < lowestPing then
+								bestServer = server
+								lowestPing = ping
+							end
+						end
+
+						return bestServer
 					end
-					game:Shutdown()
+
+					local server = getServer()
+					if server then
+						print("Máy chủ đã chọn: ", server)
+						local success, errorMessage = pcall(function()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
+						end)
+
+						if not success then
+							warn("Không thể teleport đến máy chủ: ", errorMessage)
+						end
+					else
+						print("Không thể lấy máy chủ!")
+					end
+
 				end
 			end
 		end)
@@ -393,10 +474,50 @@ if game.PlaceId == 17018663967 then
 			while true do
 				wait(10)
 				if wavenumber == "Wave 47 Started" then
-					for _, player in pairs(game.Players:GetPlayers()) do
-						player:Kick("Game is shutting down.")
+					function getServer()
+						local placeId = 17017769292
+						local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+
+						local success, response = pcall(function()
+							return game.HttpService:JSONDecode(game:HttpGet(url)).data
+						end)
+
+						if not success or #response == 0 then
+							warn("Không có máy chủ nào hoạt động!")
+							return nil
+						end
+
+						local bestServer = nil
+						local lowestPing = math.huge  -- Khởi tạo với giá trị vô cực
+
+						-- Lặp qua tất cả các máy chủ để tìm máy chủ có ping thấp nhất
+						for _, server in ipairs(response) do
+							local ping = server.ping or 9999 -- Giả định ping là 9999 nếu không có thông tin
+
+							-- Chọn máy chủ có ping thấp nhất
+							if ping < lowestPing then
+								bestServer = server
+								lowestPing = ping
+							end
+						end
+
+						return bestServer
 					end
-					game:Shutdown()
+
+					local server = getServer()
+					if server then
+						print("Máy chủ đã chọn: ", server)
+						local success, errorMessage = pcall(function()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
+						end)
+
+						if not success then
+							warn("Không thể teleport đến máy chủ: ", errorMessage)
+						end
+					else
+						print("Không thể lấy máy chủ!")
+					end
+
 				end
 				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
