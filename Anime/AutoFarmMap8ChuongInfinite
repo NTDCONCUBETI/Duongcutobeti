@@ -31,7 +31,7 @@ function clickToaDo(x,y, object)
 	print("click",x,y)
 end
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
+
 ------- FPSBOOTER and LowMap
 setfpscap(15)
 UserSettings():GetService("UserGameSettings").MasterVolume = 0
