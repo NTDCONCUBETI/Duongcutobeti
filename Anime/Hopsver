@@ -1,43 +1,59 @@
 function getServer()
-	local placeId = 17017769292
-	local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+    local placeId = 17017769292
+    local url = 'https://games.roblox.com/v1/games/' .. tostring(placeId) .. '/servers/Public?sortOrder=Asc&limit=100'
+    local servers = nil
+    
+    -- Thực hiện yêu cầu API để lấy danh sách máy chủ
+    local success, response = pcall(function()
+        return game.HttpService:JSONDecode(game:HttpGet(url)).data
+    end)
 
-	local success, response = pcall(function()
-		return game.HttpService:JSONDecode(game:HttpGet(url)).data
-	end)
+    -- Nếu không thành công, cảnh báo và trả về nil
+    if not success then
+        warn("Không thể lấy danh sách máy chủ từ API: " .. tostring(response))
+        return nil
+    end
 
-	if not success or #response == 0 then
-		warn("Không có máy chủ nào hoạt động!")
-		return nil
-	end
+    -- Nếu không có máy chủ, cảnh báo và trả về nil
+    if #response == 0 then
+        warn("Không có máy chủ nào hoạt động!")
+        return nil
+    end
 
-	local bestServer = nil
-	local lowestPing = math.huge  -- Khởi tạo với giá trị vô cực
+    local bestServer = nil
+    local lowestPing = math.huge  -- Khởi tạo giá trị vô cực
+    local lowestPlayers = math.huge -- Dùng để tìm máy chủ có ít người chơi nhất nếu không có ping
 
-	-- Lặp qua tất cả các máy chủ để tìm máy chủ có ping thấp nhất
-	for _, server in ipairs(response) do
-		local ping = server.ping or 9999 -- Giả định ping là 9999 nếu không có thông tin
+    -- Lặp qua tất cả các máy chủ
+    for _, server in ipairs(response) do
+        local ping = server.ping or 9999 -- Giả định ping cao nếu không có thông tin
+        local currentPlayers = server.playing or 9999 -- Lấy số lượng người chơi hiện tại
 
-		-- Chọn máy chủ có ping thấp nhất
-		if ping < lowestPing then
-			bestServer = server
-			lowestPing = ping
-		end
-	end
+        -- Ưu tiên chọn máy chủ có ping thấp nhất nếu có
+        if ping < lowestPing then
+            bestServer = server
+            lowestPing = ping
+        -- Nếu không có ping, chọn máy chủ có số người chơi ít nhất
+        elseif ping == 9999 and currentPlayers < lowestPlayers then
+            bestServer = server
+            lowestPlayers = currentPlayers
+        end
+    end
 
-	return bestServer
+    return bestServer
 end
 
 local server = getServer()
 if server then
-	print("Máy chủ đã chọn: ", server)
-	local success, errorMessage = pcall(function()
-		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
-	end)
+    print("Máy chủ đã chọn: ", server.id)
+    local success, errorMessage = pcall(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id, game.Players.LocalPlayer)
+    end)
 
-	if not success then
-		warn("Không thể teleport đến máy chủ: ", errorMessage)
-	end
+    -- Nếu không thành công, cảnh báo
+    if not success then
+        warn("Không thể teleport đến máy chủ: ", errorMessage)
+    end
 else
-	print("Không thể lấy máy chủ!")
+    print("Không thể lấy máy chủ!")
 end
