@@ -31,8 +31,8 @@ function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
---loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
 
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
 ------- FPSBOOTER and LowMap
 setfpscap(15)
 UserSettings():GetService("UserGameSettings").MasterVolume = 0
@@ -162,9 +162,10 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	else
 		print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
 		wait(1)
-		local TeleportService = game:GetService("TeleportService")
-		local placeId = 17017769292
-		TeleportService:Teleport(placeId, player)
+		for _, player in pairs(game.Players:GetPlayers()) do
+			player:Kick("Game is shutting down.")
+		end
+		game:Shutdown()
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
@@ -361,11 +362,11 @@ if game.PlaceId == 17018663967 then
 		pcall(function()
 			while true do wait(5)
 				if playerGui.PAGES.MatchResultPage.Visible == true  then
-
-					for _, player in pairs(game.Players:GetPlayers()) do
-						player:Kick("Game is shutting down.")
-					end
-					game:Shutdown()
+					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
+					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
+					click(btnLobby)
 				end
 			end
 		end)
@@ -392,12 +393,13 @@ if game.PlaceId == 17018663967 then
 	spawn(function()
 		pcall(function()
 			while true do
-				wait(10)
+				wait(5)
 				if wavenumber == "Wave 47 Started" then
-					for _, player in pairs(game.Players:GetPlayers()) do
-						player:Kick("Game is shutting down.")
-					end
-					game:Shutdown()
+					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
+					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
+					wait(2)
+					click(btnLobby)
 				end
 				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
