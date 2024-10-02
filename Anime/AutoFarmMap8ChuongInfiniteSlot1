@@ -395,6 +395,8 @@ if game.PlaceId == 17018663967 then
 			while true do
 				wait(5)
 				if wavenumber == "Wave 47 Started" then
+					playerGui.PAGES.MatchResultPage.Visible = true
+					wait(2)
 					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
 					wait(2)
 					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
