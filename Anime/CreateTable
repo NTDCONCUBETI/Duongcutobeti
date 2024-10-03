@@ -60,13 +60,28 @@ local function createPage(parent, pageName, buttonNames)
 			-- Thao tác cho từng nút theo yêu cầu
 			if pageName == "Di chuyển" then
 				if i == 1 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-201.91998291015625, 14.902862548828125, -510.2130432128906)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-201.91998291015625, 14.902862548828125, -510.2130432128906)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(37.25749206542969, -87.84002685546875, -51.60410690307617)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
 				elseif i == 2 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-227.92721557617188, 14.891340255737305, -419.5260009765625)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-227.92721557617188, 14.891340255737305, -419.5260009765625)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(54.742061614990234, -87.84381103515625, -39.15547180175781)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+
 				elseif i == 3 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.8907241821289, 13.733388900756836, -316.96527099609375)
 					menuFrame.Visible = false
