@@ -59,7 +59,7 @@ local function createPage(parent, pageName, buttonNames)
 		button.MouseButton1Click:Connect(function()
 			-- Thao tác cho từng nút theo yêu cầu
 			if pageName == "Di chuyển" then
-				if i == 1 then
+				if i == 1 then -- Dice
 					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-201.91998291015625, 14.902862548828125, -510.2130432128906)
 						menuFrame.Visible = false
@@ -70,7 +70,7 @@ local function createPage(parent, pageName, buttonNames)
 						menuFrame.Visible = false
 						openButton.Visible = true  -- Ẩn nút mở lại
 					end
-				elseif i == 2 then
+				elseif i == 2 then -- Trait Rerollt
 					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-227.92721557617188, 14.891340255737305, -419.5260009765625)
 						menuFrame.Visible = false
@@ -82,22 +82,53 @@ local function createPage(parent, pageName, buttonNames)
 						openButton.Visible = true  -- Ẩn nút mở lại
 					end
 
-				elseif i == 3 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.8907241821289, 13.733388900756836, -316.96527099609375)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
-				elseif i == 4 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.0990753173828, 14.139923095703125, -463.98529052734375)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
-				elseif i == 5 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-263.0823669433594, 14.891332626342773, -448.15179443359375)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
-				elseif i == 6 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-161.07290649414062, 14.909564971923828, -465.87738037109375)
-					menuFrame.Visible = false
-					openButton.Visible = true  -- Ẩn nút mở lại
+				elseif i == 3 then -- Trading or Main
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.8907241821289, 13.733388900756836, -316.96527099609375)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(84.89950561523438, -91.01325988769531, -155.71707153320312)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+
+				elseif i == 4 then -- Sumon
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.0990753173828, 14.139923095703125, -463.98529052734375)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(21.83158302307129, -87.7825927734375, -31.81190299987793)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+				elseif i == 5 then --Spirits
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-263.0823669433594, 14.891332626342773, -448.15179443359375)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(7.26892614364624, -87.84344482421875, -9.977766990661621)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+
+				elseif i == 6 then --Evol
+					if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-161.07290649414062, 14.909564971923828, -465.87738037109375)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+					if game.PlaceId == 17490500437 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13.020284652709961, -87.83979034423828, -18.736778259277344)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					end
+
 				elseif i == 7 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-159.0536346435547, 11.447759628295898, -368.96337890625)
 					menuFrame.Visible = false
@@ -451,7 +482,7 @@ end
 
 -- Tạo danh sách tên nút cho mỗi trang
 local buttonNames = {
-	{"Dice", "Traits roll", "Trading", "Sumon", "Spirits", "Evol", "Exclusive Wish", "AFK", "Story", "Setupsetting", "FPS And Lowmap", "Nút 12 Di chuyển", "Nút 13 Di chuyển", "Nút 14 Di chuyển", "Rejoin"}, -- Trang 1
+	{"Dice", "Traits roll", "Trading or Main", "Sumon", "Spirits", "Evol", "Exclusive Wish", "AFK", "Story", "Setupsetting", "FPS And Lowmap", "Nút 12 Di chuyển", "Nút 13 Di chuyển", "Nút 14 Di chuyển", "Rejoin"}, -- Trang 1
 	{"Nút 1 Gia đình", "Nút 2 Gia đình", "Nút 3 Gia đình", "Nút 4 Gia đình", "Nút 5 Gia đình", "Nút 6 Gia đình", "Nút 7 Gia đình", "Nút 8 Gia đình", "Nút 9 Gia đình", "Nút 10 Gia đình", "Nút 11 Gia đình", "Nút 12 Gia đình", "Nút 13 Gia đình", "Nút 14 Gia đình", "Nút 15 Gia đình"}, -- Trang 2
 	{"Nút 1 Du lịch", "Nút 2 Du lịch", "Nút 3 Du lịch", "Nút 4 Du lịch", "Nút 5 Du lịch", "Nút 6 Du lịch", "Nút 7 Du lịch", "Nút 8 Du lịch", "Nút 9 Du lịch", "Nút 10 Du lịch", "Nút 11 Du lịch", "Nút 12 Du lịch", "Nút 13 Du lịch", "Nút 14 Du lịch", "Nút 15 Du lịch"}, -- Trang 3
 	{"Nút 1 Bạn bè", "Nút 2 Bạn bè", "Nút 3 Bạn bè", "Nút 4 Bạn bè", "Nút 5 Bạn bè", "Nút 6 Bạn bè", "Nút 7 Bạn bè", "Nút 8 Bạn bè", "Nút 9 Bạn bè", "Nút 10 Bạn bè", "Nút 11 Bạn bè", "Nút 12 Bạn bè", "Nút 13 Bạn bè", "Nút 14 Bạn bè", "Nút 15 Bạn bè"}, -- Trang 4
