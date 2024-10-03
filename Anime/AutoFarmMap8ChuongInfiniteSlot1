@@ -4,7 +4,6 @@ local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
 local indexTouch = 1000
-
 function tab(x,y)
 	wait(0.1)
 	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
@@ -169,7 +168,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
-	wait(5)
+
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -358,6 +357,7 @@ if game.PlaceId == 17018663967 then
 		click(btnUpgrade)
 	end
 
+
 	spawn(function()
 		pcall(function()
 			while true do wait(5)
@@ -395,6 +395,18 @@ if game.PlaceId == 17018663967 then
 			while true do
 				wait(5)
 				if wavenumber == "Wave 47 Started" then
+					------------Tắt auto Skip
+					local setting = playerGui.PAGES.SettingsUI
+					local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+
+					if autoskip.Text == "On" then 
+						setting.Visible = true
+						wait(5)
+						click(autoskip)
+						wait(2)
+						setting.Visible = false
+						wait(5)
+					end
 					playerGui.PAGES.MatchResultPage.Visible = true
 					wait(2)
 					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
@@ -427,13 +439,21 @@ if game.PlaceId == 17018663967 then
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
-
+	------ Mở aotu skip
+	local setting = playerGui.PAGES.SettingsUI
+	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+	setting.Visible = true
+	wait(5)
+	if autoskip.Text == "Off" then 
+		click(autoskip)
+	end
+	wait(2)
+	setting.Visible = false
+	wait(5)
 
 	------Spam 1 Jadefire Knight
 	SpawmTroop(1, 410 , 155 )
 	wait(2)
-
-
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
@@ -599,6 +619,11 @@ if game.PlaceId == 17018663967 then
 			ugradeUnit( 410 , 210 )
 		end
 	end
+	spawn(function()
+		pcall(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
+		end)
+	end)
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
