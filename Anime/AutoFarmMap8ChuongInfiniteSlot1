@@ -169,6 +169,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	-- Thực hiện các hành động tiếp theo tại đây
 
+	wait(5)
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -271,10 +272,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				end
 			end
 		end
-		wait(3)
+
+		wait(2)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
 		wait(1)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
+		------ Mở aotu skip
+		local setting = playerGui.PAGES.SettingsUI
+		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+		if autoskip.Text == "Off" then 
+			setting.Visible = true
+			wait(2)
+			click(autoskip)
+			wait(2)
+			setting.Visible = false
+		end
 		wait(1)
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 		wait(1)
@@ -395,18 +407,6 @@ if game.PlaceId == 17018663967 then
 			while true do
 				wait(5)
 				if wavenumber == "Wave 47 Started" then
-					------------Tắt auto Skip
-					local setting = playerGui.PAGES.SettingsUI
-					local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-
-					if autoskip.Text == "On" then 
-						setting.Visible = true
-						wait(5)
-						click(autoskip)
-						wait(2)
-						setting.Visible = false
-						wait(5)
-					end
 					playerGui.PAGES.MatchResultPage.Visible = true
 					wait(2)
 					tab( 476.79998779296875 , 280.3999938964844 ) --- Tab back bảng Oop
@@ -439,17 +439,7 @@ if game.PlaceId == 17018663967 then
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
-	------ Mở aotu skip
-	local setting = playerGui.PAGES.SettingsUI
-	local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-	setting.Visible = true
-	wait(5)
-	if autoskip.Text == "Off" then 
-		click(autoskip)
-	end
-	wait(2)
-	setting.Visible = false
-	wait(5)
+
 
 	------Spam 1 Jadefire Knight
 	SpawmTroop(1, 410 , 155 )
