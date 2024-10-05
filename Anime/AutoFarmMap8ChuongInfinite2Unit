@@ -152,9 +152,9 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	-- Sử dụng WaitForChild với giới hạn thời gian
 	local playerGui = player:WaitForChild("PlayerGui")
 
-	-- Kiểm tra PAGES trong vòng 10 giây
+	-- Kiểm tra PAGES trong vòng 30 giây
 	local pages
-	local timeout = 10 -- thời gian tối đa là 10 giây
+	local timeout = 30 -- thời gian tối đa là 30 giây
 	local startTime = tick() -- thời điểm bắt đầu đếm thời gian
 
 	while not pages and tick() - startTime < timeout do
@@ -167,7 +167,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	if pages then
 		print("[CLIENT] MatchPage đã được tải")
 	else
-		print("[CLIENT] Không tìm thấy MatchPage trong 10 giây, bỏ qua...")
+		print("[CLIENT] Không tìm thấy MatchPage trong 30 giây, bỏ qua...")
 		wait(1)
 		for _, player in pairs(game.Players:GetPlayers()) do
 			player:Kick("Game is shutting down.")
