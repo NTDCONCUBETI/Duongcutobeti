@@ -384,6 +384,10 @@ if game.PlaceId == 17018663967 then
 					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
 					wait(2)
 					click(btnLobby)
+					wait(1)
+					local TeleportService = game:GetService("TeleportService")
+					local placeId = 17017769292
+					TeleportService:Teleport(placeId, player)
 				end
 			end
 		end)
@@ -419,6 +423,10 @@ if game.PlaceId == 17018663967 then
 					tab( 476.79998779296875 , 298.3999938964844 ) --- Tab back bảng Oop
 					wait(2)
 					click(btnLobby)
+					wait(1)
+					local TeleportService = game:GetService("TeleportService")
+					local placeId = 17017769292
+					TeleportService:Teleport(placeId, player)
 				end
 				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
