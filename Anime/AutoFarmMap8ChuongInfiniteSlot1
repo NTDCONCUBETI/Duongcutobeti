@@ -168,7 +168,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
-
+	---- Tắt bảng update
+	local update = playerGui.PAGES.UpdatesUI
+	wait(2)
+	update.Visible = false
+	--Nhận quà tuần
+	playerGui.PAGES.QuestPage.Visible = true
+	local btnWeekly = playerGui.PAGES.QuestPage.CategoryHolder.Weekly
+	wait(3)
+	click(btnWeekly)
+	wait(3)
+	tab( 240 , 180 )
+	wait(2)
+	tab( 240 , 180 )
+	wait(2)
+	playerGui.PAGES.QuestPage.Visible = false
 	wait(5)
 	------- ClosePeopeoAndChat
 
@@ -277,16 +291,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
 		wait(1)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
-		------ Mở aotu skip
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		if autoskip.Text == "Off" then 
-			setting.Visible = true
-			wait(2)
-			click(autoskip)
-			wait(2)
-			setting.Visible = false
-		end
+
 		wait(1)
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 		wait(1)
