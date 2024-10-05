@@ -130,11 +130,6 @@ wait(1)
 
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	--Bay đến Sumon 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-	wait(2)
-	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	wait(2)
 
 	-- Chờ cho đến khi trò chơi được tải hoàn toàn
 	repeat
@@ -176,6 +171,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
+	---- Tắt bảng update
+	local update = playerGui.PAGES.UpdatesUI
+	wait(2)
+	update.Visible = false
+	--Nhận quà tuần
+	playerGui.PAGES.QuestPage.Visible = true
+	local btnWeekly = playerGui.PAGES.QuestPage.CategoryHolder.Weekly
+	wait(3)
+	click(btnWeekly)
+	wait(3)
+	tab( 240 , 180 )
+	wait(2)
+	tab( 240 , 180 )
+	wait(2)
+	playerGui.PAGES.QuestPage.Visible = false
 	wait(5)
 	------- The end  ClosePeopeoAndChat
 
