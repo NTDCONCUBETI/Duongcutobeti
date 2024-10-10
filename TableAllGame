@@ -1449,7 +1449,7 @@ if game.PlaceId == 18901165922 then -- Game Pet RNG
 					elseif i == 15 then
 						local player = game.Players.LocalPlayer
 						local TeleportService = game:GetService("TeleportService")
-						local placeId = 17017769292
+						local placeId = 18901165922
 						TeleportService:Teleport(placeId, player)
 
 					end
