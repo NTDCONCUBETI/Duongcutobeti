@@ -1,40 +1,38 @@
-while isRunningRollPet do
-	local player = game.Players.LocalPlayer
-	local camera = workspace.CurrentCamera
-	local playerGui = player.PlayerGui
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local playerGui = player.PlayerGui
 
-	local indexTouch = 1000
-	function tab(x, y)
-		wait(0.1)
-		game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch, 0, x, y + 36)
-		game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch, 1, x, y + 36)
-		game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch, 2, x, y + 36)
-		wait(0.1)
-		indexTouch = indexTouch + 1
-	end
-
-	function presskey(keycode)
-		game:GetService("VirtualInputManager"):SendKeyEvent(true, keycode, false, game:GetService("Players").LocalPlayer.PlayerGui)
-		game:GetService("VirtualInputManager"):SendKeyEvent(false, keycode, false, game:GetService("Players").LocalPlayer.PlayerGui)
-	end
-
-	function click(a)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X + a.AbsoluteSize.X / 2, a.AbsolutePosition.Y + a.AbsoluteSize.Y / 2 + 40, 0, true, a, 1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X + a.AbsoluteSize.X / 2, a.AbsolutePosition.Y + a.AbsoluteSize.Y / 2 + 40, 0, false, a, 1)
-	end
-
-	function clickToaDo(x, y, object)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(x, y, 0, true, object, 1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(x, y, 0, false, object, 1)
-		print("click", x, y)
-	end
-
-	-- Sử dụng vòng lặp kiểm tra biến cờ `isRunningRollPet`
-	while isRunningRollPet do
-		wait(1)
-		tab(473, 453) -- Thực hiện thao tác tab tại tọa độ (473, 453)
-	end
-
-	-- Thoát khỏi vòng lặp khi biến cờ `isRunningRollPet` là false
-	wait(1)
+local indexTouch = 1000
+function tab(x,y)
+	wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+	--wait(0.1)
+	game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+	wait(0.1)
+	indexTouch = indexTouch + 1
 end
+
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+end
+
+function clickToaDo(x,y, object)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
+	print("click",x,y)
+end
+
+while true do
+	wait(1)
+	tab( 473 , 453 )
+end
+
+
