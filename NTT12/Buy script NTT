@@ -1,0 +1,5 @@
+if keybuy.Text == "TAT_chanol" then
+_G.buyscript = true
+elseif keybuy.Text == "thaitructt6" then
+G.buyscript = true
+end
