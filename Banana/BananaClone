@@ -28,6 +28,7 @@ getgenv().Config = {
 		["Items Potion I"] = true,
 		["Rainbow Dice Potion"] = true
 	},
+	["Auto Ballon Gift"] = true,
 	["Auto Roll"] = true,
 	["Hidden Roll"] = true,
 	["Input Difficulty Pet Send"] = "100000000",
