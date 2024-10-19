@@ -623,11 +623,6 @@ if game.PlaceId == 17018663967 then
 			ugradeUnit( 438 , 160 )
 		end
 	end
-	spawn(function()
-		pcall(function()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
-		end)
-	end)
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
@@ -643,4 +638,4 @@ if game.PlaceId == 17018663967 then
 
 
 
-endAutoFarmMap7ChuongInfinitSlot1
+end
