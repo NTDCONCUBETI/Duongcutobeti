@@ -200,7 +200,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				child.Visible = false
 			end
 		end
-		tableWorld[4].Visible = true
+		tableWorld[5].Visible = true
 	end
 	for i = 1,3 do
 		
