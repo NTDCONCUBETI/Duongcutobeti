@@ -1,7 +1,7 @@
 
---if _G.linkdis==nil then
-	--_G.linkdis="111"
---end 
+if _G.linkdis==nil then
+	_G.linkdis="111"
+end 
 
 
 -- // Webhook
