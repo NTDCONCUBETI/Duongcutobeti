@@ -1,11 +1,11 @@
 
-if _G.linkdis==nil then
-	_G.linkdis="111"
-end 
+--if _G.linkdis==nil then
+	--_G.linkdis="111"
+--end 
 
 
 -- // Webhook
-loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/e958ea077b005777e07e51a1f83d389417fad631/Webhook%20Blox%20Fruit')))()
+--loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/e958ea077b005777e07e51a1f83d389417fad631/Webhook%20Blox%20Fruit')))()
 local NTTGUI = Instance.new("ScreenGui")
 --main
 local main = Instance.new("Frame")
