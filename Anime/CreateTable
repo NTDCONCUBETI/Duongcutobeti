@@ -211,6 +211,15 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 or game.PlaceId ==
 							[2] = 2
 						}
 						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+						wait(2)
+						
+						local args = {
+							[1] = "Auto Sell Deletes Shinies",
+							[2] = true
+						}
+
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+
 					elseif i == 11 then
 						------- FPSBOOTER and LowMap
 
