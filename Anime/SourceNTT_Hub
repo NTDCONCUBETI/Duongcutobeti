@@ -1,11 +1,11 @@
 
 if _G.linkdis==nil then
-	_G.linkdis="111"
+_G.linkdis="111"
 end 
 
 
 -- // Webhook
---loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/e958ea077b005777e07e51a1f83d389417fad631/Webhook%20Blox%20Fruit')))()
+ loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/e958ea077b005777e07e51a1f83d389417fad631/Webhook%20Blox%20Fruit')))()
 local NTTGUI = Instance.new("ScreenGui")
 --main
 local main = Instance.new("Frame")
@@ -118,340 +118,340 @@ s_b2 = Instance.new("TextButton")
 --// Libary Ui
 
 function make_screengui(name1)
-	name1.Name = "name1"
-	name1.Parent = game.CoreGui
-	name1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+name1.Name = "name1"
+name1.Parent = game.CoreGui
+name1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 end
 
 function make_select3(name1, name2, name3, parent, text, position)
 
-	--textlabel
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = "   "
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+--textlabel
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = "   "
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	--button
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Size = UDim2.new(0, 180, 0, 30)
-	name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = text
-	name2.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name2.TextSize = 18.000
-	name2.TextXAlignment = Enum.TextXAlignment.Left
+--button
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name2.Size = UDim2.new(0, 180, 0, 30)
+name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name2.Font = Enum.Font.SourceSans
+name2.Text = text
+name2.TextColor3 = Color3.fromRGB(250, 250, 250)
+name2.TextSize = 18.000
+name2.TextXAlignment = Enum.TextXAlignment.Left
 
-	--button lập lại
-	name3.Name = "name3"
-	name3.Parent = name1
-	name3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name3.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
-	name3.Size = UDim2.new(0, 20, 0, 20)
-	name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name3.Font = Enum.Font.SourceSans
-	name3.Text = ""
-	name3.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name3.TextSize = 30.000
+--button lập lại
+name3.Name = "name3"
+name3.Parent = name1
+name3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name3.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
+name3.Size = UDim2.new(0, 20, 0, 20)
+name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name3.Font = Enum.Font.SourceSans
+name3.Text = ""
+name3.TextColor3 = Color3.fromRGB(250, 250, 250)
+name3.TextSize = 30.000
 
 end
 
 function make_mainscrollingframe(name1, parent, X)
 
-	name1.Name = "name1"--farm
-	name1.Parent = main
-	name1.Active = true
-	name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name1.BackgroundTransparency = 1.000
-	name1.BorderSizePixel = 0
-	name1.Size = UDim2.new(0, 498, 0, 230)
-	name1.ScrollBarThickness = 0
-	name1.Position = UDim2.new(0.17631148, 0, 0.094285722, 0)
-	name1.Visible = X           
+name1.Name = "name1"--farm
+name1.Parent = main
+name1.Active = true
+name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name1.BackgroundTransparency = 1.000
+name1.BorderSizePixel = 0
+name1.Size = UDim2.new(0, 498, 0, 230)
+name1.ScrollBarThickness = 0
+name1.Position = UDim2.new(0.17631148, 0, 0.094285722, 0)
+name1.Visible = X           
 
 end
 
 function make_textlabel(name1, parent,text, position)
-	name1 = Instance.new("TextLabel")
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = text
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
+name1 = Instance.new("TextLabel")
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = text
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
 
 end
 
 function make_mainbutton(name1, parent, text, position)
 
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 100, 0, 25)
-	name1.Font = Enum.Font.Ubuntu
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Text = text
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = false
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+name1.Position = position
+name1.Size = UDim2.new(0, 100, 0, 25)
+name1.Font = Enum.Font.Ubuntu
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Text = text
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = false
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
 end
 
 function make_together(name1, name2 , parent, text,  position)
 
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = text
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = text
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
-	name2.Size = UDim2.new(0, 20, 0, 20)
-	name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = ""
-	name2.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name2.TextSize = 30.000
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name2.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
+name2.Size = UDim2.new(0, 20, 0, 20)
+name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name2.Font = Enum.Font.SourceSans
+name2.Text = ""
+name2.TextColor3 = Color3.fromRGB(250, 250, 250)
+name2.TextSize = 30.000
 
 end
 
 function make_select2(name1, name2, name3, parent, text, position)
 
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = "   "
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = "   "
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Size = UDim2.new(0, 350, 0, 30)
-	name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = text
-	name2.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name2.TextSize = 18.000
-	name2.TextXAlignment = Enum.TextXAlignment.Left
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name2.Size = UDim2.new(0, 350, 0, 30)
+name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name2.Font = Enum.Font.SourceSans
+name2.Text = text
+name2.TextColor3 = Color3.fromRGB(250, 250, 250)
+name2.TextSize = 18.000
+name2.TextXAlignment = Enum.TextXAlignment.Left
 
-	name3.Name = "name3"
-	name3.Parent = name1
-	name3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name3.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
-	name3.Size = UDim2.new(0, 20, 0, 20)
-	name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name3.Font = Enum.Font.SourceSans
-	name3.Text = ""
-	name3.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name3.TextSize = 30.000
+name3.Name = "name3"
+name3.Parent = name1
+name3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name3.Position = UDim2.new(0.94000000, 0, 0.120000000, 0)
+name3.Size = UDim2.new(0, 20, 0, 20)
+name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name3.Font = Enum.Font.SourceSans
+name3.Text = ""
+name3.TextColor3 = Color3.fromRGB(250, 250, 250)
+name3.TextSize = 30.000
 end
 
 function make_selectbutton(name1, name2, name3, parent, text1, text2, position)
 
-	name1 = Instance.new("TextLabel")
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 340, 0, 20)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = text1
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1 = Instance.new("TextLabel")
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 340, 0, 20)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = text1
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2 = Instance.new("TextButton")
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(250,250,250)
-	name2.Position = UDim2.new(0.80000000, 0, 0, 0)
-	name2.Size = UDim2.new(0, 65, 0, 20)
-	name2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = "Button"
-	name2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	name2.TextSize = 14.000
-	name2.MouseButton1Down:connect(function()
-		name3.Text = text2
-		parent.Visible = false
-	end)
+name2 = Instance.new("TextButton")
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(250,250,250)
+name2.Position = UDim2.new(0.80000000, 0, 0, 0)
+name2.Size = UDim2.new(0, 65, 0, 20)
+name2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+name2.Font = Enum.Font.SourceSans
+name2.Text = "Button"
+name2.TextColor3 = Color3.fromRGB(0, 0, 0)
+name2.TextSize = 14.000
+name2.MouseButton1Down:connect(function()
+name3.Text = text2
+parent.Visible = false
+end)
 end
 
 function make_selectscrollingframe(name1, parent,  position)
 
-	name1.Name = "name1"
-	name1.Parent = parent
-	name1.Active = true
-	name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 350, 0, 140)
-	name1.BorderSizePixel = 1
-	name1.Visible = false
+name1.Name = "name1"
+name1.Parent = parent
+name1.Active = true
+name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Position = position
+name1.Size = UDim2.new(0, 350, 0, 140)
+name1.BorderSizePixel = 1
+name1.Visible = false
 end
 
 function make_mainframe(name1, name2, name3, parent,  text)
 
-	name1.Name = "name1"
-	name1.Parent = parent -- nằm trên khung ẩn
-	name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --màu khung
-	name1.Position = UDim2.new(0.180126051, 0, 0.228999169, 0) -- vị trí đứng
-	name1.Size = UDim2.new(0, 640, 0, 280) -- kích cở
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Active = true
-	name1.Draggable = true
-	name1.Visible = false
+name1.Name = "name1"
+name1.Parent = parent -- nằm trên khung ẩn
+name1.BackgroundColor3 = Color3.fromRGB(0, 0, 0) --màu khung
+name1.Position = UDim2.new(0.180126051, 0, 0.228999169, 0) -- vị trí đứng
+name1.Size = UDim2.new(0, 640, 0, 280) -- kích cở
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Active = true
+name1.Draggable = true
+name1.Visible = false
 
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name2.BackgroundTransparency = 0
-	name2.Position = UDim2.new(0, 0, 0, 0)
-	name2.Size = UDim2.new(0, 640, 0, 26)
-	name2.Font = Enum.Font.Ubuntu
-	name2.Text = text
-	name2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name2.TextSize = 14.000
-	name2.TextWrapped = true
-	name2.TextXAlignment = Enum.TextXAlignment.Left
-	name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name2.BackgroundTransparency = 0
+name2.Position = UDim2.new(0, 0, 0, 0)
+name2.Size = UDim2.new(0, 640, 0, 26)
+name2.Font = Enum.Font.Ubuntu
+name2.Text = text
+name2.TextColor3 = Color3.fromRGB(255, 255, 255)
+name2.TextSize = 14.000
+name2.TextWrapped = true
+name2.TextXAlignment = Enum.TextXAlignment.Left
+name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
 
-	name3.Name = "name3"
-	name3.Parent = name1
-	name3.Active = true
-	name3.BackgroundColor3 = Color3.fromRGB(5,5,5)
-	name3.Size = UDim2.new(0, 100, 0, 250)
-	name3.ScrollBarThickness = 0
-	name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name3.Position = UDim2.new(0, 0, 0.102285722, 0)
+name3.Name = "name3"
+name3.Parent = name1
+name3.Active = true
+name3.BackgroundColor3 = Color3.fromRGB(5,5,5)
+name3.Size = UDim2.new(0, 100, 0, 250)
+name3.ScrollBarThickness = 0
+name3.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name3.Position = UDim2.new(0, 0, 0.102285722, 0)
 
 end
 
 function make_select1(name1, name2, parent, text, position)
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = "   "
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = "   "
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Size = UDim2.new(0, 350, 0, 30)
-	name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = text
-	name2.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name2.TextSize = 18.000
-	name2.TextXAlignment = Enum.TextXAlignment.Left
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name2.Size = UDim2.new(0, 350, 0, 30)
+name2.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name2.Font = Enum.Font.SourceSans
+name2.Text = text
+name2.TextColor3 = Color3.fromRGB(250, 250, 250)
+name2.TextSize = 18.000
+name2.TextXAlignment = Enum.TextXAlignment.Left
 
 end
 
 function make_buttonnumber(name1,name2,name3,text1,text2,pos1,pos2)
-	name1.Parent = name3
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = pos1
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = text1
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = name3
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = pos1
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = text1
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Position = pos2
-	name2.Size = UDim2.new(0, 30, 0, 30)
-	name2.Font = Enum.Font.Ubuntu
-	name2.BackgroundTransparency = 1.000
-	name2.Text = text2
-	name2.TextColor3 = Color3.fromRGB(250, 250, 250)
-	name2.TextSize = 14.000
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+name2.Position = pos2
+name2.Size = UDim2.new(0, 30, 0, 30)
+name2.Font = Enum.Font.Ubuntu
+name2.BackgroundTransparency = 1.000
+name2.Text = text2
+name2.TextColor3 = Color3.fromRGB(250, 250, 250)
+name2.TextSize = 14.000
 end
 
 function make_button(name1, name2, parent, text, position)
-	name1.Parent = parent
-	name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-	name1.Position = position
-	name1.Size = UDim2.new(0, 498, 0, 30)
-	name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	name1.Font = Enum.Font.Ubuntu
-	name1.Text = text
-	name1.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name1.TextSize = 14.000
-	name1.TextWrapped = true
-	name1.TextXAlignment = Enum.TextXAlignment.Left
+name1.Parent = parent
+name1.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+name1.Position = position
+name1.Size = UDim2.new(0, 498, 0, 30)
+name1.BorderColor3 = Color3.fromRGB(250, 250, 250)
+name1.Font = Enum.Font.Ubuntu
+name1.Text = text
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 14.000
+name1.TextWrapped = true
+name1.TextXAlignment = Enum.TextXAlignment.Left
 
-	name2.Name = "name2"
-	name2.Parent = name1
-	name2.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-	name2.Position = UDim2.new(0.85000000, 0, 0.050000000, 0)
-	name2.Size = UDim2.new(0, 80, 0, 25)
-	name2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	name2.Font = Enum.Font.SourceSans
-	name2.Text = "Button"
-	name2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	name2.TextSize = 16.000
+name2.Name = "name2"
+name2.Parent = name1
+name2.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
+name2.Position = UDim2.new(0.85000000, 0, 0.050000000, 0)
+name2.Size = UDim2.new(0, 80, 0, 25)
+name2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+name2.Font = Enum.Font.SourceSans
+name2.Text = "Button"
+name2.TextColor3 = Color3.fromRGB(0, 0, 0)
+name2.TextSize = 16.000
 end
 
 function make_onof(name1, parent)
-	local onof = Instance.new("TextButton") 
-	local uionof = Instance.new("UICorner")
-	onof.Parent = parent
-	onof.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	onof.Position = UDim2.new(0.15162201, 0, 0.083285708, 0)
-	onof.Size = UDim2.new(0, 50, 0, 50)
-	onof.Font = Enum.Font.ArialBold
-	onof.Text = "Open"
-	onof.TextColor3 = Color3.fromRGB(250, 255, 250)
-	onof.TextSize = 20.000
-	onof.BorderColor3 = Color3.fromRGB(250, 250, 250)
-	uionof.Parent = onof
-	onof.MouseButton1Down:connect(function()
-		--on off 
-		if onof.Text == "Open" then --on
-			onof.Text = "Close"
-			name1.Visible = true
-		elseif onof.Text == "Close" then --off
-			onof.Text = "Open"
-			name1.Visible = false
-		end end)
+local onof = Instance.new("TextButton") 
+local uionof = Instance.new("UICorner")
+onof.Parent = parent
+onof.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+onof.Position = UDim2.new(0.15162201, 0, 0.083285708, 0)
+onof.Size = UDim2.new(0, 50, 0, 50)
+onof.Font = Enum.Font.ArialBold
+onof.Text = "Open"
+onof.TextColor3 = Color3.fromRGB(250, 255, 250)
+onof.TextSize = 20.000
+onof.BorderColor3 = Color3.fromRGB(250, 250, 250)
+uionof.Parent = onof
+onof.MouseButton1Down:connect(function()
+--on off 
+if onof.Text == "Open" then --on
+onof.Text = "Close"
+name1.Visible = true
+elseif onof.Text == "Close" then --off
+onof.Text = "Open"
+name1.Visible = false
+end end)
 end
 
 -------------------------------------
@@ -496,70 +496,70 @@ sea.Text = "Anime Defense"
 -- chỉnh gui
 
 function posmouse_gui(a,b,c)
-	local VirtualInputManager = game:GetService("VirtualInputManager")
-	local clickPosition = a.AbsolutePosition + (a.AbsoluteSize / 2)
-	VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, true, game, 0)
-	wait(0.1)
-	VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, false, game, 0)
+  local VirtualInputManager = game:GetService("VirtualInputManager")
+    local clickPosition = a.AbsolutePosition + (a.AbsoluteSize / 2)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, true, game, 0)
+    wait(0.1)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, false, game, 0)
 end
 
 local function updateCharacterAndCamera(cframe)
-	local Camera = game.Workspace.CurrentCamera
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, cframe.Position)
-	Camera.CFrame = CFrame.new(Camera.CFrame.Position, cframe.Position)
+    local Camera = game.Workspace.CurrentCamera
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, cframe.Position)
+    Camera.CFrame = CFrame.new(Camera.CFrame.Position, cframe.Position)
 end
 
 function move(x)
-	local moveSpeed = 50
-	local object = x
-	local moveDirection = (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).unit
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = moveDirection * moveSpeed
+local moveSpeed = 50
+local object = x
+local moveDirection = (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).unit
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = moveDirection * moveSpeed
 end
 
 local function worldToScreenPoint(position)
-	local Camera = game.Workspace.CurrentCamera
-	local screenPoint, onScreen = Camera:WorldToViewportPoint(position)
-	return screenPoint, onScreen
+    local Camera = game.Workspace.CurrentCamera
+    local screenPoint, onScreen = Camera:WorldToViewportPoint(position)
+    return screenPoint, onScreen
 end
 
 local function posmouse_screen(position, b, c)
-	local VirtualInputManager = game:GetService("VirtualInputManager")
-	local screenPoint, onScreen = worldToScreenPoint(position)
+    local VirtualInputManager = game:GetService("VirtualInputManager")
+    local screenPoint, onScreen = worldToScreenPoint(position)
 
-	if onScreen then
-		local clickPosition1 = screenPoint.X + b
-		local clickPosition2 = screenPoint.Y + c
+    if onScreen then
+        local clickPosition1 = screenPoint.X + b
+        local clickPosition2 = screenPoint.Y + c
 
-		VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, true, game, 0)
-		wait(0.1)
-		VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, false, game, 0)
-	else
-		warn("The point is not on the screen.")
-	end
+        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, true, game, 0)
+        wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, false, game, 0)
+    else
+        warn("The point is not on the screen.")
+    end
 end
 
 
 
 local function updateFramePosition(cframe)
-	local camera = workspace.CurrentCamera
-	local frame = game:GetService("Players").LocalPlayer.PlayerGui.HUD.MobileButtonHolder.PlaceButton
-	local screenPoint, onScreen = camera:WorldToViewportPoint(cframe.Position)
-	if onScreen then
-		frame.Position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y)
-	else
-		warn("The point is not on the screen.")
-	end
+local camera = workspace.CurrentCamera
+local frame = game:GetService("Players").LocalPlayer.PlayerGui.HUD.MobileButtonHolder.PlaceButton
+    local screenPoint, onScreen = camera:WorldToViewportPoint(cframe.Position)
+    if onScreen then
+        frame.Position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y)
+    else
+        warn("The point is not on the screen.")
+    end
 end
 
 function TP1(P1)
-	local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                                        
-	Speed = 50                           
-	local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1*CFrame.new(0,2,2.5)}) tween:Play()                    
+local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                                        
+Speed = 50                           
+local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1*CFrame.new(0,2,2.5)}) tween:Play()                    
 end
 
 function stoptp()
-	local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame }) tween:Play()                    
-end
+                local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame }) tween:Play()                    
+    end
 
 
 
@@ -567,499 +567,499 @@ end
 
 if game.PlaceId == 17018663967 then
 
-	-- // Page
-	make_mainscrollingframe(b_page1, main, true)
-	make_mainscrollingframe(b_page2, main, false)
-	b_page2.CanvasSize=UDim2.new(0,0,0,2000)
-	make_mainscrollingframe(b_page3, main, false)
-	make_mainscrollingframe(b_page4, main, false)
+-- // Page
+make_mainscrollingframe(b_page1, main, true)
+make_mainscrollingframe(b_page2, main, false)
+b_page2.CanvasSize=UDim2.new(0,0,0,2000)
+make_mainscrollingframe(b_page3, main, false)
+make_mainscrollingframe(b_page4, main, false)
 
 
-	make_mainbutton(b_1, bar1, "   Main", UDim2.new(0, 0, 0.000000000, 0))
-	make_mainbutton(b_2, bar1,"   Units", UDim2.new(0, 0, 0.050000000, 0))
+make_mainbutton(b_1, bar1, "   Main", UDim2.new(0, 0, 0.000000000, 0))
+make_mainbutton(b_2, bar1,"   Units", UDim2.new(0, 0, 0.050000000, 0))
 
-	toolbar=game:GetService("Players").LocalPlayer.PlayerGui.HUD.Toolbar.UnitBar.UnitHolder
+toolbar=game:GetService("Players").LocalPlayer.PlayerGui.HUD.Toolbar.UnitBar.UnitHolder
 
-	function check()
-		c_unit=#game:GetService("Workspace").Units:GetChildren()
-		if c_unit == 0 then
-			cfmob=_G.cf_unit1
-			smob=tonumber(u_b1.Text)+1
-			vmob=_G.vector3_unit1
+function check()
+c_unit=#game:GetService("Workspace").Units:GetChildren()
+if c_unit == 0 then
+cfmob=_G.cf_unit1
+smob=tonumber(u_b1.Text)+1
+ vmob=_G.vector3_unit1
+ 
+elseif c_unit == 1 then
+ cfmob=_G.cf_unit2
+ smob=tonumber(u_b3.Text)+1
+ vmob=_G.vector3_unit2
+ 
+elseif c_unit == 2 then
+cfmob=_G.cf_unit3
+ vmob=_G.vector3_unit3
+ smob=tonumber(u_b5.Text)+1
+ 
+elseif c_unit == 3 then
+cfmob=_G.cf_unit4
+ vmob=_G.vector3_unit4
+ smob=tonumber(u_b7.Text)+1
+ 
+elseif c_unit == 4 then
+cfmob=_G.cf_unit5
+ vmob=_G.vector3_unit5
+ smob=tonumber(u_b9.Text)+1
 
-		elseif c_unit == 1 then
-			cfmob=_G.cf_unit2
-			smob=tonumber(u_b3.Text)+1
-			vmob=_G.vector3_unit2
+elseif c_unit == 5 then
+cfmob=_G.cf_unit6
+ vmob=_G.vector3_unit6
+ smob=tonumber(u_b11.Text)+1
 
-		elseif c_unit == 2 then
-			cfmob=_G.cf_unit3
-			vmob=_G.vector3_unit3
-			smob=tonumber(u_b5.Text)+1
+elseif c_unit == 6 then
 
-		elseif c_unit == 3 then
-			cfmob=_G.cf_unit4
-			vmob=_G.vector3_unit4
-			smob=tonumber(u_b7.Text)+1
+end end
 
-		elseif c_unit == 4 then
-			cfmob=_G.cf_unit5
-			vmob=_G.vector3_unit5
-			smob=tonumber(u_b9.Text)+1
+button_=game:GetService("Players").LocalPlayer.PlayerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton
+unithoder=game:GetService("Players").LocalPlayer.PlayerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()
+waveframe=game:GetService("Players").LocalPlayer.PlayerGui.WaveTopBar.Wave
 
-		elseif c_unit == 5 then
-			cfmob=_G.cf_unit6
-			vmob=_G.vector3_unit6
-			smob=tonumber(u_b11.Text)+1
+if game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("LocalUnitHolder") then
 
-		elseif c_unit == 6 then
+else
+game:GetService("Players").LocalPlayer.PlayerGui.UI.GUIs:GetChildren()[1].Parent=game:GetService("Players").LocalPlayer.PlayerGui.HUD
+end
 
-		end end
+make_buttonnumber(m_f,m_b,b_page1,"   Slect Units Map Give Max :" ,"6",UDim2.new(0, 0, 0.0300000000, 0),UDim2.new(0.30000000, 0, 0, 0))
+m_b.TextSize = 14.000
+m_b.MouseButton1Down:connect(function()
+if m_b.Text == "6" then
+m_b.Text = "1"
+else
+m_b.Text = m_b.Text+1
+end end)
 
-	button_=game:GetService("Players").LocalPlayer.PlayerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton
-	unithoder=game:GetService("Players").LocalPlayer.PlayerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()
-	waveframe=game:GetService("Players").LocalPlayer.PlayerGui.WaveTopBar.Wave
+make_together(m_f1, m_b1, b_page1, "   Auto Play", UDim2.new(0, 0, 0.10000000, 0))
+m_b1.MouseButton1Down:connect(function()
+--on off 
+if m_b1.Text == "" then --on
+m_b1.Text = "X"
+_G.m_b1 = true 
+stoptp()
 
-	if game:GetService("Players").LocalPlayer.PlayerGui.HUD:FindFirstChild("LocalUnitHolder") then
+elseif m_b1.Text == "X" then --off
+m_b1.Text = ""
+_G.m_b1 = false
+stoptp()
+end
+end)  
 
-	else
-		game:GetService("Players").LocalPlayer.PlayerGui.UI.GUIs:GetChildren()[1].Parent=game:GetService("Players").LocalPlayer.PlayerGui.HUD
-	end
+function keyboard(x)
+game:GetService("VirtualInputManager"):SendKeyEvent(true,x,false,game)
+game:GetService("VirtualInputManager"):SendKeyEvent(false,x,false,game)      
+end
 
-	make_buttonnumber(m_f,m_b,b_page1,"   Slect Units Map Give Max :" ,"6",UDim2.new(0, 0, 0.0300000000, 0),UDim2.new(0.30000000, 0, 0, 0))
-	m_b.TextSize = 14.000
-	m_b.MouseButton1Down:connect(function()
-		if m_b.Text == "6" then
-			m_b.Text = "1"
-		else
-			m_b.Text = m_b.Text+1
-		end end)
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+if _G.m_b1 then
 
-	make_together(m_f1, m_b1, b_page1, "   Auto Play", UDim2.new(0, 0, 0.10000000, 0))
-	m_b1.MouseButton1Down:connect(function()
-		--on off 
-		if m_b1.Text == "" then --on
-			m_b1.Text = "X"
-			_G.m_b1 = true 
-			stoptp()
+check() -- check mob
+if c_unit < tonumber(m_b.Text) then
+if (cfmob.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >3 then  
+TP1(cfmob)
+updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
+else -- distance <
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == false then
+posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
+end
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
 
-		elseif m_b1.Text == "X" then --off
-			m_b1.Text = ""
-			_G.m_b1 = false
-			stoptp()
-		end
-	end)  
+posmouse_screen(vmob,0,0)
+wait(0.5)
+posmouse_screen(vmob,0,0)
+keyboard("E")
+end end end 
+ end end) end end) -- end code
 
-	function keyboard(x)
-		game:GetService("VirtualInputManager"):SendKeyEvent(true,x,false,game)
-		game:GetService("VirtualInputManager"):SendKeyEvent(false,x,false,game)      
-	end
+tpunit=1
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+if _G.m_b1 then
+check()
+if c_unit >= tonumber(m_b.Text) then
+check_unit=game.Workspace.Units:GetChildren()
+vector_unit_=check_unit[tpunit].HumanoidRootPart.Position
+vector_unit_X=vector_unit_.X
+vector_unit_Y=vector_unit_.Y
+vector_unit_Z=vector_unit_.Z
+vector_unit_XYZ=(vector_unit_X..","..vector_unit_Y..","..vector_unit_Z)
+_G.vector_unitXYZ=loadstring("return Vector3.new(" .. vector_unit_XYZ..")")()
+_G.cframe_unitXYZ=loadstring("return CFrame.new(" .. vector_unit_XYZ..")")()
+updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
+TP1(check_unit[tpunit].HumanoidRootPart.CFrame)
+wait(2)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
 
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				if _G.m_b1 then
+wait(0.1)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
 
-					check() -- check mob
-					if c_unit < tonumber(m_b.Text) then
-						if (cfmob.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >3 then  
-							TP1(cfmob)
-							updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
-						else -- distance <
-							if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == false then
-								posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-							end
-							if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
+wait(0.1)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
+if tpunit >= tonumber(m_b.Text) then
+tpunit=1
+else
+tpunit=tpunit+1
+end  
 
-								posmouse_screen(vmob,0,0)
-								wait(0.5)
-								posmouse_screen(vmob,0,0)
-								keyboard("E")
-							end end end 
-				end end) end end) -- end code
+end end end) end end)
 
-	tpunit=1
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				if _G.m_b1 then
-					check()
-					if c_unit >= tonumber(m_b.Text) then
-						check_unit=game.Workspace.Units:GetChildren()
-						vector_unit_=check_unit[tpunit].HumanoidRootPart.Position
-						vector_unit_X=vector_unit_.X
-						vector_unit_Y=vector_unit_.Y
-						vector_unit_Z=vector_unit_.Z
-						vector_unit_XYZ=(vector_unit_X..","..vector_unit_Y..","..vector_unit_Z)
-						_G.vector_unitXYZ=loadstring("return Vector3.new(" .. vector_unit_XYZ..")")()
-						_G.cframe_unitXYZ=loadstring("return CFrame.new(" .. vector_unit_XYZ..")")()
-						updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
-						TP1(check_unit[tpunit].HumanoidRootPart.CFrame)
-						wait(2)
-						posmouse_screen(_G.vector_unitXYZ,0,0)
-						posmouse_gui(button_,0,25)
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+check()
+if _G.m_b1 then
+if c_unit >= tonumber(m_b.Text) then
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
+posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
+end end end end) end end)
 
-						wait(0.1)
-						posmouse_screen(_G.vector_unitXYZ,0,0)
-						posmouse_gui(button_,0,25)
+make_together(m_f2, m_b2, b_page1, "   Auto RePlay", UDim2.new(0, 0, 0.17000000, 0))
+m_b2.MouseButton1Down:connect(function()
+--on off 
+if m_b2.Text == "" then --on
+m_b2.Text = "X"
+_G.m_b2 = true 
+elseif m_b2.Text == "X" then --off
+m_b2.Text = ""
+_G.m_b2 = false
+end
+end)  
 
-						wait(0.1)
-						posmouse_screen(_G.vector_unitXYZ,0,0)
-						posmouse_gui(button_,0,25)
-						if tpunit >= tonumber(m_b.Text) then
-							tpunit=1
-						else
-							tpunit=tpunit+1
-						end  
-
-					end end end) end end)
-
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				check()
-				if _G.m_b1 then
-					if c_unit >= tonumber(m_b.Text) then
-						if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
-							posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-						end end end end) end end)
-
-	make_together(m_f2, m_b2, b_page1, "   Auto RePlay", UDim2.new(0, 0, 0.17000000, 0))
-	m_b2.MouseButton1Down:connect(function()
-		--on off 
-		if m_b2.Text == "" then --on
-			m_b2.Text = "X"
-			_G.m_b2 = true 
-		elseif m_b2.Text == "X" then --off
-			m_b2.Text = ""
-			_G.m_b2 = false
-		end
-	end)  
-
-	make_together(m_f3, m_b3, b_page1, "   Auto Play Next", UDim2.new(0, 0, 0.24000000, 0))
-	m_b3.MouseButton1Down:connect(function()
-		--on off 
-		if m_b3.Text == "" then --on
-			m_b3.Text = "X"
-			_G.m_b3 = true 
-		elseif m_b3.Text == "X" then --off
-			m_b3.Text = ""
-			_G.m_b3 = false
-		end
-	end)  
-
-
-	make_together(m_f4, m_b4, b_page1, "   Auto Black To Lobby", UDim2.new(0, 0, 0.3100000, 0))
-	m_b4.MouseButton1Down:connect(function()
-		--on off 
-		if m_b4.Text == "" then --on
-			m_b4.Text = "X"
-			_G.m_b4 = true 
-		elseif m_b4.Text == "X" then --off
-			m_b4.Text = ""
-			_G.m_b4 = false
-		end
-	end)  
+make_together(m_f3, m_b3, b_page1, "   Auto Play Next", UDim2.new(0, 0, 0.24000000, 0))
+m_b3.MouseButton1Down:connect(function()
+--on off 
+if m_b3.Text == "" then --on
+m_b3.Text = "X"
+_G.m_b3 = true 
+elseif m_b3.Text == "X" then --off
+m_b3.Text = ""
+_G.m_b3 = false
+end
+end)  
 
 
-
-	spawn(function()
-		while task.wait(0.1) do       
-			pcall(function() 
-				if game:GetService("Players").LocalPlayer.PlayerGui.PAGES.MatchResultPage.Visible == true then
-					if _G.m_b2 then
-						posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.ReplayButton,0,30)
-					end 
-					if _G.m_b3 then
-						posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.PlayNextButton,0,30)
-					end 
-					if _G.m_b4 then
-						posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.BackToLobbyButton,0,30)
-					end 
-				end  end) end end)
-
-
-	-- Units
-
-	make_textlabel(u, b_page2, "Unit 1", UDim2.new(0, 0, 0.00200000000, 0))
-
-	make_buttonnumber(u_f1,u_b1,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.0200000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b1.TextSize = 14.000
-	u_b1.MouseButton1Down:connect(function()
-		if u_b1.Text == "6" then
-			u_b1.Text = "1"
-		else
-			u_b1.Text = u_b1.Text+1
-		end end)
-
-	make_button(u_f2, u_b2, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.0380000000, 0)) -- button
-	u_b2.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f2.Text=("   Postion : "..prlxyz)
-		_G.cf_unit1=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit1=prlxyz
-		_G.vector3_unit1=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Unit 2", UDim2.new(0, 0, 0.05600000000, 0))
-
-	make_buttonnumber(u_f3,u_b3,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.07400000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b3.TextSize = 14.000
-	u_b3.MouseButton1Down:connect(function()
-		if u_b3.Text == "6" then
-			u_b3.Text = "1"
-		else
-			u_b3.Text = u_b3.Text+1
-		end end)
-
-	make_button(u_f4, u_b4, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.0920000000, 0)) -- button
-	u_b4.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f4.Text=("   Postion : "..prlxyz)
-		_G.cf_unit2=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit2=prlxyz
-		_G.vector3_unit2=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Unit 3", UDim2.new(0, 0, 0.110000000, 0))
-
-	make_buttonnumber(u_f5,u_b5,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.1280000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b5.TextSize = 14.000
-	u_b5.MouseButton1Down:connect(function()
-		if u_b5.Text == "6" then
-			u_b5.Text = "1"
-		else
-			u_b5.Text = u_b5.Text+1
-		end end)
-
-	make_button(u_f6, u_b6, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.1460000000, 0)) -- button
-	u_b6.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f6.Text=("   Postion : "..prlxyz)
-		_G.cf_unit3=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit3=prlxyz
-		_G.vector3_unit3=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Unit 4", UDim2.new(0, 0, 0.16400000000, 0))
-
-	make_buttonnumber(u_f7,u_b7,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.18200000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b7.TextSize = 14.000
-	u_b7.MouseButton1Down:connect(function()
-		if u_b7.Text == "6" then
-			u_b7.Text = "1"
-		else
-			u_b7.Text = u_b7.Text+1
-		end end)
-
-	make_button(u_f8, u_b8, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.20000000000, 0)) -- button
-	u_b8.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f8.Text=("   Postion : "..prlxyz)
-		_G.cf_unit4=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit4=prlxyz
-		_G.vector3_unit4=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Unit 5", UDim2.new(0, 0, 0.21800000000, 0))
-
-	make_buttonnumber(u_f9,u_b9,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.23600000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b9.TextSize = 14.000
-	u_b9.MouseButton1Down:connect(function()
-		if u_b9.Text == "6" then
-			u_b9.Text = "1"
-		else
-			u_b9.Text = u_b9.Text+1
-		end end)
-
-	make_button(u_f10, u_b10, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.2540000000, 0)) -- button
-	u_b10.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f10.Text=("   Postion : "..prlxyz)
-		_G.cf_unit5=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit5=prlxyz
-		_G.vector3_unit5=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Unit 6", UDim2.new(0, 0, 0.272000000, 0))
-
-	make_buttonnumber(u_f11,u_b11,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.2900000000, 0),UDim2.new(0.17700000, 0, 0, 0))
-	u_b11.TextSize = 14.000
-	u_b11.MouseButton1Down:connect(function()
-		if u_b11.Text == "6" then
-			u_b11.Text = "1"
-		else
-			u_b11.Text = u_b11.Text+1
-		end end)
-
-	make_button(u_f12, u_b12, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.3080000000, 0)) -- button
-	u_b12.MouseButton1Down:connect(function()
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		posprlX=math.floor(posprl.X)
-		posprlZ=math.floor(posprl.Z)
-		posprlY=math.floor(posprl.Y)
-		prlxyz=(posprlX..","..posprlY..","..posprlZ)
-		u_f12.Text=("   Postion : "..prlxyz)
-		_G.cf_unit6=loadstring("return CFrame.new(" .. prlxyz..")")()
-		_G.p_unit6=prlxyz
-		_G.vector3_unit6=loadstring("return Vector3.new(" .. prlxyz..")")()
-	end)
-
-	make_textlabel(u, b_page2, "Coppy All Pos Units", UDim2.new(0, 0, 0.32600000000, 0))
-	make_button(u_f13, u_b13, b_page2, "   Coppy All Position Unit",  UDim2.new(0, 0, 0.3440000000, 0)) -- button
-	u_b13.MouseButton1Down:connect(function()
-		setclipboard(
-			"-- Position All Units\n" ..
-				"_G.key_punit1 = '" .. (_G.p_unit1 or "nil") .. "'\n" ..
-				"_G.key_punit2 = '" .. (_G.p_unit2 or "nil") .. "'\n" ..
-				"_G.key_punit3 = '" .. (_G.p_unit3 or "nil") .. "'\n" ..
-				"_G.key_punit4 = '" .. (_G.p_unit4 or "nil") .. "'\n" ..
-				"_G.key_punit5 = '" .. (_G.p_unit5 or "nil") .. "'\n" ..
-				"_G.key_punit6 = '" .. (_G.p_unit6 or "nil") .. "'\n\n" ..
-
-				"-- Select All Units\n" ..
-				"_G.key_sunit1 = '" .. (u_b1.Text or "nil") .. "'\n" ..
-				"_G.key_sunit2 = '" .. (u_b3.Text or "nil") .. "'\n" ..
-				"_G.key_sunit3 = '" .. (u_b5.Text or "nil") .. "'\n" ..
-				"_G.key_sunit4 = '" .. (u_b7.Text or "nil") .. "'\n" ..
-				"_G.key_sunit5 = '" .. (u_b9.Text or "nil") .. "'\n" ..
-				"_G.key_sunit6 = '" .. (u_b11.Text or "nil") .. "'\n"
-		)
-	end)
-
-	if _G.key_punit1 == nil then
-		u_f2.Text="   nil"
-	else
-		u_f2.Text=("   Postion : ".._G.key_punit1)
-		_G.cf_unit1=loadstring("return CFrame.new(" .. _G.key_punit1..")")()
-		_G.vector3_unit1=loadstring("return Vector3.new(" .. _G.key_punit1..")")()
-	end
-	if _G.key_punit2 == nil then
-		u_f4.Text="   nil"
-	else
-		u_f4.Text=("   Postion : ".._G.key_punit2)
-		_G.cf_unit2=loadstring("return CFrame.new(" .. _G.key_punit2..")")()
-		_G.vector3_unit2=loadstring("return Vector3.new(" .. _G.key_punit2..")")()
-	end
-	if _G.key_punit3 == nil then
-		u_f6.Text="   nil"
-	else
-		u_f6.Text=("   Postion : ".._G.key_punit3)
-		_G.cf_unit3=loadstring("return CFrame.new(" .. _G.key_punit3..")")()
-		_G.vector3_unit3=loadstring("return Vector3.new(" .. _G.key_punit3..")")()
-	end
-	if _G.key_punit4 == nil then
-		u_f8.Text="   nil"
-	else
-		u_f8.Text=("   Postion : ".._G.key_punit4)
-		_G.cf_unit4=loadstring("return CFrame.new(" .. _G.key_punit4..")")()
-		_G.vector3_unit4=loadstring("return Vector3.new(" .. _G.key_punit4..")")()
-	end
-	if _G.key_punit5 == nil then
-		u_f10.Text="   nil"
-	else
-		u_f10.Text=("   Postion : ".._G.key_punit5)
-		_G.cf_unit5=loadstring("return CFrame.new(" .. _G.key_punit5..")")()
-		_G.vector3_unit5=loadstring("return Vector3.new(" .. _G.key_punit5..")")()
-	end
-	if _G.key_punit6 == nil then
-		u_f12.Text="   nil"
-	else
-		u_f12.Text=("   Postion : ".._G.key_punit6)
-		_G.cf_unit6=loadstring("return CFrame.new(" .. _G.key_punit6..")")()
-		_G.vector3_unit6=loadstring("return Vector3.new(" .. _G.key_punit6..")")()
-	end
+make_together(m_f4, m_b4, b_page1, "   Auto Black To Lobby", UDim2.new(0, 0, 0.3100000, 0))
+m_b4.MouseButton1Down:connect(function()
+--on off 
+if m_b4.Text == "" then --on
+m_b4.Text = "X"
+_G.m_b4 = true 
+elseif m_b4.Text == "X" then --off
+m_b4.Text = ""
+_G.m_b4 = false
+end
+end)  
 
 
 
-	if _G.key_sunit1 == nil then
-	else
-		u_b1.Text=_G.key_sunit1
-	end
-	if _G.key_sunit2 == nil then
-	else
-		u_b3.Text=_G.key_sunit2
-	end
-	if _G.key_sunit3 == nil then
-	else
-		u_b5.Text=_G.key_sunit3
-	end
-	if _G.key_sunit4 == nil then
-	else
-		u_b7.Text=_G.key_sunit4
-	end
-	if _G.key_sunit5 == nil then
-	else
-		u_b9.Text=_G.key_sunit5
-	end
-	if _G.key_sunit6 == nil then
-	else
-		u_b11.Text=_G.key_sunit6
-	end
+spawn(function()
+    while task.wait(0.1) do       
+            pcall(function() 
+ if game:GetService("Players").LocalPlayer.PlayerGui.PAGES.MatchResultPage.Visible == true then
+ if _G.m_b2 then
+ posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.ReplayButton,0,30)
+ end 
+if _G.m_b3 then
+ posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.PlayNextButton,0,30)
+ end 
+ if _G.m_b4 then
+ posmouse_gui(game.Players.LocalPlayer.PlayerGui.PAGES.MatchResultPage.Main.Options.BackToLobbyButton,0,30)
+ end 
+ end  end) end end)
 
-	function b_page(name1,name2)
-		b_page1.Visible = false
+
+-- Units
+
+make_textlabel(u, b_page2, "Unit 1", UDim2.new(0, 0, 0.00200000000, 0))
+
+make_buttonnumber(u_f1,u_b1,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.0200000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b1.TextSize = 14.000
+u_b1.MouseButton1Down:connect(function()
+if u_b1.Text == "6" then
+u_b1.Text = "1"
+else
+u_b1.Text = u_b1.Text+1
+end end)
+
+make_button(u_f2, u_b2, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.0380000000, 0)) -- button
+u_b2.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f2.Text=("   Postion : "..prlxyz)
+_G.cf_unit1=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit1=prlxyz
+_G.vector3_unit1=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Unit 2", UDim2.new(0, 0, 0.05600000000, 0))
+
+make_buttonnumber(u_f3,u_b3,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.07400000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b3.TextSize = 14.000
+u_b3.MouseButton1Down:connect(function()
+if u_b3.Text == "6" then
+u_b3.Text = "1"
+else
+u_b3.Text = u_b3.Text+1
+end end)
+
+make_button(u_f4, u_b4, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.0920000000, 0)) -- button
+u_b4.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f4.Text=("   Postion : "..prlxyz)
+_G.cf_unit2=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit2=prlxyz
+_G.vector3_unit2=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Unit 3", UDim2.new(0, 0, 0.110000000, 0))
+
+make_buttonnumber(u_f5,u_b5,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.1280000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b5.TextSize = 14.000
+u_b5.MouseButton1Down:connect(function()
+if u_b5.Text == "6" then
+u_b5.Text = "1"
+else
+u_b5.Text = u_b5.Text+1
+end end)
+
+make_button(u_f6, u_b6, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.1460000000, 0)) -- button
+u_b6.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f6.Text=("   Postion : "..prlxyz)
+_G.cf_unit3=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit3=prlxyz
+_G.vector3_unit3=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Unit 4", UDim2.new(0, 0, 0.16400000000, 0))
+
+make_buttonnumber(u_f7,u_b7,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.18200000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b7.TextSize = 14.000
+u_b7.MouseButton1Down:connect(function()
+if u_b7.Text == "6" then
+u_b7.Text = "1"
+else
+u_b7.Text = u_b7.Text+1
+end end)
+
+make_button(u_f8, u_b8, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.20000000000, 0)) -- button
+u_b8.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f8.Text=("   Postion : "..prlxyz)
+_G.cf_unit4=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit4=prlxyz
+_G.vector3_unit4=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Unit 5", UDim2.new(0, 0, 0.21800000000, 0))
+
+make_buttonnumber(u_f9,u_b9,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.23600000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b9.TextSize = 14.000
+u_b9.MouseButton1Down:connect(function()
+if u_b9.Text == "6" then
+u_b9.Text = "1"
+else
+u_b9.Text = u_b9.Text+1
+end end)
+
+make_button(u_f10, u_b10, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.2540000000, 0)) -- button
+u_b10.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f10.Text=("   Postion : "..prlxyz)
+_G.cf_unit5=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit5=prlxyz
+_G.vector3_unit5=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Unit 6", UDim2.new(0, 0, 0.272000000, 0))
+
+make_buttonnumber(u_f11,u_b11,b_page2,"   Slect Units :" ,"1",UDim2.new(0, 0, 0.2900000000, 0),UDim2.new(0.17700000, 0, 0, 0))
+u_b11.TextSize = 14.000
+u_b11.MouseButton1Down:connect(function()
+if u_b11.Text == "6" then
+u_b11.Text = "1"
+else
+u_b11.Text = u_b11.Text+1
+end end)
+
+make_button(u_f12, u_b12, b_page2, "   Position Units...",  UDim2.new(0, 0, 0.3080000000, 0)) -- button
+u_b12.MouseButton1Down:connect(function()
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
+u_f12.Text=("   Postion : "..prlxyz)
+_G.cf_unit6=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit6=prlxyz
+_G.vector3_unit6=loadstring("return Vector3.new(" .. prlxyz..")")()
+end)
+
+make_textlabel(u, b_page2, "Coppy All Pos Units", UDim2.new(0, 0, 0.32600000000, 0))
+make_button(u_f13, u_b13, b_page2, "   Coppy All Position Unit",  UDim2.new(0, 0, 0.3440000000, 0)) -- button
+u_b13.MouseButton1Down:connect(function()
+setclipboard(
+    "-- Position All Units\n" ..
+    "_G.key_punit1 = '" .. (_G.p_unit1 or "nil") .. "'\n" ..
+    "_G.key_punit2 = '" .. (_G.p_unit2 or "nil") .. "'\n" ..
+    "_G.key_punit3 = '" .. (_G.p_unit3 or "nil") .. "'\n" ..
+    "_G.key_punit4 = '" .. (_G.p_unit4 or "nil") .. "'\n" ..
+    "_G.key_punit5 = '" .. (_G.p_unit5 or "nil") .. "'\n" ..
+    "_G.key_punit6 = '" .. (_G.p_unit6 or "nil") .. "'\n\n" ..
+    
+    "-- Select All Units\n" ..
+    "_G.key_sunit1 = '" .. (u_b1.Text or "nil") .. "'\n" ..
+    "_G.key_sunit2 = '" .. (u_b3.Text or "nil") .. "'\n" ..
+    "_G.key_sunit3 = '" .. (u_b5.Text or "nil") .. "'\n" ..
+    "_G.key_sunit4 = '" .. (u_b7.Text or "nil") .. "'\n" ..
+    "_G.key_sunit5 = '" .. (u_b9.Text or "nil") .. "'\n" ..
+    "_G.key_sunit6 = '" .. (u_b11.Text or "nil") .. "'\n"
+)
+end)
+
+if _G.key_punit1 == nil then
+u_f2.Text="   nil"
+else
+u_f2.Text=("   Postion : ".._G.key_punit1)
+_G.cf_unit1=loadstring("return CFrame.new(" .. _G.key_punit1..")")()
+_G.vector3_unit1=loadstring("return Vector3.new(" .. _G.key_punit1..")")()
+end
+if _G.key_punit2 == nil then
+u_f4.Text="   nil"
+else
+u_f4.Text=("   Postion : ".._G.key_punit2)
+_G.cf_unit2=loadstring("return CFrame.new(" .. _G.key_punit2..")")()
+_G.vector3_unit2=loadstring("return Vector3.new(" .. _G.key_punit2..")")()
+end
+if _G.key_punit3 == nil then
+u_f6.Text="   nil"
+else
+u_f6.Text=("   Postion : ".._G.key_punit3)
+_G.cf_unit3=loadstring("return CFrame.new(" .. _G.key_punit3..")")()
+_G.vector3_unit3=loadstring("return Vector3.new(" .. _G.key_punit3..")")()
+end
+if _G.key_punit4 == nil then
+u_f8.Text="   nil"
+else
+u_f8.Text=("   Postion : ".._G.key_punit4)
+_G.cf_unit4=loadstring("return CFrame.new(" .. _G.key_punit4..")")()
+_G.vector3_unit4=loadstring("return Vector3.new(" .. _G.key_punit4..")")()
+end
+if _G.key_punit5 == nil then
+u_f10.Text="   nil"
+else
+u_f10.Text=("   Postion : ".._G.key_punit5)
+_G.cf_unit5=loadstring("return CFrame.new(" .. _G.key_punit5..")")()
+_G.vector3_unit5=loadstring("return Vector3.new(" .. _G.key_punit5..")")()
+end
+if _G.key_punit6 == nil then
+u_f12.Text="   nil"
+else
+u_f12.Text=("   Postion : ".._G.key_punit6)
+_G.cf_unit6=loadstring("return CFrame.new(" .. _G.key_punit6..")")()
+_G.vector3_unit6=loadstring("return Vector3.new(" .. _G.key_punit6..")")()
+end
+
+
+
+if _G.key_sunit1 == nil then
+else
+u_b1.Text=_G.key_sunit1
+end
+if _G.key_sunit2 == nil then
+else
+u_b3.Text=_G.key_sunit2
+end
+if _G.key_sunit3 == nil then
+else
+u_b5.Text=_G.key_sunit3
+end
+if _G.key_sunit4 == nil then
+else
+u_b7.Text=_G.key_sunit4
+end
+if _G.key_sunit5 == nil then
+else
+u_b9.Text=_G.key_sunit5
+end
+if _G.key_sunit6 == nil then
+else
+u_b11.Text=_G.key_sunit6
+end
+
+function b_page(name1,name2)
+       b_page1.Visible = false
 		b_page2.Visible = false
 		b_page3.Visible = false
 		b_page4.Visible = false
 		name1.Visible=true
-		TextLabel.Text=name2
-	end
+	    TextLabel.Text=name2
+end
 
-	b_1.MouseButton1Down:connect(function()
-		b_page(b_page1, ("NTT HUB | Main | ".._G.linkdis))
-	end)
+b_1.MouseButton1Down:connect(function()
+b_page(b_page1, ("NTT HUB | Main | ".._G.linkdis))
+end)
 
-	b_2.MouseButton1Down:connect(function()
-		b_page(b_page2, ("NTT HUB | Units | ".._G.linkdis))
-	end)
+b_2.MouseButton1Down:connect(function()
+b_page(b_page2, ("NTT HUB | Units | ".._G.linkdis))
+end)
 
-	spawn(function()
-		pcall(function()
-			game:GetService("RunService").Stepped:Connect(function()
-				if _G.m_b1 then
-					if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-						local Noclip = Instance.new("BodyVelocity")
-						Noclip.Name = "BodyClip"
-						Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-						Noclip.MaxForce = Vector3.new(100000,100000,100000)
-						Noclip.Velocity = Vector3.new(0,0,0)
-					end
-				else	
-					if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-						game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-					end
-				end
-			end)
-		end)
-	end)
-
+spawn(function()
+        pcall(function()
+            game:GetService("RunService").Stepped:Connect(function()
+                  if _G.m_b1 then
+if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        local Noclip = Instance.new("BodyVelocity")
+                        Noclip.Name = "BodyClip"
+                        Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                        Noclip.Velocity = Vector3.new(0,0,0)
+                     end
+                  else	
+                     if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                     end
+                  end
+            end)
+        end)
+    end)
+    
 end -- [[ Map Game Play ]]
 
 
@@ -1068,224 +1068,224 @@ end -- [[ Map Game Play ]]
 
 if  game.PlaceId == 17017769292 then
 
-	function p(x)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=x
-	end
+function p(x)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=x
+end
 
-	-- // Page
-	make_mainscrollingframe(b_page1, main, true)
-	make_mainscrollingframe(b_page2, main, false)
-	make_mainscrollingframe(b_page3, main, false)
-	make_mainscrollingframe(b_page4, main, false)
+-- // Page
+make_mainscrollingframe(b_page1, main, true)
+make_mainscrollingframe(b_page2, main, false)
+make_mainscrollingframe(b_page3, main, false)
+make_mainscrollingframe(b_page4, main, false)
 
 
-	make_mainbutton(b_1, bar1, "   Main", UDim2.new(0, 0, 0.000000000, 0))
-	make_mainbutton(b_2, bar1,"   Shop", UDim2.new(0, 0, 0.050000000, 0))
+make_mainbutton(b_1, bar1, "   Main", UDim2.new(0, 0, 0.000000000, 0))
+make_mainbutton(b_2, bar1,"   Shop", UDim2.new(0, 0, 0.050000000, 0))
 
-	machpage=game:GetService("Players").LocalPlayer.PlayerGui.PAGES.MatchPage
-	pages_=game:GetService("Players").LocalPlayer.PlayerGui.PAGES
+machpage=game:GetService("Players").LocalPlayer.PlayerGui.PAGES.MatchPage
+pages_=game:GetService("Players").LocalPlayer.PlayerGui.PAGES
 
-	make_together(m_f1, m_b1, b_page1, "   Auto Teleport Map", UDim2.new(0, 0, 0.03000000, 0))
-	m_b1.MouseButton1Down:connect(function()
-		--on off 
-		if m_b1.Text == "" then --on
-			m_b1.Text = "X"
-			_G.m_b1 = true 
-		elseif m_b1.Text == "X" then --off
-			m_b1.Text = ""
-			_G.m_b1 = false
-		end
-	end)  
+make_together(m_f1, m_b1, b_page1, "   Auto Teleport Map", UDim2.new(0, 0, 0.03000000, 0))
+m_b1.MouseButton1Down:connect(function()
+--on off 
+if m_b1.Text == "" then --on
+m_b1.Text = "X"
+_G.m_b1 = true 
+elseif m_b1.Text == "X" then --off
+m_b1.Text = ""
+_G.m_b1 = false
+end
+end)  
 
-	tpmap_nomal={
-		CFrame.new(-182.66664123535156, 11.36839771270752, -283.6666564941406),
-		CFrame.new(-210.93682861328125, 11.368400573730469, -255.42739868164062),
-		CFrame.new(-240.77003479003906, 11.368404388427734, -225.57411193847656),
-		CFrame.new(-277.49530029296875, 11.346452713012695, -254.73606872558594),
-		CFrame.new(-248.1162872314453, 11.34644889831543, -284.0948486328125),
-		CFrame.new(-218.06689453125, 11.346445083618164, -314.15972900390625)
-	}
+tpmap_nomal={
+CFrame.new(-182.66664123535156, 11.36839771270752, -283.6666564941406),
+CFrame.new(-210.93682861328125, 11.368400573730469, -255.42739868164062),
+CFrame.new(-240.77003479003906, 11.368404388427734, -225.57411193847656),
+CFrame.new(-277.49530029296875, 11.346452713012695, -254.73606872558594),
+CFrame.new(-248.1162872314453, 11.34644889831543, -284.0948486328125),
+CFrame.new(-218.06689453125, 11.346445083618164, -314.15972900390625)
+}
 
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				if _G.m_b1 then
-					checkmap()
-					ii=tonumber(m_b.Text)+2
-					if machpage.Visible == false then
-						p(tpmap_nomal[math.random(1,6)])
-					end
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+if _G.m_b1 then
+checkmap()
+ii=tonumber(m_b.Text)+2
+if machpage.Visible == false then
+p(tpmap_nomal[math.random(1,6)])
+end
 
-					if machpage.Visible == true then
-						if machpage.Frame.Main.LeftSide.Visible==false then
-							posmou=machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[_G.i].ImageButton
-							posmouse_gui(posmou, 0, 20)
-						end end
+if machpage.Visible == true then
+if machpage.Frame.Main.LeftSide.Visible==false then
+posmou=machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[_G.i].ImageButton
+posmouse_gui(posmou, 0, 20)
+end end
 
-					if machpage.Frame.Main.LeftSide.Visible==true then
-						wait(0.5)
-						if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == false then
-							posmou1=machpage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()[ii].ChapterButton
-							posmouse_gui(posmou1, 0, 20)
-						end
-						wait(0.5)
-						if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == true then
-							posmou1=machpage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()[ii].ChapterButton
-							posmouse_gui(posmou1, 0, 20)
-						end
-						wait(0.5)
-						if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == true then
-							posmou2=machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton
-							posmouse_gui(posmou2, 0, 20)
-						end  end
-					wait(0.5)
-					if game:GetService("Players").LocalPlayer.PlayerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton.Visible == true then
-						posmou4=game:GetService("Players").LocalPlayer.PlayerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton
-						posmouse_gui(posmou4, 0, 20)
-					end
-				end end) end end)
+if machpage.Frame.Main.LeftSide.Visible==true then
+wait(0.5)
+if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == false then
+posmou1=machpage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()[ii].ChapterButton
+posmouse_gui(posmou1, 0, 20)
+end
+wait(0.5)
+if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == true then
+posmou1=machpage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()[ii].ChapterButton
+posmouse_gui(posmou1, 0, 20)
+end
+wait(0.5)
+if machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton.Visible == true then
+posmou2=machpage.Frame.OptionsHolder:GetChildren()[2].ConfirmButton
+posmouse_gui(posmou2, 0, 20)
+end  end
+wait(0.5)
+if game:GetService("Players").LocalPlayer.PlayerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton.Visible == true then
+posmou4=game:GetService("Players").LocalPlayer.PlayerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton
+posmouse_gui(posmou4, 0, 20)
+end
+end end) end end)
 
-	make_select1(m_f2, m_b2, b_page1, "Map : Slect", UDim2.new(0, 0, 0.1000000000, 0))
-	m_b2.MouseButton1Down:connect(function()
-		m_tbar.Visible = true
-	end) 
+make_select1(m_f2, m_b2, b_page1, "Map : Slect", UDim2.new(0, 0, 0.1000000000, 0))
+m_b2.MouseButton1Down:connect(function()
+m_tbar.Visible = true
+end) 
 
-	function mapbar()
-		make_selectscrollingframe(m_tbar, b_page1, UDim2.new(0, 0, 0.1700000, 0))
-		make_selectbutton(m_ft1, m_bt1, m_b2, m_tbar, "Windmill Vilage", "Map : Windmill Vilage", UDim2.new(0, 0, 0.0000000, 0))
-		make_selectbutton(m_ft2, m_bt2, m_b2, m_tbar, "Haunted City", "Map : Haunted City", UDim2.new(0, 0, 0.0500000, 0))
-		make_selectbutton(m_ft3, m_bt3,m_b2, m_tbar, "Cursed Academy", "Map : Cursed Academy", UDim2.new(0, 0, 0.1000000, 0))
-		make_selectbutton(m_ft4, m_bt4, m_b2, m_tbar, "Blue Planet", "Map : Blue Planet", UDim2.new(0, 0, 0.1500000, 0))
-		make_selectbutton(m_ft5, m_bt5, m_b2, m_tbar, "Underwater Temple", "Map : Underwater Temple", UDim2.new(0, 0, 0.200000, 0))
-		make_selectbutton(m_ft6, m_bt6, m_b2, m_tbar, "Swordman Dojo", "Map : Swordman Dojo", UDim2.new(0, 0, 0.2500000, 0))
-		make_selectbutton(m_ft7, m_bt7, m_b2, m_tbar, "Snowy Woods", "Map : Snowy Woods", UDim2.new(0, 0, 0.3000000, 0))
-		make_selectbutton(m_ft8, m_bt8, m_b2, m_tbar, "Crystal Cave", "Map : Crystal Cave", UDim2.new(0, 0, 0.35000000, 0))
-	end
+function mapbar()
+make_selectscrollingframe(m_tbar, b_page1, UDim2.new(0, 0, 0.1700000, 0))
+make_selectbutton(m_ft1, m_bt1, m_b2, m_tbar, "Windmill Vilage", "Map : Windmill Vilage", UDim2.new(0, 0, 0.0000000, 0))
+make_selectbutton(m_ft2, m_bt2, m_b2, m_tbar, "Haunted City", "Map : Haunted City", UDim2.new(0, 0, 0.0500000, 0))
+make_selectbutton(m_ft3, m_bt3,m_b2, m_tbar, "Cursed Academy", "Map : Cursed Academy", UDim2.new(0, 0, 0.1000000, 0))
+make_selectbutton(m_ft4, m_bt4, m_b2, m_tbar, "Blue Planet", "Map : Blue Planet", UDim2.new(0, 0, 0.1500000, 0))
+make_selectbutton(m_ft5, m_bt5, m_b2, m_tbar, "Underwater Temple", "Map : Underwater Temple", UDim2.new(0, 0, 0.200000, 0))
+make_selectbutton(m_ft6, m_bt6, m_b2, m_tbar, "Swordman Dojo", "Map : Swordman Dojo", UDim2.new(0, 0, 0.2500000, 0))
+make_selectbutton(m_ft7, m_bt7, m_b2, m_tbar, "Snowy Woods", "Map : Snowy Woods", UDim2.new(0, 0, 0.3000000, 0))
+make_selectbutton(m_ft8, m_bt8, m_b2, m_tbar, "Crystal Cave", "Map : Crystal Cave", UDim2.new(0, 0, 0.35000000, 0))
+end
 
-	function vmap(x)
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[3].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[4].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[5].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[6].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[7].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[8].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[9].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[10].ImageButton.Visible=false
-		machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[x].ImageButton.Visible=true
-	end
+function vmap(x)
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[3].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[4].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[5].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[6].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[7].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[8].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[9].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[10].ImageButton.Visible=false
+machpage.WorldSelectFrame.ScrollingFrame:GetChildren()[x].ImageButton.Visible=true
+end
 
-	function checkmap()
-		if m_b2.Text == "Map : Windmill Vilage" then
-			_G.i=9
-			vmap(9)
-		elseif m_b2.Text == "Map : Haunted City" then
-			_G.i=8
-			vmap(8)
-		elseif m_b2.Text == "Map : Cursed Academy" then
-			_G.i=3
-			vmap(3)
-		elseif m_b2.Text == "Map : Blue Planet" then
-			_G.i=5
-			vmap(5)
-		elseif m_b2.Text == "Map : Underwater Temple" then
-			_G.i=4
-			vmap(4)
-		elseif m_b2.Text == "Map : Swordman Dojo" then
-			_G.i=7
-			vmap(7)
-		elseif m_b2.Text == "Map : Snowy Woods" then
-			_G.i=6
-			vmap(6)
-		elseif m_b2.Text == "Map : Crystal Cave" then
-			_G.i=10
-			vmap(10)
-		end end
+function checkmap()
+if m_b2.Text == "Map : Windmill Vilage" then
+_G.i=9
+vmap(9)
+elseif m_b2.Text == "Map : Haunted City" then
+_G.i=8
+vmap(8)
+elseif m_b2.Text == "Map : Cursed Academy" then
+_G.i=3
+vmap(3)
+elseif m_b2.Text == "Map : Blue Planet" then
+_G.i=5
+vmap(5)
+elseif m_b2.Text == "Map : Underwater Temple" then
+_G.i=4
+vmap(4)
+elseif m_b2.Text == "Map : Swordman Dojo" then
+_G.i=7
+vmap(7)
+elseif m_b2.Text == "Map : Snowy Woods" then
+_G.i=6
+vmap(6)
+elseif m_b2.Text == "Map : Crystal Cave" then
+_G.i=10
+vmap(10)
+end end
 
-	make_buttonnumber(m_f,m_b,b_page1,"   Slect Chapter :" ,"1",UDim2.new(0, 0, 0.1700000000, 0),UDim2.new(0.17000000, 0, 0, 0))
-	m_b.TextSize = 14.000
-	m_b.MouseButton1Down:connect(function()
-		if m_b.Text == "7" then
-			m_b.Text = "1"
-		else
-			m_b.Text = m_b.Text+1
-		end end)
+make_buttonnumber(m_f,m_b,b_page1,"   Slect Chapter :" ,"1",UDim2.new(0, 0, 0.1700000000, 0),UDim2.new(0.17000000, 0, 0, 0))
+m_b.TextSize = 14.000
+m_b.MouseButton1Down:connect(function()
+if m_b.Text == "7" then
+m_b.Text = "1"
+else
+m_b.Text = m_b.Text+1
+end end)
 
-	mapbar()
+mapbar()
 
-	function keyboard(x)
-		game:GetService("VirtualInputManager"):SendKeyEvent(true,x,false,game)
-		game:GetService("VirtualInputManager"):SendKeyEvent(false,x,false,game)      
-	end
+function keyboard(x)
+game:GetService("VirtualInputManager"):SendKeyEvent(true,x,false,game)
+game:GetService("VirtualInputManager"):SendKeyEvent(false,x,false,game)      
+end
 
-	make_together(s_f1, s_b1, b_page2, "   Auto Buy Unit X1", UDim2.new(0, 0, 0.03000000, 0))
-	s_b1.MouseButton1Down:connect(function()
-		--on off 
-		if s_b1.Text == "" then --on
-			s_b1.Text = "X"
-			_G.s_b1 = true 
-		elseif s_b1.Text == "X" then --off
-			s_b1.Text = ""
-			_G.s_b1 = false
-		end
-	end)  
+make_together(s_f1, s_b1, b_page2, "   Auto Buy Unit X1", UDim2.new(0, 0, 0.03000000, 0))
+s_b1.MouseButton1Down:connect(function()
+--on off 
+if s_b1.Text == "" then --on
+s_b1.Text = "X"
+_G.s_b1 = true 
+elseif s_b1.Text == "X" then --off
+s_b1.Text = ""
+_G.s_b1 = false
+end
+end)  
 
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				if _G.s_b1 then
-					if pages_.SummonPage.Visible==false then
-						p(CFrame.new(-221.64825439453125, 15.862335205078125, -470.12689208984375))
-						keyboard("E")
-						VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
-						wait(0.1)
-						VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
-					else
-						posmouse_gui(pages_.SummonPage.Holder.HolderBuySummon.One,0,30)
-						wait(0.5)
-					end end end) end end)
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+if _G.s_b1 then
+if pages_.SummonPage.Visible==false then
+p(CFrame.new(-221.64825439453125, 15.862335205078125, -470.12689208984375))
+keyboard("E")
+VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+        wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+else
+posmouse_gui(pages_.SummonPage.Holder.HolderBuySummon.One,0,30)
+wait(0.5)
+end end end) end end)
 
-	make_together(s_f2, s_b2, b_page2, "   Auto Buy Unit X10", UDim2.new(0, 0, 0.1000000, 0))
-	s_b2.MouseButton1Down:connect(function()
-		--on off 
-		if s_b2.Text == "" then --on
-			s_b2.Text = "X"
-			_G.s_b2 = true 
-		elseif s_b2.Text == "X" then --off
-			s_b2.Text = ""
-			_G.s_b2 = false
-		end
-	end)  
+make_together(s_f2, s_b2, b_page2, "   Auto Buy Unit X10", UDim2.new(0, 0, 0.1000000, 0))
+s_b2.MouseButton1Down:connect(function()
+--on off 
+if s_b2.Text == "" then --on
+s_b2.Text = "X"
+_G.s_b2 = true 
+elseif s_b2.Text == "X" then --off
+s_b2.Text = ""
+_G.s_b2 = false
+end
+end)  
 
-	spawn(function()
-		while task.wait() do       
-			pcall(function()
-				if _G.s_b2 then
-					if pages_.SummonPage.Visible==false then
-						p(CFrame.new(-221.64825439453125, 15.862335205078125, -470.12689208984375))
-						keyboard("E")
-						VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
-						wait(0.1)
-						VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
-					else
-						posmouse_gui(pages_.SummonPage.Holder.HolderBuySummon.Ten,0,30)
-						wait(0.5)
-					end end end) end end)
+spawn(function()
+    while task.wait() do       
+            pcall(function()
+if _G.s_b2 then
+if pages_.SummonPage.Visible==false then
+p(CFrame.new(-221.64825439453125, 15.862335205078125, -470.12689208984375))
+keyboard("E")
+VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+        wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+else
+posmouse_gui(pages_.SummonPage.Holder.HolderBuySummon.Ten,0,30)
+wait(0.5)
+end end end) end end)
 
-	function b_page(name1,name2)
-		b_page1.Visible = false
+function b_page(name1,name2)
+       b_page1.Visible = false
 		b_page2.Visible = false
 		b_page3.Visible = false
 		b_page4.Visible = false
 		name1.Visible=true
-		TextLabel.Text=name2
-	end
+	    TextLabel.Text=name2
+end
 
-	b_1.MouseButton1Down:connect(function()
-		b_page(b_page1, ("NTT HUB | Main | ".._G.linkdis))
-	end)
+b_1.MouseButton1Down:connect(function()
+b_page(b_page1, ("NTT HUB | Main | ".._G.linkdis))
+end)
 
-	b_2.MouseButton1Down:connect(function()
-		b_page(b_page2, ("NTT HUB | Shop | ".._G.linkdis))
-	end)
+b_2.MouseButton1Down:connect(function()
+b_page(b_page2, ("NTT HUB | Shop | ".._G.linkdis))
+end)
 
 end -- [[ Map Lobby ]]
