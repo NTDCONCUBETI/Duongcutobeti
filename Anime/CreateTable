@@ -155,94 +155,62 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 or game.PlaceId ==
 						-- Ẩn menu khi bắt đầu
 						menuFrame.Visible = false
 						openButton.Visible = true  -- Ẩn nút mở lại
-						local player = game.Players.LocalPlayer
-						local playerGui = player.PlayerGui
-
-						local indexTouch = 1000
-						function tab(x,y)
-							wait(0.1)
-							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
-							--wait(0.1)
-							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
-							--wait(0.1)
-							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
-							wait(0.1)
-							indexTouch = indexTouch + 1
-						end
-
-						function presskey(keycode)
-							game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
-							game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
-						end
-
-						function click(a)
-							game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
-							game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
-						end
-
-						function clickToaDo(x,y, object)
-							game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
-							game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
-							print("click",x,y)
-						end
-						local setting = playerGui.PAGES.SettingsUI
-						local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-						local vibrations = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Vibrations").Frame.BooleanButton.StatusLabel
-						local music = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Mute Music").Frame.BooleanButton.StatusLabel
-						local CameraShake = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Camera Shake").Frame.BooleanButton.StatusLabel
-						local SkillsEnabled = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Skills Enabled").Frame.BooleanButton.StatusLabel
-						local LowQuality = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Low Quality").Frame.BooleanButton.StatusLabel
 
 						------------ Setting
-						setting.Visible = true
-						wait(5)
-						if autoskip.Text == "Off" then 
-							click(autoskip)
-						end
-						wait(2)
-						if vibrations.Text == "On" then 
-							click(vibrations)
-						end
-						wait(2)
-						if music.Text == "Off" then 
-							click(music)
-						end
-						wait(2)
-						if CameraShake.Text == "On" then 
-							click(CameraShake)
-						end
-						wait(2)
-						tab( 640 , 332 )
-						wait(2)
-						tab( 640 , 332 )
+						local args = {
+							[1] = "Mute Music",
+							[2] = true
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 						wait(2)
 
-						local SettingsMuteMusic = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Mute Music")
-						SettingsMuteMusic.Visible = false
-
-						local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
-						SettingsCameraShake.Visible = false
-
-						local SettingsUnitInfoPosition = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Unit Info Position")
-						SettingsUnitInfoPosition.Visible = false
-
-						local SettingsVibrations = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Vibrations")
-						SettingsVibrations.Visible = false
-
-						local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
-						SettingsCameraShake.Visible = false
-						local Settingsskip = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Auto Skip Wave")
-						Settingsskip.Visible = false
+						local args = {
+							[1] = "Vibrations",
+							[2] = false
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 						wait(2)
-						if SkillsEnabled.Text == "On" then 
-							click(SkillsEnabled)
-						end
+
+						local args = {
+							[1] = "Auto Skip Wave",
+							[2] = true
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 						wait(2)
-						if LowQuality.Text == "Off" then 
-							click(LowQuality)
-						end
+
+						local args = {
+							[1] = "Camera Shake",
+							[2] = false
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 						wait(2)
-						setting.Visible = false
+
+						local args = {
+							[1] = "Low Quality",
+							[2] = true
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+						wait(2)
+
+						local args = {
+							[1] = "Skills Enabled",
+							[2] = false
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+						wait(2)
+
+						local args = {
+							[1] = "Unit Info Position",
+							[2] = 3
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+						wait(2)
+
+						local args = {
+							[1] = "Unit Visibility",
+							[2] = 2
+						}
+						game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 					elseif i == 11 then
 						------- FPSBOOTER and LowMap
 
@@ -1042,6 +1010,542 @@ if game.PlaceId == 13775256536 then -- Game Toilet Tower
 	-- Tạo danh sách tên nút cho mỗi trang
 	local buttonNames = {
 		{"Dice", "Traits roll", "Trading or Main", "Sumon", "Spirits", "Evol", "Exclusive Wish", "AFK", "Story", "Setupsetting", "FPS And Lowmap", "Nút 12 Di chuyển", "Nút 13 Di chuyển", "Nút 14 Di chuyển", "Rejoin"}, -- Trang 1
+		{"Nút 1 Gia đình", "Nút 2 Gia đình", "Nút 3 Gia đình", "Nút 4 Gia đình", "Nút 5 Gia đình", "Nút 6 Gia đình", "Nút 7 Gia đình", "Nút 8 Gia đình", "Nút 9 Gia đình", "Nút 10 Gia đình", "Nút 11 Gia đình", "Nút 12 Gia đình", "Nút 13 Gia đình", "Nút 14 Gia đình", "Nút 15 Gia đình"}, -- Trang 2
+		{"Nút 1 Du lịch", "Nút 2 Du lịch", "Nút 3 Du lịch", "Nút 4 Du lịch", "Nút 5 Du lịch", "Nút 6 Du lịch", "Nút 7 Du lịch", "Nút 8 Du lịch", "Nút 9 Du lịch", "Nút 10 Du lịch", "Nút 11 Du lịch", "Nút 12 Du lịch", "Nút 13 Du lịch", "Nút 14 Du lịch", "Nút 15 Du lịch"}, -- Trang 3
+		{"Nút 1 Bạn bè", "Nút 2 Bạn bè", "Nút 3 Bạn bè", "Nút 4 Bạn bè", "Nút 5 Bạn bè", "Nút 6 Bạn bè", "Nút 7 Bạn bè", "Nút 8 Bạn bè", "Nút 9 Bạn bè", "Nút 10 Bạn bè", "Nút 11 Bạn bè", "Nút 12 Bạn bè", "Nút 13 Bạn bè", "Nút 14 Bạn bè", "Nút 15 Bạn bè"}, -- Trang 4
+		{"Nút 1 Xã hội", "Nút 2 Xã hội", "Nút 3 Xã hội", "Nút 4 Xã hội", "Nút 5 Xã hội", "Nút 6 Xã hội", "Nút 7 Xã hội", "Nút 8 Xã hội", "Nút 9 Xã hội", "Nút 10 Xã hội", "Nút 11 Xã hội", "Nút 12 Xã hội", "Nút 13 Xã hội", "Nút 14 Xã hội", "Nút 15 Xã hội"}  -- Trang 5
+	}
+
+	-- Tạo các trang
+	local page1 = createPage(menuFrame, "Di chuyển", buttonNames[1])
+	local page2 = createPage(menuFrame, "Gia đình", buttonNames[2])
+	local page3 = createPage(menuFrame, "Du lịch", buttonNames[3])
+	local page4 = createPage(menuFrame, "Bạn bè", buttonNames[4])
+	local page5 = createPage(menuFrame, "Xã hội", buttonNames[5])
+
+	-- Ẩn tất cả các trang trừ trang 1
+	page2.Visible = false
+	page3.Visible = false
+	page4.Visible = false
+	page5.Visible = false
+
+	-- Tạo nút chuyển trang
+	local function createPageSwitchButton(text, positionX, targetPage)
+		local button = Instance.new("TextButton")
+		button.Size = UDim2.new(0.15, 0, 0.05, 0)
+		button.Position = positionX
+		button.Text = text
+		button.Parent = menuFrame
+
+		button.MouseButton1Click:Connect(function()
+			page1.Visible = false
+			page2.Visible = false
+			page3.Visible = false
+			page4.Visible = false
+			page5.Visible = false
+			targetPage.Visible = true
+		end)
+	end
+
+	-- Tạo nút chuyển trang
+	createPageSwitchButton("Di chuyển", UDim2.new(0.05, 0, 0.95, 0), page1)
+	createPageSwitchButton("Gia đình", UDim2.new(0.25, 0, 0.95, 0), page2)
+	createPageSwitchButton("Du lịch", UDim2.new(0.45, 0, 0.95, 0), page3)
+	createPageSwitchButton("Bạn bè", UDim2.new(0.65, 0, 0.95, 0), page4)
+	createPageSwitchButton("Xã hội", UDim2.new(0.85, 0, 0.95, 0), page5)
+
+	-- Chức năng để hiển thị menu
+	openButton.MouseButton1Click:Connect(function()
+		menuFrame.Visible = true  -- Hiện menu
+		openButton.Visible = false  -- Ẩn nút mở lại
+	end)
+
+	-- Ẩn menu khi bắt đầu
+	menuFrame.Visible = false
+	openButton.Visible = true  -- Ẩn nút mở lại
+end
+if game.PlaceId == 18901165922 then -- Game Pet RNG
+	-- Tạo GUI
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+	-- Tạo khung menu
+	local menuFrame = Instance.new("Frame")
+	menuFrame.Size = UDim2.new(0.6, 0, 0.8, 0)  -- Kích thước 60% chiều rộng và 80% chiều cao của màn hình
+	menuFrame.Position = UDim2.new(0.2, 0, 0.1, 0)  -- Đặt khung vào giữa màn hình
+	menuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	menuFrame.Parent = screenGui
+	menuFrame.Visible = false  -- Mặc định là ẩn menu
+
+	-- Tên Game
+	local function createNameGame(parent)
+		local NameGame = Instance.new("TextButton")
+		NameGame.Size = UDim2.new(0.6, 0, 0.05, 0)
+		NameGame.Position = UDim2.new(0, 0, 0, 0)  -- Đặt nút Close ở góc trên cùng bên phải, sát mép
+		NameGame.Text = "Pet RNG"
+		NameGame.BackgroundColor3 = Color3.fromRGB(170, 255, 255)
+		NameGame.Parent = parent
+	end
+	-- Tạo nút để mở lại menu khi nó bị ẩn
+	local openButton = Instance.new("TextButton")
+	openButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+	openButton.Position = UDim2.new(0.9, -10, 0.95, 0)  -- Góc dưới cùng bên phải màn hình
+	openButton.Text = "Open Menu"
+	openButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)  -- Màu xanh lá
+	openButton.Visible = true  -- Mặc định là hiện
+	openButton.Parent = screenGui
+
+	-- Chức năng của nút Close: Ẩn menu và hiện nút mở lại
+	local function createCloseButton(parent)
+		local closeButton = Instance.new("TextButton")
+		closeButton.Size = UDim2.new(0.1, 0, 0.05, 0)
+		closeButton.Position = UDim2.new(1, -100, 0, 10)  -- Đặt nút Close ở góc trên cùng bên phải, sát mép
+		closeButton.Text = "Close"
+		closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		closeButton.Parent = parent
+
+		closeButton.MouseButton1Click:Connect(function()
+			menuFrame.Visible = false  -- Ẩn menu
+			openButton.Visible = true  -- Hiện nút mở lại
+		end)
+	end
+
+
+	-- Hàm tạo trang và các nút
+	local function createPage(parent, pageName, buttonNames)
+		local page = Instance.new("Frame")
+		page.Size = UDim2.new(1, 0, 1, 0)
+		page.Position = UDim2.new(0, 0, 0, 0)
+		page.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+		page.Parent = parent
+		createCloseButton(page)  -- Thêm nút Close vào trang
+		createNameGame(page)
+		-- Tạo 15 nút trong trang
+		for i = 1, 15 do
+			local button = Instance.new("TextButton")
+			button.Size = UDim2.new(0.25, 0, 0.1, 0)  -- Kích thước nút
+			-- Tính toán vị trí để sắp xếp thành 3 cột
+			local column = (i - 1) % 3  -- Cột (0, 1, 2)
+			local row = math.floor((i - 1) / 3)  -- Hàng (0, 1, 2,...)
+			button.Position = UDim2.new(column * 0.33 + 0.05, 0, row * 0.15 + 0.1, 0)  -- Đặt vị trí các nút với khoảng cách
+			button.Text = buttonNames[i]  -- Sử dụng tên nút từ bảng
+			button.BackgroundColor3 = Color3.fromRGB(100, 100 + (i * 10), 255)
+			button.Parent = page
+
+			-- Thêm thao tác cho nút
+			button.MouseButton1Click:Connect(function()
+				-- Thao tác cho từng nút theo yêu cầu
+				if pageName == "Di chuyển" then
+					if i == 1 then -- StartRoll
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+						loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/PetRNG/RollPet"))()
+
+					elseif i == 2 then -- Wait
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+						
+					elseif i == 3 then -- Trading or Main
+						if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(90.8907241821289, 13.733388900756836, -316.96527099609375)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+						if game.PlaceId == 17490500437 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(84.89950561523438, -91.01325988769531, -155.71707153320312)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+
+					elseif i == 4 then -- Sumon
+						if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-224.0990753173828, 14.139923095703125, -463.98529052734375)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+						if game.PlaceId == 17490500437 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(21.83158302307129, -87.7825927734375, -31.81190299987793)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+					elseif i == 5 then --Spirits
+						if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-263.0823669433594, 14.891332626342773, -448.15179443359375)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+						if game.PlaceId == 17490500437 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(7.26892614364624, -87.84344482421875, -9.977766990661621)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+
+					elseif i == 6 then --Evol
+						if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-161.07290649414062, 14.909564971923828, -465.87738037109375)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+						if game.PlaceId == 17490500437 then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13.020284652709961, -87.83979034423828, -18.736778259277344)
+							menuFrame.Visible = false
+							openButton.Visible = true  -- Ẩn nút mở lại
+						end
+
+					elseif i == 7 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-159.0536346435547, 11.447759628295898, -368.96337890625)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					elseif i == 8 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52.16261291503906, 10.98061752319336, -315.3424072265625)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					elseif i == 9 then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-228.59048461914062, 11.203054428100586, -269.32598876953125)
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+					elseif i == 10 then
+						-- Ẩn menu khi bắt đầu
+						menuFrame.Visible = false
+						openButton.Visible = true  -- Ẩn nút mở lại
+						local player = game.Players.LocalPlayer
+						local playerGui = player.PlayerGui
+
+						local indexTouch = 1000
+						function tab(x,y)
+							wait(0.1)
+							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,0,x,y + 36)
+							--wait(0.1)
+							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,1,x,y + 36)
+							--wait(0.1)
+							game:GetService("VirtualInputManager"):SendTouchEvent(indexTouch,2,x,y + 36)
+							wait(0.1)
+							indexTouch = indexTouch + 1
+						end
+
+						function presskey(keycode)
+							game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+						end
+
+						function click(a)
+							game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+							game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+						end
+
+						function clickToaDo(x,y, object)
+							game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
+							game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
+							print("click",x,y)
+						end
+						local setting = playerGui.PAGES.SettingsUI
+						local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
+						local vibrations = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Vibrations").Frame.BooleanButton.StatusLabel
+						local music = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Mute Music").Frame.BooleanButton.StatusLabel
+						local CameraShake = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Camera Shake").Frame.BooleanButton.StatusLabel
+						local SkillsEnabled = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Skills Enabled").Frame.BooleanButton.StatusLabel
+						local LowQuality = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Low Quality").Frame.BooleanButton.StatusLabel
+
+						------------ Setting
+						setting.Visible = true
+						wait(5)
+						if autoskip.Text == "Off" then 
+							click(autoskip)
+						end
+						wait(2)
+						if vibrations.Text == "On" then 
+							click(vibrations)
+						end
+						wait(2)
+						if music.Text == "Off" then 
+							click(music)
+						end
+						wait(2)
+						if CameraShake.Text == "On" then 
+							click(CameraShake)
+						end
+						wait(2)
+						tab( 640 , 332 )
+						wait(2)
+						tab( 640 , 332 )
+						wait(2)
+
+						local SettingsMuteMusic = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Mute Music")
+						SettingsMuteMusic.Visible = false
+
+						local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
+						SettingsCameraShake.Visible = false
+
+						local SettingsUnitInfoPosition = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Unit Info Position")
+						SettingsUnitInfoPosition.Visible = false
+
+						local SettingsVibrations = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Vibrations")
+						SettingsVibrations.Visible = false
+
+						local SettingsCameraShake = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Camera Shake")
+						SettingsCameraShake.Visible = false
+						local Settingsskip = playerGui.PAGES.SettingsUI.ListFrame:FindFirstChild("Settings Auto Skip Wave")
+						Settingsskip.Visible = false
+						wait(2)
+						if SkillsEnabled.Text == "On" then 
+							click(SkillsEnabled)
+						end
+						wait(2)
+						if LowQuality.Text == "Off" then 
+							click(LowQuality)
+						end
+						wait(2)
+						setting.Visible = false
+					elseif i == 11 then ------- FPSBOOTER and LowMap
+						
+
+						setfpscap(15)
+						UserSettings():GetService("UserGameSettings").MasterVolume = 0
+						game:GetService("Lighting"):ClearAllChildren()
+
+						local decalsyeeted = true
+						local g = game
+						local w = g.Workspace
+						local l = g.Lighting
+						local t = w.Terrain
+						sethiddenproperty(l,"Technology",2)
+						sethiddenproperty(t,"Decoration",false)
+						t.WaterWaveSize = 0
+						t.WaterWaveSpeed = 0
+						t.WaterReflectance = 0
+						t.WaterTransparency = 1
+						l.GlobalShadows = 0
+						l.FogEnd = 9e9
+						l.Brightness = 0
+						settings().Rendering.QualityLevel = "Level01"
+						for i, v in pairs(w:GetDescendants()) do
+							if v:IsA("BasePart") and not v:IsA("MeshPart") then
+								v.Material = "Plastic"
+								v.Transparency = 1
+								v.Reflectance = 0
+							elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+								v.Transparency = 1
+							elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+								v.Lifetime = NumberRange.new(0)
+							elseif v:IsA("Explosion") then
+								v.BlastPressure = 1
+								v.BlastRadius = 1
+							elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+								v.Enabled = false
+							elseif v:IsA("MeshPart") and decalsyeeted then
+								v.Material = "Plastic"
+								v.Transparency = 1
+								v.Reflectance = 0
+								v.TextureID = 0
+							elseif v:IsA("SpecialMesh") and decalsyeeted  then
+								v.TextureId=0
+							elseif v:IsA("ShirtGraphic") and decalsyeeted then
+								v.Graphic=1
+							elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+								v[v.ClassName.."Template"]=1
+							end
+						end
+						for i = 1,#l:GetChildren() do
+							e=l:GetChildren()[i]
+							if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+								e.Enabled = false
+							end
+						end
+						w.DescendantAdded:Connect(function(v)
+							pcall(function()
+								if v:IsA("BasePart") and not v:IsA("MeshPart") then
+									v.Material = "Plastic"
+									v.Reflectance = 0
+									v.Transparency = 1
+								elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+									v.Transparency = 1
+								elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+									v.Lifetime = NumberRange.new(0)
+								elseif v:IsA("Explosion") then
+									v.BlastPressure = 1 
+									v.BlastRadius = 1
+								elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+									v.Enabled = false
+								elseif v:IsA("MeshPart") and decalsyeeted then
+									v.Material = "Plastic"
+									v.Reflectance = 0
+									v.TextureID = 0
+									v.Transparency = 1
+								elseif v:IsA("SpecialMesh") and decalsyeeted then
+									v.TextureId=0
+								elseif v:IsA("ShirtGraphic") and decalsyeeted then
+									v.ShirtGraphic=1
+								elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+									v[v.ClassName.."Template"]=1
+								end
+							end)
+						end)
+						for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
+							if v:IsA("ScreenGui") then
+								v.Enabled = false
+							end
+						end
+
+						for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+							if v:IsA("ScreenGui") then
+								v.Enabled = false
+							end
+						end
+						wait(1)
+
+
+						
+					elseif i == 12 then
+						-- Chạy đoạn mã A cho Nút 12 Di chuyển
+					elseif i == 13 then
+						-- Chạy đoạn mã A cho Nút 13 Di chuyển
+					elseif i == 14 then
+						-- Chạy đoạn mã A cho Nút 14 Di chuyển	
+					elseif i == 15 then ---- Rejoin
+						local player = game.Players.LocalPlayer
+						local TeleportService = game:GetService("TeleportService")
+						local placeId = 18901165922
+						TeleportService:Teleport(placeId, player)
+
+					end
+				elseif pageName == "Gia đình" then
+					if i == 1 then
+						-- Chạy đoạn mã A cho Nút 1 Gia đình
+					elseif i == 2 then
+						-- Chạy đoạn mã A cho Nút 2 Gia đình
+					elseif i == 3 then
+						-- Chạy đoạn mã A cho Nút 3 Gia đình
+					elseif i == 4 then
+						-- Chạy đoạn mã A cho Nút 4 Gia đình
+					elseif i == 5 then
+						-- Chạy đoạn mã A cho Nút 5 Gia đình
+					elseif i == 6 then
+						-- Chạy đoạn mã A cho Nút 6 Gia đình
+					elseif i == 7 then
+						-- Chạy đoạn mã A cho Nút 7 Gia đình
+					elseif i == 8 then
+						-- Chạy đoạn mã A cho Nút 8 Gia đình
+					elseif i == 9 then
+						-- Chạy đoạn mã A cho Nút 9 Gia đình
+					elseif i == 10 then
+						-- Chạy đoạn mã A cho Nút 10 Gia đình
+					elseif i == 11 then
+						-- Chạy đoạn mã A cho Nút 11 Gia đình
+					elseif i == 12 then
+						-- Chạy đoạn mã A cho Nút 12 Gia đình
+					elseif i == 13 then
+						-- Chạy đoạn mã A cho Nút 13 Gia đình
+					elseif i == 14 then
+						-- Chạy đoạn mã A cho Nút 14 Gia đình	
+					elseif i == 15 then
+						-- Chạy đoạn mã A cho Nút 15 Gia đình
+					end
+				elseif pageName == "Du lịch" then
+					if i == 1 then
+						-- Chạy đoạn mã A cho Nút 1 Du lịch
+					elseif i == 2 then
+						-- Chạy đoạn mã A cho Nút 2 Du lịch
+					elseif i == 3 then
+						-- Chạy đoạn mã A cho Nút 3 Du lịch
+					elseif i == 4 then
+						-- Chạy đoạn mã A cho Nút 4 Du lịch
+					elseif i == 5 then
+						-- Chạy đoạn mã A cho Nút 5 Du lịch
+					elseif i == 6 then
+						-- Chạy đoạn mã A cho Nút 6 Du lịch
+					elseif i == 7 then
+						-- Chạy đoạn mã A cho Nút 7 Du lịch
+					elseif i == 8 then
+						-- Chạy đoạn mã A cho Nút 8 Du lịch
+					elseif i == 9 then
+						-- Chạy đoạn mã A cho Nút 9 Du lịch
+					elseif i == 10 then
+						-- Chạy đoạn mã A cho Nút 10 Du lịch
+					elseif i == 11 then
+						-- Chạy đoạn mã A cho Nút 11 Du lịch
+					elseif i == 12 then
+						-- Chạy đoạn mã A cho Nút 12 Du lịch
+					elseif i == 13 then
+						-- Chạy đoạn mã A cho Nút 13 Du lịch
+					elseif i == 14 then
+						-- Chạy đoạn mã A cho Nút 14 Du lịch	
+					elseif i == 15 then
+						-- Chạy đoạn mã A cho Nút 15 Du lịch
+					end
+				elseif pageName == "Bạn bè" then
+					if i == 1 then
+						-- Chạy đoạn mã A cho Nút 1 Bạn bè
+					elseif i == 2 then
+						-- Chạy đoạn mã A cho Nút 2 Bạn bè
+					elseif i == 3 then
+						-- Chạy đoạn mã A cho Nút 3 Bạn bè
+					elseif i == 4 then
+						-- Chạy đoạn mã A cho Nút 4 Bạn bè
+					elseif i == 5 then
+						-- Chạy đoạn mã A cho Nút 5 Bạn bè
+					elseif i == 6 then
+						-- Chạy đoạn mã A cho Nút 6 Bạn bè
+					elseif i == 7 then
+						-- Chạy đoạn mã A cho Nút 7 Bạn bè
+					elseif i == 8 then
+						-- Chạy đoạn mã A cho Nút 8 Bạn bè
+					elseif i == 9 then
+						-- Chạy đoạn mã A cho Nút 9 Bạn bè
+					elseif i == 10 then
+						-- Chạy đoạn mã A cho Nút 10 Bạn bè
+					elseif i == 11 then
+						-- Chạy đoạn mã A cho Nút 11 Bạn bè
+					elseif i == 12 then
+						-- Chạy đoạn mã A cho Nút 12 Bạn bè
+					elseif i == 13 then
+						-- Chạy đoạn mã A cho Nút 13 Bạn bè
+					elseif i == 14 then
+						-- Chạy đoạn mã A cho Nút 14 Bạn bè	
+					elseif i == 15 then
+						-- Chạy đoạn mã A cho Nút 15 Bạn bè
+					end
+				elseif pageName == "Xã hội" then
+					if i == 1 then
+						-- Chạy đoạn mã A cho Nút 1 Xã hội
+					elseif i == 2 then
+						-- Chạy đoạn mã A cho Nút 2 Xã hội
+					elseif i == 3 then
+						-- Chạy đoạn mã A cho Nút 3 Xã hội
+					elseif i == 4 then
+						-- Chạy đoạn mã A cho Nút 4 Xã hội
+					elseif i == 5 then
+						-- Chạy đoạn mã A cho Nút 5 Xã hội
+					elseif i == 6 then
+						-- Chạy đoạn mã A cho Nút 6 Xã hội
+					elseif i == 7 then
+						-- Chạy đoạn mã A cho Nút 7 Xã hội
+					elseif i == 8 then
+						-- Chạy đoạn mã A cho Nút 8 Xã hội
+					elseif i == 9 then
+						-- Chạy đoạn mã A cho Nút 9 Xã hội
+					elseif i == 10 then
+						-- Chạy đoạn mã A cho Nút 10 Xã hội
+					elseif i == 11 then
+						-- Chạy đoạn mã A cho Nút 11 Xã hội
+					elseif i == 12 then
+						-- Chạy đoạn mã A cho Nút 12 Xã hội
+					elseif i == 13 then
+						-- Chạy đoạn mã A cho Nút 13 Xã hội
+					elseif i == 14 then
+						-- Chạy đoạn mã A cho Nút 14 Xã hội	
+					elseif i == 15 then
+						-- Chạy đoạn mã A cho Nút 15 Xã hội
+					end
+				end
+			end)
+		end
+
+		return page
+	end
+
+	-- Tạo danh sách tên nút cho mỗi trang
+	local buttonNames = {
+		{"StartRoll", "Wait", "Trading or Main", "Sumon", "Spirits", "Evol", "Exclusive Wish", "AFK", "Story", "Setupsetting", "FPS And Lowmap", "Nút 12 Di chuyển", "Nút 13 Di chuyển", "Nút 14 Di chuyển", "Rejoin"}, -- Trang 1
 		{"Nút 1 Gia đình", "Nút 2 Gia đình", "Nút 3 Gia đình", "Nút 4 Gia đình", "Nút 5 Gia đình", "Nút 6 Gia đình", "Nút 7 Gia đình", "Nút 8 Gia đình", "Nút 9 Gia đình", "Nút 10 Gia đình", "Nút 11 Gia đình", "Nút 12 Gia đình", "Nút 13 Gia đình", "Nút 14 Gia đình", "Nút 15 Gia đình"}, -- Trang 2
 		{"Nút 1 Du lịch", "Nút 2 Du lịch", "Nút 3 Du lịch", "Nút 4 Du lịch", "Nút 5 Du lịch", "Nút 6 Du lịch", "Nút 7 Du lịch", "Nút 8 Du lịch", "Nút 9 Du lịch", "Nút 10 Du lịch", "Nút 11 Du lịch", "Nút 12 Du lịch", "Nút 13 Du lịch", "Nút 14 Du lịch", "Nút 15 Du lịch"}, -- Trang 3
 		{"Nút 1 Bạn bè", "Nút 2 Bạn bè", "Nút 3 Bạn bè", "Nút 4 Bạn bè", "Nút 5 Bạn bè", "Nút 6 Bạn bè", "Nút 7 Bạn bè", "Nút 8 Bạn bè", "Nút 9 Bạn bè", "Nút 10 Bạn bè", "Nút 11 Bạn bè", "Nút 12 Bạn bè", "Nút 13 Bạn bè", "Nút 14 Bạn bè", "Nút 15 Bạn bè"}, -- Trang 4
