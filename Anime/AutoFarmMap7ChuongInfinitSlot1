@@ -167,6 +167,9 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
+	-- Setting
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/Setting.lua"))()
+	wait(5)
 	---- Tắt bảng update
 	local update = playerGui.PAGES.UpdatesUI
 	wait(2)
