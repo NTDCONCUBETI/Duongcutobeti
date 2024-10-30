@@ -8,7 +8,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 wait(1)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/LowMap"))()
 wait(5)
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/Setting.lua"))()
+wait(5)
 local player = game.Players.LocalPlayer
 local playerGui = player.PlayerGui
 local SummonPage = playerGui.PAGES.SummonPage
