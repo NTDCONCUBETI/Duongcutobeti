@@ -100,7 +100,7 @@ for i = 1, 4 do
 	wait(1)
 end
 wait(3)
-tab( 48 , 127.19999694824219 )----tap mở túi unit
-wait(3)
+local OpenUnit = playerGui.HUD.MobileHolderRight.UnitButtonHolder.UnitsButton
+click(OpenUnit) ---- Mở túi Unit
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/CreateTable"))()
