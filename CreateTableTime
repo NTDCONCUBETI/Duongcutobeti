@@ -1,0 +1,42 @@
+local UIGUI = Instance.new("ScreenGui")
+time= Instance.new("TextLabel")
+
+UIGUI.Name = "UIGUI"
+UIGUI.Parent = game:WaitForChild("CoreGui")
+UIGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+time.Name = "time"
+time.Parent = UIGUI
+time.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+time.Size = UDim2.new(0, 150, 0, 30)
+time.Position = UDim2.new(0.70, 0, 0, 0)
+time.BackgroundTransparency = 0
+time.Font = Enum.Font.Ubuntu
+time.TextColor3 = Color3.fromRGB(250,250,250)
+time.TextSize = 14
+time.BorderColor3 = Color3.fromRGB(250, 250, 250)
+time.TextWrapped = true
+
+h=0;m=0;s=0
+
+time.Text="H : "..h.." | M : "..m.." | S : "..s
+
+spawn(function()
+	while task.wait(1) do
+		pcall(function()
+			if s >= 60 then
+				s=0
+				m=m+1
+				if m >= 60 then
+					m=0
+					h=h+1
+				end
+			else
+				s=s+1
+			end
+			time.Text="H : "..h.." | M : "..m.." | S : "..s
+			
+		end)  
+	end 
+
+end)
