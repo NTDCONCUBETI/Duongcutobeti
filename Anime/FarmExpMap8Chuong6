@@ -59,8 +59,8 @@ function presskey(keycode)
 end
 
 function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+40,0,false,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,false,a,1)
 end
 
 function clickToaDo(x,y, object)
@@ -172,12 +172,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	wait(5)
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
-	--Bay đến Sumon 
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-	wait(2)
-	presskey(101)--- bấm phím E bàn phím để mở bảng Seclect sumon để load Page
-	wait(2)
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 	wait(3)
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
@@ -225,21 +220,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 291 ) wait(0.5)--Chương 6
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
 
-
-		wait(2)
-		-----
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		------------ Tắt auto skip
-		setting.Visible = true
-		wait(2)
-		if autoskip.Text == "Off" then 
-			click(autoskip)
-		end
-		wait(2)
-		setting.Visible = false
 		tab(737,317) wait(3)---tab Star
 		tab(737,320) wait(1)---tab Star
 		tab(737,323) wait(1)---tab Star
@@ -357,7 +338,8 @@ else
 			end
 		end)
 	end)
-
+	playerGui.TopBar.HolderFrame.Visible = false
+	wait(2)
 	SpawmTroop(1, 396 , 380 )
 	wait(2)
 	SpawmTroop(1, 396 , 325 )
@@ -367,11 +349,11 @@ else
 	SpawmTroop(1, 396 , 215 )
 
 	wait(2)
-	playerGui.TopBar.HolderFrame.Visible = true
+	playerGui.TopBar.HolderFrame.Visible = false
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
 	wait(2)
-	----
+	playerGui.TopBar.HolderFrame.Visible = false
 
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
