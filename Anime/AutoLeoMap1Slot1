@@ -225,21 +225,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 291 ) wait(0.5)--Chương 6
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/Anime/ShowAutoSellShini"))()
-
 
 		wait(2)
-		-----
-		local setting = playerGui.PAGES.SettingsUI
-		local autoskip = playerGui.PAGES.SettingsUI.ListFrame:WaitForChild("Settings Auto Skip Wave").Frame.BooleanButton.StatusLabel
-		------------ Tắt auto skip
-		setting.Visible = true
-		wait(2)
-		if autoskip.Text == "Off" then 
-			click(autoskip)
-		end
-		wait(2)
-		setting.Visible = false
 		tab(737,317) wait(3)---tab Star
 		tab(737,320) wait(1)---tab Star
 		tab(737,323) wait(1)---tab Star
@@ -357,7 +344,8 @@ else
 		end)
 	end)
 
-
+	wait(2)
+	playerGui.TopBar.HolderFrame.Visible = false
 	SpawmTroop(1, 660 , 192 )
 	wait(2)
 	SpawmTroop(1, 710 , 192 )
