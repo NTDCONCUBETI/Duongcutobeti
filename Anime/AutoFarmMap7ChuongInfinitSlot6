@@ -21,8 +21,8 @@ function presskey(keycode)
 end
 
 function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,false,a,1)
 end
 
 function clickToaDo(x,y, object)
@@ -167,9 +167,6 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	end
 
 	-- Thực hiện các hành động tiếp theo tại đây
-	-- Setting
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Anime/Setting.lua"))()
-	wait(5)
 	---- Tắt bảng update
 	local update = playerGui.PAGES.UpdatesUI
 	wait(2)
@@ -263,6 +260,21 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		--tab( 416 , 256 ) wait(0.5)--Chương 5
 
 		--tab( 416 , 291 ) wait(0.5)--Chương 6
+
+		--- Ẩn Chapter 1
+		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do
+			print(child.Name, "--", child.ClassName)  -- In tên và loại phần tử
+
+			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton") then
+				local chapterButton = child:FindFirstChild("ChapterButton")
+				if chapterButton:FindFirstChild("TextLabel") and chapterButton.TextLabel.Text == "Chapter 1" then
+					child.Visible = false  -- Ẩn phần tử nếu điều kiện thỏa mãn
+				end
+			end
+		end
+		wait(2)
+
+		-----Click Inffineti
 		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
 			--print(child.Name,"--", child.ClassName, child.parent)
 			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
@@ -516,7 +528,7 @@ if game.PlaceId == 17018663967 then
 		end)
 	end)
 
-	-------  The end ClosePeopeoAndChat
+	------  The end ClosePeopeoAndChat
 	------Spam 3 Jadefire Knight
 	SpawmTroop(6, 438 , 160 )
 	wait(2)
@@ -626,6 +638,7 @@ if game.PlaceId == 17018663967 then
 			ugradeUnit( 438 , 160 )
 		end
 	end
+
 	------- Update Unit
 	for i =1 ,100 do
 		wait(5)
