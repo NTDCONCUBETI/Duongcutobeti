@@ -166,6 +166,7 @@ for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
 end
 wait(1)
 
+
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
@@ -246,8 +247,8 @@ else
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-0.01, 870.9701538085938, 420) -- Vị trí của camera ở trên cao
-	local lookAtPosition = Vector3.new(-0.01, 0, 420) -- Vị trí mà camera sẽ nhìn vào
+	local cameraPosition = Vector3.new(55.49, 870.397, 444.14) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(55.49, 0, 444.14) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
@@ -342,20 +343,36 @@ else
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
+
+				end
+			end
+		end)
+	end)
 	playerGui.TopBar.HolderFrame.Visible = false
-	wait(2)
-	SpawmTroop(1, 675 , 125 )
-	wait(2)
-	SpawmTroop(1, 675 , 155 )
-	wait(2)
-	SpawmTroop(1, 675 , 185 )
-	wait(2)
-	SpawmTroop(1, 675 , 215 )
+	
 
 	wait(2)
+	SpawmTroop(1, 430 , 148 )
+	wait(2)
+	SpawmTroop(1, 470 , 148 )
+	wait(2)
+	SpawmTroop(1, 510 , 148 )
+	wait(2)
+	SpawmTroop(1, 550 , 148 )
+
+	wait(2)
+	--Open  Maxx Speed
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
+
 	wait(2)
 	----
 
@@ -364,13 +381,13 @@ else
 
 	for i =1 ,5 do
 		wait(5)
-		ugradeUnit( 675 , 125 )
+		ugradeUnit( 430 , 148 )
 		wait(5)
-		ugradeUnit( 675 , 155 )
+		ugradeUnit( 470 , 148 )
 		wait(5)
-		ugradeUnit( 675 , 185 )
+		ugradeUnit( 510 , 148 )
 		wait(5)
-		ugradeUnit( 675 , 215 )
+		ugradeUnit( 550 , 148 )
 	end
 
 
@@ -382,23 +399,23 @@ else
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
 			wait(2)
-			SpawmTroop(1, 675 , 125 )
+			SpawmTroop(1, 430 , 148 )
 			wait(2)
-			SpawmTroop(1, 675 , 155 )
+			SpawmTroop(1, 470 , 148 )
 			wait(2)
-			SpawmTroop(1, 675 , 185 )
+			SpawmTroop(1, 510 , 148 )
 			wait(2)
-			SpawmTroop(1, 675 , 215 )
+			SpawmTroop(1, 550 , 148 )
 			wait(2)
 			for i =1 ,5 do
 				wait(5)
-				ugradeUnit( 675 , 125 )
+				ugradeUnit( 430 , 148 )
 				wait(5)
-				ugradeUnit( 675 , 155 )
+				ugradeUnit( 470 , 148 )
 				wait(5)
-				ugradeUnit( 675 , 185 )
+				ugradeUnit( 510 , 148 )
 				wait(5)
-				ugradeUnit( 675 , 215 )
+				ugradeUnit( 550 , 148 )
 			end
 		end
 	end
