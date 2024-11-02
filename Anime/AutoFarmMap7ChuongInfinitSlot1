@@ -168,6 +168,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 	-- Thực hiện các hành động tiếp theo tại đây
 	---- Tắt bảng update
+
 	local update = playerGui.PAGES.UpdatesUI
 	wait(2)
 	update.Visible = false
@@ -183,6 +184,8 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(2)
 	playerGui.PAGES.QuestPage.Visible = false
 	wait(5)
+	playerGui.TopBar.HolderFrame.Visible = false
+	wait(2)
 	------- ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -242,8 +245,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 			end
 		end
 		wait(2)
-		playerGui.TopBar.HolderFrame.Visible = false
-		wait(2)
+
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 
 		tab(246,143) wait(2)--chọn bản đồ 1
@@ -273,14 +275,13 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 			end
 		end
 		wait(2)
-		
+
 		--Click Inffineti
 		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
 		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
 		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
-		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
-		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
-		
+
+
 		-----Click Inffineti 
 		--[[
 		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
@@ -308,7 +309,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				end
 			end
 		end
-		]]
+
 		wait(2)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
 		wait(1)
@@ -318,7 +319,11 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 		wait(1)
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
-
+		]]
+		tab(483,391) wait(1)---tab confim
+		tab(483,391) wait(1)---tab confim
+		tab(736, 314)  wait(0.5)---tab Star
+		tab(736, 314)  wait(0.5)---tab Star
 		wait(30)
 	end
 	local TeleportService = game:GetService("TeleportService")
