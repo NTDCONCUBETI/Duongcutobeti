@@ -20,10 +20,7 @@ function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
 end
 
-function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,false,a,1)
-end
+
 
 function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
@@ -127,6 +124,10 @@ end
 wait(1)
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+52,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+52,0,false,a,1)
+	end
 	-- Chờ cho đến khi trò chơi được tải hoàn toàn
 	repeat
 		task.wait()
@@ -245,8 +246,9 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 			end
 		end
 		wait(2)
-
-		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
+		-- Tab Only Firend
+		local FriendsOnly = playerGui.PAGES.MatchPage.Frame.FriendsOnlyHolder.FriendsOnlyButton
+		click(FriendsOnly)
 
 		tab(246,143) wait(2)--chọn bản đồ 1
 		tab(246,143) wait(2)--chọn bản đồ 1
@@ -269,7 +271,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton") then
 				local chapterButton = child:FindFirstChild("ChapterButton")
-				if chapterButton:FindFirstChild("TextLabel") and chapterButton.TextLabel.Text == "Chapter 1" then
+				if chapterButton:FindFirstChild("TextLabel") and chapterButton.TextLabel.Text == "Elemental" then
 					child.Visible = false  -- Ẩn phần tử nếu điều kiện thỏa mãn
 				end
 			end
@@ -309,7 +311,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				end
 			end
 		end
-
+		]]
 		wait(2)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
 		wait(1)
@@ -319,9 +321,11 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
 		wait(1)
 		click(playerGui.HUD.MatchDisplayHolder.MatchDisplayFrame.OptionsHolder.StartButtonHolder.ConfirmButton)
-		]]
+
 		tab(483,391) wait(1)---tab confim
 		tab(483,391) wait(1)---tab confim
+		tab(736, 314)  wait(0.5)---tab Star
+		tab(736, 314)  wait(0.5)---tab Star
 		tab(736, 314)  wait(0.5)---tab Star
 		tab(736, 314)  wait(0.5)---tab Star
 		wait(30)
@@ -334,7 +338,10 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 end
 
 if game.PlaceId == 17018663967 then
-
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+	end
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
