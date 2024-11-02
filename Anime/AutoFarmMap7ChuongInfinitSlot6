@@ -274,7 +274,15 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		end
 		wait(2)
 
-		-----Click Inffineti
+		--Click Inffineti
+		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
+		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
+		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
+		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
+		tab( 416 , 326 ) wait(0.5)-- Chương Infineti 
+
+		-----Click Inffineti 
+		--[[
 		for i, child in ipairs(playerGui.PAGES.MatchPage.Frame.Main.LeftSide.ScrollingFrame:GetChildren()) do --GetDescendants | GetChildren
 			--print(child.Name,"--", child.ClassName, child.parent)
 			if child.Name == "_ChapterTemplate" and child:FindFirstChild("ChapterButton")  then
@@ -300,6 +308,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 				end
 			end
 		end
+		]]
 
 		wait(2)
 		click(playerGui.PAGES.MatchPage.Frame.OptionsHolder._ButtonHolder.ConfirmButton)
@@ -463,7 +472,18 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
 
+				end
+			end
+		end)
+	end)
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
 
