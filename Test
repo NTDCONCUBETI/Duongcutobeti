@@ -1,67 +1,140 @@
+
+_G.cf_unit1=loadstring("return CFrame.new(" .. prlxyz..")")()
+_G.p_unit1=prlxyz
+_G.vector3_unit1=loadstring("return Vector3.new(" .. prlxyz..")")()
+
+
+
+g=[[
+function posmouse_gui(a,b,c)
+  local VirtualInputManager = game:GetService("VirtualInputManager")
+    local clickPosition = a.AbsolutePosition + (a.AbsoluteSize / 2)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, true, game, 0)
+    wait(0.1)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, false, game, 0)
+end
+
+local function updateCharacterAndCamera(cframe)
+    local Camera = game.Workspace.CurrentCamera
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, cframe.Position)
+    Camera.CFrame = CFrame.new(Camera.CFrame.Position, cframe.Position)
+end
+
+local function worldToScreenPoint(position)
+    local Camera = game.Workspace.CurrentCamera
+    local screenPoint, onScreen = Camera:WorldToViewportPoint(position)
+    return screenPoint, onScreen
+end
+
+local function posmouse_screen(position, b, c)
+    local VirtualInputManager = game:GetService("VirtualInputManager")
+    local screenPoint, onScreen = worldToScreenPoint(position)
+
+    if onScreen then
+        local clickPosition1 = screenPoint.X + b
+        local clickPosition2 = screenPoint.Y + c
+
+        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, true, game, 0)
+        wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, false, game, 0)
+    else
+        warn("The point is not on the screen.")
+    end
+end
+
+local function updateFramePosition(cframe)
+local camera = workspace.CurrentCamera
+local frame = game:GetService("Players").LocalPlayer.PlayerGui.HUD.MobileButtonHolder.PlaceButton
+    local screenPoint, onScreen = camera:WorldToViewportPoint(cframe.Position)
+    if onScreen then
+        frame.Position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y)
+    else
+        warn("The point is not on the screen.")
+    end
+end
+
+function TP1(P1)
+local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                                        
+Speed = 50                           
+local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1*CFrame.new(0,2,2.5)}) tween:Play()                    
+end
+
+function stoptp()
+                local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame }) tween:Play()                    
+    end
+]]
+
+g1="function check()"
+g2="cfmob=".._G.cf_unit1
+g3="smob=2"
+ g4="vmob=".._G.vector3_unit1
+g5="end"
+
+g6=[[
 spawn(function()
-	while task.wait() do
-		pcall(function()
-			if _G.m_b1 then
+    while task.wait() do       
+            pcall(function()
+check() -- check mob
+if c_unit < 1 then
+if (cfmob.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >3 then  
+TP1(cfmob)
+updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
+else -- distance <
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == false then
+posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
+end
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
 
-				check() -- check mob
-				if c_unit < tonumber(m_b.Text) then
-					if (cfmob.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >3 then
-						TP1(cfmob)
-						updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrameCFrame.new(0,-50,0))
-					else -- distance <
-						if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == false then
-							posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-						end
-						if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
-
-							posmouse_screen(vmob,0,0)
-							wait(0.5)
-							posmouse_screen(vmob,0,0)
-							keyboard("E")
-						end end end 
-			end end) end end) -- end code
+posmouse_screen(vmob,0,0)
+wait(0.5)
+posmouse_screen(vmob,0,0)
+keyboard("E")
+end end end 
+end) end end)
 
 tpunit=1
 spawn(function()
-	while task.wait() do
-		pcall(function()
-			if G.m_b1 then
-				check()
-				if c_unit >= tonumber(m_b.Text) then
-					check_unit=game.Workspace.Units:GetChildren()
-					vector_unit=checkunit[tpunit].HumanoidRootPart.Position
-					vector_unit_X=vector_unit.X
-					vectorunit_Y=vector_unit.Y
-					vectorunit_Z=vector_unit.Z
-					vector_unit_XYZ=(vector_unit_X..","..vector_unit_Y..","..vector_unit_Z)
-					_G.vector_unitXYZ=loadstring("return Vector3.new(" .. vector_unit_XYZ..")")()
-					_G.cframe_unitXYZ=loadstring("return CFrame.new(" .. vector_unit_XYZ..")")()
-					updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrameCFrame.new(0,-50,0))
-					TP1(check_unit[tpunit].HumanoidRootPart.CFrame)
-					wait(2)
-					posmouse_screen(G.vector_unitXYZ,0,0)
-					posmouse_gui(button,0,25)
+    while task.wait() do       
+            pcall(function()
+check()
+if c_unit >= 1 then
+check_unit=game.Workspace.Units:GetChildren()
+vector_unit_=check_unit[tpunit].HumanoidRootPart.Position
+vector_unit_X=vector_unit_.X
+vector_unit_Y=vector_unit_.Y
+vector_unit_Z=vector_unit_.Z
+vector_unit_XYZ=(vector_unit_X..","..vector_unit_Y..","..vector_unit_Z)
+_G.vector_unitXYZ=loadstring("return Vector3.new(" .. vector_unit_XYZ..")")()
+_G.cframe_unitXYZ=loadstring("return CFrame.new(" .. vector_unit_XYZ..")")()
+updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
+TP1(check_unit[tpunit].HumanoidRootPart.CFrame)
+wait(2)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
 
-					wait(0.1)
-					posmouse_screen(G.vector_unitXYZ,0,0)
-					posmouse_gui(button,0,25)
+wait(0.1)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
 
-					wait(0.1)
-					posmouse_screen(G.vector_unitXYZ,0,0)
-					posmouse_gui(button,0,25)
-					if tpunit >= tonumber(m_b.Text) then
-						tpunit=1
-					else
-						tpunit=tpunit+1
-					end
+wait(0.1)
+posmouse_screen(_G.vector_unitXYZ,0,0)
+posmouse_gui(button_,0,25)
+if tpunit >= 1 then
+tpunit=1
+else
+tpunit=tpunit+1
+end  
+ end end) end end)
+ 
+ spawn(function()
+    while task.wait() do       
+            pcall(function()
+check()
+if c_unit >= 1 then
+if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
+posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
+end end end) end end)
+]]
 
-				end end end) end end)
-spawn(function()
-	while task.wait() do
-		pcall(function()
-			check()
-			if _G.m_b1 then
-				if c_unit >= tonumber(m_b.Text) then
-					if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
-						posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-					end end end end) end end)
+g7=g..g1.."\n"..g2.."\n"..g3.."\n"..g4.."\n"..g5.."\n"..g6
+setclipboard(g7)
