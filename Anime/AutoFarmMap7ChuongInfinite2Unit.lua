@@ -555,7 +555,7 @@ if game.PlaceId == 17018663967 then
 		end)
 	end)
 	-------  The end ClosePeopeoAndChat
-	
+
 
 	------Spam 4 Aether Knight
 	wait(2)
@@ -579,7 +579,13 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
 	wait(2)
-	playerGui.HUD.UnitList.Visible = false -- Ẩn các Unit đã đặt
+	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
+	wait(0.2)
+	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
+	wait(0.2)
+	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
+	wait(0.2)
+	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
 	wait(2)
 	------- Update Aether Knight
 	tab(368 , 130)------Tab hiện bảng update
