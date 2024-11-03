@@ -555,7 +555,7 @@ if game.PlaceId == 17018663967 then
 		end)
 	end)
 	-------  The end ClosePeopeoAndChat
-	playerGui.HUD.UnitList.Visible = false -- Ẩn các Unit đã đặt
+	
 
 	------Spam 4 Aether Knight
 	wait(2)
@@ -578,6 +578,8 @@ if game.PlaceId == 17018663967 then
 	SpawmTroop(6, 438 , 250 )
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
+	wait(2)
+	playerGui.HUD.UnitList.Visible = false -- Ẩn các Unit đã đặt
 	wait(2)
 	------- Update Aether Knight
 	tab(368 , 130)------Tab hiện bảng update
