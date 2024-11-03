@@ -560,7 +560,7 @@ if game.PlaceId == 17018663967 then
 	end)
 
 	------  The end ClosePeopeoAndChat
-	
+
 	------Spam 3 Jadefire Knight
 	SpawmTroop(1, 438 , 160 )
 	wait(2)
@@ -568,7 +568,10 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	SpawmTroop(1, 438 , 220 )
 	wait(2)
-	playerGui.HUD.UnitList.Visible = false -- Ân các Unit đặt 
+	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
+	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
+	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
+	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
 	wait(2)
 	------- Update Jadefire Knight
 	for i =1 ,4 do
