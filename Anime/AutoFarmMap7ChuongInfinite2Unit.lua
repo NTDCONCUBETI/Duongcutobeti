@@ -555,7 +555,7 @@ if game.PlaceId == 17018663967 then
 		end)
 	end)
 	-------  The end ClosePeopeoAndChat
-
+	playerGui.HUD.UnitList.Visible = false -- Ẩn các Unit đã đặt
 
 	------Spam 4 Aether Knight
 	wait(2)
