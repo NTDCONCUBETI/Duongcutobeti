@@ -1,4 +1,9 @@
-
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+posprlX=math.floor(posprl.X)
+posprlZ=math.floor(posprl.Z)
+posprlY=math.floor(posprl.Y)
+prlxyz=(posprlX..","..posprlY..","..posprlZ)
 _G.cf_unit1=loadstring("return CFrame.new(" .. prlxyz..")")()
 _G.p_unit1=prlxyz
 _G.vector3_unit1=loadstring("return Vector3.new(" .. prlxyz..")")()
@@ -67,7 +72,7 @@ function stoptp()
 g1="function check()"
 g2="cfmob=".._G.cf_unit1
 g3="smob=2"
- g4="vmob=".._G.vector3_unit1
+g4="vmob=".._G.vector3_unit1
 g5="end"
 
 g6=[[
@@ -137,4 +142,9 @@ end end end) end end)
 ]]
 
 g7=g..g1.."\n"..g2.."\n"..g3.."\n"..g4.."\n"..g5.."\n"..g6
+
 setclipboard(g7)
+
+---------------------------------
+
+
