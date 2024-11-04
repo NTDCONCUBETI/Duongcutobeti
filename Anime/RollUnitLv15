@@ -12,14 +12,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcut
 wait(5)
 local player = game.Players.LocalPlayer
 local playerGui = player.PlayerGui
-local SummonPage = playerGui.PAGES.SummonPage
-local btnBuyOne = SummonPage.HolderBuySummon.One
+local btnBuyOne = playerGui.PAGES.SummonPage.HolderBuySummon.One
 local SummonBannerSelect = playerGui.PAGES.SummonBannerSelect
 local SelectStandard
 local btnUnitPage = playerGui.PAGES.UnitPage
 function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+52,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+52,0,false,a,1)
 end
 function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
@@ -43,32 +42,8 @@ function tab(x,y)
 end
 
 
-
-for i, child in ipairs(SummonBannerSelect.Options:GetChildren()) do --GetDescendants | GetChildren
-	--print(child.BannerButton.ImageButton.BannerLabel.Text, "--", child.ClassName)
-	if child.Name == "BannerButton"  then
-		if child.ImageButton.BannerLabel.Text == "Standard"  then
-			SelectStandard = child
-		end
-	end
-end
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-tab( 480 , 298.3999938964844 )
-wait(2)
-
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
-wait(4)
+wait(1)
 ---- tắt bảng update
 local update = playerGui.PAGES.UpdatesUI
 wait(2)
@@ -85,10 +60,6 @@ playerGui.PAGES.SummonPage.BannerHolder.Visible = true
 playerGui.PAGES.SummonPage.InputSinker.Visible = false
 playerGui.PAGES.SummonPage.ChancesSinker.Visible = false
 wait(2)
-playerGui.PAGES.SummonPage.Visible = true
-wait(2)
-click(SelectStandard)
-wait(4)
 for i = 1, 4 do
 	playerGui.PAGES.SummonPage.Visible = true
 	wait(2)
