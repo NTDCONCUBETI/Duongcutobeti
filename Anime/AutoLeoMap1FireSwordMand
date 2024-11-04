@@ -1,16 +1,45 @@
+-- Chờ cho đến khi trò chơi được tải hoàn toàn
+repeat
+	task.wait()
+until game:IsLoaded()
 
+-- Chờ cho đến khi PlaceId đã được gán
+repeat
+	task.wait()
+until game.PlaceId ~= nil
 
-local render3D = true
-if getgenv().config ~= nil  then
-	if getgenv().config.render3D ~= nil then
-		render3D = getgenv().config.render3D
+-- Đảm bảo LocalPlayer tồn tại
+local player = game:GetService("Players").LocalPlayer
+
+-- Sử dụng WaitForChild với giới hạn thời gian
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Kiểm tra PAGES trong vòng 60 giây
+local pages
+local timeout = 60 -- thời gian tối đa là 60 giây
+local startTime = tick() -- thời điểm bắt đầu đếm thời gian
+
+while not pages and tick() - startTime < timeout do
+	pages = playerGui:FindFirstChild("PAGES") -- Thử tìm PAGES
+	if not pages then
+		task.wait(0.5) -- đợi 0.5 giây trước khi kiểm tra lại
 	end
 end
 
+if pages then
+	print("[CLIENT] MatchPage đã được tải")
+else
+	print("[CLIENT] Không tìm thấy MatchPage trong 60 giây, bỏ qua...")
+	wait(1)
+	local TeleportService = game:GetService("TeleportService")
+	local placeId = 17017769292
+	TeleportService:Teleport(placeId, player)
+end
+
+-- Thực hiện các hành động tiếp theo tại đây
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local playerGui = player.PlayerGui
-
 local indexTouch = 1000
 function tab(x,y)
 	wait(0.1)
@@ -28,23 +57,24 @@ function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
 end
 
-function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
-end
 
 function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,false,object,1)
 	print("click",x,y)
 end
-playerGui.TopBar.HolderFrame.Visible = false
+
+------- FPSBOOTER and LowMap
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,false,a,1)
+end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
-	wait(3)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
-	wait(3)
+
+	wait(5)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 	local tableGateStory = {
 		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
@@ -53,12 +83,11 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
-
-	for i = 1,3 do
+	while true do
 		while true do
 			local indexGate = math.random(1,6)
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tableGateStory[indexGate][1], tableGateStory[indexGate][2], tableGateStory[indexGate][3])
-			wait(5)
+			wait(2)
 			if playerGui.PAGES.MatchPage.Visible == true then
 				break	
 			end
@@ -66,21 +95,9 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		wait(2)
 		tab(195.199,404) wait(2)--tích vào chỉ chơi 1 mình
 		tab(246,143) wait(2)--chọn bản đồ 1
-
-		tab( 416 , 116 ) wait(0.5)--Chương 1
-
-		tab( 416 , 151 ) wait(0.5)--Chương 2
-
-		tab( 416 , 186 ) wait(0.5)--Chương 3
-
-		tab( 416 , 221 ) wait(0.5)--Chương 4
-
-		tab( 416 , 256 ) wait(0.5)--Chương 5
-
-		tab( 416 , 291 ) wait(0.5)--Chương 6
-
-		tab( 416 , 326 ) wait(0.5)--Chương Infinite
-
+		tab(246,143) wait(2)--chọn bản đồ 1
+		tab(418,105) wait(2)--chọn chương 1
+		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 		tab(737,317) wait(3)---tab Star
 		tab(737,320) wait(1)---tab Star
@@ -89,15 +106,15 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab(700,261) wait(1)---tab Star
 		tab(700,259) wait(1)---tab Star
 
-		wait(30)
+		wait(40)
 	end
-	local TeleportService = game:GetService("TeleportService")
-	local placeId = 17017769292
-	TeleportService:Teleport(placeId, player)
-end
 
-if game.PlaceId == 17018663967 then
-	wait(3)
+
+else
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,false,a,1)
+	end
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
@@ -109,7 +126,6 @@ if game.PlaceId == 17018663967 then
 	local rotation = CFrame.Angles(0, 0, 0) -- Xoay 90 độ quanh trục Y
 	camera.CFrame = cameraCFrame * rotation
 
-
 	local player = game.Players.LocalPlayer
 	local camera = workspace.CurrentCamera
 	local playerGui = player.PlayerGui
@@ -117,7 +133,7 @@ if game.PlaceId == 17018663967 then
 	local btnReplay = frame_MatchResult.Main.Options.ReplayButton
 	local btnLobby = frame_MatchResult.Main.Options.BackToLobbyButton
 	local btnPlace = playerGui.HUD.MobileButtonHolder.PlaceButton
-
+	local wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 	local tableUnit = {}
 	for i, child in ipairs(playerGui.HUD.Toolbar.UnitBar.UnitHolder:GetChildren()) do --GetDescendants | GetChildren
 		print(child.Name, child.ClassName)
@@ -128,7 +144,7 @@ if game.PlaceId == 17018663967 then
 	end
 
 	local UnitsInWS = #game.Workspace.Units:GetChildren()
-	local btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel
+	local btnUpgrade --update code
 
 	function SpawmTroop (i,x,y)
 		while true do
@@ -154,6 +170,7 @@ if game.PlaceId == 17018663967 then
 
 
 	function ugradeUnit(x,y)
+		btnUpgrade = playerGui.HUD.LocalUnitHolder.MainFrame.HolderButtons.UpgradeButton.TextLabel --update code
 		camera.CFrame = cameraCFrame * rotation
 		wait(0.5)
 		tab( x , y )
@@ -161,263 +178,169 @@ if game.PlaceId == 17018663967 then
 		click(btnUpgrade)
 	end
 
-	game:GetService("RunService"):Set3dRenderingEnabled(render3D)
 	spawn(function()
 		pcall(function()
-			while true do wait(5)
-				if playerGui.PAGES.MatchResultPage.Visible == true  then
-
+			while true do
+				wait(5)
+				local KetQua = playerGui.PAGES.MatchResultPage.Banner.TextLabel.Text -- "Defeat!" | "Victory!"
+				if KetQua == "Defeat!"  then
 					wait(2)
 					click(btnLobby)
 					click(btnLobby)
 
-
 				end
 			end
 		end)
 	end)
-
-	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
 			while true do
-				wait(300)
-				if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
-					-- về loppy
-					local TeleportService = game:GetService("TeleportService")
-					local placeId = 17017769292
-					TeleportService:Teleport(placeId, player)
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
+
 				end
-				wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 			end
 		end)
 	end)
+	playerGui.TopBar.HolderFrame.Visible = false
+	wait(1)
+	SpawmTroop(1, 443 , 303 )
+	wait(2)
+	SpawmTroop(1, 443 , 340 )
+	wait(2)
+	SpawmTroop(1, 443 , 377 )
+	wait(2)
+	SpawmTroop(1, 443 , 414 )
+	playerGui.TopBar.HolderFrame.Visible = true
+	wait(2)
+	tab(822.4 , -18.4)-- tab x2 speed
+	wait(4)
+	tab(822.4 , -18.4)-- tab x2 speed
+	playerGui.TopBar.HolderFrame.Visible = false
+	wait(2)
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
+	wait(1)
+
+	for i =1 ,30 do
+		wait(1)
+		ugradeUnit( 443 , 303 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+	end
+
+	for i =1 ,30 do
+
+		wait(1)
+		ugradeUnit( 443 , 340 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+		if  wavenumber == "Wave 15 Completed" then
+			break
+		end
+		wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
+	end
+
+	for i =1 ,30 do
+
+		wait(1)
+		ugradeUnit( 443 , 377 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+		if  wavenumber == "Wave 15 Completed" then
+			break
+		end
+		wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
+	end
+
+	for i =1 ,30 do
+
+		wait(1)
+		ugradeUnit( 443 , 414 )
+		if btnUpgrade.Text == "Max" then
+			break
+		end
+		if  wavenumber == "Wave 15 Completed" then
+			break
+		end
+		wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
+	end
 
 
 
-	local startTime = tick()
-	spawn(function()
-		pcall(function()
-			while true do wait(30)
-				if tick() - startTime  > 60  then
-					if UnitsInWS == 0 then
-						local TeleportService = game:GetService("TeleportService")
-						local placeId = 17017769292
-						TeleportService:Teleport(placeId, player)
-					end
+	while true do wait(2)
+		if playerGui.PAGES.MatchResultPage.Visible == true  then
 
+			wait(1)
+			click(btnReplay)---tab Play Again
+			click(btnReplay)---tab Play Again
+
+			wait(2)
+			UnitsInWS = #game.Workspace.Units:GetChildren()
+
+
+			wait(2)
+			SpawmTroop(1, 443 , 303 )
+			wait(2)
+			SpawmTroop(1, 443 , 340 )
+			wait(2)
+			SpawmTroop(1, 443 , 377 )
+			wait(2)
+			SpawmTroop(1, 443 , 414 )
+
+
+
+
+			for i =1 ,30 do
+				wait(1)
+				ugradeUnit( 443 , 303 )
+				if btnUpgrade.Text == "Max" then
 					break
 				end
 			end
-		end)
-	end)
-	------Spam 2 Fire Swordman
-	wait(1)
-	SpawmTroop(2, 522 , 303 )
-	wait(1)
-	SpawmTroop(2, 522 , 340 )
-	------Spam The Beast
 
-	SpawmTroop(3, 358 , 303 )
-	wait(1)
-	SpawmTroop(3, 358 , 340 )
-	wait(1)
-	SpawmTroop(3, 358 , 377 )
-	wait(1)
-	SpawmTroop(3, 358 , 414 )
-	wait(1)
-	SpawmTroop(3, 400 , 414 )
-	wait(2)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/main/ClosePeopeoAndChat"))()
-	------Update The Beat
-	for i =1 ,20 do
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 358 , 303 )
-			if btnUpgrade.Text == "Max" then
-				break
+			for i =1 ,30 do
+				wait(1)
+				ugradeUnit( 443 , 340 )
+				if btnUpgrade.Text == "Max" then
+					break
+				end
+				if  wavenumber == "Wave 15 Completed" then
+					break
+				end
+				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
-		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 358 , 340 )
-			if btnUpgrade.Text == "Max" then
-				break
+
+			for i =1 ,30 do
+				wait(1)
+				ugradeUnit( 443 , 377 )
+				if btnUpgrade.Text == "Max" then
+					break
+				end
+				if  wavenumber == "Wave 15 Completed" then
+					break
+				end
+				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
-		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 358 , 377 )
-			if btnUpgrade.Text == "Max" then
-				break
+
+			for i =1 ,30 do
+				wait(1)
+				ugradeUnit( 443 , 414 )
+				if btnUpgrade.Text == "Max" then
+					break
+				end
+				if  wavenumber == "Wave 15 Completed" then
+					break
+				end
+				wavenumber = playerGui.HUD.WaveNumberNotification.WaveNumberText.Text
 			end
+			wait(5)
 		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 358 , 414 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 400 , 414 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end
-	end
-
-
-
-	------Spam 4 Fire Swormand
-	wait(1)
-	SpawmTroop(2, 522 , 377 )
-	wait(1)
-	SpawmTroop(2, 564 , 303 )
-	wait(1)
-	SpawmTroop(2, 564 , 340 )
-	wait(1)
-	SpawmTroop(2, 564 , 377 )
-
-
-	---------Update Fire Swormand
-
-	for i =1 ,10 do
-		wait(5)
-		ugradeUnit( 522 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,10 do
-		wait(5)
-		ugradeUnit( 522 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,10 do
-		wait(5)
-		ugradeUnit( 564 , 303 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,10 do
-		wait(5)
-		ugradeUnit( 564 , 340 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,5 do
-		wait(5)
-		ugradeUnit( 564 , 377 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-	for i =1 ,5 do
-		wait(5)
-		ugradeUnit( 334 , 130 )
-		if btnUpgrade.Text == "Max" then
-			break
-		end
-	end
-
-
-	----Spam bộ đội
-	wait(1)
-	SpawmTroop(4, 440 , 303 )
-	wait(1)
-	SpawmTroop(4, 440 , 340 )
-	wait(1)
-	SpawmTroop(4, 440 , 377 )
-	wait(1)
-	SpawmTroop(4, 400 , 340 )
-	wait(1)
-	SpawmTroop(4, 400 , 303 )
-
-	------update bộ đội
-	for i =1 ,20 do
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 440 , 303 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end	
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 440 , 340 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end	
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 440 , 377 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 400 , 340 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end
-		for i =1 ,2 do
-			wait(2)
-			ugradeUnit( 400 , 303 )
-			if btnUpgrade.Text == "Max" then
-				break
-			end
-		end
-	end	
-	-------Spamm chống afk
-	for i =1 ,20 do
-		wait(5)
-		ugradeUnit( 358 , 303 )
-		wait(5)
-		ugradeUnit( 358 , 340 )
-		wait(5)
-		ugradeUnit( 358 , 377 )
-		wait(5)
-		ugradeUnit( 358 , 414 )
-		wait(5)
-		ugradeUnit( 400 , 414 )
-		wait(5)
-		ugradeUnit( 400 , 303 )
-		wait(5)
-		ugradeUnit( 440 , 303 )
-		wait(5)
-		ugradeUnit( 440 , 340 )
-		wait(5)
-		ugradeUnit( 440 , 377 )
-		wait(5)
-		ugradeUnit( 400 , 340 )
-
-		wait(5)
-		ugradeUnit( 522 , 303 )
-		wait(5)
-		ugradeUnit( 522 , 340 )
-		wait(5)
-		ugradeUnit( 522 , 377 )
-		wait(5)
-		ugradeUnit( 564 , 303 )
-		wait(5)
-		ugradeUnit( 564 , 340 )
-		wait(5)
-		ugradeUnit( 564 , 377 )
-
 	end
 
 end
