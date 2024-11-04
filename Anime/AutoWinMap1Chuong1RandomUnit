@@ -57,10 +57,6 @@ function presskey(keycode)
 	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
 end
 
-function click(a)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,true,a,1)
-	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,false,a,1)
-end
 
 function clickToaDo(x,y, object)
 	game:GetService("VirtualInputManager"):SendMouseButtonEvent(x,y,0,true,object,1)
@@ -69,11 +65,11 @@ function clickToaDo(x,y, object)
 end
 
 ------- FPSBOOTER and LowMap
-
-
-
-
-------- The end FPSBOOTER and LowMap
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+function click(a)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,true,a,1)
+	game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+52,0,false,a,1)
+end
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
@@ -115,7 +111,10 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
 
 else
-
+	function click(a)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+62,0,false,a,1)
+	end
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
@@ -193,7 +192,18 @@ else
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
 
+				end
+			end
+		end)
+	end)
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
 	SpawmTroop(1, 443 , 303 )
