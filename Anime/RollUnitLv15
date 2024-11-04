@@ -40,7 +40,20 @@ function tab(x,y)
 	wait(0.1)
 	indexTouch = indexTouch + 1
 end
-
+tab( 475.2 , 296.7 )  
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
+tab( 475.2 , 296.7 ) 
+wait(2)
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-222.59307861328125, 15.165340423583984, -467.1138916015625)
 wait(1)
