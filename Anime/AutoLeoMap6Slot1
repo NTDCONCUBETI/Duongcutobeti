@@ -72,101 +72,8 @@ end
 
 
 ------- FPSBOOTER and LowMap
-setfpscap(15)
-UserSettings():GetService("UserGameSettings").MasterVolume = 0
-game:GetService("Lighting"):ClearAllChildren()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
-local decalsyeeted = true
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-sethiddenproperty(l,"Technology",2)
-sethiddenproperty(t,"Decoration",false)
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 1
-l.GlobalShadows = 0
-l.FogEnd = 9e9
-l.Brightness = 0
-settings().Rendering.QualityLevel = "Level01"
-for i, v in pairs(w:GetDescendants()) do
-	if v:IsA("BasePart") and not v:IsA("MeshPart") then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
-		v.Transparency = 1
-	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-		v.Lifetime = NumberRange.new(0)
-	elseif v:IsA("Explosion") then
-		v.BlastPressure = 1
-		v.BlastRadius = 1
-	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-		v.Enabled = false
-	elseif v:IsA("MeshPart") and decalsyeeted then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-		v.TextureID = 0
-	elseif v:IsA("SpecialMesh") and decalsyeeted  then
-		v.TextureId=0
-	elseif v:IsA("ShirtGraphic") and decalsyeeted then
-		v.Graphic=1
-	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-		v[v.ClassName.."Template"]=1
-	end
-end
-for i = 1,#l:GetChildren() do
-	e=l:GetChildren()[i]
-	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-		e.Enabled = false
-	end
-end
-w.DescendantAdded:Connect(function(v)
-	pcall(function()
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.Transparency = 1
-		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1 
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") and decalsyeeted then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 0
-			v.Transparency = 1
-		elseif v:IsA("SpecialMesh") and decalsyeeted then
-			v.TextureId=0
-		elseif v:IsA("ShirtGraphic") and decalsyeeted then
-			v.ShirtGraphic=1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-			v[v.ClassName.."Template"]=1
-		end
-	end)
-end)
-for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-
-for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-wait(1)
-
-------- The end FPSBOOTER and LowMap
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 
@@ -180,11 +87,11 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)
 	wait(3)
 	local tableGateStory = {
-		{-182.67401123046875, 11.280637741088867, -281.1835632324219},
+		{-182.67401123046875, 11.280637717088867, -281.1835632324219},
 		{-216.95391845703125, 11.280628204345703, -317.7225646972656},
 		{-211.7581329345703, 11.280643463134766, -252.09901428222656},
 		{-244.71670532226562, 11.280635833740234, -289.96307373046875},
-		{-239.5617218017578, 11.280637741088867, -224.29452514648438},
+		{-239.5617218017578, 11.280637717088867, -224.29452514648438},
 		{-275.15618896484375, 11.280635833740234, -259.5493469238281}
 	}
 	function Hide4World ()
@@ -223,6 +130,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 221 ) wait(0.5)--Chương 4
 		tab( 416 , 256 ) wait(0.5)--Chương 5
 		tab( 416 , 291 ) wait(0.5)--Chương 6
+		tab( 416 , 326 ) wait(0.5)--Chương Elemental
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 
@@ -247,8 +155,8 @@ else
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-136.20913696289062, 30, 194.2509002685547) -- Vị trí của camera ở trên cao
-	local lookAtPosition = Vector3.new(-136.20913696289062, 0, 194.2509002685547) -- Vị trí mà camera sẽ nhìn vào
+	local cameraPosition = Vector3.new(-156, 50, 260) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(-156, 0, 260) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
@@ -311,7 +219,7 @@ else
 	spawn(function()
 		pcall(function()
 			while true do
-				wait(120)
+				wait(600)
 				if playerGui.PAGES.MatchResultPage.Visible == false  then
 
 					if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
@@ -343,18 +251,32 @@ else
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
+
+				end
+			end
+		end)
+	end)
+
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(2)
-	SpawmTroop(1, 355 , 226 )
+	SpawmTroop(1, 530 , 290 )
 	wait(2)
-	SpawmTroop(1, 395 , 226 )
+	SpawmTroop(1, 530 , 250 )
 	wait(2)
-	SpawmTroop(1, 435 , 226 )
+	SpawmTroop(1, 530 , 210 )
 	wait(2)
-	SpawmTroop(1, 475 , 226 )
+	SpawmTroop(1, 550 , 170 )
 
 	wait(2)
+	--Open  Maxx Speed
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
@@ -364,15 +286,15 @@ else
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 
-	for i =1 ,5 do
+	for i =1 ,7 do
 		wait(5)
-		ugradeUnit( 355 , 226 )
+		ugradeUnit( 530 , 290 )
 		wait(5)
-		ugradeUnit( 395 , 226 )
+		ugradeUnit( 530 , 250 )
 		wait(5)
-		ugradeUnit( 435 , 226 )
+		ugradeUnit( 530 , 210 )
 		wait(5)
-		ugradeUnit( 475 , 226 )
+		ugradeUnit( 550 , 170 )
 	end
 
 
@@ -385,23 +307,23 @@ else
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
 			wait(2)
-			SpawmTroop(1, 355 , 226 )
+			SpawmTroop(1, 530 , 290 )
 			wait(2)
-			SpawmTroop(1, 395 , 226 )
+			SpawmTroop(1, 530 , 250 )
 			wait(2)
-			SpawmTroop(1, 435 , 226 )
+			SpawmTroop(1, 530 , 210 )
 			wait(2)
-			SpawmTroop(1, 475 , 226 )
+			SpawmTroop(1, 550 , 170 )
 			wait(2)
-			for i =1 ,5 do
+			for i =1 ,7 do
 				wait(5)
-				ugradeUnit( 355 , 226 )
+				ugradeUnit( 530 , 290 )
 				wait(5)
-				ugradeUnit( 395 , 226 )
+				ugradeUnit( 530 , 250 )
 				wait(5)
-				ugradeUnit( 435 , 226 )
+				ugradeUnit( 530 , 210 )
 				wait(5)
-				ugradeUnit( 475 , 226 )
+				ugradeUnit( 550 , 170 )
 			end
 		end
 	end
