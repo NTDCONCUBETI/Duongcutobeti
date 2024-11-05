@@ -1,151 +1,222 @@
-wait(1)
-posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-posprl=game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-posprlX=math.floor(posprl.X)
-posprlZ=math.floor(posprl.Z)
-posprlY=math.floor(posprl.Y)
-prlxyz=(posprlX..","..posprlY..","..posprlZ)
-_G.cf_unit1=loadstring("return CFrame.new(" .. prlxyz..")")()
-_G.p_unit1=prlxyz
-_G.vector3_unit1=loadstring("return Vector3.new(" .. prlxyz..")")()
 
-
-
-g=[[
-function posmouse_gui(a,b,c)
-  local VirtualInputManager = game:GetService("VirtualInputManager")
-    local clickPosition = a.AbsolutePosition + (a.AbsoluteSize / 2)
-    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, true, game, 0)
-    wait(0.1)
-    VirtualInputManager:SendMouseButtonEvent(clickPosition.X+b, clickPosition.Y+c, 0, false, game, 0)
+if not game:IsLoaded() then
+	game.Loaded:Wait()
 end
-
-local function updateCharacterAndCamera(cframe)
-    local Camera = game.Workspace.CurrentCamera
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, cframe.Position)
-    Camera.CFrame = CFrame.new(Camera.CFrame.Position, cframe.Position)
-end
-
-local function worldToScreenPoint(position)
-    local Camera = game.Workspace.CurrentCamera
-    local screenPoint, onScreen = Camera:WorldToViewportPoint(position)
-    return screenPoint, onScreen
-end
-
-local function posmouse_screen(position, b, c)
-    local VirtualInputManager = game:GetService("VirtualInputManager")
-    local screenPoint, onScreen = worldToScreenPoint(position)
-
-    if onScreen then
-        local clickPosition1 = screenPoint.X + b
-        local clickPosition2 = screenPoint.Y + c
-
-        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, true, game, 0)
-        wait(0.1)
-        VirtualInputManager:SendMouseButtonEvent(clickPosition1, clickPosition2, 0, false, game, 0)
-    else
-        warn("The point is not on the screen.")
-    end
-end
-
-local function updateFramePosition(cframe)
-local camera = workspace.CurrentCamera
-local frame = game:GetService("Players").LocalPlayer.PlayerGui.HUD.MobileButtonHolder.PlaceButton
-    local screenPoint, onScreen = camera:WorldToViewportPoint(cframe.Position)
-    if onScreen then
-        frame.Position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y)
-    else
-        warn("The point is not on the screen.")
-    end
-end
-
-function TP1(P1)
-local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                                        
-Speed = 50                           
-local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1*CFrame.new(0,2,2.5)}) tween:Play()                    
-end
-
-function stoptp()
-                local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0), {CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame }) tween:Play()                    
-    end
-]]
-
-g1="function check()"
-g2="cfmob=".._G.cf_unit1
-g3="smob=2"
-g4="vmob=".._G.vector3_unit1
-g5="end"
-
-g6=[[
-spawn(function()
-    while task.wait() do       
-            pcall(function()
-check() -- check mob
-if c_unit < 1 then
-if (cfmob.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >3 then  
-TP1(cfmob)
-updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
-else -- distance <
-if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == false then
-posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-end
-if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
-
-posmouse_screen(vmob,0,0)
-wait(0.5)
-posmouse_screen(vmob,0,0)
-keyboard("E")
-end end end 
-end) end end)
-
-tpunit=1
-spawn(function()
-    while task.wait() do       
-            pcall(function()
-check()
-if c_unit >= 1 then
-check_unit=game.Workspace.Units:GetChildren()
-vector_unit_=check_unit[tpunit].HumanoidRootPart.Position
-vector_unit_X=vector_unit_.X
-vector_unit_Y=vector_unit_.Y
-vector_unit_Z=vector_unit_.Z
-vector_unit_XYZ=(vector_unit_X..","..vector_unit_Y..","..vector_unit_Z)
-_G.vector_unitXYZ=loadstring("return Vector3.new(" .. vector_unit_XYZ..")")()
-_G.cframe_unitXYZ=loadstring("return CFrame.new(" .. vector_unit_XYZ..")")()
-updateCharacterAndCamera(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-50,0))
-TP1(check_unit[tpunit].HumanoidRootPart.CFrame)
-wait(2)
-posmouse_screen(_G.vector_unitXYZ,0,0)
-posmouse_gui(button_,0,25)
-
-wait(0.1)
-posmouse_screen(_G.vector_unitXYZ,0,0)
-posmouse_gui(button_,0,25)
-
-wait(0.1)
-posmouse_screen(_G.vector_unitXYZ,0,0)
-posmouse_gui(button_,0,25)
-if tpunit >= 1 then
-tpunit=1
+SettingsAutofarm = {}
+if _G.AutofarmSettings then
+	SettingsAutofarm = _G.AutofarmSettings
 else
-tpunit=tpunit+1
-end  
- end end) end end)
- 
- spawn(function()
-    while task.wait() do       
-            pcall(function()
-check()
-if c_unit >= 1 then
-if toolbar:GetChildren()[smob].Button.SelectedFrame.Visible == true then
-posmouse_gui(toolbar:GetChildren()[smob].Button ,0,20)
-end end end) end end)
-]]
+	_G.AutofarmSettings = {}
+	SettingsAutofarm = {AntiAfk = false, DelayFarm = 2}
+end
+if _G.AutoFarmMM2IsLoaded then return end
+_G.AutoFarmMM2IsLoaded = true
+Player = game.Players.LocalPlayer
+Players = game.Players
+CoreGui = game.CoreGui
+GuiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/elfandtears/GuiLibrary/main/source.lua"))()
+RunService = game:GetService("RunService")
+CoinCollectedEvent = game.ReplicatedStorage.Remotes.Gameplay.CoinCollected
+RoundStartEvent = game.ReplicatedStorage.Remotes.Gameplay.RoundStart
+RoundEndEvent = game.ReplicatedStorage.Remotes.Gameplay.RoundEndFade
+RandomNameFunction = GuiLibrary.RandomName
+AutofarmStarted = true
+function StartAutofarmButtonC()
+	if not AutofarmStarted then
+		AutofarmStarted = true
+		AutofarmIN = true
+		StartAutofarmButton.TextColor3 = Color3.new(0, 1, 0)
+	else
+		AutofarmStarted = false
+		StartAutofarmButton.TextColor3 = Color3.new(1, 1, 1)
+	end
+end
 
-g7=g..g1.."\n"..g2.."\n"..g3.."\n"..g4.."\n"..g5.."\n"..g6
+--Disable your 3D rendering for improve your fps
+D3RenderingDisabled = false
+function Disabl3dRender()
+	if not D3RenderingDisabled then
+		D3RenderingDisabled = true
+		RunService:Set3dRenderingEnabled(false)
+		Disable3DRenderingButton.TextColor3 = Color3.new(0, 1, 0)
+	else
+		D3RenderingDisabled = false
+		RunService:Set3dRenderingEnabled(true)
+		Disable3DRenderingButton.TextColor3 = Color3.new(1, 1, 1)
+	end
+end
 
-setclipboard(g7)
+ImproveFPSenabled = true
+function ImproveFPSButtonC()
+	if not ImproveFPSenabled then
+		ImproveFPSenabled = true
+		for _, player in pairs(Players:GetChildren()) do
+			if player.Character then
+				for _, part in pairs(player.Character:GetChildren()) do
+					if part:IsA("Accessory") then
+						part:Destroy()
+					end
+					if part.Name == "Radio" then
+						part:Destroy()
+					end
+				end
+			end
+		end
+		ImproveFPSButton.TextColor3 = Color3.new(0, 1, 0)
+	else
+		ImproveFPSenabled = false
+		ImproveFPSButton.TextColor3 = Color3.new(1, 1, 1)
+	end
+end
 
----------------------------------
+CoinTypes = {"Candy", "Coin"}
+CurrentCoinType = "Candy"
+PositionOfCoinType = 1
+function ChangeBeachballType(cointype)
+	if cointype then
+		if table.find(CoinTypes, cointype) then
+			CurrentCoinType = cointype
+			PositionOfCoinType = table.find(CoinTypes, cointype)
+			CoinTypeButton.Text = "Farm coin type: "..cointype
+			return
+		end
+		return
+	end
+	if PositionOfCoinType ~= table.maxn(CoinTypes) then
+		PositionOfCoinType += 1
+		CoinTypeButton.Text = "Farm coin type: "..CoinTypes[PositionOfCoinType]
+		CurrentCoinType = CoinTypes[PositionOfCoinType]
+	else
+		PositionOfCoinType = 1
+		CoinTypeButton.Text = "Farm coin type: "..CoinTypes[PositionOfCoinType]
+		CurrentCoinType = CoinTypes[PositionOfCoinType]
+	end
+end
+AutofarmDelay = 2
+ResetWhenFullBag = true
+AutofarmIN = false
+bringpose = CFrame.new(math.random(-5, 5), -100, math.random(-5, 5)) --nvm
+safepart = Instance.new("Part")
+safepart.Anchored = true
+safepart.Massless = true
+safepart.Transparency = 1
+safepart.Size = Vector3.new(2048, 0.5, 2048)
+safepart.CFrame = bringpose * CFrame.new(0, -0.9, 0)
+safepart.Parent = workspace
 
+function returncoincontaier()
+	for _, v in workspace:GetChildren() do
+		if v:FindFirstChild("CoinContainer") and v:IsA("Model") then
+			return v:FindFirstChild("CoinContainer")
+		end
+	end
+	return false
+end
 
+CoinCollectedEvent.OnClientEvent:Connect(function(cointype, current, max)
+	AutofarmIN = true
+	if cointype == CurrentCoinType and tonumber(current) == tonumber(max) then
+		AutofarmIN = false
+		if ResetWhenFullBag then
+			Player.Character.Humanoid.Health = 0
+		end
+	end
+end)
+
+function PcallTP(Position)
+	if Player.Character then
+		if Player.Character:FindFirstChild("HumanoidRootPart") then
+			Player.Character.HumanoidRootPart.CFrame = Position
+		end
+	end
+end
+
+--yes yes autofarm using loops, but its still nice
+spawn(function()
+	while true do
+		if AutofarmStarted and AutofarmIN and Player.Character and returncoincontaier() then
+			PcallTP(bringpose)
+			for _, v in pairs(returncoincontaier():GetChildren()) do
+				if v:GetAttribute("CoinID") == CurrentCoinType and v:FindFirstChild("TouchInterest") then
+					for i = 1,7 do
+						PcallTP(v.CFrame)
+						task.wait(0.03)
+					end
+					break
+				end
+			end
+			PcallTP(bringpose)
+		end
+		task.wait(AutofarmDelay)
+	end
+end)
+
+RoundStartEvent.OnClientEvent:Connect(function()
+	if AutofarmStarted then Player.Character.HumanoidRootPart.CFrame = bringpose end
+	AutofarmIN = true
+end)
+
+RoundEndEvent.OnClientEvent:Connect(function()
+	AutofarmIN = false
+end)
+
+--Improve fps connections:
+for _, player1 in pairs(Players:GetChildren()) do
+	player1.CharacterAdded:Connect(function(char)
+		task.wait(0.5) --just because
+		if ImproveFPSenabled then
+			for _, part in pairs(char:GetChildren()) do
+				if part:IsA("Accessory") then
+					part:Destroy()
+				end
+				if part.Name == "Radio" then
+					part:Destroy()
+				end
+			end
+		end
+	end)
+end
+
+Players.PlayerAdded:Connect(function(player1)
+	player1.CharacterAdded:Connect(function(char)
+		task.wait(0.5) --just because
+		if ImproveFPSenabled then
+			for _, part in pairs(char:GetChildren()) do
+				if part:IsA("Accessory") then
+					part:Destroy()
+				end
+				if part.Name == "Radio" then
+					part:Destroy()
+				end
+			end
+		end
+	end)
+end)
+
+--Buttons connections
+ImproveFPSButton.MouseButton1Click:Connect(ImproveFPSButtonC)
+StartAutofarmButton.MouseButton1Click:Connect(StartAutofarmButtonC)
+Disable3DRenderingButton.MouseButton1Click:Connect(Disabl3dRender)
+CoinTypeButton.MouseButton1Click:Connect(ChangeBeachballType)
+CloseMainFrameButton.MouseButton1Click:Connect(CloseGuiCheck)
+OpenAutofarmGui.MouseButton1Click:Connect(CloseGuiCheck)
+
+--Configs
+for Configname, Configvalue in pairs(SettingsAutofarm) do
+	if Configname == "AntiAfk" and Configvalue == true then
+		AntiAFKButton()
+	elseif Configname == "DelayFarm" and tonumber(Configvalue) and tonumber(Configvalue) < 8 then
+		AutofarmDelay = tonumber(Configvalue)
+	elseif Configname == "StartAutofarm" and Configvalue == true then
+		StartAutofarmButtonC()
+	elseif Configname == "ImproveFPS" and Configvalue == true then
+		ImproveFPSButtonC()
+	elseif Configname == "Disable3DRendering" and Configvalue == true then
+		Disabl3dRender()
+	elseif Configname == "CoinType" and Configvalue then
+		if Configvalue == "Beachball" then Configvalue = "Candy" end
+		ChangeBeachballType(Configvalue)
+	elseif Configname == "ResetWhenFullBag" and Configvalue == true then
+		ResetWhenFullBag = true
+	end
+end
