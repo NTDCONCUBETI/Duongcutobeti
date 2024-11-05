@@ -71,101 +71,7 @@ end
 
 
 ------- FPSBOOTER and LowMap
-setfpscap(15)
-UserSettings():GetService("UserGameSettings").MasterVolume = 0
-game:GetService("Lighting"):ClearAllChildren()
-
-local decalsyeeted = true
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-sethiddenproperty(l,"Technology",2)
-sethiddenproperty(t,"Decoration",false)
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 1
-l.GlobalShadows = 0
-l.FogEnd = 9e9
-l.Brightness = 0
-settings().Rendering.QualityLevel = "Level01"
-for i, v in pairs(w:GetDescendants()) do
-	if v:IsA("BasePart") and not v:IsA("MeshPart") then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
-		v.Transparency = 1
-	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-		v.Lifetime = NumberRange.new(0)
-	elseif v:IsA("Explosion") then
-		v.BlastPressure = 1
-		v.BlastRadius = 1
-	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-		v.Enabled = false
-	elseif v:IsA("MeshPart") and decalsyeeted then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-		v.TextureID = 0
-	elseif v:IsA("SpecialMesh") and decalsyeeted  then
-		v.TextureId=0
-	elseif v:IsA("ShirtGraphic") and decalsyeeted then
-		v.Graphic=1
-	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-		v[v.ClassName.."Template"]=1
-	end
-end
-for i = 1,#l:GetChildren() do
-	e=l:GetChildren()[i]
-	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-		e.Enabled = false
-	end
-end
-w.DescendantAdded:Connect(function(v)
-	pcall(function()
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.Transparency = 1
-		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1 
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") and decalsyeeted then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 0
-			v.Transparency = 1
-		elseif v:IsA("SpecialMesh") and decalsyeeted then
-			v.TextureId=0
-		elseif v:IsA("ShirtGraphic") and decalsyeeted then
-			v.ShirtGraphic=1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-			v[v.ClassName.."Template"]=1
-		end
-	end)
-end)
-for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-
-for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-wait(1)
-
-------- The end FPSBOOTER and LowMap
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
@@ -223,6 +129,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 		tab( 416 , 221 ) wait(0.5)--Chương 4
 		tab( 416 , 256 ) wait(0.5)--Chương 5
 		tab( 416 , 291 ) wait(0.5)--Chương 6
+		tab( 416 , 326 ) wait(0.5)--Chương Elemental
 		tab(483,391) wait(2)---tab confim
 		tab(483,391) wait(2)---tab confim
 
@@ -250,8 +157,8 @@ else
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(540, 380, -1280) -- Vị trí của camera ở trên cao
-	local lookAtPosition = Vector3.new(540, 0, -1280) -- Vị trí mà camera sẽ nhìn vào
+	local cameraPosition = Vector3.new(600, 380, -1300) -- Vị trí của camera ở trên cao
+	local lookAtPosition = Vector3.new(600, 0, -1300) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
 	-- Xoay camera 90 độ quanh trục Y (trục đứng)
@@ -310,11 +217,12 @@ else
 		wait(1)
 		click(btnUpgrade)
 	end
+
 	local wave = playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text
 	spawn(function()
 		pcall(function()
 			while true do
-				wait(120)
+				wait(600)
 				if playerGui.PAGES.MatchResultPage.Visible == false  then
 
 					if wave == playerGui.WaveTopBar.Wave.WaveFrame.TextLabel.Text then
@@ -346,19 +254,34 @@ else
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.TopBar.HolderFrame.Visible == true  then
+					wait(2)
+					playerGui.TopBar.HolderFrame.Visible = false
+
+				end
+			end
+		end)
+	end)
 
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(2)
-	SpawmTroop(1, 345 , 264 )
+	SpawmTroop(1, 467 , 117 )
 	wait(2)
-	SpawmTroop(1, 345 , 300 )
+	SpawmTroop(1, 508 , 151 )
 	wait(2)
-	SpawmTroop(1, 292 , 263 )
+	SpawmTroop(1, 568 , 172 )
 	wait(2)
-	SpawmTroop(1, 251 , 277 )
+	SpawmTroop(1, 608 , 186 )
 
 	wait(2)
 
+	--Open  Maxx Speed
+	playerGui.TopBar.HolderFrame.Visible = true
+	wait(2)
 	tab(822.4 , -18.4)-- tab x2 speed
 	wait(2)
 	----
@@ -366,15 +289,15 @@ else
 
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/main/ClosePeopeoAndChat"))()
 
-	for i =1 ,5 do
+	for i =1 ,10 do
 		wait(5)
-		ugradeUnit( 345 , 264 )
+		ugradeUnit( 467 , 117 )
 		wait(5)
 		ugradeUnit( 273 , 109 )
 		wait(5)
-		ugradeUnit( 292 , 263 )
+		ugradeUnit( 568 , 172 )
 		wait(5)
-		ugradeUnit( 251 , 277 )
+		ugradeUnit( 608 , 186 )
 	end
 
 
@@ -387,23 +310,23 @@ else
 			wait(2)
 			UnitsInWS = #game.Workspace.Units:GetChildren()
 			wait(2)
-			SpawmTroop(1, 345 , 264 )
+			SpawmTroop(1, 467 , 117 )
 			wait(2)
-			SpawmTroop(1, 345 , 300 )
+			SpawmTroop(1, 508 , 151 )
 			wait(2)
-			SpawmTroop(1, 292 , 263 )
+			SpawmTroop(1, 568 , 172 )
 			wait(2)
-			SpawmTroop(1, 251 , 277 )
+			SpawmTroop(1, 608 , 186 )
 			wait(2)
-			for i =1 ,5 do
+			for i =1 ,10 do
 				wait(5)
-				ugradeUnit( 345 , 264 )
+				ugradeUnit( 467 , 117 )
 				wait(5)
 				ugradeUnit( 273 , 109 )
 				wait(5)
-				ugradeUnit( 292 , 263 )
+				ugradeUnit( 568 , 172 )
 				wait(5)
-				ugradeUnit( 251 , 277 )
+				ugradeUnit( 608 , 186 )
 			end
 		end
 	end
