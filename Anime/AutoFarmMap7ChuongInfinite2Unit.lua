@@ -30,99 +30,7 @@ end
 
 ------- FPSBOOTER and LowMap
 
-setfpscap(15)
-UserSettings():GetService("UserGameSettings").MasterVolume = 0
-game:GetService("Lighting"):ClearAllChildren()
-
-local decalsyeeted = true
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-sethiddenproperty(l,"Technology",2)
-sethiddenproperty(t,"Decoration",false)
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 1
-l.GlobalShadows = 0
-l.FogEnd = 9e9
-l.Brightness = 0
-settings().Rendering.QualityLevel = "Level01"
-for i, v in pairs(w:GetDescendants()) do
-	if v:IsA("BasePart") and not v:IsA("MeshPart") then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-	elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
-		v.Transparency = 1
-	elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-		v.Lifetime = NumberRange.new(0)
-	elseif v:IsA("Explosion") then
-		v.BlastPressure = 1
-		v.BlastRadius = 1
-	elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-		v.Enabled = false
-	elseif v:IsA("MeshPart") and decalsyeeted then
-		v.Material = "Plastic"
-		v.Transparency = 1
-		v.Reflectance = 0
-		v.TextureID = 0
-	elseif v:IsA("SpecialMesh") and decalsyeeted  then
-		v.TextureId=0
-	elseif v:IsA("ShirtGraphic") and decalsyeeted then
-		v.Graphic=1
-	elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-		v[v.ClassName.."Template"]=1
-	end
-end
-for i = 1,#l:GetChildren() do
-	e=l:GetChildren()[i]
-	if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-		e.Enabled = false
-	end
-end
-w.DescendantAdded:Connect(function(v)
-	pcall(function()
-		if v:IsA("BasePart") and not v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.Transparency = 1
-		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1 
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") and decalsyeeted then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 0
-			v.Transparency = 1
-		elseif v:IsA("SpecialMesh") and decalsyeeted then
-			v.TextureId=0
-		elseif v:IsA("ShirtGraphic") and decalsyeeted then
-			v.ShirtGraphic=1
-		elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
-			v[v.ClassName.."Template"]=1
-		end
-	end)
-end)
-for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-
-for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
-	if v:IsA("ScreenGui") then
-		v.Enabled = false
-	end
-end
-wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 ------- The end FPSBOOTER and LowMap
@@ -189,6 +97,12 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	wait(2)
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
+	local args = {
+		[1] = "Auto Skip Wave",
+		[2] = false
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+	wait(2)
 	------- The end  ClosePeopeoAndChat
 
 	for i, v in pairs(game:GetService("StarterGui"):GetChildren()) do
@@ -350,7 +264,7 @@ if game.PlaceId == 17018663967 then
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-185.77420043945312, 80.580604553222656, -157.67546081542969) -- Vị trí của camera ở trên cao
+	local cameraPosition = Vector3.new(-185.77420043945312, 100.580604553222656, -157.67546081542969) -- Vị trí của camera ở trên cao
 	local lookAtPosition = Vector3.new(-185.77420043945312, 0, -157.67546081542969) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
@@ -492,13 +406,33 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
+	spawn(function()
+		pcall(function()
+			while true do
+				wait(30) 				
+				if playerGui.PAGES.EmoteWheelUI.Visible == true  then
+					wait(2)
+					playerGui.PAGES.EmoteWheelUI.Visible = false
+
+				end
+			end
+		end)
+	end)
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
+
+	local args = {
+		[1] = "Auto Skip Wave",
+		[2] = true
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
+	wait(2)
+	playerGui.TopBar.HolderFrame.Visible = false
 
 
 	------Spam 1 Aether Knight
 	wait(2)
-	SpawmTroop(5, 368 , 130 )
+	SpawmTroop(5, 730 , 410 )
 
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
@@ -559,23 +493,24 @@ if game.PlaceId == 17018663967 then
 
 	------Spam 4 Aether Knight
 	wait(2)
-	SpawmTroop(5, 368 , 160 )
+	SpawmTroop(5, 540 , 410 )
 	wait(2)
-	SpawmTroop(5, 368 , 190 )
+	SpawmTroop(5, 570 , 410 )
 	wait(2)
-	SpawmTroop(5, 368 , 220 )
+	SpawmTroop(5, 600 , 410 )
 	wait(2)
-	SpawmTroop(5, 368 , 250 )
+	SpawmTroop(5, 630 , 410 )
 	wait(2)
 
 	------Spam 4 Jadefire Knight
-	SpawmTroop(6, 438 , 160 )
+
+	SpawmTroop(6, 388 , 160 )
 	wait(2)
-	SpawmTroop(6, 438 , 190 )
+	SpawmTroop(6, 388 , 190 )
 	wait(2)
-	SpawmTroop(6, 438 , 220 )
+	SpawmTroop(6, 388 , 220 )
 	wait(2)
-	SpawmTroop(6, 438 , 250 )
+	SpawmTroop(6, 388 , 250 )
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
 	wait(2)
@@ -588,7 +523,7 @@ if game.PlaceId == 17018663967 then
 	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
 	wait(2)
 	------- Update Aether Knight
-	tab(368 , 130)------Tab hiện bảng update
+	tab(730 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -596,10 +531,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 368 , 130 )
+			ugradeUnit( 730 , 410 )
 		end
 	end
-	tab(368 , 160)------Tab hiện bảng update
+	tab(540 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -607,10 +542,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 368 , 160 )
+			ugradeUnit( 540 , 410 )
 		end
 	end
-	tab(368 , 190)------Tab hiện bảng update
+	tab(570 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -618,10 +553,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 368 , 190 )
+			ugradeUnit( 570 , 410 )
 		end
 	end
-	tab(368 , 220)------Tab hiện bảng update
+	tab(600 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -629,10 +564,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 368 , 220 )
+			ugradeUnit( 600 , 410 )
 		end
 	end
-	tab(368 , 250)------Tab hiện bảng update
+	tab(630 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -640,23 +575,23 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 368 , 250 )
+			ugradeUnit( 630 , 410 )
 		end
 	end
 
 	------- Update Jadefire Knight
 	for i =1 ,4 do
 		wait(7)
-		ugradeUnit( 438 , 160 )
+		ugradeUnit( 388 , 160 )
 		wait(7)
-		ugradeUnit( 438 , 190 )
+		ugradeUnit( 388 , 190 )
 		wait(7)
-		ugradeUnit( 438 , 220 )
+		ugradeUnit( 388 , 220 )
 		wait(7)
-		ugradeUnit( 438 , 250 )
+		ugradeUnit( 388 , 250 )
 	end
 	wait(1)
-	tab(438 , 160)------Tab hiện bảng update
+	tab(388 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -664,10 +599,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 438 , 160 )
+			ugradeUnit( 388 , 160 )
 		end
 	end
-	tab(438 , 190)------Tab hiện bảng update
+	tab(388 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -675,10 +610,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 438 , 190 )
+			ugradeUnit( 388 , 190 )
 		end
 	end
-	tab(438 , 220)------Tab hiện bảng update
+	tab(388 , 220)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -686,10 +621,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 438 , 220 )
+			ugradeUnit( 388 , 220 )
 		end
 	end
-	tab(438 , 250)------Tab hiện bảng update
+	tab(388 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -697,11 +632,11 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 438 , 250 )
+			ugradeUnit( 388 , 250 )
 		end
 	end
 
-	tab(438 , 250)------Tab hiện bảng update
+	tab(388 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -709,10 +644,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 438 , 250 )
+			ugradeUnit( 388 , 250 )
 		end
 	end
-	tab(438 , 220)------Tab hiện bảng update
+	tab(388 , 220)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -720,10 +655,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 438 , 220 )
+			ugradeUnit( 388 , 220 )
 		end
 	end
-	tab(438 , 160)------Tab hiện bảng update
+	tab(388 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -731,10 +666,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 438 , 160 )
+			ugradeUnit( 388 , 160 )
 		end
 	end
-	tab(438 , 190)------Tab hiện bảng update
+	tab(388 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -742,11 +677,11 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 438 , 190 )
+			ugradeUnit( 388 , 190 )
 		end
 	end
 	------- Update Aether Knight
-	tab(368 , 130)------Tab hiện bảng update
+	tab(730 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -754,10 +689,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 368 , 130 )
+			ugradeUnit( 730 , 410 )
 		end
 	end
-	tab(368 , 160)------Tab hiện bảng update
+	tab(540 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -765,10 +700,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 368 , 160 )
+			ugradeUnit( 540 , 410 )
 		end
 	end
-	tab(368 , 190)------Tab hiện bảng update
+	tab(570 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -776,10 +711,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 368 , 190 )
+			ugradeUnit( 570 , 410 )
 		end
 	end
-	tab(438 , 160)------Tab hiện bảng update
+	tab(600 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -787,10 +722,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 368 , 220 )
+			ugradeUnit( 600 , 410 )
 		end
 	end
-	tab(368 , 250)------Tab hiện bảng update
+	tab(630 , 410)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -798,7 +733,7 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 368 , 250 )
+			ugradeUnit( 630 , 410 )
 		end
 	end
 
@@ -806,24 +741,24 @@ if game.PlaceId == 17018663967 then
 
 	for i =1 ,50 do
 		wait(5)
-		ugradeUnit( 438 , 160 )
+		ugradeUnit( 388 , 160 )
 		wait(5)
-		ugradeUnit( 438 , 190 )
+		ugradeUnit( 388 , 190 )
 		wait(5)
-		ugradeUnit( 438 , 220 )
+		ugradeUnit( 388 , 220 )
 		wait(5)
-		ugradeUnit( 438 , 250 )
+		ugradeUnit( 388 , 250 )
 
 		wait(5)
-		ugradeUnit( 368 , 130 )
+		ugradeUnit( 730 , 410 )
 		wait(5)
-		ugradeUnit( 368 , 160 )
+		ugradeUnit( 540 , 410 )
 		wait(5)
-		ugradeUnit( 368 , 190 )
+		ugradeUnit( 570 , 410 )
 		wait(5)
-		ugradeUnit( 368 , 220 )
+		ugradeUnit( 600 , 410 )
 		wait(5)
-		ugradeUnit( 368 , 250 )
+		ugradeUnit( 630 , 410 )
 	end
 
 end
