@@ -124,6 +124,6 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
-wait(2)
+wait(10)
 
 game:GetService("Players").LocalPlayer.PlayerGui.LobbyGUI.UpdateLogs.Visible = false
