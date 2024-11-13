@@ -124,11 +124,8 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
-wait(10)
+wait(5)
 
 game:GetService("Players").LocalPlayer.PlayerGui.LobbyGUI.UpdateLogs.Visible = false
 
-for _, player in pairs(game.Players:GetPlayers()) do
-	player:Kick("Game is shutting down.")
-end
-game:Shutdown()
+
