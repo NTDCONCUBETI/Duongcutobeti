@@ -127,3 +127,8 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiComm
 wait(10)
 
 game:GetService("Players").LocalPlayer.PlayerGui.LobbyGUI.UpdateLogs.Visible = false
+
+for _, player in pairs(game.Players:GetPlayers()) do
+	player:Kick("Game is shutting down.")
+end
+game:Shutdown()
