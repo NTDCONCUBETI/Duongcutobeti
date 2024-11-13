@@ -1,0 +1,125 @@
+--1
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "10MVisits"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--2
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "XMEGACODE"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--3
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "MegaZillas"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--4
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "MegaMozKing"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--5
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "MegaRlxSage"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--6
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "100kLikes"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--7
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "5mVisits"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--8
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "50KLikes"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--9
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "200kMembers"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--10
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "2MVisits"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--11
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "1MVisits"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--12
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "SubtoRlxsage"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--13
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "SubtoZillas"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
+
+--14
+local args = {
+	[1] = "Codes/RedeemCode",
+	[2] = "MozKing"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UiCommunication"):FireServer(unpack(args))
+wait(2)
