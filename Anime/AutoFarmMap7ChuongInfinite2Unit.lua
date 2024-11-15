@@ -328,19 +328,18 @@ if game.PlaceId == 17018663967 then
 	function ugradeUnit(x,y)
 		camera.CFrame = cameraCFrame * rotation
 		wait(0.5)
-		wait(1)
 		tab( x , y )
-		wait(1)
+		wait(0.5)
 		click(btnUpgrade, 20)
-		wait(1)
+		wait(0.5)
 		tab( x , y )
-		wait(1)
+		wait(0.5)
 		click(btnUpgrade, 40)
 		wait(1)
 		tab( x , y )
-		wait(1)
+		wait(0.5)
 		click(btnUpgrade, 60)
-		wait(1)
+		wait(0.5)
 	end
 
 	spawn(function()
@@ -519,7 +518,7 @@ if game.PlaceId == 17018663967 then
 	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
 	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
 	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
-	wait(6)
+	wait(5)
 	------- Update Aether Knight
 	tab(368 , 130)------Tab hiện bảng update
 	wait(1)
