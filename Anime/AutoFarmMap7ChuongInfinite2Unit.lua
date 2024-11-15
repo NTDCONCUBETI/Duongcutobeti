@@ -327,19 +327,19 @@ if game.PlaceId == 17018663967 then
 
 	function ugradeUnit(x,y)
 		camera.CFrame = cameraCFrame * rotation
-		wait(0.5)
+		wait(0.3)
 		tab( x , y )
-		wait(0.5)
+		wait(0.3)
 		click(btnUpgrade, 20)
-		wait(0.5)
+		wait(0.3)
 		tab( x , y )
-		wait(0.5)
+		wait(0.3)
 		click(btnUpgrade, 40)
-		wait(0.5)
+		wait(0.3)
 		tab( x , y )
-		wait(0.5)
+		wait(0.3)
 		click(btnUpgrade, 60)
-		wait(0.5)
+		wait(0.3)
 	end
 
 	spawn(function()
