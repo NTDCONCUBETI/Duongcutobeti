@@ -306,7 +306,7 @@ if game.PlaceId == 17018663967 then
 		while true do
 			camera.CFrame = cameraCFrame * rotation
 			wait(1)
-			click( tableUnit[i] )
+			click(tableUnit[i], 60)
 			wait(1)
 			tab( x , y )
 			wait(1)
