@@ -30,7 +30,7 @@ end
 
 ------- FPSBOOTER and LowMap
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 ------- The end FPSBOOTER and LowMap
@@ -96,6 +96,7 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	playerGui.PAGES.QuestPage.Visible = false
 	wait(2)
 	playerGui.TopBar.HolderFrame.Visible = false
+	wait(1)
 	wait(1)
 	local args = {
 		[1] = "Auto Skip Wave",
@@ -257,14 +258,14 @@ end
 
 if game.PlaceId == 17018663967 then
 	function click(a)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,true,a,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+40,0,false,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,false,a,1)
 	end
 
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
 	camera.CameraType = Enum.CameraType.Scriptable
 	-- Đặt vị trí và hướng của camera
-	local cameraPosition = Vector3.new(-185.77420043945312, 100.580604553222656, -157.67546081542969) -- Vị trí của camera ở trên cao
+	local cameraPosition = Vector3.new(-185.77420043945312, 80.580604553222656, -157.67546081542969) -- Vị trí của camera ở trên cao
 	local lookAtPosition = Vector3.new(-185.77420043945312, 0, -157.67546081542969) -- Vị trí mà camera sẽ nhìn vào
 	-- Tạo CFrame từ vị trí và hướng nhìn
 	local cameraCFrame = CFrame.new(cameraPosition, lookAtPosition)
@@ -406,33 +407,19 @@ if game.PlaceId == 17018663967 then
 			end
 		end)
 	end)
-	spawn(function()
-		pcall(function()
-			while true do
-				wait(30) 				
-				if playerGui.PAGES.EmoteWheelUI.Visible == true  then
-					wait(2)
-					playerGui.PAGES.EmoteWheelUI.Visible = false
-
-				end
-			end
-		end)
-	end)
 	playerGui.TopBar.HolderFrame.Visible = false
 	wait(1)
-
+	wait(1)
 	local args = {
 		[1] = "Auto Skip Wave",
 		[2] = true
 	}
 	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ChangeSetting"):FireServer(unpack(args))
 	wait(2)
-	playerGui.TopBar.HolderFrame.Visible = false
-
 
 	------Spam 1 Aether Knight
 	wait(2)
-	SpawmTroop(5, 730 , 410 )
+	SpawmTroop(5, 368 , 130 )
 
 	playerGui.TopBar.HolderFrame.Visible = true
 	wait(2)
@@ -493,37 +480,28 @@ if game.PlaceId == 17018663967 then
 
 	------Spam 4 Aether Knight
 	wait(2)
-	SpawmTroop(5, 540 , 410 )
+	SpawmTroop(5, 368 , 160 )
 	wait(2)
-	SpawmTroop(5, 570 , 410 )
+	SpawmTroop(5, 368 , 190 )
 	wait(2)
-	SpawmTroop(5, 600 , 410 )
+	SpawmTroop(5, 368 , 220 )
 	wait(2)
-	SpawmTroop(5, 630 , 410 )
+	SpawmTroop(5, 368 , 250 )
 	wait(2)
 
 	------Spam 4 Jadefire Knight
-
-	SpawmTroop(6, 388 , 160 )
+	SpawmTroop(6, 438 , 160 )
 	wait(2)
-	SpawmTroop(6, 388 , 190 )
+	SpawmTroop(6, 438 , 190 )
 	wait(2)
-	SpawmTroop(6, 388 , 220 )
+	SpawmTroop(6, 438 , 220 )
 	wait(2)
-	SpawmTroop(6, 388 , 250 )
+	SpawmTroop(6, 438 , 250 )
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
 	wait(2)
-	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
-	wait(0.2)
-	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
-	wait(0.2)
-	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
-	wait(0.2)
-	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
-	wait(2)
 	------- Update Aether Knight
-	tab(730 , 410)------Tab hiện bảng update
+	tab(368 , 130)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -531,10 +509,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 730 , 410 )
+			ugradeUnit( 368 , 130 )
 		end
 	end
-	tab(540 , 410)------Tab hiện bảng update
+	tab(368 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -542,10 +520,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 540 , 410 )
+			ugradeUnit( 368 , 160 )
 		end
 	end
-	tab(570 , 410)------Tab hiện bảng update
+	tab(368 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -553,10 +531,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 570 , 410 )
+			ugradeUnit( 368 , 190 )
 		end
 	end
-	tab(600 , 410)------Tab hiện bảng update
+	tab(368 , 220)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -564,10 +542,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 600 , 410 )
+			ugradeUnit( 368 , 220 )
 		end
 	end
-	tab(630 , 410)------Tab hiện bảng update
+	tab(368 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -575,23 +553,28 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "3,000" then
 			break
 		else
-			ugradeUnit( 630 , 410 )
+			ugradeUnit( 368 , 250 )
 		end
 	end
 
 	------- Update Jadefire Knight
 	for i =1 ,4 do
 		wait(7)
-		ugradeUnit( 388 , 160 )
+		ugradeUnit( 438 , 160 )
 		wait(7)
-		ugradeUnit( 388 , 190 )
+		ugradeUnit( 438 , 190 )
 		wait(7)
-		ugradeUnit( 388 , 220 )
+		ugradeUnit( 438 , 220 )
 		wait(7)
-		ugradeUnit( 388 , 250 )
+		ugradeUnit( 438 , 250 )
 	end
 	wait(1)
-	tab(388 , 160)------Tab hiện bảng update
+	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
+	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
+	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
+	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
+	wait(2)
+	tab(438 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -599,10 +582,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 388 , 160 )
+			ugradeUnit( 438 , 160 )
 		end
 	end
-	tab(388 , 190)------Tab hiện bảng update
+	tab(438 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -610,10 +593,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 388 , 190 )
+			ugradeUnit( 438 , 190 )
 		end
 	end
-	tab(388 , 220)------Tab hiện bảng update
+	tab(438 , 220)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -621,10 +604,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 388 , 220 )
+			ugradeUnit( 438 , 220 )
 		end
 	end
-	tab(388 , 250)------Tab hiện bảng update
+	tab(438 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -632,11 +615,11 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "5,500" then
 			break
 		else
-			ugradeUnit( 388 , 250 )
+			ugradeUnit( 438 , 250 )
 		end
 	end
 
-	tab(388 , 250)------Tab hiện bảng update
+	tab(438 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -644,10 +627,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 388 , 250 )
+			ugradeUnit( 438 , 250 )
 		end
 	end
-	tab(388 , 220)------Tab hiện bảng update
+	tab(438 , 220)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -655,10 +638,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 388 , 220 )
+			ugradeUnit( 438 , 220 )
 		end
 	end
-	tab(388 , 160)------Tab hiện bảng update
+	tab(438 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -666,10 +649,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 388 , 160 )
+			ugradeUnit( 438 , 160 )
 		end
 	end
-	tab(388 , 190)------Tab hiện bảng update
+	tab(438 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
 		wait(4)
@@ -677,11 +660,11 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "9,500" then
 			break
 		else
-			ugradeUnit( 388 , 190 )
+			ugradeUnit( 438 , 190 )
 		end
 	end
 	------- Update Aether Knight
-	tab(730 , 410)------Tab hiện bảng update
+	tab(368 , 130)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -689,10 +672,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 730 , 410 )
+			ugradeUnit( 368 , 130 )
 		end
 	end
-	tab(540 , 410)------Tab hiện bảng update
+	tab(368 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -700,10 +683,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 540 , 410 )
+			ugradeUnit( 368 , 160 )
 		end
 	end
-	tab(570 , 410)------Tab hiện bảng update
+	tab(368 , 190)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -711,10 +694,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 570 , 410 )
+			ugradeUnit( 368 , 190 )
 		end
 	end
-	tab(600 , 410)------Tab hiện bảng update
+	tab(438 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -722,10 +705,10 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 600 , 410 )
+			ugradeUnit( 368 , 220 )
 		end
 	end
-	tab(630 , 410)------Tab hiện bảng update
+	tab(368 , 250)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,25 do
 		wait(4)
@@ -733,7 +716,7 @@ if game.PlaceId == 17018663967 then
 		if btnUpgrade.Text == "6,000" then
 			break
 		else
-			ugradeUnit( 630 , 410 )
+			ugradeUnit( 368 , 250 )
 		end
 	end
 
@@ -741,24 +724,24 @@ if game.PlaceId == 17018663967 then
 
 	for i =1 ,50 do
 		wait(5)
-		ugradeUnit( 388 , 160 )
+		ugradeUnit( 438 , 160 )
 		wait(5)
-		ugradeUnit( 388 , 190 )
+		ugradeUnit( 438 , 190 )
 		wait(5)
-		ugradeUnit( 388 , 220 )
+		ugradeUnit( 438 , 220 )
 		wait(5)
-		ugradeUnit( 388 , 250 )
+		ugradeUnit( 438 , 250 )
 
 		wait(5)
-		ugradeUnit( 730 , 410 )
+		ugradeUnit( 368 , 130 )
 		wait(5)
-		ugradeUnit( 540 , 410 )
+		ugradeUnit( 368 , 160 )
 		wait(5)
-		ugradeUnit( 570 , 410 )
+		ugradeUnit( 368 , 190 )
 		wait(5)
-		ugradeUnit( 600 , 410 )
+		ugradeUnit( 368 , 220 )
 		wait(5)
-		ugradeUnit( 630 , 410 )
+		ugradeUnit( 368 , 250 )
 	end
 
 end
