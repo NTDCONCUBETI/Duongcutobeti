@@ -31,7 +31,7 @@ end
 
 ------- FPSBOOTER and LowMap
 
---loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 ------- The end FPSBOOTER and LowMap
