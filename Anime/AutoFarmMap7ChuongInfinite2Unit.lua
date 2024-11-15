@@ -31,7 +31,7 @@ end
 
 ------- FPSBOOTER and LowMap
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 ------- The end FPSBOOTER and LowMap
@@ -259,9 +259,12 @@ if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 end
 
 if game.PlaceId == 17018663967 then
-	function click(a)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+60,0,true,a,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+60,0,false,a,1)
+	local function click(a, offsetY)
+		local x = a.AbsolutePosition.X + a.AbsoluteSize.X / 2
+		local y = a.AbsolutePosition.Y + a.AbsoluteSize.Y / 2 + (offsetY or 0)
+		-- Gửi sự kiện nhấn chuột
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(x, y, 0, true, a, 1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(x, y, 0, false, a, 1)
 	end
 
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
@@ -325,9 +328,19 @@ if game.PlaceId == 17018663967 then
 	function ugradeUnit(x,y)
 		camera.CFrame = cameraCFrame * rotation
 		wait(0.5)
+		wait(1)
 		tab( x , y )
 		wait(1)
-		click(btnUpgrade)
+		click(btnUpgrade, 20)
+		wait(1)
+		tab( x , y )
+		wait(1)
+		click(btnUpgrade, 40)
+		wait(1)
+		tab( x , y )
+		wait(1)
+		click(btnUpgrade, 60)
+		wait(1)
 	end
 
 	spawn(function()
@@ -506,7 +519,7 @@ if game.PlaceId == 17018663967 then
 	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
 	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
 	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
-	wait(2)
+	wait(60)
 	------- Update Aether Knight
 	tab(368 , 130)------Tab hiện bảng update
 	wait(1)
