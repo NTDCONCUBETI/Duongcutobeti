@@ -30,7 +30,7 @@ end
 
 ------- FPSBOOTER and LowMap
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 
 ------- The end FPSBOOTER and LowMap
@@ -258,8 +258,8 @@ end
 
 if game.PlaceId == 17018663967 then
 	function click(a)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,true,a,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+62,0,false,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+55,0,true,a,1)
+		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+a.AbsoluteSize.Y/2+55,0,false,a,1)
 	end
 
 	-- Thiết lập camera thành Scriptable để điều khiển bằng script
