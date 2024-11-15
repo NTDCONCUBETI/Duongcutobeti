@@ -500,6 +500,11 @@ if game.PlaceId == 17018663967 then
 	wait(2)
 	--game:GetService("RunService"):Set3dRenderingEnabled(false)--- Tắt 3D
 	wait(2)
+	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
+	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
+	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
+	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
+	wait(2)
 	------- Update Aether Knight
 	tab(368 , 130)------Tab hiện bảng update
 	wait(1)
@@ -569,11 +574,7 @@ if game.PlaceId == 17018663967 then
 		ugradeUnit( 438 , 250 )
 	end
 	wait(1)
-	playerGui.HUD.UnitList.Visible = false--- Ân các Unit đã đặt xuống
-	playerGui.HUD.LocalUnitHolder.MainFrame.HolderTop.Visible = false ---- Ẩn bảng chỉ số update Unit
-	playerGui.HUD.LocalUnitHolder.MainFrame.ViewportFrame.Visible = false -- Ẩn hình ảnh Unit của bảng Update
-	playerGui.HUD.Toolbar.Visible = false --- Ẩn hàng ngang 6 ô Unit 
-	wait(2)
+
 	tab(438 , 160)------Tab hiện bảng update
 	wait(1)
 	for i =1 ,15 do
