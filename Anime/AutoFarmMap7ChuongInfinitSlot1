@@ -29,7 +29,7 @@ function clickToaDo(x,y, object)
 end
 
 ------- FPSBOOTER and LowMap
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 ------- The end FPSBOOTER and LowMap
 if game.PlaceId == 17017769292 or game.PlaceId == 17764698696 then
 	function click(a)
