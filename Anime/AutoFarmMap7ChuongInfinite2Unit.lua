@@ -335,7 +335,7 @@ if game.PlaceId == 17018663967 then
 		tab( x , y )
 		wait(0.5)
 		click(btnUpgrade, 40)
-		wait(1)
+		wait(0.5)
 		tab( x , y )
 		wait(0.5)
 		click(btnUpgrade, 60)
