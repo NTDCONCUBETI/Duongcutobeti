@@ -1,0 +1,28 @@
+spawn(function()
+	pcall(function()
+		while true do wait(180)
+			spawn(function()
+				local args = {
+					[1] = "SellBubble"
+				}
+
+				game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+			end)
+			
+		end
+	end)
+end)
+
+spawn(function()
+	pcall(function()
+		while true do wait(0)
+			spawn(function()
+				local args = {
+					[1] = "BlowBubble"
+				}
+
+				game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+			end)
+		end
+	end)
+end)
