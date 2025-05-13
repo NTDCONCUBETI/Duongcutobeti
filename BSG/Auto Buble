@@ -15,7 +15,7 @@ spawn(function()
 end)
 spawn(function()
 	pcall(function()
-		while true do wait(60)
+		while true do wait(30)
 			spawn(function()
 				local args = {
 					[1] = "SellBubble"
