@@ -27,3 +27,17 @@ spawn(function()
 		end
 	end)
 end)
+spawn(function()
+	pcall(function()
+		while true do wait(60)
+			spawn(function()
+				local args = {
+					[1] = "ClaimAllPlaytime"
+				}
+
+				game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+			end)
+
+		end
+	end)
+end)
