@@ -646,12 +646,4 @@ for _, v in ipairs(Buttons) do
 	TweenService:Create(v.stroke, tween_info3, {Transparency = 0}):Play()
 end
 
-spawn(function()
-	while task.wait(0.3) do
-		local saved_key = (isfile(Config.File) and readfile(Config.File)) or (script_key ~= "" and script_key) or nil
 
-		if saved_key and ValidateKey(saved_key) then
-			return 
-		end
-	end
-end)
