@@ -1,4 +1,4 @@
-local plotId = "{bca70163-c939-44db-8414-c48fa0b338f2}"
+local plotId = "{220a13f8-b68d-4cb1-ad2f-56773912cc30}}"
 local rf = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction")
 spawn(function()
 	pcall(function()
