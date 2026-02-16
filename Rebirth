@@ -1,3 +1,8 @@
+local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
+
+
+
+
 spawn(function()
 	pcall(function()
 		while true do wait(0.1)
