@@ -1,15 +1,11 @@
 local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
-spawn(function()
-	pcall(function()
-		while true do wait(0.1)
-			spawn(function()
-				local args = {
-					[1] = 10
-				}
-				rf:InvokeServer(unpack(args))
-				game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth"):InvokeServer()
+local rebirth = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth")
 
-			end)
-		end
-	end)
-end)
+while true do
+    local args = {
+        [1] = 10
+    }
+    rf:InvokeServer(unpack(args))
+    rebirth:InvokeServer()
+    wait(0.1) -- delay để tránh spam quá nhanh
+end
