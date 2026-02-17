@@ -7,28 +7,26 @@ while player:GetAttribute("Rebirth") == nil do
     task.wait()
 end
 
-while true do
-    local rb = player:GetAttribute("Rebirth")
-    if rb and rb >= 24 then
-        break
+local rb = player:GetAttribute("Rebirth")
+
+-- chỉ chạy nếu rebirth < 24
+if rb < 24 then
+    -- nâng rebirth lên 24
+    while player:GetAttribute("Rebirth") < 24 do
+        local args = { [1] = 10 }
+        rf:InvokeServer(unpack(args))
+        rebirth:InvokeServer()
+        task.wait(0.1)
     end
 
-    local args = {
-        [1] = 10
-    }
-    rf:InvokeServer(unpack(args))
-    rebirth:InvokeServer()
-    task.wait(0.1) -- delay để tránh spam quá nhanh
+    -- sau khi đạt 24 rebirth thì mua thêm 400 speed
+    for i = 1, 40 do
+        local args = { [1] = 10 }
+        rf:InvokeServer(unpack(args))
+        task.wait(0.1) -- chỉ mua speed, không rebirth nữa
+    end
+
+    print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
+else
+    print("Bạn đã có rebirth >= 24")
 end
-
-for i = 1, 40 do -- Mua 400 Speed để chạy nhanh.
-    local args = {
-        [1] = 10
-    }
-    rf:InvokeServer(unpack(args))
-    rebirth:InvokeServer()
-    task.wait(0.1) -- delay để tránh spam quá nhanh
-end
-
-
-print("Rebirth done")
