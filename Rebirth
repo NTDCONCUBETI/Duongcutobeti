@@ -1,20 +1,24 @@
 local player = game.Players.LocalPlayer
 local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
 local rebirth = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth")
-wait(300)
+
+-- chờ attribute Rebirth xuất hiện
+while player:GetAttribute("Rebirth") == nil do
+    task.wait()
+end
 
 while true do
     local rb = player:GetAttribute("Rebirth")
-	if rb >= 24 then
-		break
-	end
-	local args = {
-		[1] = 10
-	}
-	rf:InvokeServer(unpack(args))
-	rebirth:InvokeServer()
-	wait(0.1) -- delay để tránh spam quá nhanh
+    if rb and rb >= 24 then
+        break
+    end
+
+    local args = {
+        [1] = 10
+    }
+    rf:InvokeServer(unpack(args))
+    rebirth:InvokeServer()
+    task.wait(0.1) -- delay để tránh spam quá nhanh
 end
+
 print("Rebirth done")
-
-
