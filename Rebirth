@@ -21,4 +21,14 @@ while true do
     task.wait(0.1) -- delay để tránh spam quá nhanh
 end
 
+for i = 1, 40 do -- Mua 400 Speed để chạy nhanh.
+    local args = {
+        [1] = 10
+    }
+    rf:InvokeServer(unpack(args))
+    rebirth:InvokeServer()
+    task.wait(0.1) -- delay để tránh spam quá nhanh
+end
+
+
 print("Rebirth done")
