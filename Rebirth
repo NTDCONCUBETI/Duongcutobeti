@@ -1,7 +1,10 @@
 local player = game.Players.LocalPlayer
 local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
 local rebirth = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth")
-
+while not player do 
+	task.wait() 
+	player = game.Players.LocalPlayer 
+end
 -- chờ attribute Rebirth xuất hiện
 while player:GetAttribute("Rebirth") == nil do
     task.wait()
