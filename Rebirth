@@ -1,4 +1,98 @@
+wait(30)
 local player = game.Players.LocalPlayer
+while not player do 
+	task.wait() 
+	player = game.Players.LocalPlayer 
+end
+local bases = workspace:WaitForChild("Bases")
+local plotId = ""
+
+
+while player:GetAttribute("Rebirth") == nil do
+	task.wait()
+end
+
+--########################################## Lấy địa chỉ nhà
+for _, plot in ipairs(bases:GetChildren()) do
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.Name then
+						plotId = plot.Name
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
+--########################################## Chờ plot và slot load xong
+if plotId == "" then
+	warn("Không tìm thấy plot cho player: " .. player.Name)
+	return
+end
+
+-- chờ plot xuất hiện
+local plot = bases:WaitForChild(plotId)
+
+-- chờ slot xuất hiện
+local slot1 = plot:WaitForChild("slot 1 brainrot")
+
+--########################################## Đếm số lượng con
+
+if slot1 then
+	local children = slot1:GetChildren()
+	print("Số lượng phần tử con:", #children)
+	if #children == 1 then --Chưa có pet tại Slot 1
+		--##########################################Cầm Pet lên
+		local lvSlot2 = tonumber(string.sub(player.PlayerGui.BackpackGui.Backpack.Hotbar["2"].LevelLabel.Text,4)) 
+		local lvSlot3 = tonumber(string.sub(player.PlayerGui.BackpackGui.Backpack.Hotbar["3"].LevelLabel.Text,4)) 
+
+		function presskey(keycode)
+			game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+		end
+		presskey(49) -- Số 1
+		wait(0.5)
+		if lvSlot2 > lvSlot3 then
+			presskey(50) -- Số 2
+		else
+			presskey(51) -- Số 3
+		end
+		wait(0.5)
+		--//////////
+		--##########################################Đặt Pet
+		local args = {
+			[1] = "Place Brainrot",
+			[2] = plotId,
+			[3] = "1"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction"):InvokeServer(unpack(args))
+		--/////////
+	end
+end
+--/////////
+--##########################################Thu tiền
+local rf = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction")
+	for i = 1, 5 do
+		local args = {
+			[1] = "Collect Money",
+			[2] = plotId,
+			[3] = "1"
+		}
+		rf:InvokeServer(unpack(args))
+		wait(2)
+	end
+--///////	
+
+--############################################Rebirth + Speed
+--local player = game.Players.LocalPlayer
 local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
 local rebirth = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth")
 while not player do 
@@ -7,29 +101,29 @@ while not player do
 end
 -- chờ attribute Rebirth xuất hiện
 while player:GetAttribute("Rebirth") == nil do
-    task.wait()
+	task.wait()
 end
 
 local rb = player:GetAttribute("Rebirth")
 
 -- chỉ chạy nếu rebirth < 24
 if rb < 24 then
-    -- nâng rebirth lên 24
-    while player:GetAttribute("Rebirth") < 24 do
-        local args = { [1] = 10 }
-        rf:InvokeServer(unpack(args))
-        rebirth:InvokeServer()
-        task.wait(0.1)
-    end
+	-- nâng rebirth lên 24
+	while player:GetAttribute("Rebirth") < 24 do
+		local args = { [1] = 10 }
+		rf:InvokeServer(unpack(args))
+		rebirth:InvokeServer()
+		task.wait(0.1)
+	end
 
-    -- sau khi đạt 24 rebirth thì mua thêm 400 speed
-    for i = 1, 40 do
-        local args = { [1] = 10 }
-        rf:InvokeServer(unpack(args))
-        task.wait(0.1) -- chỉ mua speed, không rebirth nữa
-    end
+	-- sau khi đạt 24 rebirth thì mua thêm 400 speed
+	for i = 1, 40 do
+		local args = { [1] = 10 }
+		rf:InvokeServer(unpack(args))
+		task.wait(0.1) -- chỉ mua speed, không rebirth nữa
+	end
 
-    print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
+	print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
 else
-    print("Bạn đã có rebirth >= 24")
+	print("Bạn đã có rebirth >= 24")
 end
