@@ -1,5 +1,5 @@
 wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
+
 local player = game.Players.LocalPlayer
 while not player do 
 	task.wait() 
@@ -77,3 +77,4 @@ notifyLabel.Font = Enum.Font.SourceSansBold
 notifyLabel.TextSize = 20
 notifyLabel.Text = "🐾 Đã thu pet"
 notifyLabel.Parent = screenGui
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
