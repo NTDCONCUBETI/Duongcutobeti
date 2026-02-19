@@ -131,8 +131,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/ref
 local VirtualUser = game:GetService("VirtualUser")
 spawn(function()
 	pcall(function()
-		while true do 
-			wait(300) -- chờ 5 phút
+		while true do wait(300)
 			VirtualUser:CaptureController()
 			VirtualUser:ClickButton2(Vector2.new())
 		end
