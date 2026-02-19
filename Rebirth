@@ -1,4 +1,5 @@
 wait(30)
+
 local player = game.Players.LocalPlayer
 while not player do 
 	task.wait() 
@@ -10,6 +11,14 @@ local plotId = ""
 
 while player:GetAttribute("Rebirth") == nil do
 	task.wait()
+end
+--Hàm chống AFK
+local VirtualUser = game:GetService("VirtualUser")
+
+while true do
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
+	task.wait(300) -- 5 phút
 end
 --########################################## Lấy địa chỉ nhà
 for _, plot in ipairs(bases:GetChildren()) do
@@ -126,3 +135,5 @@ if rb < 24 then
 else
 	print("Bạn đã có rebirth >= 24")
 end
+
+
