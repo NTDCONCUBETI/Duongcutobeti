@@ -1,5 +1,5 @@
 wait(30)
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
 local player = game.Players.LocalPlayer
 while not player do 
 	task.wait() 
