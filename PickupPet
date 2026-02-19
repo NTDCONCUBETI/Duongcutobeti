@@ -1,0 +1,78 @@
+wait(10)
+local player = game.Players.LocalPlayer
+while not player do 
+	task.wait() 
+	player = game.Players.LocalPlayer 
+end
+local bases = workspace:WaitForChild("Bases")
+local plotId = ""
+
+
+while player:GetAttribute("Rebirth") == nil do
+	task.wait()
+end
+
+--########################################## Lấy địa chỉ nhà
+for _, plot in ipairs(bases:GetChildren()) do
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.Name then
+						plotId = plot.Name
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
+--########################################## Chờ plot và slot load xong
+if plotId == "" then
+	warn("Không tìm thấy plot cho player: " .. player.Name)
+	return
+end
+
+-- chờ plot xuất hiện
+local plot = bases:WaitForChild(plotId)
+
+-- chờ slot xuất hiện
+local slot1 = plot:WaitForChild("slot 1 brainrot")
+
+
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+local args = {
+	[1] = "Pick Up Brainrot",
+	[2] = plotId,
+	[3] = "1"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction"):InvokeServer(unpack(args))
+
+wait(1)
+presskey(49) -- Số 1
+wait(0.5)
+presskey(49) -- Số 1
+--## Hiển thị bảng thông báo "Đã thu pet"
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "PetNotifyGui"
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+-- Tạo TextLabel
+local notifyLabel = Instance.new("TextLabel")
+notifyLabel.Size = UDim2.new(0, 120, 0, 30) -- rộng 120px, cao 30px
+notifyLabel.Position = UDim2.new(1, -130, 1, -40) -- sát góc dưới bên phải
+notifyLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+notifyLabel.BackgroundTransparency = 0.4
+notifyLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
+notifyLabel.Font = Enum.Font.SourceSansBold
+notifyLabel.TextSize = 20
+notifyLabel.Text = "🐾 Đã thu pet"
+notifyLabel.Parent = screenGui
