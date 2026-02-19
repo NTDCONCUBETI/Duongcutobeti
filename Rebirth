@@ -12,14 +12,22 @@ local plotId = ""
 while player:GetAttribute("Rebirth") == nil do
 	task.wait()
 end
---Hàm chống AFK
+--##Hàm chống AFK
 local VirtualUser = game:GetService("VirtualUser")
+spawn(function()
+	pcall(function()
+		while true do wait(0)
+			
+			
 
-while true do
-	VirtualUser:CaptureController()
-	VirtualUser:ClickButton2(Vector2.new())
-	task.wait(300) -- 5 phút
-end
+			while true do
+				VirtualUser:CaptureController()
+				VirtualUser:ClickButton2(Vector2.new())
+				task.wait(300) -- 5 phút
+			end
+		end
+	end)
+end)
 --########################################## Lấy địa chỉ nhà
 for _, plot in ipairs(bases:GetChildren()) do
 	local title = plot:FindFirstChild("Title")
