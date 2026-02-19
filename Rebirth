@@ -1,5 +1,5 @@
 wait(30)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
+
 local player = game.Players.LocalPlayer
 while not player do 
 	task.wait() 
@@ -126,5 +126,5 @@ if rb < 24 then
 else
 	print("Bạn đã có rebirth >= 24")
 end
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
 
