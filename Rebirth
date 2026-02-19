@@ -16,15 +16,9 @@ end
 local VirtualUser = game:GetService("VirtualUser")
 spawn(function()
 	pcall(function()
-		while true do wait(0)
-			
-			
-
-			while true do
-				VirtualUser:CaptureController()
-				VirtualUser:ClickButton2(Vector2.new())
-				task.wait(300) -- 5 phút
-			end
+		while true do wait(300)-- 5 phút
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
 		end
 	end)
 end)
