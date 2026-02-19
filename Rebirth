@@ -7,22 +7,9 @@ while not player do
 end
 local bases = workspace:WaitForChild("Bases")
 local plotId = ""
-
-
 while player:GetAttribute("Rebirth") == nil do
 	task.wait()
 end
---## Hàm chống AFK
-local VirtualUser = game:GetService("VirtualUser")
-spawn(function()
-	pcall(function()
-		while true do 
-			wait(300) -- chờ 5 phút
-			VirtualUser:CaptureController()
-			VirtualUser:ClickButton2(Vector2.new())
-		end
-	end)
-end)
 
 --## Hàm chống AFK
 local VirtualUser = game:GetService("VirtualUser")
@@ -35,7 +22,6 @@ spawn(function()
 		end
 	end)
 end)
---## Hiển thị bảng thông báo Anti AFK
 -- Tạo ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "AntiAFKGui"
