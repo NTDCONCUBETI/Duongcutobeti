@@ -123,15 +123,48 @@ if rb < 24 then
 	end
 
 	print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
-    wait(30)
-	-- Hàm rejoin
+	wait(30)
+	
+	-- Hàm rejoin vào server khác
 	local TeleportService = game:GetService("TeleportService")
 	local Players = game:GetService("Players")
+	local HttpService = game:GetService("HttpService")
+	
 	local localPlayer = Players.LocalPlayer
-	for i = 1, 2 do
-    TeleportService:Teleport(game.PlaceId, localPlayer) -- rejoin vào chính game hiện tại
-     wait(10)
+	local placeId = game.PlaceId
+	local currentJobId = game.JobId
+	
+	local function rejoinOtherServer()
+	    while true do
+	        local servers = {}
+	        local success, result = pcall(function()
+	            return HttpService:JSONDecode(game:HttpGet(
+	                "https://games.roblox.com/v1/games/"..placeId.."/servers/Public?sortOrder=Desc&limit=100"
+	            ))
+	        end)
+	
+	        if success and result and result.data then
+	            for _, server in pairs(result.data) do
+	                if server.playing < server.maxPlayers and server.id ~= currentJobId then
+	                    table.insert(servers, server.id)
+	                end
+	            end
+	        end
+	
+	        if #servers > 0 then
+	            -- chọn random server khác
+	            local randomServer = servers[math.random(1, #servers)]
+	            TeleportService:TeleportToPlaceInstance(placeId, randomServer, localPlayer)
+	            break -- đã teleport thì thoát vòng lặp
+	        else
+	            print("Không tìm thấy server khác, chờ 30s rồi thử lại...")
+	            task.wait(30)
+	        end
+	    end
 	end
+	-- Gọi hàm rejoin
+	rejoinOtherServer()
+
 else
 	print("Bạn đã có rebirth >= 24")
 end
