@@ -123,10 +123,13 @@ if rb < 24 then
 	end
 
 	print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
+    wait(30)
 	-- Hàm rejoin
 	local TeleportService = game:GetService("TeleportService")
 	local Players = game:GetService("Players")
 	local localPlayer = Players.LocalPlayer
+    TeleportService:Teleport(game.PlaceId, localPlayer) -- rejoin vào chính game hiện tại
+     wait(10)
 	TeleportService:Teleport(game.PlaceId, localPlayer) -- rejoin vào chính game hiện tại
 else
 	print("Bạn đã có rebirth >= 24")
