@@ -128,9 +128,10 @@ if rb < 24 then
 	local TeleportService = game:GetService("TeleportService")
 	local Players = game:GetService("Players")
 	local localPlayer = Players.LocalPlayer
+	for i = 1, 2 do
     TeleportService:Teleport(game.PlaceId, localPlayer) -- rejoin vào chính game hiện tại
      wait(10)
-	TeleportService:Teleport(game.PlaceId, localPlayer) -- rejoin vào chính game hiện tại
+	end
 else
 	print("Bạn đã có rebirth >= 24")
 end
