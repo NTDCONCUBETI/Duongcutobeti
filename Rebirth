@@ -3,14 +3,6 @@ wait(30)
 local player = game.Players.LocalPlayer
 local bases = workspace:WaitForChild("Bases")
 local plotId = ""
-while not player do 
-	task.wait() 
-	player = game.Players.LocalPlayer 
-end
--- chờ attribute Rebirth xuất hiện
-while player:GetAttribute("Rebirth") == nil do
-	task.wait()
-end
 --########################################## Lấy địa chỉ nhà
 for _, plot in ipairs(bases:GetChildren()) do
 	local title = plot:FindFirstChild("Title")
