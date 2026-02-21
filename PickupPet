@@ -55,7 +55,8 @@ local args = {
 	[2] = plotId,
 	[3] = "1"
 }
-game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction"):InvokeServer(unpack(args))
+game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/PlotAction"):InvokeServer(unpack(args))
+--game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction"):InvokeServer(unpack(args))
 
 wait(1)
 presskey(49) -- Số 1
