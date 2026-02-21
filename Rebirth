@@ -78,22 +78,19 @@ if slot1 then
 end
 --/////////
 --##########################################Thu tiền
-local rf = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction")
-	for i = 1, 5 do
-		local args = {
-			[1] = "Collect Money",
-			[2] = plotId,
-			[3] = "1"
-		}
-		rf:InvokeServer(unpack(args))
-		wait(2)
-	end
+for i = 1, 5 do
+	local args = {
+		[1] = "Collect Money",
+		[2] = plotId,
+		[3] = "1"
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/PlotAction"):InvokeServer(unpack(args))
+
+	wait(2)
+end
 --///////	
 
 --############################################Rebirth + Speed
---local player = game.Players.LocalPlayer
-local rf = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed")
-local rebirth = game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth")
 while not player do 
 	task.wait() 
 	player = game.Players.LocalPlayer 
@@ -110,21 +107,22 @@ if rb < 24 then
 	-- nâng rebirth lên 24
 	while player:GetAttribute("Rebirth") < 24 do
 		local args = { [1] = 10 }
-		rf:InvokeServer(unpack(args))
-		rebirth:InvokeServer()
+		game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed"):InvokeServer(unpack(args))
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("Rebirth"):InvokeServer()
+
 		task.wait(0.1)
 	end
 
 	-- sau khi đạt 24 rebirth thì mua thêm 400 speed
 	for i = 1, 40 do
 		local args = { [1] = 10 }
-		rf:InvokeServer(unpack(args))
+		game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed"):InvokeServer(unpack(args))
 		task.wait(0.1) -- chỉ mua speed, không rebirth nữa
 	end
 
 	print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
 	wait(30)
-	
+
 	local TeleportService = game:GetService("TeleportService")
 	local Players = game:GetService("Players")
 	local localPlayer = Players.LocalPlayer
@@ -160,4 +158,3 @@ label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
 label.Text = "✅ Anti AFK "
 label.Parent = screenGui
-
