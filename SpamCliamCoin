@@ -1,3 +1,4 @@
+task.wait(30)
 local remote = game:GetService("ReplicatedStorage")
     :WaitForChild("Shared")
     :WaitForChild("Remotes")
