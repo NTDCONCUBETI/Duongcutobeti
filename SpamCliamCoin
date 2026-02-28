@@ -1,52 +1,67 @@
-task.wait(30) -- chờ game load 30 giây
-
-local remote = game:GetService("ReplicatedStorage")
-    :WaitForChild("Shared")
-    :WaitForChild("Remotes")
-    :WaitForChild("Networking")
-    :WaitForChild("RF/PlotAction")
-
+task.wait(15) -- chờ game load 15 giây
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Lưu vị trí hiện tại
+local savedPosition = rootPart.Position
+print("📌 Vị trí đã lưu:", savedPosition)
+
+-- Hàm bay ngay lập tức về vị trí đã lưu
+local function flyToSavedPosition()
+	if not savedPosition then
+		warn("⚠️ Chưa có vị trí nào được lưu!")
+		return
+	end
+	-- Teleport trực tiếp bằng CFrame
+	character.HumanoidRootPart.CFrame = CFrame.new(savedPosition + Vector3.new(0,5,0))
+	print("🛫 Teleport về vị trí đã lưu:", savedPosition)
+end
+
+local remote = game:GetService("ReplicatedStorage")
+	:WaitForChild("Shared")
+	:WaitForChild("Remotes")
+	:WaitForChild("Networking")
+	:WaitForChild("RF/PlotAction")
+
 local bases = workspace:WaitForChild("Bases")
 local My_plot = nil
 
 --########################################## Lấy địa chỉ nhà (chạy 1 lần)
 for _, plot in ipairs(bases:GetChildren()) do
-    local title = plot:FindFirstChild("Title")
-    if title then
-        local titleGui = title:FindFirstChild("TitleGui")
-        if titleGui then
-            local frame = titleGui:FindFirstChild("Frame")
-            if frame then
-                local playerNameLabel = frame:FindFirstChild("PlayerName")
-                if playerNameLabel and playerNameLabel:IsA("TextLabel") then
-                    if playerNameLabel.Text == player.DisplayName then
-                        My_plot = plot
-                        break
-                    end
-                end
-            end
-        end
-    end
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.DisplayName then
+						My_plot = plot
+						break
+					end
+				end
+			end
+		end
+	end
 end
 
 if not My_plot then
-    warn("❌ Không tìm thấy plot của bạn!")
-    return
+	warn("❌ Không tìm thấy plot của bạn!")
+	return
 end
 
 --########################################## Hàm chống AFK
 local VirtualUser = game:GetService("VirtualUser")
 spawn(function()
-    pcall(function()
-        while true do
-            task.wait(300)
-            VirtualUser:CaptureController()
-            VirtualUser:ClickButton2(Vector2.new())
-        end
-    end)
+	pcall(function()
+		while true do
+			task.wait(300)
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
+		end
+	end)
 end)
 
 --########################################## Tạo GUI báo Anti AFK + Countdown
@@ -57,7 +72,7 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 -- Label cố định AntiAFK (luôn nằm trên)
 local antiLabel = Instance.new("TextLabel")
 antiLabel.Size = UDim2.new(0, 120, 0, 30)
-antiLabel.Position = UDim2.new(1, -130, 1, -70) -- góc dưới phải, cách mép dưới 70px
+antiLabel.Position = UDim2.new(1, -130, 1, -70)
 antiLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 antiLabel.BackgroundTransparency = 0.5
 antiLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
@@ -66,13 +81,13 @@ antiLabel.TextSize = 20
 antiLabel.Text = "✅ AntiAFK"
 antiLabel.Parent = screenGui
 
--- Label trạng thái vòng lặp (nằm ngay dưới AntiAFK)
+-- Label trạng thái vòng lặp
 local statusLabel = Instance.new("TextLabel")
 statusLabel.Size = UDim2.new(0, 120, 0, 30)
-statusLabel.Position = UDim2.new(1, -130, 1, -35) -- góc dưới phải, cách mép dưới 35px
+statusLabel.Position = UDim2.new(1, -130, 1, -35)
 statusLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 statusLabel.BackgroundTransparency = 0.5
-statusLabel.TextColor3 = Color3.fromRGB(255, 255, 0) -- màu vàng để dễ phân biệt
+statusLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
 statusLabel.Font = Enum.Font.SourceSansBold
 statusLabel.TextSize = 20
 statusLabel.Text = "⏳ Chờ..."
@@ -80,60 +95,58 @@ statusLabel.Parent = screenGui
 
 -- Hàm cập nhật countdown
 local function updateCountdown(seconds, loopCount)
-    local minutes = math.floor(seconds / 60)
-    local secs = seconds % 60
-    statusLabel.Text = "⏳ L" .. loopCount .. " " .. string.format("%02d:%02d", minutes, secs)
+	local minutes = math.floor(seconds / 60)
+	local secs = seconds % 60
+	statusLabel.Text = "⏳ L" .. loopCount .. " " .. string.format("%02d:%02d", minutes, secs)
 end
 
 --########################################## Vòng lặp thu tiền liên tục
 spawn(function()
-    local loopCount = 0
-    while true do
-        loopCount += 1
-        -- Đổi trạng thái trước khi collect
-        statusLabel.Text = "🔄 L" .. loopCount .. " Collect..."
+	local loopCount = 0
+	while true do
+		-- Teleport ngay về vị trí đã lưu
+		flyToSavedPosition()
+		task.wait(1)
+		loopCount += 1
+		statusLabel.Text = "🔄 L" .. loopCount .. " Collect..."
 
-        -- 🔹 Lấy tất cả floor và sắp xếp theo số
-        local floors = {}
-        for _, child in ipairs(My_plot:GetChildren()) do
-            local number = tonumber(child.Name:match("^Floor(%d+)$"))
-            if number then
-                table.insert(floors, {object = child, index = number})
-            end
-        end
+		-- Lấy tất cả floor và sắp xếp
+		local floors = {}
+		for _, child in ipairs(My_plot:GetChildren()) do
+			local number = tonumber(child.Name:match("^Floor(%d+)$"))
+			if number then
+				table.insert(floors, {object = child, index = number})
+			end
+		end
+		table.sort(floors, function(a, b) return a.index < b.index end)
 
-        table.sort(floors, function(a, b)
-            return a.index < b.index
-        end)
+		-- Collect
+		local currentIndex = 1
+		for _, data in ipairs(floors) do
+			local primary = data.object:FindFirstChild("Primary")
+			if primary then
+				character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
+				task.wait(0.5)
+				for _ = 1, 10 do
+					remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
+					currentIndex += 1
+					task.wait(0.5)
+				end
+			end
+		end
 
-        -- 🔹 Bắt đầu collect
-        local currentIndex = 1
-        for _, data in ipairs(floors) do
-            local primary = data.object:FindFirstChild("Primary")
-            if primary then
-                character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
-                task.wait(0.5)
+		-- Về lại tầng 1
+		local spawn = My_plot:FindFirstChild("Spawn")
+		if spawn then
+			character:PivotTo(CFrame.new(spawn.Position + Vector3.new(0,3,0)))
+		end
 
-                for _ = 1, 10 do
-                    remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
-                    currentIndex += 1
-                    task.wait(0.5)
-                end
-            end
-        end
+		print("✅ Đã collect xong, chờ 5 phút... (Lần " .. loopCount .. ")")
 
-        -- Về lại tầng 1
-        local spawn = My_plot:FindFirstChild("Spawn")
-        if spawn then
-            character:PivotTo(CFrame.new(spawn.Position + Vector3.new(0,3,0)))
-        end
-
-        print("✅ Đã collect xong, chờ 5 phút... (Lần " .. loopCount .. ")")
-
-        -- Countdown 300 giây
-        for i = 300, 1, -1 do
-            updateCountdown(i, loopCount)
-            task.wait(1)
-        end
-    end
+		-- Countdown 300 giây
+		for i = 300, 1, -1 do
+			updateCountdown(i, loopCount)
+			task.wait(1)
+		end
+	end
 end)
