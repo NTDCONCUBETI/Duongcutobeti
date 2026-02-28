@@ -55,21 +55,21 @@ screenGui.Name = "AntiAFKGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local label = Instance.new("TextLabel")
-label.Size = UDim2.new(0, 250, 0, 40)
-label.Position = UDim2.new(1, -260, 1, -50) -- góc dưới phải
+label.Size = UDim2.new(0, 200, 0, 40)
+label.Position = UDim2.new(1, -210, 1, -50) -- góc dưới phải
 label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 label.BackgroundTransparency = 0.5
 label.TextColor3 = Color3.fromRGB(0, 255, 0)
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
-label.Text = "✅ Anti AFK"
+label.Text = "✅ AntiAFK"
 label.Parent = screenGui
 
--- Hàm cập nhật countdown
+-- Hàm cập nhật countdown (ngắn gọn hơn)
 local function updateCountdown(seconds, loopCount)
     local minutes = math.floor(seconds / 60)
     local secs = seconds % 60
-    label.Text = "⏳ Lần " .. loopCount .. " | Chờ: " .. string.format("%02d:%02d", minutes, secs)
+    label.Text = "⏳ L" .. loopCount .. " " .. string.format("%02d:%02d", minutes, secs)
 end
 
 --########################################## Vòng lặp thu tiền liên tục
@@ -78,7 +78,7 @@ spawn(function()
     while true do
         loopCount += 1
         -- Đổi trạng thái trước khi collect
-        label.Text = "🔄 Lần " .. loopCount .. " | Đang collect..."
+        label.Text = "🔄 L" .. loopCount .. " Collect..."
 
         -- 🔹 Lấy tất cả floor và sắp xếp theo số
         local floors = {}
