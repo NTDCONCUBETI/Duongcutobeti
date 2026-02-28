@@ -1,4 +1,4 @@
-task.wait(20) -- chờ game load 20 giây
+task.wait(30) -- chờ game load 30 giây
 
 local remote = game:GetService("ReplicatedStorage")
     :WaitForChild("Shared")
