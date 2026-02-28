@@ -30,70 +30,92 @@ for _, plot in ipairs(bases:GetChildren()) do
     end
 end
 
---########################################## Vòng lặp thu tiền liên tục
-while true do
-    -- 🔹 Lấy tất cả floor và sắp xếp theo số
-    local floors = {}
-    for _, child in ipairs(My_plot:GetChildren()) do
-        local number = tonumber(child.Name:match("^Floor(%d+)$"))
-        if number then
-            table.insert(floors, {object = child, index = number})
-        end
-    end
-
-    table.sort(floors, function(a, b)
-        return a.index < b.index
-    end)
-
-    -- 🔹 Bắt đầu collect
-    local currentIndex = 1
-    for _, data in ipairs(floors) do
-        local primary = data.object:FindFirstChild("Primary")
-        if primary then
-            -- Teleport lên floor
-            character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
-            task.wait(0.5)
-
-            -- Collect 10 lần mỗi floor
-            for _ = 1, 10 do
-                remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
-                currentIndex += 1
-                task.wait(0.5)
-            end
-        end
-    end
-
-    -- Về lại tầng 1
-    local spawn = My_plot:FindFirstChild("Spawn")
-    if spawn then
-        character:PivotTo(CFrame.new(spawn.Position + Vector3.new(0,3,0)))
-    end
-
-    print("✅ Đã collect xong, chờ 5 phút...")
-    task.wait(300) -- ⏳ Chờ 5 phút trước khi chạy lại
+if not My_plot then
+    warn("❌ Không tìm thấy plot của bạn!")
+    return
 end
---## Hàm chống AFK
+
+--########################################## Hàm chống AFK
 local VirtualUser = game:GetService("VirtualUser")
 spawn(function()
-	pcall(function()
-		while true do wait(300)
-			VirtualUser:CaptureController()
-			VirtualUser:ClickButton2(Vector2.new())
-		end
-	end)
+    pcall(function()
+        while true do
+            task.wait(300)
+            VirtualUser:CaptureController()
+            VirtualUser:ClickButton2(Vector2.new())
+        end
+    end)
 end)
--- Tạo ScreenGui
+
+--########################################## Tạo GUI báo Anti AFK + Countdown
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "AntiAFKGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
--- Tạo TextLabel
+
 local label = Instance.new("TextLabel")
-label.Size = UDim2.new(0, 100, 0, 30) -- rộng 25px, cao 30px
-label.Position = UDim2.new(1, -110, 1, -40) -- góc dưới phải
+label.Size = UDim2.new(0, 200, 0, 40)
+label.Position = UDim2.new(1, -210, 1, -50) -- góc dưới phải
 label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 label.BackgroundTransparency = 0.5
 label.TextColor3 = Color3.fromRGB(0, 255, 0)
 label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
-label.Text = "✅ Anti AFK "
+label.Text = "✅ Anti AFK"
 label.Parent = screenGui
+
+-- Hàm cập nhật countdown
+local function updateCountdown(seconds)
+    label.Text = "⏳ Chờ: " .. seconds .. "s"
+end
+
+--########################################## Vòng lặp thu tiền liên tục
+spawn(function()
+    while true do
+        -- 🔹 Lấy tất cả floor và sắp xếp theo số
+        local floors = {}
+        for _, child in ipairs(My_plot:GetChildren()) do
+            local number = tonumber(child.Name:match("^Floor(%d+)$"))
+            if number then
+                table.insert(floors, {object = child, index = number})
+            end
+        end
+
+        table.sort(floors, function(a, b)
+            return a.index < b.index
+        end)
+
+        -- 🔹 Bắt đầu collect
+        local currentIndex = 1
+        for _, data in ipairs(floors) do
+            local primary = data.object:FindFirstChild("Primary")
+            if primary then
+                -- Teleport lên floor
+                character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
+                task.wait(0.5)
+
+                -- Collect 10 lần mỗi floor
+                for _ = 1, 10 do
+                    remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
+                    currentIndex += 1
+                    task.wait(0.5)
+                end
+            end
+        end
+
+        -- Về lại tầng 1
+        local spawn = My_plot:FindFirstChild("Spawn")
+        if spawn then
+            character:PivotTo(CFrame.new(spawn.Position + Vector3.new(0,3,0)))
+        end
+
+        print("✅ Đã collect xong, chờ 5 phút...")
+
+        -- Countdown 300 giây
+        for i = 300, 1, -1 do
+            updateCountdown(i)
+            task.wait(1)
+        end
+
+        label.Text = "🔄 Đang collect..."
+    end
+end)
