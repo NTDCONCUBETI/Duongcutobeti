@@ -1,4 +1,5 @@
-task.wait(30)
+task.wait(30) -- chờ game load 30 giây
+
 local remote = game:GetService("ReplicatedStorage")
     :WaitForChild("Shared")
     :WaitForChild("Remotes")
@@ -54,8 +55,8 @@ screenGui.Name = "AntiAFKGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local label = Instance.new("TextLabel")
-label.Size = UDim2.new(0, 200, 0, 40)
-label.Position = UDim2.new(1, -210, 1, -50) -- góc dưới phải
+label.Size = UDim2.new(0, 250, 0, 40)
+label.Position = UDim2.new(1, -260, 1, -50) -- góc dưới phải
 label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 label.BackgroundTransparency = 0.5
 label.TextColor3 = Color3.fromRGB(0, 255, 0)
@@ -65,13 +66,20 @@ label.Text = "✅ Anti AFK"
 label.Parent = screenGui
 
 -- Hàm cập nhật countdown
-local function updateCountdown(seconds)
-    label.Text = "⏳ Chờ: " .. seconds .. "s"
+local function updateCountdown(seconds, loopCount)
+    local minutes = math.floor(seconds / 60)
+    local secs = seconds % 60
+    label.Text = "⏳ Lần " .. loopCount .. " | Chờ: " .. string.format("%02d:%02d", minutes, secs)
 end
 
 --########################################## Vòng lặp thu tiền liên tục
 spawn(function()
+    local loopCount = 0
     while true do
+        loopCount += 1
+        -- Đổi trạng thái trước khi collect
+        label.Text = "🔄 Lần " .. loopCount .. " | Đang collect..."
+
         -- 🔹 Lấy tất cả floor và sắp xếp theo số
         local floors = {}
         for _, child in ipairs(My_plot:GetChildren()) do
@@ -90,11 +98,9 @@ spawn(function()
         for _, data in ipairs(floors) do
             local primary = data.object:FindFirstChild("Primary")
             if primary then
-                -- Teleport lên floor
                 character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
                 task.wait(0.5)
 
-                -- Collect 10 lần mỗi floor
                 for _ = 1, 10 do
                     remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
                     currentIndex += 1
@@ -109,14 +115,12 @@ spawn(function()
             character:PivotTo(CFrame.new(spawn.Position + Vector3.new(0,3,0)))
         end
 
-        print("✅ Đã collect xong, chờ 5 phút...")
+        print("✅ Đã collect xong, chờ 5 phút... (Lần " .. loopCount .. ")")
 
         -- Countdown 300 giây
         for i = 300, 1, -1 do
-            updateCountdown(i)
+            updateCountdown(i, loopCount)
             task.wait(1)
         end
-
-        label.Text = "🔄 Đang collect..."
     end
 end)
