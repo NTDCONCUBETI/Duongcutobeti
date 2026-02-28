@@ -1,40 +1,69 @@
-local plotId = "{aa5b5be9-fcf0-4d3d-add8-18f6f60ea887}"
-local rf = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Net"):WaitForChild("RF/Plot.PlotAction")
-spawn(function()
-	pcall(function()
-		while true do wait(5)
-			spawn(function()
-				for i = 1, 36 do
-					local args = {
-						[1] = "Collect Money",
-						[2] = plotId,
-						[3] = tostring(i)
-					}
-					rf:InvokeServer(unpack(args))
-					wait(1)
+local remote = game:GetService("ReplicatedStorage")
+	:WaitForChild("Shared")
+	:WaitForChild("Remotes")
+	:WaitForChild("Networking")
+	:WaitForChild("RF/PlotAction")
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+local bases = workspace:WaitForChild("Bases")
+local My_plot = nil
+
+--########################################## Lấy địa chỉ nhà
+for _, plot in ipairs(bases:GetChildren()) do
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.DisplayName then
+						My_plot = plot
+						break
+					end
 				end
-			end)
+			end
 		end
-	end)
-end)
-local VirtualUser = game:GetService("VirtualUser")
-spawn(function()
-	pcall(function()
-		while true do wait(5)
-			spawn(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78.74935150146484, 3.2414469718933105, 19.865373611450195 )
-				wait(1)
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78.74935150146484, 23.2414469718933105, 19.865373611450195 )
-				wait(1)
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78.74935150146484, 43.2414469718933105, 19.865373611450195 )
-				wait(1)
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78.74935150146484, 83.2414469718933105, 19.865373611450195 )
-			end)
-		end
-	end)
-end)
-while true do
-	VirtualUser:CaptureController()
-	VirtualUser:ClickButton2(Vector2.new())
-	task.wait(300) -- 5 phút
+	end
 end
+
+--##########################################Thu tiền
+-- 🔹 Lấy tất cả floor và sắp xếp theo số
+local floors = {}
+
+for _, child in ipairs(My_plot:GetChildren()) do
+	local number = tonumber(child.Name:match("^Floor(%d+)$"))
+	if number then
+		table.insert(floors, {object = child, index = number})
+	end
+end
+
+table.sort(floors, function(a, b)
+	return a.index < b.index
+end)
+
+-- 🔹 Bắt đầu collect
+local currentIndex = 1
+
+for _, data in ipairs(floors) do
+	local primary = data.object:FindFirstChild("Primary")
+
+	if primary then
+		-- Teleport lên floor
+		character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
+		task.wait(0.5)
+
+		-- Collect 10 lần mỗi floor
+		for _ = 1, 10 do
+			remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
+			currentIndex += 1
+			task.wait(0.5)
+		end
+	end
+end
+
+--Về lại tâng 1
+character:PivotTo(CFrame.new(My_plot:FindFirstChild("Spawn").Position + Vector3.new(0,3,0)))
