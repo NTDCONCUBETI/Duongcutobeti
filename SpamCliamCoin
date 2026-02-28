@@ -1,69 +1,42 @@
-local remote = game:GetService("ReplicatedStorage")
-	:WaitForChild("Shared")
-	:WaitForChild("Remotes")
-	:WaitForChild("Networking")
-	:WaitForChild("RF/PlotAction")
+while true do
+    --##########################################Thu tiền
+    -- 🔹 Lấy tất cả floor và sắp xếp theo số
+    local floors = {}
 
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local rootPart = character:WaitForChild("HumanoidRootPart")
-local bases = workspace:WaitForChild("Bases")
-local My_plot = nil
+    for _, child in ipairs(My_plot:GetChildren()) do
+        local number = tonumber(child.Name:match("^Floor(%d+)$"))
+        if number then
+            table.insert(floors, {object = child, index = number})
+        end
+    end
 
---########################################## Lấy địa chỉ nhà
-for _, plot in ipairs(bases:GetChildren()) do
-	local title = plot:FindFirstChild("Title")
-	if title then
-		local titleGui = title:FindFirstChild("TitleGui")
-		if titleGui then
-			local frame = titleGui:FindFirstChild("Frame")
-			if frame then
-				local playerNameLabel = frame:FindFirstChild("PlayerName")
-				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
-					if playerNameLabel.Text == player.DisplayName then
-						My_plot = plot
-						break
-					end
-				end
-			end
-		end
-	end
+    table.sort(floors, function(a, b)
+        return a.index < b.index
+    end)
+
+    -- 🔹 Bắt đầu collect
+    local currentIndex = 1
+
+    for _, data in ipairs(floors) do
+        local primary = data.object:FindFirstChild("Primary")
+
+        if primary then
+            -- Teleport lên floor
+            character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
+            task.wait(0.5)
+
+            -- Collect 10 lần mỗi floor
+            for _ = 1, 10 do
+                remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
+                currentIndex += 1
+                task.wait(0.5)
+            end
+        end
+    end
+
+    -- Về lại tầng 1
+    character:PivotTo(CFrame.new(My_plot:FindFirstChild("Spawn").Position + Vector3.new(0,3,0)))
+
+    -- ⏳ Chờ 5 phút trước khi chạy lại
+    task.wait(300) -- 300 giây = 5 phút
 end
-
---##########################################Thu tiền
--- 🔹 Lấy tất cả floor và sắp xếp theo số
-local floors = {}
-
-for _, child in ipairs(My_plot:GetChildren()) do
-	local number = tonumber(child.Name:match("^Floor(%d+)$"))
-	if number then
-		table.insert(floors, {object = child, index = number})
-	end
-end
-
-table.sort(floors, function(a, b)
-	return a.index < b.index
-end)
-
--- 🔹 Bắt đầu collect
-local currentIndex = 1
-
-for _, data in ipairs(floors) do
-	local primary = data.object:FindFirstChild("Primary")
-
-	if primary then
-		-- Teleport lên floor
-		character:PivotTo(CFrame.new(primary.Position + Vector3.new(0,3,0)))
-		task.wait(0.5)
-
-		-- Collect 10 lần mỗi floor
-		for _ = 1, 10 do
-			remote:InvokeServer("Collect Money", My_plot.Name, tostring(currentIndex))
-			currentIndex += 1
-			task.wait(0.5)
-		end
-	end
-end
-
---Về lại tâng 1
-character:PivotTo(CFrame.new(My_plot:FindFirstChild("Spawn").Position + Vector3.new(0,3,0)))
