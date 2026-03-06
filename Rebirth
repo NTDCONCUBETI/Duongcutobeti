@@ -98,14 +98,14 @@ if rb < 24 then
 		task.wait(0.1)
 	end
 
-	-- sau khi đạt 24 rebirth thì mua thêm 400 speed
+	-- sau khi đạt 24 rebirth thì mua thêm 440 speed
 	for i = 1, 44 do
 		local args = { [1] = 10 }
 		game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed"):InvokeServer(unpack(args))
 		task.wait(0.1) -- chỉ mua speed, không rebirth nữa
 	end
 
-	print("Rebirth lên 24 và đã mua thêm 400 Speed upgraded")
+	print("Rebirth lên 24 và đã mua thêm 440 Speed upgraded")
 
 else
 	print("Bạn đã có rebirth >= 24")
