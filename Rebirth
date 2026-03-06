@@ -1,4 +1,4 @@
-wait(30)
+wait(20)
 
 local player = game.Players.LocalPlayer
 local bases = workspace:WaitForChild("Bases")
@@ -99,7 +99,7 @@ if rb < 24 then
 	end
 
 	-- sau khi đạt 24 rebirth thì mua thêm 400 speed
-	for i = 1, 40 do
+	for i = 1, 44 do
 		local args = { [1] = 10 }
 		game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunctions"):WaitForChild("UpgradeSpeed"):InvokeServer(unpack(args))
 		task.wait(0.1) -- chỉ mua speed, không rebirth nữa
