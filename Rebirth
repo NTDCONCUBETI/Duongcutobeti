@@ -51,7 +51,7 @@ if slot1 then
 		end
 		presskey(49) -- Số 1
 		wait(0.5)
-		if lvSlot3 > lvSlot4 then
+		if lvSlot2 > lvSlot3 then
 			presskey(50) -- Số 2
 		else
 			presskey(51) -- Số 3
