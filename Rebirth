@@ -42,8 +42,8 @@ if slot1 then
 	print("Số lượng phần tử con:", #children)
 	if #children == 1 then --Chưa có pet tại Slot 1
 		--##########################################Cầm Pet lên
+		local lvSlot2 = tonumber(string.sub(player.PlayerGui.BackpackGui.Backpack.Hotbar["2"].LevelLabel.Text,4)) 
 		local lvSlot3 = tonumber(string.sub(player.PlayerGui.BackpackGui.Backpack.Hotbar["3"].LevelLabel.Text,4)) 
-		local lvSlot4 = tonumber(string.sub(player.PlayerGui.BackpackGui.Backpack.Hotbar["4"].LevelLabel.Text,4)) 
 
 		function presskey(keycode)
 			game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
@@ -52,9 +52,9 @@ if slot1 then
 		presskey(49) -- Số 1
 		wait(0.5)
 		if lvSlot3 > lvSlot4 then
-			presskey(51) -- Số 3
+			presskey(50) -- Số 2
 		else
-			presskey(52) -- Số 4
+			presskey(51) -- Số 3
 		end
 		wait(0.5)
 		--//////////
