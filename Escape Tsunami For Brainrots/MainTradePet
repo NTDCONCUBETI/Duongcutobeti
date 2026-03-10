@@ -1,127 +1,135 @@
 getgenv().CONFIG = {
-    ["MainAccount"] = {"Ultra_Specter8213"},
-    ["PetType"] = {"Divine"},
-    ["LuckyBlock"] = {"Infinity1"},
+	["MainAccount"] = {"Ultra_Specter8213"},
+	["PetType"] = {"Divine"},
+	["LuckyBlock"] = {"Infinity1"},
 }
 
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+
 local v2 = game:GetService("ReplicatedStorage")
 local v_u_4 = require(v2.Shared.utils.EconomyMath)
 local function fireConnections(signal)
-    local ok, conns = pcall(function()
-        return getconnections(signal)
-    end)
-    if not ok or not conns then return false end
+	local ok, conns = pcall(function()
+		return getconnections(signal)
+	end)
+	if not ok or not conns then return false end
 
-    for _, c in ipairs(conns) do
-        if c.Enabled then
-            pcall(function()
-                if typeof(c.Function) == "function" then
-                    c.Function()
-                elseif typeof(c.Fire) == "function" then
-                    c:Fire()
-                end
-            end)
-        end
-    end
-    return true
+	for _, c in ipairs(conns) do
+		if c.Enabled then
+			pcall(function()
+				if typeof(c.Function) == "function" then
+					c.Function()
+				elseif typeof(c.Fire) == "function" then
+					c:Fire()
+				end
+			end)
+		end
+	end
+	return true
 end
 local function check_luckyblock()
-    for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") and v:GetAttribute("LuckyBlockTool") and table.find(CONFIG.LuckyBlock,v:GetAttribute("LuckyBlockType")) then
-            return true
-        end
-    end
-    return false
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") and v:GetAttribute("LuckyBlockTool") and table.find(CONFIG.LuckyBlock,v:GetAttribute("LuckyBlockType")) then
+			return true
+		end
+	end
+	return false
 end
 local function check_pet()
-    for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") and v:GetAttribute("BrainrotName") and table.find(CONFIG.PetType,v_u_4.GetBrainrotRarity(v:GetAttribute("BrainrotName"))) then
-            return true
-        end
-    end
-    return false
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") and v:GetAttribute("BrainrotName") and table.find(CONFIG.PetType,v_u_4.GetBrainrotRarity(v:GetAttribute("BrainrotName"))) then
+			return true
+		end
+	end
+	return false
 end
 local function get_main()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if table.find(CONFIG.MainAccount,player.Name) then
-            return player
-        end
-    end
-    return false
+	for _, player in pairs(game.Players:GetPlayers()) do
+		if table.find(CONFIG.MainAccount,player.Name) then
+			return player
+		end
+	end
+	return false
 end
 local function total_inventory()
-    local tong = 0
-    for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            tong = tong + 1
-        end
-    end
-    return tong
+	local tong = 0
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			tong = tong + 1
+		end
+	end
+	return tong
 end
 
 
 while task.wait() do
-        if table.find(CONFIG.MainAccount,game.Players.LocalPlayer.Name) then
-            if total_inventory() >= 100 then
-                local filename = game.Players.LocalPlayer.Name.."-Done.txt"
-                writefile(filename,"Done")
-                game:Shutdown()
-                task.wait(60)
-            else
-                pcall(function()
-                    local gui = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest
-                    if gui and gui:FindFirstChild("Main") then
-                        local btn = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest.Main.Accept
-                        if btn and btn.Visible then
-                            fireConnections(btn.Activated)
-                            fireConnections(btn.MouseButton1Click)
-                            fireConnections(btn.MouseButton1Down)
-                            task.wait(0.1)
-                            pcall(function() btn:Activate() end)
-                        end
-                    end
-                end)
-                
-            end
-        else
-            local findmain = get_main()
-            if findmain then
-                if check_luckyblock() or check_pet() then
-                    for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                        if v:IsA("Tool") then
-                            if v:GetAttribute("LuckyBlockTool") then
-                                if table.find(CONFIG.LuckyBlock, v:GetAttribute("LuckyBlockType")) then
-                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                                    task.wait(0.5)
-                                    local Event = game:GetService("ReplicatedStorage").Shared.Remotes.Networking["RF/TradeSendGift"]
-                                    Event:InvokeServer(
-                                        findmain,
-                                        v.Name
-                                    )
-                                end
-                            else
-                                if v:GetAttribute("BrainrotName") then
-                                    if table.find(CONFIG.PetType,v_u_4.GetBrainrotRarity(v:GetAttribute("BrainrotName"))) then
-                                        game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                                        task.wait(0.5)
-                                        local Event = game:GetService("ReplicatedStorage").Shared.Remotes.Networking["RF/TradeSendGift"]
-                                        Event:InvokeServer(
-                                            findmain,
-                                            v.Name
-                                        )
-                                    end
-                                end
-                            end
-                        end
-                    end
-                else
-                    local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
-                    writefile(filename,"Done")
-                    game:Shutdown()
-                    task.wait(60)
-                end
-            end
-        end
+	if table.find(CONFIG.MainAccount,game.Players.LocalPlayer.Name) then
+		if total_inventory() >= 100 then
+			local filename = game.Players.LocalPlayer.Name.."-Done.txt"
+			writefile(filename,"Done")
+			game:Shutdown()
+			task.wait(60)
+		else
+			pcall(function()
+				local gui = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest
+				if gui and gui:FindFirstChild("Main") then
+					local btn = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest.Main.Accept
+					if btn and btn.Visible then
+						fireConnections(btn.Activated)
+						fireConnections(btn.MouseButton1Click)
+						fireConnections(btn.MouseButton1Down)
+						task.wait(0.1)
+						pcall(function() btn:Activate() end)
+						presskey(49) -- Số 1
+						task.wait(0.1)
+						presskey(49) -- Số 1
+					end
+				end
+			end)
+
+		end
+	else
+		local findmain = get_main()
+		if findmain then
+			if check_luckyblock() or check_pet() then
+				for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v:IsA("Tool") then
+						if v:GetAttribute("LuckyBlockTool") then
+							if table.find(CONFIG.LuckyBlock, v:GetAttribute("LuckyBlockType")) then
+								game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+								task.wait(0.5)
+								local Event = game:GetService("ReplicatedStorage").Shared.Remotes.Networking["RF/TradeSendGift"]
+								Event:InvokeServer(
+									findmain,
+									v.Name
+								)
+							end
+						else
+							if v:GetAttribute("BrainrotName") then
+								if table.find(CONFIG.PetType,v_u_4.GetBrainrotRarity(v:GetAttribute("BrainrotName"))) then
+									game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+									task.wait(1)
+									local Event = game:GetService("ReplicatedStorage").Shared.Remotes.Networking["RF/TradeSendGift"]
+									Event:InvokeServer(
+										findmain,
+										v.Name
+									)
+								end
+							end
+						end
+					end
+				end
+			else
+				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
+				writefile(filename,"Done")
+				game:Shutdown()
+				task.wait(60)
+			end
+		end
+	end
 end
