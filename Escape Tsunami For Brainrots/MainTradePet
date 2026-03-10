@@ -95,6 +95,8 @@ local function clone()
 			if #brainrots == 0 then
 				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
 				writefile(filename,"Done")
+				game:Shutdown()
+				task.wait(60)
 			end
 			-- số slot tối đa là 9, nhưng nếu ít hơn thì lấy đúng số lượng còn lại
 			local maxSlots = math.min(#brainrots, 9)
