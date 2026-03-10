@@ -1,12 +1,5 @@
 getgenv().CONFIG = {
 	["MainAccount"] = {
-		"MazinN3bulaRunn3r436",
-		"Cinder_Pro6543",
-		"LavaFir33461",
-		"IdrisSpecter308",
-		"PurpleDark64347",
-		"LiamDsrtDa30136",
-		"SamuelSapp32214",
 		"XxJamsGamm44033",
 		"DavidGoldQ96399",
 		"AveryTopaz40824",
@@ -91,13 +84,6 @@ local function clone()
 					table.insert(brainrots, v)
 				end
 			end
-
-			if #brainrots == 0 then
-				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
-				writefile(filename,"Done")
-				game:Shutdown()
-				task.wait(60)
-			end
 			-- số slot tối đa là 9, nhưng nếu ít hơn thì lấy đúng số lượng còn lại
 			local maxSlots = math.min(#brainrots, 9)
 
@@ -128,19 +114,22 @@ local function clone()
 				:WaitForChild("RE/Trading/TradeReadyTrade")
 				:FireServer(unpack(confirmArgs))
 
-			--[[
-			local btnAcepTrade = game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Accept
-			if btnAcepTrade and btnAcepTrade.Visible then
-				print("Clone Acept")
-				fireConnections(btnAcepTrade.Activated)
-				fireConnections(btnAcepTrade.MouseButton1Click)
-				fireConnections(btnAcepTrade.MouseButton1Down)
-				task.wait(0.1)
-				pcall(function()btnAcepTrade:Activate() end)
-			end
-			]]
+
 			wait(6)
 		else
+			local brainrots = {}
+			for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+				if v:IsA("Tool") and v:GetAttribute("BrainrotName") then
+					table.insert(brainrots, v)
+				end
+			end
+
+			if #brainrots == 0 then
+				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
+				writefile(filename,"Done")
+				game:Shutdown()
+				task.wait(60)
+			end
 			game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/TradeSendTrade"):InvokeServer(findmain)
 			wait(6)
 		end
