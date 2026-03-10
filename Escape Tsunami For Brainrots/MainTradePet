@@ -1,7 +1,6 @@
 getgenv().CONFIG = {
     ["MainAccount"] = {"Ultra_Specter8213"},
-    ["PetType"] = {"Infinity"},
-    ["LuckyBlock"] = {"Infinity"},
+    ["PetType"] = {"Divine"},
 }
 
 repeat task.wait() until game:IsLoaded()
