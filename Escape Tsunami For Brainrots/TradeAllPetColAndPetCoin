@@ -1,8 +1,11 @@
 getgenv().CONFIG = {
 	["MainAccount"] = {
-		"dsadsa",
-		"dsadsa2312",
-		"dsadsareea2312"
+	"ThunderBea45893",
+    "LunarHunter_Hollow13",
+    "RalphGalacticHunt3r9",
+    "I0n_Light3010",
+    "Kathryn_Fusion1824",
+    "Chaos_Oblivion845",
 	},
 	["PetType"] = {"Divine"},
 	["LuckyBlock"] = {"Infinity1"},
