@@ -1,0 +1,124 @@
+-- Tạo ScreenGui
+local gui = Instance.new("ScreenGui")
+gui.Name = "CustomMenu"
+gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Khung chính
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Parent = gui
+
+-- Tiêu đề
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, -60, 0, 30)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "[Con bò con]"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 20
+title.Parent = frame
+
+-- Nút minimize
+local minimizeBtn = Instance.new("TextButton")
+minimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+minimizeBtn.Position = UDim2.new(1, -60, 0, 0)
+minimizeBtn.Text = "_"
+minimizeBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+minimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+minimizeBtn.Parent = frame
+
+-- Nút close
+local closeBtn = Instance.new("TextButton")
+closeBtn.Size = UDim2.new(0, 30, 0, 30)
+closeBtn.Position = UDim2.new(1, -30, 0, 0)
+closeBtn.Text = "X"
+closeBtn.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeBtn.Parent = frame
+
+-- Nội dung menu (toggle)
+local function createToggle(name, posY, defaultOn)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 280, 0, 30)
+    button.Position = UDim2.new(0, 10, 0, posY)
+    button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.Font = Enum.Font.SourceSans
+    button.TextSize = 18
+    button.Parent = frame
+
+    local state = false
+
+    local function setState(on)
+        state = on
+        if state then
+            button.Text = name .. ": ON"
+            button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+            if name == "Update Pet" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/UpLverPetFarmCoinLV230"))()
+            elseif name == "Spamcoin" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/SpamCliamCoin"))()
+            end
+        else
+            button.Text = name .. ": OFF"
+            button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+        end
+        print(name .. " -> " .. tostring(state))
+    end
+
+    button.MouseButton1Click:Connect(function()
+        setState(not state)
+    end)
+
+    -- Nếu mặc định ON thì bật ngay
+    if defaultOn then
+        setState(true)
+    else
+        setState(false)
+    end
+end
+
+createToggle("Update Pet", 40, false)
+createToggle("Spamcoin", 80, true) -- mặc định ON
+
+-- Nút ngôi sao (ẩn mặc định)
+local starBtn = Instance.new("TextButton")
+starBtn.Size = UDim2.new(0, 80, 0, 80) -- to hơn (80x80)
+starBtn.Position = UDim2.new(0, 10, 0, 10) -- góc trên bên trái
+starBtn.Text = "★"
+starBtn.BackgroundTransparency = 1
+starBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
+starBtn.TextScaled = true
+starBtn.Font = Enum.Font.SourceSansBold
+starBtn.Parent = gui
+
+-- Logic minimize (mặc định minimize)
+local minimized = true
+frame.Visible = false
+starBtn.Visible = true
+
+minimizeBtn.MouseButton1Click:Connect(function()
+    minimized = not minimized
+    if minimized then
+        frame.Visible = false
+        starBtn.Visible = true
+    else
+        frame.Visible = true
+        starBtn.Visible = false
+    end
+end)
+
+-- Logic click ngôi sao để mở lại menu
+starBtn.MouseButton1Click:Connect(function()
+    frame.Visible = true
+    starBtn.Visible = false
+    minimized = false
+end)
+
+-- Logic close
+closeBtn.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
