@@ -1,0 +1,74 @@
+local player = game.Players.LocalPlayer
+local bases = workspace:WaitForChild("Bases")
+local plotId = ""
+--########################################## Lấy địa chỉ nhà
+for _, plot in ipairs(bases:GetChildren()) do
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.Name then
+						plotId = plot.Name
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
+local function PickUp_Brainrot()
+	local args = {
+		[1] = "Pick Up Brainrot",
+		[2] = plotId,
+		[3] = "5"
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/PlotAction"):InvokeServer(unpack(args))
+	wait(1)
+end
+
+
+local function Upgrade_Brainrot()
+	local args = {
+		[1] = "Upgrade Brainrot",
+		[2] = plotId,
+		[3] = "5"
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/PlotAction"):InvokeServer(unpack(args))
+end
+local function Place_Brainrot()
+	local args = {
+		[1] = "Place Brainrot",
+		[2] = plotId,
+		[3] = "5"
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/PlotAction"):InvokeServer(unpack(args))
+end
+
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+	
+	if v:GetAttribute("BrainrotName")
+		and v:GetAttribute("Level")
+		and v:GetAttribute("Level") < 230 
+	then
+		local i = 230 - v:GetAttribute("Level")
+		PickUp_Brainrot()
+		task.wait(0.5)
+		game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)		
+		task.wait(0.5)
+		Place_Brainrot()
+		task.wait(0.5)
+		for i = 1, i do
+			Upgrade_Brainrot()
+		end
+
+	end
+end
+
+
+
