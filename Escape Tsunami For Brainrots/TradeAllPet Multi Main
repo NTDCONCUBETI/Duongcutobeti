@@ -1,14 +1,17 @@
 getgenv().CONFIG = {
 	["MainAccount"] = {
-		"SherineVortex3065",
-		"Fr0stHunt3r_Lava8540",
-		"Lion_Echo367",
-		"benjaminViral3817",
-		"Ad3lin3_Nova6198",
-		"BlockDelta4988",
-		"CharlotteFusion3719",
-		"SafiViper5286",
-		"VictoriaSolarHunter4"
+    "WilliamIce8549",
+    "Lion_Echo367",
+    "SolarRunn3rStorm1733",
+    "Z3ro_Om3ga9670",
+    "HaithamBeast1074",
+    "Ninja_Fr0stbite5786",
+    "RubaTechno5138",
+    "AidenPixel686",
+    "Vincent_Ninja4245",
+    "Heather_Mystic8613",
+    "Jelly_Hyper9629",
+    "Sarah_Snar32064"
 	},
 	["PetType"] = {"Divine"},
 	["LuckyBlock"] = {"Infinity1"},
