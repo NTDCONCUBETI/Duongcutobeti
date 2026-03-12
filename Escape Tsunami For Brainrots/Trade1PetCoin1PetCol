@@ -143,21 +143,21 @@ end
 local function clone()
 	local findmain = get_main()
 	if findmain then
-		
+
 		local brainrots = {}
 		for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v:IsA("Tool") 
 				and v:GetAttribute("BrainrotName") 
 				and (
 					(v:GetAttribute("Scale") and v:GetAttribute("Scale") > 1.749)
-						or (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
+						and (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
 				)then
 				table.insert(brainrots, v)
 			end
 		end
-		
+
 		if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Visible then -- 
-			
+
 			while task.wait(0.5) do	
 				if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Visible then
 					if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.PlayerNames.player2.Confirmed.Visible then
@@ -180,15 +180,25 @@ local function clone()
 
 			if #brainrots == 0 then
 
-				game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Remotes"):WaitForChild("Networking"):WaitForChild("RF/TradeSendTrade"):InvokeServer(findmain)
-				wait(6)
+				for _, main in pairs(game.Players:GetPlayers()) do
+					if table.find(CONFIG.MainAccount, main.Name) then
+						game:GetService("ReplicatedStorage")
+							:WaitForChild("Shared")
+							:WaitForChild("Remotes")
+							:WaitForChild("Networking")
+							:WaitForChild("RF/TradeSendTrade")
+							:InvokeServer(main)
+						print("Đã gửi trade cho: "..main.Name)
+						task.wait(1) -- nghỉ giữa các lần gửi
+					end
+				end
 			else
 				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
 				writefile(filename,"Done")
 				game:Shutdown()
 				task.wait(60)
 			end
-			
+
 
 		end
 	end
@@ -213,7 +223,7 @@ local function AccMainDo()
 		end
 	end
 
-	
+
 	local gui = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest
 	if gui and gui:FindFirstChild("Main") then
 		local btn = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest.Main.Accept
@@ -225,8 +235,8 @@ local function AccMainDo()
 			pcall(function()btn:Activate() end)
 		end
 	end
-	
-	
+
+
 	if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Visible then
 		task.wait(1)
 		game:GetService("ReplicatedStorage")
@@ -235,14 +245,14 @@ local function AccMainDo()
 			:WaitForChild("Networking")
 			:WaitForChild("RF/TradeSetSlotOffer")
 			:InvokeServer("1",brainrots_PhoiCol[1].Name)
-		
+
 		game:GetService("ReplicatedStorage")
 			:WaitForChild("Shared")
 			:WaitForChild("Remotes")
 			:WaitForChild("Networking")
 			:WaitForChild("RF/TradeSetSlotOffer")
 			:InvokeServer("2",brainrots_PhoiVang[1].Name)
-		
+
 		wait(5.5)
 		game:GetService("ReplicatedStorage")
 			:WaitForChild("Shared")
@@ -253,7 +263,7 @@ local function AccMainDo()
 
 		wait(6)
 	end
-	
+
 end
 
 while task.wait(3) do
@@ -263,6 +273,3 @@ while task.wait(3) do
 		clone()
 	end
 end
-
-
-
