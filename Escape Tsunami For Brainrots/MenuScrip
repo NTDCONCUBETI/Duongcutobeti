@@ -57,8 +57,21 @@ local function createToggle(name, posY, defaultOn)
         if state then
             button.Text = name .. ": ON"
             button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+
             if name == "Update Pet" then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/UpLverPetFarmCoinLV230"))()
+
+                -- Sau 5 giây tự động OFF và minimize
+                task.delay(5, function()
+                    if state then
+                        state = false
+                        button.Text = name .. ": OFF"
+                        button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+                        frame.Visible = false
+                        starBtn.Visible = true
+                        minimized = true
+                    end
+                end)
             elseif name == "Spamcoin" then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/SpamCliamCoin"))()
             end
@@ -73,7 +86,6 @@ local function createToggle(name, posY, defaultOn)
         setState(not state)
     end)
 
-    -- Nếu mặc định ON thì bật ngay
     if defaultOn then
         setState(true)
     else
@@ -86,7 +98,7 @@ createToggle("Spamcoin", 80, true) -- mặc định ON
 
 -- Nút ngôi sao (ẩn mặc định)
 local starBtn = Instance.new("TextButton")
-starBtn.Size = UDim2.new(0, 80, 0, 80) -- to hơn (80x80)
+starBtn.Size = UDim2.new(0, 100, 0, 100) -- to hơn (100x100)
 starBtn.Position = UDim2.new(0, 10, 0, 10) -- góc trên bên trái
 starBtn.Text = "★"
 starBtn.BackgroundTransparency = 1
