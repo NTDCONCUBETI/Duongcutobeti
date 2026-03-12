@@ -63,6 +63,18 @@ wait(1)
 presskey(49) -- Số 1
 wait(0.5)
 presskey(49) -- Số 1
+wait(0.5)
+--## Hàm chống AFK
+local VirtualUser = game:GetService("VirtualUser")
+spawn(function()
+	pcall(function()
+		while true do wait(300)
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
+		end
+	end)
+end)
+
 --## Hiển thị bảng thông báo "Đã thu pet"
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "PetNotifyGui"
