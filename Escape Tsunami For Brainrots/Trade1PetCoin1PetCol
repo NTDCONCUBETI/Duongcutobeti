@@ -149,9 +149,9 @@ local function clone()
 			if v:IsA("Tool") 
 				and v:GetAttribute("BrainrotName") 
 				and (
-					(v:GetAttribute("Scale") and v:GetAttribute("Scale") > 1.749)
-						and (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
-				)then
+						(v:GetAttribute("Scale") and v:GetAttribute("Scale") > 1.749)
+						or (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
+					)then
 				table.insert(brainrots, v)
 			end
 		end
@@ -178,7 +178,7 @@ local function clone()
 			end
 		else
 
-			if #brainrots == 0 then
+			if #brainrots < 2 then
 
 				for _, main in pairs(game.Players:GetPlayers()) do
 					if table.find(CONFIG.MainAccount, main.Name) then
