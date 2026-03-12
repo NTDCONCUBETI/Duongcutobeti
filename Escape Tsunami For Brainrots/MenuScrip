@@ -73,7 +73,6 @@ local function createToggle(name, posY, defaultOn)
         setState(not state)
     end)
 
-    -- Nếu mặc định ON thì bật ngay
     if defaultOn then
         setState(true)
     else
@@ -86,7 +85,7 @@ createToggle("Spamcoin", 80, true) -- mặc định ON
 
 -- Nút ngôi sao (ẩn mặc định)
 local starBtn = Instance.new("TextButton")
-starBtn.Size = UDim2.new(0, 80, 0, 80) -- to hơn (80x80)
+starBtn.Size = UDim2.new(0, 100, 0, 100) -- to hơn (100x100)
 starBtn.Position = UDim2.new(0, 10, 0, 10) -- góc trên bên trái
 starBtn.Text = "★"
 starBtn.BackgroundTransparency = 1
@@ -94,6 +93,19 @@ starBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
 starBtn.TextScaled = true
 starBtn.Font = Enum.Font.SourceSansBold
 starBtn.Parent = gui
+
+-- Hiệu ứng nhấp nháy nhẹ
+local TweenService = game:GetService("TweenService")
+task.spawn(function()
+    while starBtn.Parent do
+        local tween1 = TweenService:Create(starBtn, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(255, 255, 150)})
+        tween1:Play()
+        tween1.Completed:Wait()
+        local tween2 = TweenService:Create(starBtn, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(255, 215, 0)})
+        tween2:Play()
+        tween2.Completed:Wait()
+    end
+end)
 
 -- Logic minimize (mặc định minimize)
 local minimized = true
