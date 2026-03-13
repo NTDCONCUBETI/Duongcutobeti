@@ -1,0 +1,236 @@
+getgenv().CONFIG = {
+	["MainAccount"] = {
+		"Kho1",
+		"Kho2"
+	},
+	["PetType"] = {"Divine"},
+	["LuckyBlock"] = {"Infinity1"},
+}
+
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game:GetService("Players").LocalPlayer
+function presskey(keycode)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+	game:GetService("VirtualInputManager"):SendKeyEvent(false,keycode,false,game:GetService("Players").LocalPlayer.PlayerGui)
+end
+local player = game.Players.LocalPlayer
+local v2 = game:GetService("ReplicatedStorage")
+local v_u_4 = require(v2.Shared.utils.EconomyMath)
+local bases = workspace:WaitForChild("Bases")
+local plotId = ""
+--########################################## Lấy địa chỉ nhà
+for _, plot in ipairs(bases:GetChildren()) do
+	local title = plot:FindFirstChild("Title")
+	if title then
+		local titleGui = title:FindFirstChild("TitleGui")
+		if titleGui then
+			local frame = titleGui:FindFirstChild("Frame")
+			if frame then
+				local playerNameLabel = frame:FindFirstChild("PlayerName")
+				if playerNameLabel and playerNameLabel:IsA("TextLabel") then
+					if playerNameLabel.Text == player.Name then
+						plotId = plot.Name
+						break
+					end
+				end
+			end
+		end
+	end
+end
+local function fireConnections(signal)
+	local ok, conns = pcall(function()
+		return getconnections(signal)
+	end)
+	if not ok or not conns then return false end
+
+	for _, c in ipairs(conns) do
+		if c.Enabled then
+			pcall(function()
+				if typeof(c.Function) == "function" then
+					c.Function()
+				elseif typeof(c.Fire) == "function" then
+					c:Fire()
+				end
+			end)
+		end
+	end
+	return true
+end
+local function check_luckyblock()
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") and v:GetAttribute("LuckyBlockTool") and table.find(CONFIG.LuckyBlock,v:GetAttribute("LuckyBlockType")) then
+			return true
+		end
+	end
+	return false
+end
+local function check_pet()
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") and v:GetAttribute("BrainrotName") and table.find(CONFIG.PetType,v_u_4.GetBrainrotRarity(v:GetAttribute("BrainrotName"))) then
+			return true
+		end
+	end
+	return false
+end
+local function get_main()
+	for _, player in pairs(game.Players:GetPlayers()) do
+		if table.find(CONFIG.MainAccount,player.Name) then
+			return player
+		end
+	end
+	return false
+end
+
+local function get_main_byName(name)
+	for _, player in pairs(game.Players:GetPlayers()) do
+		if name == player.Name then
+			return player
+		end
+	end
+end
+local function total_inventory()
+	local tong = 0
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			tong = tong + 1
+		end
+	end
+	return tong
+end
+
+local function Count_Item_Off_Main()
+	local main = get_main_byName(string.sub(game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.PlayerNames.player2.Label.Text,2))
+	local tong = 0
+	for _,v in pairs(main.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			tong = tong + 1
+		end
+	end
+	return tong
+	
+end
+
+local function clone()
+	local findmain = get_main()
+	local brainrots = {}
+	for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") 
+			and v:GetAttribute("BrainrotName") 
+			and (
+				(v:GetAttribute("Scale") and v:GetAttribute("Scale") > 1.749)
+					or (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
+			)then
+			table.insert(brainrots, v)
+		end
+	end
+	if findmain then
+		if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Visible then -- 
+			
+			local Count_item_Main = Count_Item_Off_Main()
+			
+			-- số slot tối đa là 9, nhưng nếu ít hơn thì lấy đúng số lượng còn lại 
+			local maxSlots = math.min(#brainrots, 9,101-Count_item_Main)
+
+			-- thêm brainrot vào các slot
+			for slot = 1, maxSlots do
+				local args = {
+					[1] = tostring(slot), -- slot số 1 đến maxSlots
+					[2] = brainrots[slot].Name -- hoặc GUID nếu server yêu cầu
+				}
+				game:GetService("ReplicatedStorage")
+					:WaitForChild("Shared")
+					:WaitForChild("Remotes")
+					:WaitForChild("Networking")
+					:WaitForChild("RF/TradeSetSlotOffer")
+					:InvokeServer(unpack(args))
+
+			end
+			-- gửi lệnh xác nhận với số slot đã bỏ vào
+			wait(5.5)
+			local confirmArgs = {
+				[1] = true,
+				[2] = maxSlots
+			}
+			game:GetService("ReplicatedStorage")
+				:WaitForChild("Shared")
+				:WaitForChild("Remotes")
+				:WaitForChild("Networking")
+				:WaitForChild("RE/Trading/TradeReadyTrade")
+				:FireServer(unpack(confirmArgs))
+
+			wait(6)
+		else
+
+			if #brainrots == 0 then
+				local filename = game.Players.LocalPlayer.Name.."-Clone.txt"
+				writefile(filename,"Done")
+				game:Shutdown()
+				task.wait(60)
+			else
+				for _, main in pairs(game.Players:GetPlayers()) do
+					if table.find(CONFIG.MainAccount, main.Name) then
+						game:GetService("ReplicatedStorage")
+							:WaitForChild("Shared")
+							:WaitForChild("Remotes")
+							:WaitForChild("Networking")
+							:WaitForChild("RF/TradeSendTrade")
+							:InvokeServer(main)
+						print("Đã gửi trade cho: "..main.Name)
+						task.wait(1) -- nghỉ giữa các lần gửi
+					end
+				end
+			end
+		end
+	end
+end
+local function AccMainDo()
+	if total_inventory() == 101 then
+		local filename = game.Players.LocalPlayer.Name.."-Done.txt"
+		writefile(filename,"Done")
+		print("Full túi")
+		game:Shutdown()
+		task.wait(60)
+	
+	else
+		
+		local gui = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest
+		if gui and gui:FindFirstChild("Main") then
+			local btn = game:GetService("Players").LocalPlayer.PlayerGui.TradeRequest.Main.Accept
+			if btn and btn.Visible then
+				fireConnections(btn.Activated)
+				fireConnections(btn.MouseButton1Click)
+				fireConnections(btn.MouseButton1Down)
+				task.wait(0.1)
+				pcall(function()btn:Activate() end)
+			end
+		end
+		while task.wait(0.5) do	
+			if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Visible then
+				if game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.PlayerNames.player2.Confirmed.Visible then
+					local btnAcepTrade = game:GetService("Players").LocalPlayer.PlayerGui.Menus.Trade.Accept
+					if btnAcepTrade and btnAcepTrade.Visible then
+						fireConnections(btnAcepTrade.Activated)
+						fireConnections(btnAcepTrade.MouseButton1Click)
+						fireConnections(btnAcepTrade.MouseButton1Down)
+						task.wait(0.1)
+						pcall(function()btnAcepTrade:Activate() end)
+						task.wait(6)
+						break
+					end
+				end
+			else
+				break
+			end
+		end
+
+	end
+	
+end
+
+while task.wait(3) do
+	if table.find(CONFIG.MainAccount,game.Players.LocalPlayer.Name) then -- Nêu là acc MAIN
+		AccMainDo()
+	else ----------------------------------------------------------------- Nếu là Clone
+		clone()
+	end
+end
