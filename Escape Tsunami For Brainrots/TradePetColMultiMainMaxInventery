@@ -118,7 +118,7 @@ local function clone()
 			and v:GetAttribute("BrainrotName") 
 			and (
 				(v:GetAttribute("Scale") and v:GetAttribute("Scale") > 1.749)
-					or (v:GetAttribute("Level") and v:GetAttribute("Level") > 219)
+				
 			)then
 			table.insert(brainrots, v)
 		end
