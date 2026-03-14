@@ -1,5 +1,4 @@
 wait(10)
-
 local player = game.Players.LocalPlayer
 while not player do 
 	task.wait() 
