@@ -1,7 +1,18 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/PickupPet"))()
 getgenv().CONFIG = {
 	["MainAccount"] = {
-        "WillyIvensk02"
+    "AsamiBaarel95",
+    "SunnyBosse99",
+    "SuhanPieten97",
+    "MuldenNynke01",
+    "DiedePepri04",
+    "PietunFei05",
+    "JannieGerror08",
+    "KlaasuPim2002",
+    "ChaeyoungBerge98",
+    "AnnetEvers05",
+    "RuitLouise2007",
+    "AnneMariePiet1996"
 	},
 	["PetType"] = {"Divine"},
 	["LuckyBlock"] = {"Infinity1"},
