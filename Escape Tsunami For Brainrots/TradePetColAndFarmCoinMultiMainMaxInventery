@@ -1,4 +1,4 @@
-task.wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/PickupPet"))()
 getgenv().CONFIG = {
 	["MainAccount"] = {
         "WillyIvensk02"
@@ -226,7 +226,7 @@ local function AccMainDo()
 	end
 	
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/PickupPet"))()
+
 while task.wait(3) do
 	if table.find(CONFIG.MainAccount,game.Players.LocalPlayer.Name) then -- Nêu là acc MAIN
 		AccMainDo()
