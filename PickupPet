@@ -91,3 +91,23 @@ notifyLabel.TextSize = 20
 notifyLabel.Text = "🐾 Đã thu pet"
 notifyLabel.Parent = screenGui
 loadstring(game:HttpGet("https://raw.githubusercontent.com/duongcuteleu/main/refs/heads/main/ClosePeopeoAndChat"))()
+local function total_inventory()
+	local tong = 0
+	for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			tong = tong + 1
+		end
+	end
+	return tong
+end
+
+local old_count = total_inventory()
+print(old_count)
+wait(120)
+local new_count = total_inventory()
+print(new_count)
+if new_count == old_count then
+	game:shutdown()	
+end
+
+
