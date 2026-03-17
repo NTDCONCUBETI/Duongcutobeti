@@ -100,7 +100,7 @@ local function total_inventory()
 	end
 	return tong
 end
-
+-----Kiểm tra số pet trong túi và so sánh xem số lượng pet có tăng sau 2 phút không , nếu không thì tắt Game.
 local old_count = total_inventory()
 print(old_count)
 wait(120)
