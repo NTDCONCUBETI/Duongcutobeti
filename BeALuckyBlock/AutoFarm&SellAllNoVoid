@@ -123,7 +123,7 @@ end
 local function startFarmLoop()
     while _autoFarmActive do
         task.wait()
-        task.spawn(function() pcall(function() OpenLuckyBlockRF:InvokeServer("base14") end) end)
+        task.spawn(function() pcall(function() OpenLuckyBlockRF:InvokeServer("base15") end) end)
         pcall(function()
             if player.Character and targetPath then
                 player.Character:PivotTo(targetPath.CFrame + Vector3.new(0, 10, 0))
