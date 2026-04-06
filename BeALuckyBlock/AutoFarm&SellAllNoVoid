@@ -72,18 +72,17 @@ MinButton.TextColor3 = Color3.new(1, 1, 1)
 MinButton.ZIndex = 10
 Instance.new("UICorner", MinButton).CornerRadius = UDim.new(0, 4)
 
--- NÚT KHIÊN (MinIcon) - PHẢI HIỆN RA HÌNH NÀY
+-- NÚT KHIÊN (MinIcon)
 local MinIcon = Instance.new("ImageButton")
 MinIcon.Parent = ScreenGui
 MinIcon.Size = UDim2.new(0, 60, 0, 60)
 MinIcon.Position = UDim2.new(1, -70, 1, -70)
-MinIcon.Image = "rbxassetid://6031094678" -- Đây là ID cái Khiên
+MinIcon.Image = "rbxassetid://6031094678" -- ID cái Khiên
 MinIcon.Visible = false
 MinIcon.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 MinIcon.BackgroundTransparency = 0.2
 Instance.new("UICorner", MinIcon).CornerRadius = UDim.new(0, 12)
 
--- Viền xanh cho khiên
 local Stroke = Instance.new("UIStroke")
 Stroke.Thickness = 2
 Stroke.Color = Color3.fromRGB(0, 255, 255)
@@ -94,7 +93,6 @@ local function runAutoSell()
     while _autoSellActive do
         local success, err = pcall(function()
             local items = {}
-            -- Quét túi và nhân vật
             for _, v in ipairs(player.Backpack:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
             if player.Character then
                 for _, v in ipairs(player.Character:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
@@ -105,7 +103,6 @@ local function runAutoSell()
                 
                 local entityId = tool:GetAttribute("EntityId")
                 if entityId then
-                    -- Lấy mutation, nếu nil thì mặc định là "NORMAL" để tránh lỗi index nil
                     local mutAttr = tool:GetAttribute("Mutation")
                     local mutation = tostring(mutAttr or "NORMAL"):upper()
                     
@@ -118,7 +115,7 @@ local function runAutoSell()
         end)
         
         if not success then warn("Auto Sell Error: " .. tostring(err)) end
-        task.wait(2) -- Quét lại mỗi 2 giây cho ổn định
+        task.wait(2)
     end
 end
 
@@ -158,12 +155,12 @@ end)
 
 MinButton.MouseButton1Click:Connect(function()
     MainFrame.Visible = false
-    MonkeyIcon.Visible = true
+    MinIcon.Visible = true
 end)
 
-MonkeyIcon.MouseButton1Click:Connect(function()
+MinIcon.MouseButton1Click:Connect(function()
     MainFrame.Visible = true
-    MonkeyIcon.Visible = false
+    MinIcon.Visible = false
 end)
 
 CloseButton.MouseButton1Click:Connect(function()
@@ -177,8 +174,7 @@ end)
 task.spawn(function()
     local vim = game:GetService("VirtualInputManager")
     while true do
-        task.wait(2) -- 2 phút  check một lần cho chắc
-        -- Giả lập nhấn phím nhảy (Space)
+        task.wait(120) 
         vim:SendKeyEvent(true, Enum.KeyCode.Space, false, game)
         task.wait(0.1)
         vim:SendKeyEvent(false, Enum.KeyCode.Space, false, game)
