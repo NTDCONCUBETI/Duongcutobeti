@@ -72,15 +72,22 @@ MinButton.TextColor3 = Color3.new(1, 1, 1)
 MinButton.ZIndex = 10
 Instance.new("UICorner", MinButton).CornerRadius = UDim.new(0, 4)
 
--- Nút Con Khỉ (Khi thu nhỏ)
-local MonkeyIcon = Instance.new("ImageButton")
-MonkeyIcon.Parent = ScreenGui
-MonkeyIcon.Size = UDim2.new(0, 60, 0, 60)
-MonkeyIcon.Position = UDim2.new(1, -70, 1, -70)
-MonkeyIcon.Image = "rbxassetid://13112423377"
-MonkeyIcon.Visible = false
-MonkeyIcon.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Instance.new("UICorner", MonkeyIcon).CornerRadius = UDim.new(1, 0)
+-- NÚT KHIÊN (MinIcon) - PHẢI HIỆN RA HÌNH NÀY
+local MinIcon = Instance.new("ImageButton")
+MinIcon.Parent = ScreenGui
+MinIcon.Size = UDim2.new(0, 60, 0, 60)
+MinIcon.Position = UDim2.new(1, -70, 1, -70)
+MinIcon.Image = "rbxassetid://6031094678" -- Đây là ID cái Khiên
+MinIcon.Visible = false
+MinIcon.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MinIcon.BackgroundTransparency = 0.2
+Instance.new("UICorner", MinIcon).CornerRadius = UDim.new(0, 12)
+
+-- Viền xanh cho khiên
+local Stroke = Instance.new("UIStroke")
+Stroke.Thickness = 2
+Stroke.Color = Color3.fromRGB(0, 255, 255)
+Stroke.Parent = MinIcon
 
 ---------------- LOGIC AUTO SELL ----------------
 local function runAutoSell()
