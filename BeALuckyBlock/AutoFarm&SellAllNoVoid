@@ -82,7 +82,7 @@ MonkeyIcon.Visible = false
 MonkeyIcon.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Instance.new("UICorner", MonkeyIcon).CornerRadius = UDim.new(1, 0)
 
----------------- LOGIC AUTO SELL (BẢN FIX CHUẨN) ----------------
+---------------- LOGIC AUTO SELL ----------------
 local function runAutoSell()
     while _autoSellActive do
         local success, err = pcall(function()
