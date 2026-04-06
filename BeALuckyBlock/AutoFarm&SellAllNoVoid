@@ -1,30 +1,28 @@
 local _autoFarmActive = false
-local _autoSellActive = false -- Biến trạng thái cho Auto Sell
+local _autoSellActive = false
 local player = game.Players.LocalPlayer
 local targetPath = workspace:WaitForChild("Plots"):WaitForChild("3"):WaitForChild("3"):WaitForChild("PlotSurface"):WaitForChild("Part")
 
+-- Khai báo Service và Remotes
 local Rep = game:GetService("ReplicatedStorage")
 local KnitPath = Rep:WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services")
 
--- Remote của Farm
 local StartRunRF = KnitPath:WaitForChild("RunningService"):WaitForChild("RF"):WaitForChild("StartRun")
 local ReloadCharRF = KnitPath:WaitForChild("PlayerService"):WaitForChild("RF"):WaitForChild("ReloadCharacter")
 local OpenLuckyBlockRF = KnitPath:WaitForChild("RunningService"):WaitForChild("RF"):WaitForChild("OpenLuckyBlock")
-
--- Remote của Sell
 local SellRemote = KnitPath:WaitForChild("InventoryService"):WaitForChild("RF"):WaitForChild("SellBrainrot")
 
 -- Khởi tạo ScreenGui
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "AutoFarmMenu"
+ScreenGui.Name = "MonkeyAutoFarm_V3"
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ResetOnSpawn = false
 
--- Khung chứa (Main Frame) để gom các nút lại cho gọn
+-- Khung chứa Main (Draggable)
 local MainFrame = Instance.new("Frame")
 MainFrame.Parent = ScreenGui
-MainFrame.Size = UDim2.new(0, 160, 0, 115) -- Tăng chiều cao để chứa 2 nút
-MainFrame.Position = UDim2.new(0.5, -80, 0.5, -50)
+MainFrame.Size = UDim2.new(0, 160, 0, 120)
+MainFrame.Position = UDim2.new(0.5, -80, 0.5, -60)
 MainFrame.BackgroundTransparency = 1
 MainFrame.Active = true
 MainFrame.Draggable = true
@@ -38,27 +36,21 @@ FarmButton.Font = Enum.Font.SourceSansBold
 FarmButton.Text = "Off_AutoFarm"
 FarmButton.TextColor3 = Color3.new(1, 1, 1)
 FarmButton.TextSize = 18
-
-local Corner1 = Instance.new("UICorner")
-Corner1.CornerRadius = UDim.new(0, 8)
-Corner1.Parent = FarmButton
+Instance.new("UICorner", FarmButton).CornerRadius = UDim.new(0, 8)
 
 -- Nút Auto Sell
 local SellButton = Instance.new("TextButton")
 SellButton.Parent = MainFrame
 SellButton.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-SellButton.Position = UDim2.new(0, 0, 0, 60) -- Nằm dưới nút Farm
+SellButton.Position = UDim2.new(0, 0, 0, 60)
 SellButton.Size = UDim2.new(1, 0, 0, 50)
 SellButton.Font = Enum.Font.SourceSansBold
 SellButton.Text = "Off_AutoSell"
 SellButton.TextColor3 = Color3.new(1, 1, 1)
 SellButton.TextSize = 18
+Instance.new("UICorner", SellButton).CornerRadius = UDim.new(0, 8)
 
-local Corner2 = Instance.new("UICorner")
-Corner2.CornerRadius = UDim.new(0, 8)
-Corner2.Parent = SellButton
-
--- Nút Tắt (X)
+-- Nút X (Close)
 local CloseButton = Instance.new("TextButton")
 CloseButton.Parent = MainFrame
 CloseButton.Size = UDim2.new(0, 20, 0, 20)
@@ -66,7 +58,8 @@ CloseButton.Position = UDim2.new(1, -22, 0, 2)
 CloseButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
 CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.new(1, 1, 1)
-CloseButton.ZIndex = 5
+CloseButton.ZIndex = 10
+Instance.new("UICorner", CloseButton).CornerRadius = UDim.new(0, 4)
 
 -- Nút Thu nhỏ (-)
 local MinButton = Instance.new("TextButton")
@@ -76,54 +69,66 @@ MinButton.Position = UDim2.new(1, -44, 0, 2)
 MinButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 MinButton.Text = "-"
 MinButton.TextColor3 = Color3.new(1, 1, 1)
-MinButton.ZIndex = 5
+MinButton.ZIndex = 10
+Instance.new("UICorner", MinButton).CornerRadius = UDim.new(0, 4)
 
--- Con Khỉ Thu Nhỏ
+-- Nút Con Khỉ (Khi thu nhỏ)
 local MonkeyIcon = Instance.new("ImageButton")
 MonkeyIcon.Parent = ScreenGui
 MonkeyIcon.Size = UDim2.new(0, 60, 0, 60)
 MonkeyIcon.Position = UDim2.new(1, -70, 1, -70)
 MonkeyIcon.Image = "rbxassetid://13112423377"
 MonkeyIcon.Visible = false
+MonkeyIcon.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Instance.new("UICorner", MonkeyIcon).CornerRadius = UDim.new(1, 0)
 
----------------- LOGIC BÁN (SELL) ----------------
+---------------- LOGIC AUTO SELL (BẢN FIX CHUẨN) ----------------
 local function runAutoSell()
     while _autoSellActive do
-        local tools = {}
-        for _, v in ipairs(player.Backpack:GetChildren()) do if v:IsA("Tool") then table.insert(tools, v) end end
-        if player.Character then
-            for _, v in ipairs(player.Character:GetChildren()) do if v:IsA("Tool") then table.insert(tools, v) end end
-        end
+        local success, err = pcall(function()
+            local items = {}
+            -- Quét túi và nhân vật
+            for _, v in ipairs(player.Backpack:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
+            if player.Character then
+                for _, v in ipairs(player.Character:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
+            end
 
-        for _, tool in ipairs(tools) do
-            if not _autoSellActive then break end
-            local entityId = tool:GetAttribute("EntityId")
-            if entityId then
-                local mutation = tool:GetAttribute("Mutation")
-                if tostring(mutation):upper() ~= "VOID" then
-                    pcall(function() SellRemote:InvokeServer(entityId) end)
-                    task.wait(0.05)
+            for _, tool in ipairs(items) do
+                if not _autoSellActive then break end
+                
+                local entityId = tool:GetAttribute("EntityId")
+                if entityId then
+                    -- Lấy mutation, nếu nil thì mặc định là "NORMAL" để tránh lỗi index nil
+                    local mutAttr = tool:GetAttribute("Mutation")
+                    local mutation = tostring(mutAttr or "NORMAL"):upper()
+                    
+                    if mutation ~= "VOID" then
+                        SellRemote:InvokeServer(entityId)
+                        task.wait(0.05)
+                    end
                 end
             end
-        end
-        task.wait(1) -- Quét lại mỗi 1 giây
+        end)
+        
+        if not success then warn("Auto Sell Error: " .. tostring(err)) end
+        task.wait(2) -- Quét lại mỗi 2 giây cho ổn định
     end
 end
 
----------------- LOGIC FARM ----------------
+---------------- LOGIC AUTO FARM ----------------
 local function startFarmLoop()
     while _autoFarmActive do
         task.wait()
         task.spawn(function() pcall(function() OpenLuckyBlockRF:InvokeServer("base14") end) end)
         pcall(function()
-            local char = player.Character
-            if char and targetPath then char:PivotTo(targetPath.CFrame + Vector3.new(0, 10, 0)) end
+            if player.Character and targetPath then
+                player.Character:PivotTo(targetPath.CFrame + Vector3.new(0, 10, 0))
+            end
         end)
     end
 end
 
----------------- SỰ KIỆN NÚT ----------------
+---------------- SỰ KIỆN CLICK ----------------
 FarmButton.MouseButton1Click:Connect(function()
     _autoFarmActive = not _autoFarmActive
     FarmButton.Text = _autoFarmActive and "On_AutoFarm" or "Off_AutoFarm"
@@ -160,13 +165,18 @@ CloseButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- Anti AFK (Giữ nguyên)
-local VirtualUser = game:GetService("VirtualUser")
+---------------- ANTI-AFK XỊN ----------------
+
 task.spawn(function()
-    pcall(function()
-        while true do task.wait(300)
-            VirtualUser:CaptureController()
-            VirtualUser:ClickButton2(Vector2.new())
-        end
-    end)
+    local vim = game:GetService("VirtualInputManager")
+    while true do
+        task.wait(2) -- 2 phút  check một lần cho chắc
+        -- Giả lập nhấn phím nhảy (Space)
+        vim:SendKeyEvent(true, Enum.KeyCode.Space, false, game)
+        task.wait(0.1)
+        vim:SendKeyEvent(false, Enum.KeyCode.Space, false, game)
+        print("Anti-AFK: Đã thực hiện nhảy để giữ kết nối")
+    end
 end)
+
+print("Script Load Done!")
