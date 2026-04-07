@@ -1,0 +1,80 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/WaiForGameLoad.lua"))()
+-- TRẠNG THÁI MẶC ĐỊNH LÀ CHẠY
+local _autoFarmActive = true
+local _autoSellActive = true
+local player = game.Players.LocalPlayer
+
+-- Tìm Plot (Nếu không tìm thấy sau 5 giây sẽ báo lỗi để mày biết)
+local targetPath = workspace:WaitForChild("Plots"):WaitForChild("3"):WaitForChild("3"):WaitForChild("PlotSurface"):WaitForChild("Part")
+
+-- Khai báo Service và Remotes
+local Rep = game:GetService("ReplicatedStorage")
+local KnitPath = Rep:WaitForChild("Packages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services")
+
+local StartRunRF = KnitPath:WaitForChild("RunningService"):WaitForChild("RF"):WaitForChild("StartRun")
+local ReloadCharRF = KnitPath:WaitForChild("PlayerService"):WaitForChild("RF"):WaitForChild("ReloadCharacter")
+local OpenLuckyBlockRF = KnitPath:WaitForChild("RunningService"):WaitForChild("RF"):WaitForChild("OpenLuckyBlock")
+local SellRemote = KnitPath:WaitForChild("InventoryService"):WaitForChild("RF"):WaitForChild("SellBrainrot")
+
+---------------- LOGIC AUTO SELL ----------------
+local function runAutoSell()
+    while _autoSellActive do
+        pcall(function()
+            local items = {}
+            for _, v in ipairs(player.Backpack:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
+            if player.Character then
+                for _, v in ipairs(player.Character:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
+            end
+
+            for _, tool in ipairs(items) do
+                local entityId = tool:GetAttribute("EntityId")
+                if entityId then
+                    local mutation = tostring(tool:GetAttribute("Mutation") or "NORMAL"):upper()
+                    if mutation ~= "VOID" then
+                        SellRemote:InvokeServer(entityId)
+                        task.wait(0.05)
+                    end
+                end
+            end
+        end)
+        task.wait(2)
+    end
+end
+
+---------------- LOGIC AUTO FARM ----------------
+local function startFarmLoop()
+    -- Kích hoạt chạy và hồi sinh nhân vật 1 lần duy nhất khi bắt đầu
+    pcall(function() 
+        StartRunRF:InvokeServer() 
+        ReloadCharRF:InvokeServer()
+    end)
+
+    while _autoFarmActive do
+        task.wait()
+        -- Mở hòm
+        task.spawn(function() pcall(function() OpenLuckyBlockRF:InvokeServer("base15") end) end)
+        -- Teleport tới vị trí farm
+        pcall(function()
+            if player.Character and targetPath then
+                player.Character:PivotTo(targetPath.CFrame + Vector3.new(0, 10, 0))
+            end
+        end)
+    end
+end
+
+---------------- ANTI-AFK ----------------
+task.spawn(function()
+    local vim = game:GetService("VirtualInputManager")
+    while true do
+        task.wait(120) -- 2 phút nhảy 1 lần
+        vim:SendKeyEvent(true, Enum.KeyCode.Space, false, game)
+        task.wait(0.1)
+        vim:SendKeyEvent(false, Enum.KeyCode.Space, false, game)
+    end
+end)
+
+---------------- KÍCH HOẠT CHẠY NGẦM ----------------
+task.spawn(startFarmLoop)
+task.spawn(runAutoSell)
+
+print("--- MONKEY SCRIPT RUNNING (No Menu) ---")
