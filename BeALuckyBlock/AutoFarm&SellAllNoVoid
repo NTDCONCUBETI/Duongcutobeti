@@ -76,5 +76,6 @@ end)
 ---------------- KÍCH HOẠT CHẠY NGẦM ----------------
 task.spawn(startFarmLoop)
 task.spawn(runAutoSell)
-
+task.wait(30)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 print("--- MONKEY SCRIPT RUNNING (No Menu) ---")
