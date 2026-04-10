@@ -17,61 +17,30 @@ local OpenLuckyBlockRF = KnitPath:WaitForChild("RunningService"):WaitForChild("R
 local SellRemote = KnitPath:WaitForChild("InventoryService"):WaitForChild("RF"):WaitForChild("SellBrainrot")
 
 ---------------- LOGIC AUTO SELL ----------------
-local _autoSellActive = true -- Biến điều khiển bật/tắt tự động bán
-
-local function runAutoSellCombined()
-    local Players = game:GetService("Players")
-    local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    local player = Players.LocalPlayer
-
-    -- Đường dẫn Remote chuẩn từ mã nguồn [cite: 38, 39, 40, 87]
-    local SellBrainrot = ReplicatedStorage
-        :WaitForChild("Packages")
-        :WaitForChild("_Index")
-        :WaitForChild("sleitnick_knit@1.7.0")
-        :WaitForChild("knit")
-        :WaitForChild("Services")
-        :WaitForChild("InventoryService")
-        :WaitForChild("RF")
-        :WaitForChild("SellBrainrot")
-
-    -- Vòng lặp chạy liên tục
+local function runAutoSell()
     while _autoSellActive do
         pcall(function()
-            -- Thu thập tất cả vật phẩm từ Backpack và Character [cite: 92]
             local items = {}
-            for _, v in ipairs(player.Backpack:GetChildren()) do 
-                if v:IsA("Tool") then table.insert(items, v) end 
-            end
+            for _, v in ipairs(player.Backpack:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
             if player.Character then
-                for _, v in ipairs(player.Character:GetChildren()) do 
-                    if v:IsA("Tool") then table.insert(items, v) end 
-                end
+                for _, v in ipairs(player.Character:GetChildren()) do if v:IsA("Tool") then table.insert(items, v) end end
             end
 
-            -- Xử lý từng vật phẩm
             for _, tool in ipairs(items) do
-                local entityId = tool:GetAttribute("EntityId") [cite: 98]
-                local brainrotType = tool:GetAttribute("BrainrotType") [cite: 97]
-                local mutation = tostring(tool:GetAttribute("Mutation") or "NORMAL"):upper()
-
+                local entityId = tool:GetAttribute("EntityId")
                 if entityId then
-                    -- ĐIỀU KIỆN LỌC:
-                    -- Chỉ giữ lại nếu: Tên là "bisonte_giuppitere_giuppitercito" VÀ hệ là "VOID"
-                    -- Ngược lại (tất cả các trường hợp khác) sẽ bị bán.
-                    local isTargetToSave = (brainrotType == "bisonte_giuppitere_giuppitercito" and mutation == "VOID")
-
-                    if not isTargetToSave then
-                        SellBrainrot:InvokeServer(entityId) [cite: 40, 99]
-                        task.wait(0.05) -- Nghỉ ngắn để tránh spam server [cite: 99]
+                    local mutation = tostring(tool:GetAttribute("Mutation") or "NORMAL"):upper()
+                    if mutation ~= "VOID" then
+                        SellRemote:InvokeServer(entityId)
+                        task.wait(0.05)
                     end
                 end
             end
         end)
-        
-        task.wait(2) -- Chờ 2 giây trước khi quét lượt tiếp theo
+        task.wait(2)
     end
 end
+
 ---------------- LOGIC AUTO FARM ----------------
 local function startFarmLoop()
     -- Kích hoạt chạy và hồi sinh nhân vật 1 lần duy nhất khi bắt đầu
@@ -93,6 +62,55 @@ local function startFarmLoop()
     end
 end
 
+local function runAutoSellPetName()
+    local Players = game:GetService("Players")
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local player = Players.LocalPlayer
+
+    -- Lấy chính xác đường dẫn Remote từ source [cite: 38, 39, 40]
+    local SellBrainrot = ReplicatedStorage
+        :WaitForChild("Packages")
+        :WaitForChild("_Index")
+        :WaitForChild("sleitnick_knit@1.7.0")
+        :WaitForChild("knit")
+        :WaitForChild("Services")
+        :WaitForChild("InventoryService")
+        :WaitForChild("RF")
+        :WaitForChild("SellBrainrot")
+
+    local function GetAllTools()
+        local tools = {}
+        -- Quét túi đồ 
+        for _, item in ipairs(player.Backpack:GetChildren()) do
+            if item:IsA("Tool") then table.insert(tools, item) end
+        end
+        -- Quét trên tay nhân vật 
+        if player.Character then
+            for _, item in ipairs(player.Character:GetChildren()) do
+                if item:IsA("Tool") then table.insert(tools, item) end
+            end
+        end
+        return tools
+    end
+
+    local items = GetAllTools()
+    for _, tool in ipairs(items) do
+        -- Lấy mã ID và Tên pet từ Attribute [cite: 97, 98]
+        local entityId = tool:GetAttribute("EntityId")
+        local brainrotType = tool:GetAttribute("BrainrotType")
+
+        -- KIỂM TRA ĐIỀU KIỆN: 
+        -- 1. Phải có ID thực thể
+        -- 2. Tên pet KHÔNG ĐƯỢC là "bisonte_giuppitere_giuppitercito"
+        if entityId and brainrotType ~= "bisonte_giuppitere_giuppitercito" then
+            pcall(function()
+                -- Sử dụng InvokeServer theo đúng cấu trúc của script [cite: 40]
+                SellBrainrot:InvokeServer(entityId)
+            end)
+            task.wait(0.1) -- Nghỉ một chút để tránh bị giới hạn tốc độ (Rate limit)
+        end
+    end
+end
 ---------------- ANTI-AFK ----------------
 task.spawn(function()
     local vim = game:GetService("VirtualInputManager")
@@ -106,7 +124,8 @@ end)
 
 ---------------- KÍCH HOẠT CHẠY NGẦM ----------------
 task.spawn(startFarmLoop)
-task.spawn(runAutoSellCombined)
+task.spawn(runAutoSell)
+task.spawn(runAutoSellPetName)
 task.wait(30)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Supposrt/FPSBOOTER"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/FPSBOOTER"))()
 print("--- MONKEY SCRIPT RUNNING (No Menu) ---")
