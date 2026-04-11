@@ -1,4 +1,4 @@
-task.wait(30)
+task.wait(10)
 -- TRẠNG THÁI MẶC ĐỊNH LÀ CHẠY
 local _autoFarmActive = true
 local _autoSellActive = true
@@ -33,7 +33,7 @@ local function runAutoSellCombined()
         :WaitForChild("RF")
         :WaitForChild("SellBrainrot")
 
-    -- Vòng lặp chạy liên tục (Dựa trên đoạn code 1)
+    -- Vòng lặp chạy liên tục 
     while _autoSellActive do
         pcall(function()
             local items = {}
@@ -72,8 +72,6 @@ local function runAutoSellCombined()
     end
 end
 
--- Kích hoạt chạy ngầm
-task.spawn(runAutoSellCombined)
 ---------------- LOGIC AUTO FARM ----------------
 local function startFarmLoop()
     -- Kích hoạt chạy và hồi sinh nhân vật 1 lần duy nhất khi bắt đầu
@@ -95,7 +93,6 @@ local function startFarmLoop()
     end
 end
 
-
 ---------------- ANTI-AFK ----------------
 task.spawn(function()
     local vim = game:GetService("VirtualInputManager")
@@ -110,6 +107,6 @@ end)
 ---------------- KÍCH HOẠT CHẠY NGẦM ----------------
 task.spawn(startFarmLoop)
 task.spawn(runAutoSellCombined)
-task.wait(30)
+task.wait(5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCONCUBETI/Duongcutobeti/refs/heads/main/Supposrt/FPSBOOTER"))()
 print("--- MONKEY SCRIPT RUNNING (No Menu) ---")
