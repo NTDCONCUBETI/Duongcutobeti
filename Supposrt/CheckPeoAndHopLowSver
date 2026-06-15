@@ -1,0 +1,50 @@
+local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function getServers()
+    local placeId = game.PlaceId
+    local apiUrl = "https://games.roblox.com/v1/games/" .. placeId .. "/servers/Public?sortOrder=Asc&limit=100"
+    
+    local success, result = pcall(function()
+        return game:HttpGet(apiUrl)
+    end)
+    
+    if success and result then
+        return Http:JSONDecode(result).data
+    end
+    return nil
+end
+
+local function checkAndJump()
+    local currentPlayersCount = #Players:GetPlayers()
+    print("Đang kiểm tra... Số người hiện tại: " .. currentPlayersCount)
+    
+    -- Nếu server hiện tại có trên 5 người, tìm server khác vắng hơn
+    if currentPlayersCount > 5 then
+        local servers = getServers()
+        if servers and #servers > 0 then
+            local bestServer = servers[1]
+            
+            -- Chỉ nhảy nếu server vắng nhất tìm thấy thực sự ít người hơn server hiện tại
+            if bestServer.playing < currentPlayersCount then
+                print("Server quá đông (" .. currentPlayersCount .. " người). Đang nhảy sang server: " .. bestServer.id .. " (" .. bestServer.playing .. " người).")
+                TPS:TeleportToPlaceInstance(game.PlaceId, bestServer.id, LocalPlayer)
+            else
+                print("Hiện tại không có server nào vắng hơn 5 người. Đợi lần kiểm tra sau.")
+            end
+        end
+    else
+        print("Server hiện tại ổn (" .. currentPlayersCount .. " người). Tiếp tục cày cuốc...")
+    end
+end
+
+-- Vòng lặp kiểm tra mỗi 5 phút
+task.spawn(function()
+    while true do
+        checkAndJump()
+        -- 5 phút = 300 giây
+        task.wait(300) 
+    end
+end)
